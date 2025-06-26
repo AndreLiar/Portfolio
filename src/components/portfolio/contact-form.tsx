@@ -18,14 +18,17 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Send, Loader2 } from "lucide-react";
 import { sendEmail } from "@/app/actions";
-
-const formSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters."),
-  email: z.string().email("Please enter a valid email address."),
-  message: z.string().min(10, "Message must be at least 10 characters."),
-});
+import { useTranslations } from "next-intl";
 
 export function ContactForm() {
+  const t = useTranslations('ContactForm');
+  
+  const formSchema = z.object({
+    name: z.string().min(2, "Name must be at least 2 characters."),
+    email: z.string().email("Please enter a valid email address."),
+    message: z.string().min(10, "Message must be at least 10 characters."),
+  });
+  
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -44,21 +47,21 @@ export function ContactForm() {
       const result = await sendEmail(values);
       if (result?.error) {
         toast({
-          title: "Error",
+          title: t('toast.errorTitle'),
           description: result.error,
           variant: "destructive",
         });
       } else {
         toast({
-          title: "Message Sent!",
-          description: "Thanks for reaching out. I'll get back to you soon.",
+          title: t('toast.successTitle'),
+          description: t('toast.successDescription'),
         });
         form.reset();
       }
     } catch (e) {
       toast({
-        title: "Error",
-        description: "Something went wrong. Please try again.",
+        title: t('toast.errorTitle'),
+        description: t('toast.errorDescription'),
         variant: "destructive",
       });
     } finally {
@@ -75,9 +78,9 @@ export function ContactForm() {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Name</FormLabel>
+                <FormLabel>{t('name')}</FormLabel>
                 <FormControl>
-                  <Input placeholder="Your Name" {...field} />
+                  <Input placeholder={t('namePlaceholder')} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -88,9 +91,9 @@ export function ContactForm() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>{t('email')}</FormLabel>
                 <FormControl>
-                  <Input placeholder="your.email@example.com" {...field} />
+                  <Input placeholder={t('emailPlaceholder')} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -102,10 +105,10 @@ export function ContactForm() {
           name="message"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Message</FormLabel>
+              <FormLabel>{t('message')}</FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder="Tell me about your project or inquiry..."
+                  placeholder={t('messagePlaceholder')}
                   className="min-h-[150px]"
                   {...field}
                 />
@@ -119,11 +122,11 @@ export function ContactForm() {
              {isSubmitting ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Sending...
+                {t('buttonSending')}
               </>
             ) : (
               <>
-                Send Message <Send className="ml-2 h-4 w-4" />
+                {t('button')} <Send className="ml-2 h-4 w-4" />
               </>
             )}
           </Button>

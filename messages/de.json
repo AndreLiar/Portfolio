@@ -1,0 +1,119 @@
+
+{
+  "Metadata": {
+    "title": "ktayls digitale Bühne",
+    "description": "Portfolio von ktayl, Fullstack Software Engineer."
+  },
+  "Header": {
+    "projects": "Projekte",
+    "skills": "Fähigkeiten",
+    "experience": "Erfahrung",
+    "contact": "Kontakt",
+    "downloadCv": "Lebenslauf herunterladen"
+  },
+  "Hero": {
+    "contactMe": "Kontaktieren Sie mich",
+    "github": "GitHub",
+    "linkedin": "LinkedIn"
+  },
+  "Page": {
+    "projects": {
+      "title": "Projekterfahrung"
+    },
+    "skills": {
+      "title": "Technische Kernkompetenzen"
+    },
+    "journey": {
+      "title": "Mein Weg",
+      "workExperienceTitle": "Berufserfahrung",
+      "educationTitle": "Ausbildung"
+    },
+    "recommendations": {
+      "title": "Empfehlungen"
+    },
+    "extras": {
+      "languagesTitle": "Sprachen",
+      "interestsTitle": "Interessen"
+    },
+    "contact": {
+      "title": "Kontakt aufnehmen",
+      "subtitle": "Haben Sie ein Projekt im Sinn oder möchten Sie einfach nur Hallo sagen? Zögern Sie nicht, mich zu kontaktieren."
+    }
+  },
+  "ProjectList": {
+    "loadMore": "Mehr laden"
+  },
+  "ProjectCard": {
+    "role": "Rolle",
+    "impact": "Auswirkung",
+    "features": "Funktionen",
+    "stack": "Stack",
+    "liveDemo": "Live-Demo",
+    "github": "GitHub"
+  },
+  "Footer": {
+    "rights": "Alle Rechte vorbehalten."
+  },
+  "ContactForm": {
+    "name": "Name",
+    "namePlaceholder": "Ihr Name",
+    "email": "E-Mail",
+    "emailPlaceholder": "ihre.email@beispiel.com",
+    "message": "Nachricht",
+    "messagePlaceholder": "Erzählen Sie mir von Ihrem Projekt oder Ihrer Anfrage...",
+    "button": "Nachricht senden",
+    "buttonSending": "Wird gesendet...",
+    "toast": {
+      "successTitle": "Nachricht gesendet!",
+      "successDescription": "Danke für Ihre Kontaktaufnahme. Ich melde mich bald bei Ihnen.",
+      "errorTitle": "Fehler",
+      "errorDescription": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
+      "errorResend": "Resend-API-Schlüssel ist nicht konfiguriert."
+    }
+  },
+  "data": {
+    "name": "ktayl",
+    "fullName": "kanmegne laurel",
+    "title": "Fullstack Software Engineer | Cloud-Native & KI-gestützte Systeme",
+    "location": "Paris, Frankreich",
+    "resumeUrl": "/resume.pdf",
+    "contact": {
+      "email": "kanmegneandre@gmail.com",
+      "phone": "+33000000000",
+      "github": "https://github.com/yourhandle",
+      "linkedin": "https://linkedin.com/in/yourhandle"
+    },
+    "summary": "Multidisziplinärer Fullstack-Softwareingenieur mit einer einzigartigen Mischung aus Fähigkeiten in den Bereichen KI/ML-Integration, DevOps, Cloud-native Bereitstellungen, Echtzeit-Datensysteme und Erweiterung von Unternehmensplattformen (SAP/Salesforce). Erfahren in der Konzeption und Bereitstellung skalierbarer, intelligenter SaaS-Lösungen, die Leistung, Automatisierung und Geschäftsauswirkungen kombinieren.",
+    "skills": [
+        { "title": "Sprachen & Backend", "Icon": "Code", "skills": ["TypeScript", "Python", "JavaScript", "Java", "Spring Boot", "C#/.NET", "Go", "Bash", "SQL", "Node.js", "Express", "NestJS"] },
+        { "title": "Web-Stack", "Icon": "BotMessageSquare", "skills": ["React", "Next.js", "Tailwind CSS", "Vite", "Bootstrap", "REST", "GraphQL", "Angular"] },
+        { "title": "Cloud & DevOps", "Icon": "Cloud", "skills": ["Azure", "Kubernetes", "Terraform", "GitHub Actions", "GitLab CI", "Jenkins", "Docker", "CI/CD"] },
+        { "title": "KI/ML", "Icon": "BrainCircuit", "skills": ["OpenAI API", "LangChain", "HuggingFace", "MLflow", "Transformers", "scikit-learn", "Azure ML Studio"] },
+        { "title": "Daten & Analytik", "Icon": "Database", "skills": ["PostgreSQL", "MySQL", "Redis", "Snowflake", "dbt", "SQL Server", "Power BI", "Streamlit"] },
+        { "title": "Unternehmen & Sonstiges", "Icon": "Type", "skills": ["Salesforce App Builder", "SAP UI5", "SAP BTP", "OAuth2", "JWT", "SAML", "Playwright", "Postman", "Prometheus", "Grafana", "Firebase", "Supabase"] }
+    ],
+    "projects": [
+        { "title": "Étudiant Étranger Facilité", "purpose": "Vereinfachung und Automatisierung von Verwaltungsaufgaben für Nicht-EU-Studenten in Frankreich.", "stack": ["Next.js", "Firebase", "GPT-4 API", "Supabase"], "impact": "MVP half mehr als 30 Studenten, automatisch CAF- und Visa-Dokumente zu generieren.", "role": "Hauptentwickler – verantwortlich für Frontend, Backend, KI-Prompt-Engineering.", "features": ["Automatisierte Dokumentenübersetzung (GPT + Deepl API)", "Intelligentes Ausfüllen von Formularen aus hochgeladenen Dokumenten (OCR + LLM)", "Schritt-für-Schritt-Assistent für Préfecture, CVEC, CAF"], "link": "#", "repoUrl": "#" },
+        { "title": "KI-gestützte Inhaltsplattform", "purpose": "Eine Plattform zur Erstellung und Verwaltung von Marketinginhalten mit generativer KI.", "stack": ["Python", "FastAPI", "React", "Docker", "OpenAI"], "impact": "Reduzierte die Inhaltserstellungszeit für das Marketingteam während des Betatests um 50%.", "role": "Fullstack-Entwickler, mit Schwerpunkt auf KI-Integration und Backend-Diensten.", "features": ["Texterstellung für Blogbeiträge und soziale Medien", "Bilderstellung für Werbemittel", "Dashboard für Inhaltsplanung und -analyse"], "link": "#", "repoUrl": "#" },
+        { "title": "Dashboard zur Cloud-Kostenoptimierung", "purpose": "Echtzeit-Einblick in die Cloud-Ausgaben über mehrere Anbieter hinweg.", "stack": ["Go", "React", "PostgreSQL", "Prometheus", "Grafana"], "impact": "Identifizierte in der Pilotphase Einsparungen von über 50.000 USD pro Jahr für ein mittelständisches Unternehmen.", "role": "Backend-Ingenieur, mit Schwerpunkt auf Datenerfassung und API-Entwicklung.", "features": ["Echtzeit-Kostenvisualisierung", "Anomalieerkennung bei Ausgabenspitzen", "Benutzerdefiniertes Alarmierungs- und Berichtssystem"], "link": "#", "repoUrl": "#" },
+        { "title": "Automatisierung der Salesforce-Lead-Weiterleitung", "purpose": "Automatisieren Sie die Zuweisung neuer Leads an die entsprechenden Vertriebsmitarbeiter auf der Grundlage komplexer Geschäftsregeln.", "stack": ["Salesforce Apex", "LWC", "SOQL", "Flow"], "impact": "Reduzierte die Lead-Zuweisungszeit von Stunden auf Sekunden und erhöhte die Reaktionszeit des Vertriebsteams um 40%.", "role": "Salesforce-Entwickler, verantwortlich für Apex-Trigger und benutzerdefinierte Lightning Web Components.", "features": ["Dynamische, regelbasierte Routing-Engine", "Round-Robin-Zuweisungslogik", "Integration mit Marketing-Automatisierungsplattformen"], "link": "#", "repoUrl": "#" }
+    ],
+    "workExperience": [
+        { "date": "Sep 2024 - Heute", "title": "IT-Support & Python-Entwicklung (Duales Studium)", "subtitle": "HDI France, Paris", "description": "<ul><li>Technischer Support der Stufe 1 und 2, Verwaltung von Benutzerproblemen für Hardware, Netzwerk und Software über GLPI.</li><li>Modernisierung und Wartung von Legacy-Python-Skripten mit Fokus auf Leistungsoptimierung, Fehlerbehebung und Lesbarkeit des Codes.</li><li>Entwicklung von Automatisierungsskripten zur Optimierung von Dokumentenexporten, Verbesserung des Datenzugriffs und der Arbeitsabläufe.</li><li>Verwaltung des IT-Asset-Lebenszyklus, einschließlich Bereitstellung, Konfiguration und Netzwerkadministration für Benutzer-Workstations und Konferenzraum-Hardware (ClickShare).</li></ul>" },
+        { "date": "Juli 2024 - Aug 2024", "title": "Entwickler-Praktikant", "subtitle": "FEDHUBS, Remote", "description": "Entwickelte einen Python-basierten Web-Scraper mit BeautifulSoup zur automatisierten Datenextraktion. Optimierte SEO und Leistung für eine Laravel- und React/TypeScript-Site, verbesserte Lade-Strategien und die Komprimierung von Ressourcen." }
+    ],
+    "education": [
+        { "date": "2022 - 2027", "title": "Master – Experte für Fullstack-Webentwicklung (RNCP-Titel Nr. 39583 – Stufe 7, vom Staat anerkannter Bac+5)", "subtitle": "Ynov Campus, Paris", "description": "<p class=\"font-semibold\">📘 Schlüsselmodule:</p><ul class=\"list-disc pl-5 mt-2 space-y-1\"><li>Fullstack-JavaScript-Entwicklung (React, Node.js, Next.js)</li><li>DevOps & Cloud Computing (Docker, Kubernetes, GitHub Actions, AWS, Azure)</li><li>Software-Design und -Architektur</li><li>Integration von Unternehmenssystemen (Salesforce, SAP, Oracle)</li><li>Agile Projekte & Versionskontrolle (Scrum, Git)</li><li>Einführung in künstliche Intelligenz und Datenwissenschaft</li><li>Anwendungssicherheit und Web-Performance</li></ul>" }
+    ],
+    "recommendations": [
+        { "quote": "ktayl war ein wichtiger Mitwirkender bei unserer DevOps-Umstellung und den KI-Integrationsbemühungen. Seine Fähigkeit, die Backend-Entwicklung mit der Skalierbarkeit der Plattform zu verbinden, ist bei Junior-Entwicklern selten.", "author": "Leitender Ingenieur", "title": "B2B SaaS – Frankreich" },
+        { "quote": "Während unserer Zusammenarbeit lieferte ktayl robuste Automatisierungs-Pipelines und aufschlussreiche KI-Prototypen, die uns halfen, schnell zu iterieren. Er ist ein zukünftiger Tech-Lead.", "author": "Startup-Mitgründer", "title": "Remote-Praktikum 2024" }
+    ],
+    "languages": [
+        { "name": "Englisch", "level": "C1" },
+        { "name": "Französisch", "level": "B2" },
+        { "name": "Deutsch", "level": "B1" }
+    ],
+    "interests": ["KI in der Bildung", "Startup-Tools", "Datenschutz", "Produktivitätssysteme", "Musik"]
+  }
+}
