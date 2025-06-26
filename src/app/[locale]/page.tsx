@@ -33,7 +33,12 @@ const iconMap: { [key: string]: React.ElementType } = {
 export default async function Home() {
   const t = await getTranslations();
   const data = t.raw('data');
+  const Page = t.raw('Page');
 
+  if (!data || !Page) {
+    return <div>Error: Could not load page content. Please check the language files.</div>;
+  }
+  
   const skills = data.skills.map((skill: any) => ({
     ...skill,
     Icon: iconMap[skill.Icon],
@@ -55,7 +60,7 @@ export default async function Home() {
         <section id="projects" className="py-16 md:py-24">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl md:text-4xl font-headline font-bold text-center mb-12">
-              {t('Page.projects.title')}
+              {Page.projects.title}
             </h2>
             <ProjectList projects={projects} />
           </div>
@@ -64,7 +69,7 @@ export default async function Home() {
         <section id="skills" className="py-16 md:py-24 bg-card">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl md:text-4xl font-headline font-bold text-center mb-12">
-              {t('Page.skills.title')}
+              {Page.skills.title}
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {skills.map((skillCategory: any, index: number) => (
@@ -77,21 +82,21 @@ export default async function Home() {
         <section id="experience" className="py-16 md:py-24">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl md:text-4xl font-headline font-bold text-center mb-12">
-              {t('Page.journey.title')}
+              {Page.journey.title}
             </h2>
             <div className="relative max-w-2xl mx-auto">
               <div className="absolute left-1/2 w-0.5 h-full bg-border -translate-x-1/2"></div>
 
               <h3 className="text-2xl font-headline font-semibold text-center my-8 flex items-center justify-center gap-2">
                 <Briefcase className="w-6 h-6" />{' '}
-                {t('Page.journey.workExperienceTitle')}
+                {Page.journey.workExperienceTitle}
               </h3>
               {workExperience.map((item: any, index: number) => (
                 <TimelineItem key={index} {...item} />
               ))}
 
               <h3 className="text-2xl font-headline font-semibold text-center mt-16 mb-8 flex items-center justify-center gap-2">
-                <GraduationCap className="w-6 h-6" /> {t('Page.journey.educationTitle')}
+                <GraduationCap className="w-6 h-6" /> {Page.journey.educationTitle}
               </h3>
               {education.map((item: any, index: number) => (
                 <TimelineItem key={index} {...item} icon={GraduationCap} />
@@ -103,7 +108,7 @@ export default async function Home() {
         <section id="recommendations" className="py-16 md:py-24 bg-card">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl md:text-4xl font-headline font-bold text-center mb-12">
-              {t('Page.recommendations.title')}
+              {Page.recommendations.title}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               {recommendations.map((rec: any, index: number) => (
@@ -118,7 +123,7 @@ export default async function Home() {
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <h3 className="text-2xl font-headline font-semibold mb-4">
-                  {t('Page.extras.languagesTitle')}
+                  {Page.extras.languagesTitle}
                 </h3>
                 <div className="flex justify-center gap-4 flex-wrap">
                   {languages.map((lang: any) => (
@@ -135,7 +140,7 @@ export default async function Home() {
               <div>
                 <h3 className="text-2xl font-headline font-semibold mb-4 flex items-center justify-center gap-2">
                   <Heart className="w-6 h-6 text-accent" />{' '}
-                  {t('Page.extras.interestsTitle')}
+                  {Page.extras.interestsTitle}
                 </h3>
                 <div className="flex justify-center gap-2 flex-wrap">
                   {interests.map((interest: any) => (
@@ -157,10 +162,10 @@ export default async function Home() {
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-headline font-bold mb-2">
-                {t('Page.contact.title')}
+                {Page.contact.title}
               </h2>
               <p className="text-muted-foreground max-w-xl mx-auto">
-                {t('Page.contact.subtitle')}
+                {Page.contact.subtitle}
               </p>
             </div>
             <Contact />

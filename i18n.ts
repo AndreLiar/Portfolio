@@ -1,13 +1,2 @@
-import {getRequestConfig} from 'next-intl/server';
-import {notFound} from 'next/navigation';
-
-const locales = ['en', 'fr', 'de'];
-
-export default getRequestConfig(async ({locale}) => {
-  // Validate that the incoming `locale` parameter is valid
-  if (!locales.includes(locale as any)) notFound();
-
-  return {
-    messages: (await import(`./src/messages/${locale}.json`)).default
-  };
-});
+// This file is no longer used and can be safely deleted.
+// The configuration has been moved to /src/i18n.ts to align with Next.js conventions.
