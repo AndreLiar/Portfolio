@@ -8,6 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Github, PlayCircle } from "lucide-react";
 
 interface ProjectCardProps {
   title: string;
@@ -24,20 +25,20 @@ export function ProjectCard({ title, purpose, stack, impact, role, features, lin
   return (
     <Card className="flex flex-col h-full transition-transform transform hover:-translate-y-1 hover:shadow-xl">
       <CardHeader>
-        <CardTitle className="font-headline text-xl">📌 {title}</CardTitle>
-        <CardDescription>🎯 {purpose}</CardDescription>
+        <CardTitle className="font-headline text-xl">{title}</CardTitle>
+        <CardDescription>{purpose}</CardDescription>
       </CardHeader>
-      <CardContent className="flex-grow space-y-6">
+      <CardContent className="flex-grow space-y-4">
         <div>
-          <h4 className="font-semibold mb-2 text-sm">🧠 Role</h4>
+          <h4 className="font-semibold mb-2 text-sm">Role</h4>
           <p className="text-sm text-muted-foreground">{role}</p>
         </div>
         <div>
-          <h4 className="font-semibold mb-2 text-sm">🚀 Impact</h4>
+          <h4 className="font-semibold mb-2 text-sm">Impact</h4>
           <p className="text-sm text-muted-foreground">{impact}</p>
         </div>
         <div>
-          <h4 className="font-semibold mb-2 text-sm">🔍 Features</h4>
+          <h4 className="font-semibold mb-2 text-sm">Features</h4>
           <ul className="space-y-1 pl-5 text-muted-foreground">
             {features.map((feature, index) => (
               <li key={index} className="text-sm list-disc">{feature}</li>
@@ -45,7 +46,7 @@ export function ProjectCard({ title, purpose, stack, impact, role, features, lin
           </ul>
         </div>
         <div>
-            <h4 className="font-semibold mb-2 text-sm">🧩 Stack</h4>
+            <h4 className="font-semibold mb-2 text-sm">Stack</h4>
             <div className="mt-2 flex flex-wrap gap-2">
             {stack.map((tech, index) => (
                 <Badge key={index} variant="secondary">
@@ -59,14 +60,16 @@ export function ProjectCard({ title, purpose, stack, impact, role, features, lin
         {link && link !=='#' && (
           <Button asChild>
             <a href={link} target="_blank" rel="noopener noreferrer">
-              🎬 Demo
+              <PlayCircle className="mr-2 h-4 w-4" />
+              Live Demo
             </a>
           </Button>
         )}
         {repoUrl && repoUrl !== '#' && (
           <Button variant="secondary" asChild>
             <a href={repoUrl} target="_blank" rel="noopener noreferrer">
-              📂 GitHub
+              <Github className="mr-2 h-4 w-4" />
+              GitHub
             </a>
           </Button>
         )}
