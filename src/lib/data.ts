@@ -95,10 +95,10 @@ export const data = {
       description: "Delivered internal HR dashboard with audit trail using Supabase + React. Automated backend data sync with Google Sheets and Firebase. Created internal dev documentation.",
     },
     {
-      date: "Apr 2024 - Oct 2024",
-      title: "AI/DevOps Intern (Remote)",
-      subtitle: "Freelance/Startup Collaboration",
-      description: "Assisted in integrating LangChain into an internal search engine. Contributed to Dockerized CI pipeline for a Python microservice architecture. Benchmarked OpenAI vs Cohere.",
+      date: "Jul 2024 - Aug 2024",
+      title: "Développeur",
+      subtitle: "FEDHUBS · Stage",
+      description: '<ul><li>Web scraping avec Python : Développement d’un algorithme de scraping en Python (BeautifulSoup) pour extraire et structurer des données, accompagné d’une interface web simple pour une utilisation pratique.</li><li>Optimisation SEO : Amélioration du SEO et des performances du site en utilisant Laravel et React TypeScript. J’ai optimisé le chargement dynamique et statique, compressé les ressources, et travaillé sur les balises et descriptions pour un meilleur référencement.</li></ul>',
     },
   ],
   education: [
