@@ -7,13 +7,13 @@ import {
 import { data } from "@/lib/data";
 import { Header } from "@/components/portfolio/header";
 import { Hero } from "@/components/portfolio/hero";
-import { ProjectCard } from "@/components/portfolio/project-card";
 import { SkillCard } from "@/components/portfolio/skill-card";
 import { TimelineItem } from "@/components/portfolio/timeline-item";
 import { RecommendationCard } from "@/components/portfolio/recommendation-card";
 import { Contact } from "@/components/portfolio/contact";
 import { Footer } from "@/components/portfolio/footer";
 import { Badge } from "@/components/ui/badge";
+import { ProjectList } from "@/components/portfolio/project-list";
 
 export default function Home() {
   return (
@@ -27,11 +27,7 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-headline font-bold text-center mb-12">
               Project Experience
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {data.projects.map((project, index) => (
-                <ProjectCard key={index} {...project} />
-              ))}
-            </div>
+            <ProjectList projects={data.projects} />
           </div>
         </section>
 

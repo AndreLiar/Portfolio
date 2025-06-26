@@ -85,6 +85,34 @@ export const data = {
       ],
       link: "#",
       repoUrl: "#"
+    },
+    {
+      title: "Cloud Cost Optimization Dashboard",
+      purpose: "Provide real-time visibility into cloud spending across multiple providers.",
+      stack: ["Go", "React", "PostgreSQL", "Prometheus", "Grafana"],
+      impact: "Identified over $50k in potential annual savings for a mid-sized enterprise during its pilot phase.",
+      role: "Backend Engineer, focused on data ingestion and API development.",
+      features: [
+        "Real-time cost visualization",
+        "Anomaly detection for spending spikes",
+        "Custom alerting and reporting engine",
+      ],
+      link: "#",
+      repoUrl: "#"
+    },
+    {
+      title: "Salesforce Lead Routing Automation",
+      purpose: "Automate the assignment of new leads to the appropriate sales representatives based on complex business rules.",
+      stack: ["Salesforce Apex", "LWC", "SOQL", "Flow"],
+      impact: "Reduced lead assignment time from hours to seconds and increased sales team response time by 40%.",
+      role: "Salesforce Developer, responsible for Apex triggers and custom Lightning Web Components.",
+      features: [
+        "Dynamic rule-based routing engine",
+        "Round-robin assignment logic",
+        "Integration with marketing automation platforms",
+      ],
+      link: "#",
+      repoUrl: "#"
     }
   ],
   workExperience: [
