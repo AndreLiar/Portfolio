@@ -57,7 +57,7 @@ export function ProjectCard({ title, purpose, stack, impact, role, features, lin
         </div>
       </CardContent>
       <CardFooter className="flex items-center gap-4 pt-6 border-t mt-auto">
-        {link && link !=='#' && (
+        {link && (
           <Button asChild>
             <a href={link} target="_blank" rel="noopener noreferrer">
               <PlayCircle className="mr-2 h-4 w-4" />
@@ -65,7 +65,7 @@ export function ProjectCard({ title, purpose, stack, impact, role, features, lin
             </a>
           </Button>
         )}
-        {repoUrl && repoUrl !== '#' && (
+        {repoUrl && (
           <Button variant="secondary" asChild>
             <a href={repoUrl} target="_blank" rel="noopener noreferrer">
               <Github className="mr-2 h-4 w-4" />
