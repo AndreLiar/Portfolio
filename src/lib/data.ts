@@ -89,16 +89,6 @@ export const data = {
   ],
   workExperience: [
     {
-      date: "Nov 2024 - Present",
-      title: "Junior Fullstack Developer (Apprentice)",
-      subtitle: "Tech Company, Paris",
-      description: `<ul>
-        <li>Delivered a complete internal HR dashboard with a full audit trail using React and Supabase.</li>
-        <li>Engineered a robust backend data synchronization service between Google Sheets and Firebase.</li>
-        <li>Authored and maintained comprehensive internal documentation for development teams.</li>
-      </ul>`,
-    },
-    {
       date: "Sep 2024 - Sep 2027",
       title: "IT Support & Python Development (Apprentice)",
       subtitle: "HDI France, Paris",
