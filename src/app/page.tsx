@@ -50,7 +50,6 @@ export default function Home() {
       <Header
         headerData={headerData}
         name={data.name}
-        resumeUrl={data.resumeUrl}
       />
       <main className="flex-1">
         <Hero

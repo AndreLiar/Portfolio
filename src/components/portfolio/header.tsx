@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X, Download } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
-export function Header({ headerData, name, resumeUrl }: { headerData: any, name: string, resumeUrl: string }) {
+export function Header({ headerData, name }: { headerData: any, name: string }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navLinks = [
@@ -33,14 +33,7 @@ export function Header({ headerData, name, resumeUrl }: { headerData: any, name:
             </a>
           ))}
         </nav>
-        <div className="hidden md:flex items-center gap-2">
-          <Button asChild>
-            <a href={resumeUrl} download="ktayl_Resume.pdf">
-              {headerData.downloadCv}
-              <Download className="ml-2 h-4 w-4" />
-            </a>
-          </Button>
-        </div>
+        
         <div className="md:hidden">
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
@@ -74,14 +67,6 @@ export function Header({ headerData, name, resumeUrl }: { headerData: any, name:
                     </a>
                   ))}
                 </nav>
-                <div className="mt-auto space-y-4">
-                   <Button asChild className="w-full">
-                        <a href={resumeUrl} download="ktayl_Resume.pdf">
-                        {headerData.downloadCv}
-                        <Download className="ml-2 h-4 w-4" />
-                        </a>
-                    </Button>
-                </div>
               </div>
             </SheetContent>
           </Sheet>

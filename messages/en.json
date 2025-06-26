@@ -8,8 +8,7 @@
     "projects": "Projects",
     "skills": "Skills",
     "experience": "Experience",
-    "contact": "Contact",
-    "downloadCv": "Download CV"
+    "contact": "Contact"
   },
   "Hero": {
     "contactMe": "Contact Me",
@@ -76,7 +75,6 @@
     "fullName": "kanmegne laurel",
     "title": "Fullstack Software Engineer | Cloud-Native & AI-Powered Systems",
     "location": "Paris, France",
-    "resumeUrl": "/resume.pdf",
     "contact": {
       "email": "kanmegneandre@gmail.com",
       "phone": "+33000000000",
