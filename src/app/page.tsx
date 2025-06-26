@@ -14,7 +14,6 @@ import { Header } from '@/components/portfolio/header';
 import { Hero } from '@/components/portfolio/hero';
 import { SkillCard } from '@/components/portfolio/skill-card';
 import { TimelineItem } from '@/components/portfolio/timeline-item';
-import { RecommendationCard } from '@/components/portfolio/recommendation-card';
 import { Contact } from '@/components/portfolio/contact';
 import { Footer } from '@/components/portfolio/footer';
 import { Badge } from '@/components/ui/badge';
@@ -41,7 +40,6 @@ export default function Home() {
   const workExperience = data.workExperience;
   const education = data.education;
   const projects = data.projects;
-  const recommendations = data.recommendations;
   const languages = data.languages;
   const interests = data.interests;
 
@@ -102,19 +100,6 @@ export default function Home() {
               </h3>
               {education.map((item: any, index: number) => (
                 <TimelineItem key={index} {...item} icon={GraduationCap} />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="recommendations" className="py-16 md:py-24 bg-card">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-headline font-bold text-center mb-12">
-              {Page.recommendations.title}
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              {recommendations.map((rec: any, index: number) => (
-                <RecommendationCard key={index} {...rec} />
               ))}
             </div>
           </div>
