@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import { Toaster } from "@/components/ui/toaster";
-import "../globals.css";
 import {NextIntlClientProvider} from 'next-intl';
 import {getMessages, getTranslations} from 'next-intl/server';
 
@@ -13,29 +11,20 @@ export async function generateMetadata({params: {locale}}: {params: {locale: str
   };
 }
 
-export default async function RootLayout({
+export default async function LocaleLayout({
   children,
   params: {locale}
 }: Readonly<{
   children: React.ReactNode;
   params: {locale: string};
 }>) {
-  const messages = await getMessages();
+  const messages = await getMessages({locale});
 
+  // The <html>, <body>, and <Toaster> are in the root layout (src/app/layout.tsx).
+  // This layout just wraps the page with the i18n provider.
   return (
-    <html lang={locale} className="dark">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
-      </head>
-      <body className="font-body antialiased" suppressHydrationWarning>
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          {children}
-          <Toaster />
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <NextIntlClientProvider locale={locale} messages={messages}>
+      {children}
+    </NextIntlClientProvider>
   );
 }

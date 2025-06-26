@@ -1,4 +1,5 @@
-import { useTranslations } from "next-intl";
+
+import { getTranslations } from "next-intl/server";
 import {
   Briefcase,
   GraduationCap,
@@ -30,9 +31,9 @@ const iconMap: { [key: string]: React.ElementType } = {
   Type
 };
 
-export default function Home() {
-  const t = useTranslations('Page');
-  const d = useTranslations('data');
+export default async function Home({params: {locale}}: {params: {locale: string}}) {
+  const t = await getTranslations({locale, namespace: 'Page'});
+  const d = await getTranslations({locale, namespace: 'data'});
 
   const skills = d.raw('skills').map((skill: any) => ({
     ...skill,

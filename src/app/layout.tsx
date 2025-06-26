@@ -1,6 +1,31 @@
-// This file is no longer used directly.
-// Its content has been moved to src/app/[locale]/layout.tsx to support internationalization.
-// You can safely delete this file.
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return null;
+import type { Metadata } from "next";
+import { Toaster } from "@/components/ui/toaster";
+import "./globals.css";
+
+// This is a placeholder metadata. The actual metadata is generated 
+// in src/app/[locale]/layout.tsx and will override this.
+export const metadata: Metadata = {
+  title: "Andre's Digital Stage",
+  description: "Portfolio of Andre, Fullstack Software Engineer",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en" className="dark" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+      </head>
+      <body className="font-body antialiased">
+        {children}
+        <Toaster />
+      </body>
+    </html>
+  );
 }
