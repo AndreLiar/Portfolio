@@ -2,6 +2,7 @@ import { Code, Cloud, Database, BrainCircuit, BotMessageSquare, Type } from 'luc
 
 export const data = {
   name: "ktayl",
+  fullName: "Kevin Taylor",
   title: "Fullstack Software Engineer | Cloud-Native & AI-Powered Systems",
   location: "Paris, France",
   resumeUrl: "/resume.pdf",
