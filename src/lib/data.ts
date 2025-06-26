@@ -89,16 +89,16 @@ export const data = {
   ],
   workExperience: [
     {
-      date: "Nov 2024 - Present",
-      title: "Junior Fullstack Developer – Alternance",
-      subtitle: "Tech Company, Paris",
-      description: "Delivered internal HR dashboard with audit trail using Supabase + React. Automated backend data sync with Google Sheets and Firebase. Created internal dev documentation.",
+      date: "Sep 2024 - Sep 2027",
+      title: "Support IT / Développement Python – Alternant",
+      subtitle: "HDI France, Paris",
+      description: "<ul><li>Support technique de niveau 1 et 2 : gestion des incidents utilisateurs via GLPI.</li><li>Refonte et maintenance de scripts Python : modernisation de code legacy, correction de bugs et amélioration des performances.</li><li>Automatisation : création de scripts pour l’export automatisé de documents.</li><li>Gestion du parc informatique : déploiement, installation et renouvellement des postes.</li><li>Administration réseau : mise en réseau de dispositifs ClickShare et gestion centralisée des mises à jour.</li><li>Onboarding et offboarding IT : préparation et configuration du matériel.</li></ul>",
     },
     {
       date: "Jul 2024 - Aug 2024",
-      title: "Développeur",
-      subtitle: "FEDHUBS · Stage",
-      description: "<ul><li>Développement d'un scraper web en Python (BeautifulSoup) pour l'extraction et la structuration automatisées de données, complété par une interface web pour une utilisation simplifiée.</li><li>Optimisation du SEO et des performances d'un site Laravel et React/TypeScript, incluant l'amélioration du chargement statique/dynamique, la compression des ressources, et l'affinage des métadonnées pour un meilleur classement.</li></ul>",
+      title: "Developer Intern",
+      subtitle: "FEDHUBS · Internship",
+      description: "Developed a Python-based web scraper (BeautifulSoup) to automate data extraction and structuring, complemented by a simple web interface. Optimized SEO and performance for a Laravel and React/TypeScript site, improving static/dynamic loading, asset compression, and metadata for better search rankings.",
     },
   ],
   education: [
