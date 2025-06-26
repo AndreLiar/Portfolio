@@ -89,16 +89,31 @@ export const data = {
   ],
   workExperience: [
     {
+      date: "Nov 2024 - Present",
+      title: "Junior Fullstack Developer (Apprentice)",
+      subtitle: "Tech Company, Paris",
+      description: `<ul>
+        <li>Delivered a complete internal HR dashboard with a full audit trail using React and Supabase.</li>
+        <li>Engineered a robust backend data synchronization service between Google Sheets and Firebase.</li>
+        <li>Authored and maintained comprehensive internal documentation for development teams.</li>
+      </ul>`,
+    },
+    {
       date: "Sep 2024 - Sep 2027",
-      title: "Support IT / Développement Python – Alternant",
+      title: "IT Support & Python Development (Apprentice)",
       subtitle: "HDI France, Paris",
-      description: "<ul><li>Support technique de niveau 1 et 2 : gestion des incidents utilisateurs via GLPI.</li><li>Refonte et maintenance de scripts Python : modernisation de code legacy, correction de bugs et amélioration des performances.</li><li>Automatisation : création de scripts pour l’export automatisé de documents.</li><li>Gestion du parc informatique : déploiement, installation et renouvellement des postes.</li><li>Administration réseau : mise en réseau de dispositifs ClickShare et gestion centralisée des mises à jour.</li><li>Onboarding et offboarding IT : préparation et configuration du matériel.</li></ul>",
+      description: `<ul>
+        <li>Provide Level 1 & 2 technical support, managing user incidents for hardware, network, and software issues via GLPI.</li>
+        <li>Modernize and maintain legacy Python scripts, focusing on performance optimization, bug fixes, and code readability.</li>
+        <li>Develop automation scripts to streamline document exports, improving data accessibility and workflow efficiency.</li>
+        <li>Manage the IT asset lifecycle, including deployment, configuration, and network administration for user workstations and meeting room hardware (ClickShare).</li>
+      </ul>`,
     },
     {
       date: "Jul 2024 - Aug 2024",
       title: "Developer Intern",
       subtitle: "FEDHUBS · Internship",
-      description: "Developed a Python-based web scraper (BeautifulSoup) to automate data extraction and structuring, complemented by a simple web interface. Optimized SEO and performance for a Laravel and React/TypeScript site, improving static/dynamic loading, asset compression, and metadata for better search rankings.",
+      description: "Developed a Python-based web scraper using BeautifulSoup to automate data extraction and structuring. Additionally, optimized SEO and performance for a Laravel and React/TypeScript site by improving loading strategies, compressing assets, and enhancing metadata.",
     },
   ],
   education: [
