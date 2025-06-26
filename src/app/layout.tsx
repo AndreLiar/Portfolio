@@ -3,8 +3,8 @@ import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Andre's Digital Stage",
-  description: "Portfolio of Andre Laurel Yvan Kanmegne Tabouguie, Fullstack Software Engineer.",
+  title: "ktayl's Digital Stage",
+  description: "Portfolio of ktayl, Fullstack Software Engineer.",
 };
 
 export default function RootLayout({

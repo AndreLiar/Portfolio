@@ -1,7 +1,7 @@
 import { Code, Cloud, Database, BrainCircuit, BotMessageSquare, Type } from 'lucide-react';
 
 export const data = {
-  name: "Andre Laurel Yvan Kanmegne Tabouguie",
+  name: "ktayl",
   title: "Fullstack Software Engineer | Cloud-Native & AI-Powered Systems",
   location: "Paris, France",
   resumeUrl: "/resume.pdf",
@@ -106,12 +106,12 @@ export const data = {
   ],
   recommendations: [
     {
-        quote: "Andre has been a key contributor in our DevOps transition and AI integration efforts. His ability to bridge backend development with platform scalability is rare among junior developers.",
+        quote: "ktayl has been a key contributor in our DevOps transition and AI integration efforts. His ability to bridge backend development with platform scalability is rare among junior developers.",
         author: "Lead Engineer",
         title: "B2B SaaS – France"
     },
     {
-        quote: "During our collaboration, Andre delivered robust automation pipelines and insightful AI prototypes that helped us iterate quickly. He’s a future tech lead in the making.",
+        quote: "During our collaboration, ktayl delivered robust automation pipelines and insightful AI prototypes that helped us iterate quickly. He’s a future tech lead in the making.",
         author: "Startup Co-Founder",
         title: "Remote Internship 2024"
     }

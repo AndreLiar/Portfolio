@@ -36,7 +36,7 @@ export function Header() {
         </nav>
         <div className="hidden md:flex items-center gap-4">
           <Button asChild>
-            <a href={data.resumeUrl} download="Andre_Laurel_Yvan_Kanmegne_Tabouguie_Resume.pdf">
+            <a href={data.resumeUrl} download="ktayl_Resume.pdf">
               Download CV
               <Download className="ml-2 h-4 w-4" />
             </a>
@@ -77,7 +77,7 @@ export function Header() {
                 </nav>
                 <div className="mt-auto">
                    <Button asChild className="w-full">
-                        <a href={data.resumeUrl} download="Andre_Laurel_Yvan_Kanmegne_Tabouguie_Resume.pdf">
+                        <a href={data.resumeUrl} download="ktayl_Resume.pdf">
                         Download CV
                         <Download className="ml-2 h-4 w-4" />
                         </a>
