@@ -59,33 +59,33 @@ export const data = {
   ],
   projects: [
     {
-      title: "Placeholder Project 1",
-      description: "This is a placeholder for a future project. Describe the project's goals, tech stack, and your role in its development here.",
-      stack: ["Next.js", "TypeScript", "Tailwind CSS"],
+      title: "Étudiant Étranger Facilité",
+      purpose: "Simplify and automate administrative tasks for non-EU students in France.",
+      stack: ["Next.js", "Firebase", "GPT-4 API", "Supabase"],
+      impact: "MVP helped 30+ students generate CAF and Visa documents automatically.",
+      role: "Lead developer – handled frontend, backend, AI prompt engineering.",
+      features: [
+        "Automated document translation (GPT + Deepl API)",
+        "Smart form filling from uploaded documents (OCR + LLM)",
+        "Step-by-step smart assistant for Préfecture, CVEC, CAF",
+      ],
       link: "#",
-      repoUrl: "https://github.com/yourhandle/project-1"
+      repoUrl: "#"
     },
     {
-      title: "Placeholder Project 2",
-      description: "This is a placeholder for a future project. Describe the project's goals, tech stack, and your role in its development here.",
-      stack: ["React", "Node.js", "PostgreSQL"],
+      title: "AI-Powered Content Platform",
+      purpose: "A platform to generate and manage marketing content using generative AI.",
+      stack: ["Python", "FastAPI", "React", "Docker", "OpenAI"],
+      impact: "Reduced content creation time by 50% for the marketing team during beta testing.",
+      role: "Fullstack Developer, focused on AI integration and backend services.",
+      features: [
+        "Text generation for blog posts and social media",
+        "Image generation for ad creatives",
+        "Content scheduling and analytics dashboard"
+      ],
       link: "#",
-      repoUrl: "https://github.com/yourhandle/project-2"
-    },
-    {
-      title: "Placeholder Project 3",
-      description: "This is a placeholder for a future project. Describe the project's goals, tech stack, and your role in its development here.",
-      stack: ["Python", "Flask", "Docker"],
-      link: "#",
-      repoUrl: "https://github.com/yourhandle/project-3"
-    },
-    {
-      title: "Placeholder Project 4",
-      description: "This is a placeholder for a future project. Describe the project's goals, tech stack, and your role in its development here.",
-      stack: ["Vue.js", "Firebase", "AI"],
-      link: "#",
-      repoUrl: "https://github.com/yourhandle/project-4"
-    },
+      repoUrl: "#"
+    }
   ],
   workExperience: [
     {
