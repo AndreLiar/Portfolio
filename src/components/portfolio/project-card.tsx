@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Github } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
@@ -15,9 +15,10 @@ interface ProjectCardProps {
   description: string;
   stack: string[];
   link?: string;
+  repoUrl?: string;
 }
 
-export function ProjectCard({ title, description, stack, link }: ProjectCardProps) {
+export function ProjectCard({ title, description, stack, link, repoUrl }: ProjectCardProps) {
   return (
     <Card className="flex flex-col h-full transition-transform transform hover:-translate-y-1 hover:shadow-xl">
       <CardHeader>
@@ -33,12 +34,20 @@ export function ProjectCard({ title, description, stack, link }: ProjectCardProp
           ))}
         </div>
       </CardContent>
-      <CardFooter>
+      <CardFooter className="flex items-center gap-4">
         {link && (
           <Button variant="outline" asChild>
             <a href={link} target="_blank" rel="noopener noreferrer">
               View Project
               <ArrowUpRight className="ml-2 h-4 w-4" />
+            </a>
+          </Button>
+        )}
+        {repoUrl && (
+          <Button variant="secondary" asChild>
+            <a href={repoUrl} target="_blank" rel="noopener noreferrer">
+              Repo Link
+              <Github className="ml-2 h-4 w-4" />
             </a>
           </Button>
         )}

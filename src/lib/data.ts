@@ -59,28 +59,32 @@ export const data = {
   ],
   projects: [
     {
-      title: "HireIQ – AI-powered Recruitment SaaS",
-      description: "Built an AI-enhanced candidate profiling engine, integrated Supabase Auth with multi-role dashboards, and set up CI/CD using GitHub Actions for rapid deployment.",
-      stack: ["React", "Supabase", "OpenAI", "LangChain", "Tailwind CSS", "GitHub Actions"],
-      link: "https://github.com/yourhandle/hireiq"
+      title: "Placeholder Project 1",
+      description: "This is a placeholder for a future project. Describe the project's goals, tech stack, and your role in its development here.",
+      stack: ["Next.js", "TypeScript", "Tailwind CSS"],
+      link: "#",
+      repoUrl: "https://github.com/yourhandle/project-1"
     },
     {
-      title: "FinEduKids (EdTech MVP)",
-      description: "Designed gamified financial modules with progress tracking, deployed an analytics dashboard with Chart.js, and integrated adaptive learning logic.",
-      stack: ["Next.js", "Supabase", "Firebase", "Chart.js"],
-      link: "https://github.com/yourhandle/finedukids"
+      title: "Placeholder Project 2",
+      description: "This is a placeholder for a future project. Describe the project's goals, tech stack, and your role in its development here.",
+      stack: ["React", "Node.js", "PostgreSQL"],
+      link: "#",
+      repoUrl: "https://github.com/yourhandle/project-2"
     },
     {
-      title: "Real-Time Business Intelligence Dashboard",
-      description: "Built a real-time dashboard for logistics companies with live order tracking. Pulled data from Firebase, transformed it with Python/dbt, and delivered automated reports.",
-      stack: ["React", "Python", "Streamlit", "Firebase", "dbt"],
-      link: "https://github.com/yourhandle/bi-dashboard"
+      title: "Placeholder Project 3",
+      description: "This is a placeholder for a future project. Describe the project's goals, tech stack, and your role in its development here.",
+      stack: ["Python", "Flask", "Docker"],
+      link: "#",
+      repoUrl: "https://github.com/yourhandle/project-3"
     },
     {
-        title: "Salesforce & SAP Expense Automation",
-        description: "Integrated SAP and Salesforce for automated expense claim syncing. Built custom Salesforce flows that triggered SAP Cloud actions, reducing manual work by 60%.",
-        stack: ["Salesforce Lightning", "Flow Builder", "Apex", "SAP BTP"],
-        link: "https://github.com/yourhandle/salesforce-sap-integration"
+      title: "Placeholder Project 4",
+      description: "This is a placeholder for a future project. Describe the project's goals, tech stack, and your role in its development here.",
+      stack: ["Vue.js", "Firebase", "AI"],
+      link: "#",
+      repoUrl: "https://github.com/yourhandle/project-4"
     },
   ],
   workExperience: [
