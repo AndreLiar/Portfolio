@@ -3,7 +3,7 @@ import {NextIntlClientProvider} from 'next-intl';
 import {getMessages, getTranslations} from 'next-intl/server';
 
 export async function generateMetadata({params: {locale}}: {params: {locale: string}}): Promise<Metadata> {
-  const t = await getTranslations({locale, namespace: 'Metadata'});
+  const t = await getTranslations('Metadata');
  
   return {
     title: t('title'),
@@ -18,7 +18,7 @@ export default async function LocaleLayout({
   children: React.ReactNode;
   params: {locale: string};
 }>) {
-  const messages = await getMessages({locale});
+  const messages = await getMessages();
 
   // The <html>, <body>, and <Toaster> are in the root layout (src/app/layout.tsx).
   // This layout just wraps the page with the i18n provider.

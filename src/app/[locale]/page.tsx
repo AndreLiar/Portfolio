@@ -32,8 +32,8 @@ const iconMap: { [key: string]: React.ElementType } = {
 };
 
 export default async function Home({params: {locale}}: {params: {locale: string}}) {
-  const t = await getTranslations({locale, namespace: 'Page'});
-  const d = await getTranslations({locale, namespace: 'data'});
+  const t = await getTranslations('Page');
+  const d = await getTranslations('data');
 
   const skills = d.raw('skills').map((skill: any) => ({
     ...skill,
