@@ -8,7 +8,7 @@ export const data = {
   resumeUrl: "/resume.pdf",
   contact: {
     email: {
-      address: "your.email@example.com",
+      address: "kanmegneandre@gmail.com",
     },
     phone: {
       number: "+33000000000",
