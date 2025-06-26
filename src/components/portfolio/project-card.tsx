@@ -11,7 +11,6 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Github, PlayCircle } from "lucide-react";
-import { useTranslations } from "next-intl";
 
 interface ProjectCardProps {
   title: string;
@@ -22,11 +21,17 @@ interface ProjectCardProps {
   features: string[];
   link?: string;
   repoUrl?: string;
+  labels: {
+    role: string;
+    impact: string;
+    features: string;
+    stack: string;
+    liveDemo: string;
+    github: string;
+  };
 }
 
-export function ProjectCard({ title, purpose, stack, impact, role, features, link, repoUrl }: ProjectCardProps) {
-  const t = useTranslations('ProjectCard');
-  
+export function ProjectCard({ title, purpose, stack, impact, role, features, link, repoUrl, labels }: ProjectCardProps) {
   return (
     <Card className="flex flex-col h-full transition-transform transform hover:-translate-y-1 hover:shadow-xl">
       <CardHeader>
@@ -35,15 +40,15 @@ export function ProjectCard({ title, purpose, stack, impact, role, features, lin
       </CardHeader>
       <CardContent className="flex-grow space-y-4">
         <div>
-          <h4 className="font-semibold mb-2 text-sm">{t('role')}</h4>
+          <h4 className="font-semibold mb-2 text-sm">{labels.role}</h4>
           <p className="text-sm text-muted-foreground">{role}</p>
         </div>
         <div>
-          <h4 className="font-semibold mb-2 text-sm">{t('impact')}</h4>
+          <h4 className="font-semibold mb-2 text-sm">{labels.impact}</h4>
           <p className="text-sm text-muted-foreground">{impact}</p>
         </div>
         <div>
-          <h4 className="font-semibold mb-2 text-sm">{t('features')}</h4>
+          <h4 className="font-semibold mb-2 text-sm">{labels.features}</h4>
           <ul className="space-y-1 pl-5 text-muted-foreground">
             {features.map((feature, index) => (
               <li key={index} className="text-sm list-disc">{feature}</li>
@@ -51,7 +56,7 @@ export function ProjectCard({ title, purpose, stack, impact, role, features, lin
           </ul>
         </div>
         <div>
-            <h4 className="font-semibold mb-2 text-sm">{t('stack')}</h4>
+            <h4 className="font-semibold mb-2 text-sm">{labels.stack}</h4>
             <div className="mt-2 flex flex-wrap gap-2">
             {stack.map((tech, index) => (
                 <Badge key={index} variant="secondary">
@@ -66,7 +71,7 @@ export function ProjectCard({ title, purpose, stack, impact, role, features, lin
           <Button asChild>
             <a href={link} target="_blank" rel="noopener noreferrer">
               <PlayCircle className="mr-2 h-4 w-4" />
-              {t('liveDemo')}
+              {labels.liveDemo}
             </a>
           </Button>
         )}
@@ -74,7 +79,7 @@ export function ProjectCard({ title, purpose, stack, impact, role, features, lin
           <Button variant="secondary" asChild>
             <a href={repoUrl} target="_blank" rel="noopener noreferrer">
               <Github className="mr-2 h-4 w-4" />
-              {t('github')}
+              {labels.github}
             </a>
           </Button>
         )}

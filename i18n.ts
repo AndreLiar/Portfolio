@@ -1,2 +1,2 @@
 // This file is no longer used and can be safely deleted.
-// The configuration has been moved to /src/i18n.ts to align with Next.js conventions.
+// The internationalization routing has been removed to simplify the application.

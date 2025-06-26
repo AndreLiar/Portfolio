@@ -5,26 +5,36 @@ import Link from "next/link";
 import { Menu, X, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { useTranslations } from "next-intl";
-import { LanguageSwitcher } from "./language-switcher";
 
-export function Header() {
+interface HeaderProps {
+  headerData: {
+    projects: string;
+    skills: string;
+    experience: string;
+    contact: string;
+    downloadCv: string;
+  };
+  data: {
+    name: string;
+    resumeUrl: string;
+  };
+}
+
+export function Header({ headerData, data }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const t = useTranslations('data');
-  const h = useTranslations('Header');
-
+  
   const navLinks = [
-    { href: "#projects", label: h('projects') },
-    { href: "#skills", label: h('skills') },
-    { href: "#experience", label: h('experience') },
-    { href: "#contact", label: h('contact') },
+    { href: "#projects", label: headerData.projects },
+    { href: "#skills", label: headerData.skills },
+    { href: "#experience", label: headerData.experience },
+    { href: "#contact", label: headerData.contact },
   ];
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4 flex h-16 max-w-screen-2xl items-center justify-between">
         <Link href="/" className="font-headline text-xl font-bold">
-          {t('name')}
+          {data.name}
         </Link>
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
           {navLinks.map((link) => (
@@ -38,10 +48,9 @@ export function Header() {
           ))}
         </nav>
         <div className="hidden md:flex items-center gap-4">
-          <LanguageSwitcher />
           <Button asChild>
-            <a href={t('resumeUrl')} download="ktayl_Resume.pdf">
-              {h('downloadCv')}
+            <a href={data.resumeUrl} download="ktayl_Resume.pdf">
+              {headerData.downloadCv}
               <Download className="ml-2 h-4 w-4" />
             </a>
           </Button>
@@ -58,7 +67,7 @@ export function Header() {
               <div className="flex flex-col h-full">
                 <div className="flex justify-between items-center border-b pb-4 mb-4">
                     <Link href="/" className="font-headline text-lg font-bold" onClick={() => setIsMobileMenuOpen(false)}>
-                      {t('name')}
+                      {data.name}
                     </Link>
                     <SheetTrigger asChild>
                          <Button variant="ghost" size="icon">
@@ -80,10 +89,9 @@ export function Header() {
                   ))}
                 </nav>
                 <div className="mt-auto space-y-4">
-                   <LanguageSwitcher />
                    <Button asChild className="w-full">
-                        <a href={t('resumeUrl')} download="ktayl_Resume.pdf">
-                        {h('downloadCv')}
+                        <a href={data.resumeUrl} download="ktayl_Resume.pdf">
+                        {headerData.downloadCv}
                         <Download className="ml-2 h-4 w-4" />
                         </a>
                     </Button>

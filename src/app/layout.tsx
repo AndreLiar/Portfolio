@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
+import messages from '../../messages/en.json';
 
-// This is a placeholder metadata. The actual metadata is generated 
-// in src/app/[locale]/layout.tsx and will override this.
 export const metadata: Metadata = {
-  title: "Andre's Digital Stage",
-  description: "Portfolio of Andre, Fullstack Software Engineer",
+  title: messages.Metadata.title,
+  description: messages.Metadata.description,
 };
 
 export default function RootLayout({

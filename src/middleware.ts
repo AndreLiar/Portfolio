@@ -1,2 +1,2 @@
 // This file is no longer used and can be safely deleted.
-// The middleware has been moved to /middleware.ts to follow Next.js conventions.
+// The internationalization routing has been removed to simplify the application.
