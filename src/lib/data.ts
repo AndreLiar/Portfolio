@@ -92,34 +92,21 @@ export const data = {
       date: "Sep 2024 - Sep 2027",
       title: "IT Support & Python Development (Apprentice)",
       subtitle: "HDI France, Paris",
-      description: `<ul>
-        <li>Provide Level 1 & 2 technical support, managing user incidents for hardware, network, and software issues via GLPI.</li>
-        <li>Modernize and maintain legacy Python scripts, focusing on performance optimization, bug fixes, and code readability.</li>
-        <li>Develop automation scripts to streamline document exports, improving data accessibility and workflow efficiency.</li>
-        <li>Manage the IT asset lifecycle, including deployment, configuration, and network administration for user workstations and meeting room hardware (ClickShare).</li>
-      </ul>`,
+      description: `<ul><li>Provide Level 1 & 2 technical support, managing user incidents for hardware, network, and software issues via GLPI.</li><li>Modernize and maintain legacy Python scripts, focusing on performance optimization, bug fixes, and code readability.</li><li>Develop automation scripts to streamline document exports, improving data accessibility and workflow efficiency.</li><li>Manage the IT asset lifecycle, including deployment, configuration, and network administration for user workstations and meeting room hardware (ClickShare).</li></ul>`,
     },
     {
       date: "Jul 2024 - Aug 2024",
       title: "Developer Intern",
       subtitle: "FEDHUBS · Internship",
-      description: "Developed a Python-based web scraper using BeautifulSoup to automate data extraction and structuring. Additionally, optimized SEO and performance for a Laravel and React/TypeScript site by improving loading strategies, compressing assets, and enhancing metadata.",
+      description: `Developed a Python-based web scraper using BeautifulSoup to automate data extraction. Optimized SEO and performance for a Laravel and React/TypeScript site, improving loading strategies and asset compression.`,
     },
   ],
   education: [
     {
       date: "2022 - 2027",
-      title: "Mastère – Expert en Développement Web Fullstack",
+      title: "Mastère – Expert en Développement Web Fullstack (Titre RNCP n°39583 — Niveau 7, Bac+5 reconnu par l'État)",
       subtitle: "Ynov Campus, Paris",
-      description: `<ul>
-        <li>Développement Fullstack JavaScript (React, Node.js, Next.js)</li>
-        <li>DevOps & Cloud Computing (Docker, Kubernetes, GitHub Actions, AWS, Azure)</li>
-        <li>Conception et Architecture Logicielle</li>
-        <li>Intégration de systèmes d'entreprise (Salesforce, SAP, Oracle)</li>
-        <li>Projets agiles & gestion de version (Scrum, Git)</li>
-        <li>Initiation à l’intelligence artificielle et à la data science</li>
-        <li>Sécurité applicative et performance web</li>
-      </ul>`,
+      description: `<p class="font-semibold">📘 Modules Clés :</p><ul class="list-disc pl-5 mt-2 space-y-1"><li>Développement Fullstack JavaScript (React, Node.js, Next.js)</li><li>DevOps & Cloud Computing (Docker, Kubernetes, GitHub Actions, AWS, Azure)</li><li>Conception et Architecture Logicielle</li><li>Intégration de systèmes d'entreprise (Salesforce, SAP, Oracle)</li><li>Projets agiles & gestion de version (Scrum, Git)</li><li>Initiation à l’intelligence artificielle et à la data science</li><li>Sécurité applicative et performance web</li></ul>`,
     },
   ],
   recommendations: [
