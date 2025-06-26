@@ -98,7 +98,7 @@ export const data = {
       date: "Jul 2024 - Aug 2024",
       title: "Développeur",
       subtitle: "FEDHUBS · Stage",
-      description: '<ul><li>Web scraping avec Python : Développement d’un algorithme de scraping en Python (BeautifulSoup) pour extraire et structurer des données, accompagné d’une interface web simple pour une utilisation pratique.</li><li>Optimisation SEO : Amélioration du SEO et des performances du site en utilisant Laravel et React TypeScript. J’ai optimisé le chargement dynamique et statique, compressé les ressources, et travaillé sur les balises et descriptions pour un meilleur référencement.</li></ul>',
+      description: "<ul><li>Développement d'un scraper web en Python (BeautifulSoup) pour l'extraction et la structuration automatisées de données, complété par une interface web pour une utilisation simplifiée.</li><li>Optimisation du SEO et des performances d'un site Laravel et React/TypeScript, incluant l'amélioration du chargement statique/dynamique, la compression des ressources, et l'affinage des métadonnées pour un meilleur classement.</li></ul>",
     },
   ],
   education: [
