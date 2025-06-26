@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { ProjectCard } from "./project-card";
 
@@ -18,10 +17,11 @@ type Project = {
 
 interface ProjectListProps {
   projects: Project[];
+  projectListData: any;
+  projectCardData: any;
 }
 
-export function ProjectList({ projects }: ProjectListProps) {
-  const t = useTranslations('ProjectList');
+export function ProjectList({ projects, projectListData, projectCardData }: ProjectListProps) {
   const [visibleCount, setVisibleCount] = useState(2);
 
   const showMoreProjects = () => {
@@ -32,13 +32,13 @@ export function ProjectList({ projects }: ProjectListProps) {
     <>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {projects.slice(0, visibleCount).map((project, index) => (
-          <ProjectCard key={index} {...project} />
+          <ProjectCard key={index} {...project} projectCardData={projectCardData} />
         ))}
       </div>
       {visibleCount < projects.length && (
         <div className="text-center mt-12">
           <Button onClick={showMoreProjects} size="lg">
-            {t('loadMore')}
+            {projectListData.loadMore}
           </Button>
         </div>
       )}

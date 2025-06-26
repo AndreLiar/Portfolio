@@ -1,15 +1,9 @@
 "use client";
 
-import { Link } from "next-intl/navigation";
-import { useTranslations } from "next-intl";
 import { Mail, Github, Linkedin, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export function Hero() {
-  const t = useTranslations();
-  const data = t.raw('data') as any;
-  const heroData = t.raw('Hero') as any;
-
+export function Hero({ heroData, data }: { heroData: any, data: any }) {
   return (
     <section id="hero" className="py-20 md:py-32">
       <div className="container mx-auto px-4 text-center">
@@ -30,9 +24,9 @@ export function Hero() {
         </p>
         <div className="flex justify-center flex-wrap gap-4">
           <Button size="lg" asChild>
-            <Link href="#contact">
+            <a href="#contact">
               <Mail className="mr-2 h-4 w-4" /> {heroData.contactMe}
-            </Link>
+            </a>
           </Button>
           <Button size="lg" variant="secondary" asChild>
             <a href={data.contact.github} target="_blank" rel="noopener noreferrer">
