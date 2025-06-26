@@ -109,9 +109,17 @@ export const data = {
   education: [
     {
       date: "2022 - 2027",
-      title: "Master’s – Expert Web Fullstack Development",
-      subtitle: "School Name, Paris",
-      description: "Key Modules: Fullstack JS, Cloud Platforms, Agile Projects, DevOps with Docker, AI Introduction, Enterprise Integration (SAP/Salesforce).",
+      title: "Mastère – Expert en Développement Web Fullstack",
+      subtitle: "Ynov Campus, Paris",
+      description: `<ul>
+        <li>Développement Fullstack JavaScript (React, Node.js, Next.js)</li>
+        <li>DevOps & Cloud Computing (Docker, Kubernetes, GitHub Actions, AWS, Azure)</li>
+        <li>Conception et Architecture Logicielle</li>
+        <li>Intégration de systèmes d'entreprise (Salesforce, SAP, Oracle)</li>
+        <li>Projets agiles & gestion de version (Scrum, Git)</li>
+        <li>Initiation à l’intelligence artificielle et à la data science</li>
+        <li>Sécurité applicative et performance web</li>
+      </ul>`,
     },
   ],
   recommendations: [
