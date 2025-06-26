@@ -89,8 +89,6 @@ export default function Home() {
               {Page.journey.title}
             </h2>
             <div className="relative max-w-2xl mx-auto">
-              <div className="absolute left-1/2 w-0.5 h-full bg-border -translate-x-1/2"></div>
-
               <h3 className="text-2xl font-headline font-semibold text-center my-8 flex items-center justify-center gap-2">
                 <Briefcase className="w-6 h-6" />{' '}
                 {Page.journey.workExperienceTitle}
