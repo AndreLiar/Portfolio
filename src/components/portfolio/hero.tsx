@@ -19,7 +19,7 @@ export function Hero({ heroData, data }: { heroData: any, data: any }) {
           {titleParts[1] && (
             <>
               {' | '}
-              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              <span className="text-primary">
                 {titleParts[1]}
               </span>
             </>
