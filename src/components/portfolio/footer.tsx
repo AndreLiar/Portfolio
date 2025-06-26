@@ -1,24 +1,15 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { Github, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-interface FooterProps {
-  footerData: {
-    rights: string;
-  };
-  data: {
-    name: string;
-    contact: {
-      github: string;
-      linkedin: string;
-    }
-  };
-}
-
-export function Footer({ footerData, data }: FooterProps) {
+export function Footer() {
   const [year, setYear] = useState<number>();
+  const t = useTranslations();
+  const data = t.raw('data') as any;
+  const footerData = t.raw('Footer') as any;
 
   useEffect(() => {
     setYear(new Date().getFullYear());

@@ -1,27 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+import Link from "next-intl/link";
+import { useTranslations } from "next-intl";
 import { Menu, X, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { LanguageSwitcher } from "./language-switcher";
 
-interface HeaderProps {
-  headerData: {
-    projects: string;
-    skills: string;
-    experience: string;
-    contact: string;
-    downloadCv: string;
-  };
-  data: {
-    name: string;
-    resumeUrl: string;
-  };
-}
-
-export function Header({ headerData, data }: HeaderProps) {
+export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const t = useTranslations();
+  const data = t.raw('data') as any;
+  const headerData = t.raw('Header') as any;
   
   const navLinks = [
     { href: "#projects", label: headerData.projects },
@@ -47,13 +38,14 @@ export function Header({ headerData, data }: HeaderProps) {
             </Link>
           ))}
         </nav>
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden md:flex items-center gap-2">
           <Button asChild>
             <a href={data.resumeUrl} download="ktayl_Resume.pdf">
               {headerData.downloadCv}
               <Download className="ml-2 h-4 w-4" />
             </a>
           </Button>
+          <LanguageSwitcher />
         </div>
         <div className="md:hidden">
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
@@ -89,6 +81,7 @@ export function Header({ headerData, data }: HeaderProps) {
                   ))}
                 </nav>
                 <div className="mt-auto space-y-4">
+                   <LanguageSwitcher />
                    <Button asChild className="w-full">
                         <a href={data.resumeUrl} download="ktayl_Resume.pdf">
                         {headerData.downloadCv}

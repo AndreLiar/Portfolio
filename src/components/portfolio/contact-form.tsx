@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -19,28 +20,8 @@ import { useToast } from "@/hooks/use-toast";
 import { Send, Loader2 } from "lucide-react";
 import { sendEmail } from "@/app/actions";
 
-interface ContactFormProps {
-  contactFormData: {
-    name: string;
-    namePlaceholder: string;
-    email: string;
-    emailPlaceholder: string;
-    message: string;
-    messagePlaceholder: string;
-    button: string;
-    buttonSending: string;
-    toast: {
-      successTitle: string;
-      successDescription: string;
-      errorTitle: string;
-      errorDescription: string;
-      errorResend: string;
-    };
-  };
-}
-
-export function ContactForm({ contactFormData }: ContactFormProps) {
-  const t = contactFormData;
+export function ContactForm() {
+  const t = useTranslations('ContactForm');
   
   const formSchema = z.object({
     name: z.string().min(2, "Name must be at least 2 characters."),
@@ -65,22 +46,23 @@ export function ContactForm({ contactFormData }: ContactFormProps) {
     try {
       const result = await sendEmail(values);
       if (result?.error) {
+        const toastError = result.error === 'Resend API Key is not configured.' ? t('toast.errorResend') : t('toast.errorDescription');
         toast({
-          title: t.toast.errorTitle,
-          description: result.error,
+          title: t('toast.errorTitle'),
+          description: toastError,
           variant: "destructive",
         });
       } else {
         toast({
-          title: t.toast.successTitle,
-          description: t.toast.successDescription,
+          title: t('toast.successTitle'),
+          description: t('toast.successDescription'),
         });
         form.reset();
       }
     } catch (e) {
       toast({
-        title: t.toast.errorTitle,
-        description: t.toast.errorDescription,
+        title: t('toast.errorTitle'),
+        description: t('toast.errorDescription'),
         variant: "destructive",
       });
     } finally {
@@ -97,9 +79,9 @@ export function ContactForm({ contactFormData }: ContactFormProps) {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>{t.name}</FormLabel>
+                <FormLabel>{t('name')}</FormLabel>
                 <FormControl>
-                  <Input placeholder={t.namePlaceholder} {...field} />
+                  <Input placeholder={t('namePlaceholder')} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -110,9 +92,9 @@ export function ContactForm({ contactFormData }: ContactFormProps) {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>{t.email}</FormLabel>
+                <FormLabel>{t('email')}</FormLabel>
                 <FormControl>
-                  <Input placeholder={t.emailPlaceholder} {...field} />
+                  <Input placeholder={t('emailPlaceholder')} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -124,10 +106,10 @@ export function ContactForm({ contactFormData }: ContactFormProps) {
           name="message"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>{t.message}</FormLabel>
+              <FormLabel>{t('message')}</FormLabel>
               <FormControl>
                 <Textarea
-                  placeholder={t.messagePlaceholder}
+                  placeholder={t('messagePlaceholder')}
                   className="min-h-[150px]"
                   {...field}
                 />
@@ -141,11 +123,11 @@ export function ContactForm({ contactFormData }: ContactFormProps) {
              {isSubmitting ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                {t.buttonSending}
+                {t('buttonSending')}
               </>
             ) : (
               <>
-                {t.button} <Send className="ml-2 h-4 w-4" />
+                {t('button')} <Send className="ml-2 h-4 w-4" />
               </>
             )}
           </Button>

@@ -1,28 +1,15 @@
 "use client";
 
-import Link from "next/link";
+import Link from "next-intl/link";
+import { useTranslations } from "next-intl";
 import { Mail, Github, Linkedin, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-interface HeroProps {
-  heroData: {
-    contactMe: string;
-    github: string;
-    linkedin: string;
-  };
-  data: {
-    fullName: string;
-    title: string;
-    location: string;
-    summary: string;
-    contact: {
-      github: string;
-      linkedin: string;
-    }
-  };
-}
+export function Hero() {
+  const t = useTranslations();
+  const data = t.raw('data') as any;
+  const heroData = t.raw('Hero') as any;
 
-export function Hero({ heroData, data }: HeroProps) {
   return (
     <section id="hero" className="py-20 md:py-32">
       <div className="container mx-auto px-4 text-center">
