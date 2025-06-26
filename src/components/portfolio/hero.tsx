@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next-intl/link";
+import { Link } from "next-intl/navigation";
 import { useTranslations } from "next-intl";
 import { Mail, Github, Linkedin, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";

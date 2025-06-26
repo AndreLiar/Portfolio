@@ -1,6 +1,6 @@
 'use client';
 
-import { usePathname, useRouter } from 'next-intl/client';
+import { usePathname, useRouter } from 'next-intl/navigation';
 import { useLocale } from 'next-intl';
 import { Languages } from 'lucide-react';
 

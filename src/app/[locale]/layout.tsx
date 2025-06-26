@@ -12,14 +12,14 @@ export async function generateMetadata({ params: { locale } }: { params: { local
   };
 }
 
-export default function LocaleLayout({
+export default async function LocaleLayout({
   children,
   params: { locale },
 }: {
   children: React.ReactNode;
   params: { locale: string };
 }) {
-  const messages = getMessages();
+  const messages = await getMessages();
 
   return (
     <html lang={locale} className="dark" suppressHydrationWarning>
