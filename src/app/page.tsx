@@ -1,7 +1,6 @@
 import {
   Briefcase,
   GraduationCap,
-  Sparkles,
   Heart,
 } from "lucide-react";
 
@@ -12,7 +11,6 @@ import { ProjectCard } from "@/components/portfolio/project-card";
 import { SkillCard } from "@/components/portfolio/skill-card";
 import { TimelineItem } from "@/components/portfolio/timeline-item";
 import { RecommendationCard } from "@/components/portfolio/recommendation-card";
-import { ResumeAnalyzer } from "@/components/portfolio/resume-analyzer";
 import { Contact } from "@/components/portfolio/contact";
 import { Footer } from "@/components/portfolio/footer";
 import { Badge } from "@/components/ui/badge";
@@ -85,20 +83,6 @@ export default function Home() {
                 <RecommendationCard key={index} {...rec} />
               ))}
             </div>
-          </div>
-        </section>
-
-        <section id="analyzer" className="py-16 md:py-24">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-headline font-bold mb-2">
-                AI-Powered Resume Analyzer
-              </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Test my AI skills. Paste your resume text below and get instant feedback on content, structure, and keyword optimization.
-              </p>
-            </div>
-            <ResumeAnalyzer />
           </div>
         </section>
 
