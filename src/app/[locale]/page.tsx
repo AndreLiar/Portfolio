@@ -1,2 +1,6 @@
-// This file is no longer used and can be safely deleted.
-// The content has been moved to /src/app/page.tsx to simplify routing.
+import { redirect } from 'next/navigation';
+
+// This page redirects to the root page, as the [locale] route is no longer used.
+export default function ObsoleteLocalePage() {
+  redirect('/');
+}

@@ -1,2 +1,7 @@
-// This file is no longer used and can be safely deleted.
-// The content has been moved to /src/app/layout.tsx to simplify routing.
+import { ReactNode } from "react";
+
+// This layout exists to satisfy the Next.js router for an obsolete route.
+// All content is rendered via src/app/layout.tsx.
+export default function ObsoleteLocaleLayout({ children }: { children: ReactNode }) {
+  return <>{children}</>;
+}
