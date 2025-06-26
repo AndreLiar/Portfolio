@@ -2,16 +2,28 @@
 
 import { Mail, Github, Linkedin, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Link from 'next/link';
 
 export function Hero({ heroData, data }: { heroData: any, data: any }) {
+  const title = data.title;
+  const titleParts = title.split(' | ');
+
   return (
     <section id="hero" className="py-20 md:py-32">
       <div className="container mx-auto px-4 text-center">
         <h1 className="text-4xl md:text-6xl font-headline font-bold mb-4">
           {data.fullName}
         </h1>
-        <h2 className="text-xl md:text-2xl text-accent font-semibold mb-6">
-          {data.title}
+        <h2 className="text-xl md:text-2xl font-semibold mb-6">
+          {titleParts[0]}
+          {titleParts[1] && (
+            <>
+              {' | '}
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                {titleParts[1]}
+              </span>
+            </>
+          )}
         </h2>
         <div className="flex justify-center items-center gap-4 text-muted-foreground mb-8">
           <div className="flex items-center gap-2">
