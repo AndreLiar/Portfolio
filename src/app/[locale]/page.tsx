@@ -1,5 +1,5 @@
 
-import { getTranslations } from "next-intl/server";
+import { getTranslations } from 'next-intl/server';
 import {
   Briefcase,
   GraduationCap,
@@ -31,21 +31,21 @@ const iconMap: { [key: string]: React.ElementType } = {
   Type
 };
 
-export default async function Home({params: {locale}}: {params: {locale: string}}) {
-  const t = await getTranslations('Page');
-  const d = await getTranslations('data');
+export default async function Home() {
+  const t = await getTranslations();
+  const data = t.raw('data');
 
-  const skills = d.raw('skills').map((skill: any) => ({
+  const skills = data.skills.map((skill: any) => ({
     ...skill,
     Icon: iconMap[skill.Icon]
   }));
 
-  const workExperience = d.raw('workExperience');
-  const education = d.raw('education');
-  const projects = d.raw('projects');
-  const recommendations = d.raw('recommendations');
-  const languages = d.raw('languages');
-  const interests = d.raw('interests');
+  const workExperience = data.workExperience;
+  const education = data.education;
+  const projects = data.projects;
+  const recommendations = data.recommendations;
+  const languages = data.languages;
+  const interests = data.interests;
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -56,7 +56,7 @@ export default async function Home({params: {locale}}: {params: {locale: string}
         <section id="projects" className="py-16 md:py-24">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl md:text-4xl font-headline font-bold text-center mb-12">
-              {t('projects.title')}
+              {t('Page.projects.title')}
             </h2>
             <ProjectList projects={projects} />
           </div>
@@ -65,7 +65,7 @@ export default async function Home({params: {locale}}: {params: {locale: string}
         <section id="skills" className="py-16 md:py-24 bg-card">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl md:text-4xl font-headline font-bold text-center mb-12">
-              {t('skills.title')}
+              {t('Page.skills.title')}
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {skills.map((skillCategory: any, index: number) => (
@@ -78,20 +78,20 @@ export default async function Home({params: {locale}}: {params: {locale: string}
         <section id="experience" className="py-16 md:py-24">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl md:text-4xl font-headline font-bold text-center mb-12">
-              {t('journey.title')}
+              {t('Page.journey.title')}
             </h2>
             <div className="relative max-w-2xl mx-auto">
               <div className="absolute left-1/2 w-0.5 h-full bg-border -translate-x-1/2"></div>
               
               <h3 className="text-2xl font-headline font-semibold text-center my-8 flex items-center justify-center gap-2">
-                <Briefcase className="w-6 h-6" /> {t('journey.workExperienceTitle')}
+                <Briefcase className="w-6 h-6" /> {t('Page.journey.workExperienceTitle')}
               </h3>
               {workExperience.map((item: any, index: number) => (
                 <TimelineItem key={index} {...item} />
               ))}
 
               <h3 className="text-2xl font-headline font-semibold text-center mt-16 mb-8 flex items-center justify-center gap-2">
-                <GraduationCap className="w-6 h-6" /> {t('journey.educationTitle')}
+                <GraduationCap className="w-6 h-6" /> {t('Page.journey.educationTitle')}
               </h3>
               {education.map((item: any, index: number) => (
                 <TimelineItem key={index} {...item} icon={GraduationCap} />
@@ -103,7 +103,7 @@ export default async function Home({params: {locale}}: {params: {locale: string}
         <section id="recommendations" className="py-16 md:py-24 bg-card">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl md:text-4xl font-headline font-bold text-center mb-12">
-              {t('recommendations.title')}
+              {t('Page.recommendations.title')}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               {recommendations.map((rec: any, index: number) => (
@@ -117,14 +117,14 @@ export default async function Home({params: {locale}}: {params: {locale: string}
           <div className="container mx-auto px-4 text-center">
             <div className="grid md:grid-cols-2 gap-8">
                 <div>
-                    <h3 className="text-2xl font-headline font-semibold mb-4">{t('extras.languagesTitle')}</h3>
+                    <h3 className="text-2xl font-headline font-semibold mb-4">{t('Page.extras.languagesTitle')}</h3>
                     <div className="flex justify-center gap-4 flex-wrap">
                         {languages.map((lang: any) => <Badge variant="secondary" key={lang.name} className="text-lg py-1 px-3">{lang.name} ({lang.level})</Badge>)}
                     </div>
                 </div>
                  <div>
                     <h3 className="text-2xl font-headline font-semibold mb-4 flex items-center justify-center gap-2">
-                        <Heart className="w-6 h-6 text-accent" /> {t('extras.interestsTitle')}
+                        <Heart className="w-6 h-6 text-accent" /> {t('Page.extras.interestsTitle')}
                     </h3>
                      <div className="flex justify-center gap-2 flex-wrap">
                         {interests.map((interest: any) => <Badge variant="outline" key={interest} className="text-md py-1 px-3">{interest}</Badge>)}
@@ -138,10 +138,10 @@ export default async function Home({params: {locale}}: {params: {locale: string}
            <div className="container mx-auto px-4">
               <div className="text-center mb-12">
                  <h2 className="text-3xl md:text-4xl font-headline font-bold mb-2">
-                  {t('contact.title')}
+                  {t('Page.contact.title')}
                  </h2>
                  <p className="text-muted-foreground max-w-xl mx-auto">
-                   {t('contact.subtitle')}
+                   {t('Page.contact.subtitle')}
                  </p>
               </div>
               <Contact />

@@ -1,3 +1,4 @@
+
 import type { Metadata } from "next";
 import {NextIntlClientProvider} from 'next-intl';
 import {getMessages, getTranslations} from 'next-intl/server';
@@ -21,10 +22,8 @@ export default async function LocaleLayout({
 }>) {
   let messages;
   try {
-    // Rely on the middleware to set the correct locale context
     messages = await getMessages();
   } catch (error) {
-    // This can happen if the locale is invalid
     notFound();
   }
 
