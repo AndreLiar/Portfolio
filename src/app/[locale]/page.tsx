@@ -1,2 +1,6 @@
-// This file structure is no longer needed and can be deleted.
-// The main page is now at /src/app/page.tsx.
+import { redirect } from 'next/navigation';
+
+// This page permanently redirects any traffic from /en, /fr, etc. to the root homepage.
+export default function LocalePage() {
+  redirect('/');
+}
