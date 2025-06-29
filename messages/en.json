@@ -83,7 +83,7 @@
       { "title": "Web Stack", "Icon": "BotMessageSquare", "skills": ["React", "Next.js", "Tailwind CSS", "Vite", "Bootstrap", "REST", "GraphQL"] },
       { "title": "Cloud & DevOps", "Icon": "Cloud", "skills": ["Azure", "Kubernetes", "Terraform", "GitHub Actions", "GitLab CI", "Jenkins", "Docker", "CI/CD", "Prometheus", "Grafana", "Alerting", "Tracing (OpenTelemetry)"] },
       { "title": "AI/ML", "Icon": "BrainCircuit", "skills": ["OpenAI API", "LangChain", "HuggingFace", "MLflow", "Transformers", "scikit-learn", "Gemini API", "Ollama"] },
-      { "title": "Data & Analytics", "Icon": "Database", "skills": ["PostgreSQL", "MySQL", "Redis", "Snowflake", "dbt", "SQL Server", "Power BI", "Streamlit"] },
+      { "title": "Data & Analytics", "Icon": "Database", "skills": ["PostgreSQL", "MySQL", "MongoDB", "Redis", "Snowflake", "dbt", "SQL Server", "Streamlit", "ETL/ELT pipelines"] },
       { "title": "Enterprise & Others", "Icon": "Type", "skills": ["Salesforce App Builder", "SAP UI5", "SAP BTP", "OAuth2", "JWT", "SAML", "Playwright", "Postman", "Firebase", "Supabase"] }
     ],
     "projects": [
@@ -91,7 +91,7 @@
         "title": "TransparAI",
         "purpose": "An AI platform providing clear analysis of complex legal and technical documents, complete with secure authentication and subscriptions.",
         "stack": ["React", "Vite", "TypeScript", "Node.js", "Express", "MongoDB", "Firebase", "Stripe", "Vercel", "Render"],
-        "impact": "Empowered users with AI-driven summaries, risk scores, and key clause extraction, significantly improving decision-making across legal and technical domains.",
+        "impact": "Empowered users with AI-driven summaries, risk scores, and key clause extraction, improving decision-making across legal and technical domains.",
         "role": "Fullstack Developer, built the UI, integrated the Gemini AI API, and implemented secure auth with Stripe subscriptions, deploying to cloud platforms.",
         "features": ["AI document analysis (summary, scoring)", "Secure Firebase authentication", "Stripe-based subscription management", "Analysis history & PDF export", "Responsive dashboard interface"],
         "link": "https://transparai.vercel.app/",
@@ -109,19 +109,19 @@
       },
       {
         "title": "Freemap",
-        "purpose": "A platform designed to connect users based on location and facilitate real-time communication through video calls, enabling users to create profiles and discover others on a map.",
+        "purpose": "A platform to connect users based on location and facilitate real-time communication through video calls, enabling profile creation and map-based discovery.",
         "stack": ["Node.js", "Express.js", "MongoDB (Mongoose)", "Socket.io", "Cloudinary", "Nodemailer", "Firebase Admin", "JWT", "Multer", "React", "React Router DOM", "Axios", "Bootstrap", "Leaflet", "Socket.io-client", "Firebase", "Jitsi"],
-        "impact": "Facilitates community building by combining location-based discovery with real-time video communication for social networking, shared interests, or local services.",
-        "role": "Fullstack Developer, responsible for designing and implementing the Node.js/Express backend with MongoDB, integrating real-time communication via Socket.io and Jitsi, developing the React frontend with mapping functionalities, and managing user authentication and profile features.",
-        "features": ["User Authentication & Profile Management", "Location-based User Discovery via Leaflet", "Real-time Video Calling with Jitsi", "Real-time Communication via Socket.io", "Image Uploads with Cloudinary", "Protected Routes & User Search Functionality"],
+        "impact": "Facilitates community building by combining location-based discovery with real-time video, enabling users to connect for shared interests or local services.",
+        "role": "Fullstack Developer, designed the Node.js backend with MongoDB, integrated real-time communication via Socket.io and Jitsi, and built the React frontend.",
+        "features": ["User Authentication & Profile Management", "Location-based User Discovery via Leaflet", "Real-time Video Calling with Jitsi", "Secure Routes & User Search Functionality", "Image Uploads with Cloudinary for profiles"],
         "link": "https://freemap-puce.vercel.app/",
         "repoUrl": "https://github.com/AndreLiar/Freemap"
       },
       {
         "title": "Digital Starter",
-        "purpose": "A web application designed to provide a structured digital learning or onboarding experience, guiding users through various phases with integrated AI assistance and progress tracking.",
+        "purpose": "A web app designed to provide a structured digital learning or onboarding experience, guiding users through phases with integrated AI assistance and progress tracking.",
         "stack": ["Next.js", "React", "TypeScript", "Node.js", "MongoDB", "NextAuth.js", "CSS Modules", "Google Gemini API"],
-        "impact": "Streamlines user onboarding and learning by offering a clear, multi-phase journey, enhancing engagement through AI assistance, and enabling personalized progress tracking.",
+        "impact": "Streamlines user onboarding by offering a clear, multi-phase journey, enhancing engagement through AI assistance and enabling personalized progress tracking.",
         "role": "Fullstack Developer & Project Architect, designed the user flow, integrated AI assistance, and managed authentication and progress tracking features.",
         "features": ["User Authentication & Profile Management", "Multi-phase Guided User Onboarding", "Integrated AI Assistant for Help & Support", "Comprehensive User Progress Tracking", "Secure Authenticated Routes & Contact Form"],
         "link": "https://digital-starter-5yx3e8xpc-andreliars-projects.vercel.app",
