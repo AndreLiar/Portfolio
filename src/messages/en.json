@@ -235,11 +235,27 @@
       },
       {
         "title": "Freemap",
-        "purpose": "A platform designed to connect users based on location and facilitate real-time communication through video calls. It enables users to create profiles, discover others on a map, and engage in direct video interactions.",
-        "stack": ["Node.js", "Express.js", "MongoDB (Mongoose)", "Socket.io", "Cloudinary", "Nodemailer", "Firebase Admin", "JWT", "Multer", "React", "React Router DOM", "Axios", "Bootstrap", "Leaflet", "Socket.io-client", "Firebase", "Jitsi"],
-        "impact": "Facilitates community building and direct interaction by combining location-based discovery with real-time video communication, enabling users to connect for various purposes (e.g., shared interests, local services, social networking).",
-        "role": "Fullstack Developer, responsible for designing and implementing the Node.js/Express backend with MongoDB, integrating real-time communication via Socket.io and Jitsi, developing the React frontend with mapping functionalities, and managing user authentication and profile features.",
-        "features": ["User Authentication (Sign up, Log in)", "User Profile Management (creation, editing, viewing)", "Location-based User Discovery (mapping using Leaflet)", "Real-time Video Calling (Jitsi integration)", "Real-time Communication (Socket.io for call signaling)", "Image Uploads (Cloudinary integration for profile pictures/content)", "Protected Routes for authenticated users", "Search functionality for users/profiles", "Email notifications (Nodemailer)", "Firebase for authentication and potentially other services"],
+        "purpose": "A platform to connect users by location and facilitate real-time video calls, enabling profile discovery and direct interaction.",
+        "stack": [
+          "Node.js",
+          "Express.js",
+          "MongoDB",
+          "Socket.io",
+          "Cloudinary",
+          "Nodemailer",
+          "JWT",
+          "React",
+          "Leaflet",
+          "Jitsi"
+        ],
+        "impact": "Facilitates community building by combining location-based discovery with real-time video, enabling diverse user connections.",
+        "role": "Fullstack Developer, responsible for the Node.js backend, real-time communication, React frontend, and user authentication.",
+        "features": [
+          "User authentication & profile management",
+          "Location-based user discovery via Leaflet",
+          "Real-time video calling with Jitsi",
+          "Image uploads through Cloudinary"
+        ],
         "link": "https://freemap-puce.vercel.app/",
         "repoUrl": "https://github.com/AndreLiar/Freemap"
       },
@@ -319,5 +335,3 @@
     ]
   }
 }
-
-    
