@@ -286,6 +286,12 @@
     ],
     "workExperience": [
       {
+        "date": "Your Dates (e.g., Jan 2023 - Dec 2023)",
+        "title": "Your Title at FedHub",
+        "subtitle": "FedHub, City, Country",
+        "description": "<ul><li>Please describe your responsibilities and achievements here.</li></ul>"
+      },
+      {
         "date": "Sep 2024 - Present",
         "title": "IT Support & Python Development (Apprentice)",
         "subtitle": "HDI France, Paris",
