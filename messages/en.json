@@ -80,17 +80,53 @@
     "summary": "Multidisciplinary fullstack software engineer with a unique blend of skills across AI/ML integration, DevOps, cloud-native deployments, real-time data systems, and enterprise platform extension (SAP/Salesforce). Experienced in designing and delivering scalable, intelligent SaaS solutions that combine performance, automation, and business impact.",
     "skills": [
       { "title": "Languages & Backend", "Icon": "Code", "skills": ["TypeScript", "Python", "JavaScript", "Java", "Spring Boot", "C#/.NET", "Go", "Bash", "SQL", "Node.js", "Express", "NestJS"] },
-      { "title": "Web Stack", "Icon": "BotMessageSquare", "skills": ["React", "Next.js", "Tailwind CSS", "Vite", "Bootstrap", "REST", "GraphQL", "Angular"] },
-      { "title": "Cloud & DevOps", "Icon": "Cloud", "skills": ["Azure", "Kubernetes", "Terraform", "GitHub Actions", "GitLab CI", "Jenkins", "Docker", "CI/CD"] },
+      { "title": "Web Stack", "Icon": "BotMessageSquare", "skills": ["React", "Next.js", "Tailwind CSS", "Vite", "Bootstrap", "REST", "GraphQL"] },
+      { "title": "Cloud & DevOps", "Icon": "Cloud", "skills": ["Azure", "Kubernetes", "Terraform", "GitHub Actions", "GitLab CI", "Jenkins", "Docker", "CI/CD", "Prometheus", "Grafana", "Alerting", "Tracing (OpenTelemetry)"] },
       { "title": "AI/ML", "Icon": "BrainCircuit", "skills": ["OpenAI API", "LangChain", "HuggingFace", "MLflow", "Transformers", "scikit-learn", "Azure ML Studio"] },
       { "title": "Data & Analytics", "Icon": "Database", "skills": ["PostgreSQL", "MySQL", "Redis", "Snowflake", "dbt", "SQL Server", "Power BI", "Streamlit"] },
-      { "title": "Enterprise & Others", "Icon": "Type", "skills": ["Salesforce App Builder", "SAP UI5", "SAP BTP", "OAuth2", "JWT", "SAML", "Playwright", "Postman", "Prometheus", "Grafana", "Firebase", "Supabase"] }
+      { "title": "Enterprise & Others", "Icon": "Type", "skills": ["Salesforce App Builder", "SAP UI5", "SAP BTP", "OAuth2", "JWT", "SAML", "Playwright", "Postman", "Firebase", "Supabase"] }
     ],
     "projects": [
-      { "title": "TransparAI", "purpose": "Leverage AI to provide clear, concise analysis of complex legal and technical documents with secure authentication and Stripe-based subscriptions.", "stack": ["React", "Vite", "TypeScript", "Node.js", "Express", "MongoDB", "Firebase", "Stripe", "Vercel", "Render"], "impact": "Empowered users to quickly grasp complex documents by extracting AI-driven summaries, risk scores, and key clauses, improving decision-making across legal and technical domains.", "role": "Fullstack Developer, responsible for building the frontend UI, integrating the Gemini AI API, implementing secure auth and Stripe subscriptions, and deploying the app to cloud platforms.", "features": ["AI-powered document analysis (summary, scoring, clause extraction)", "Secure authentication with Firebase", "Stripe-based subscription and quota management", "Analysis history and export to PDF for premium users", "Responsive and user-friendly dashboard interface"], "link": "https://transparai.vercel.app/", "repoUrl": "https://github.com/AndreLiar/transparai.git" },
-      { "title": "PlatformPro Jobs", "purpose": "A specialized job board connecting platform engineering talent with employers, featuring AI-powered candidate scoring and job description generation.", "stack": ["Next.js (React, App Router)", "TypeScript", "Firebase (Firestore, Authentication)", "Genkit (Google AI - Gemini)", "Tailwind CSS", "ShadCN UI", "Stripe", "Cloudinary", "Vercel (for deployment)", "Zod (for validation)", "React Hook Form"], "impact": "Streamlined the hiring process for platform engineering roles with AI-assisted tools for recruiters and a dedicated dashboard for candidates to manage applications and profiles.", "role": "Fullstack Developer, responsible for architecting and building the Next.js application, implementing Firebase backend services, integrating Genkit for AI features, setting up Stripe payments, Cloudinary for file storage, and deploying the application.", "features": ["Dedicated dashboards for both recruiters and candidates", "AI-powered CV analysis and candidate scoring", "AI-assisted job description generation for recruiters", "Comprehensive job and application management tools", "Stripe integration for job posting credits"], "link": "https://plateformprojob.vercel.app", "repoUrl": "https://github.com/AndreLiar/Plateformprojob.git" },
-      { "title": "Freemap", "purpose": "A platform designed to connect users based on location and facilitate real-time communication through video calls. It enables users to create profiles, discover others on a map, and engage in direct video interactions.", "stack": ["Node.js", "Express.js", "MongoDB (Mongoose)", "Socket.io", "Cloudinary", "Nodemailer", "Firebase Admin", "JWT", "Multer", "React", "React Router DOM", "Axios", "Bootstrap", "Leaflet", "Socket.io-client", "Firebase", "Jitsi"], "impact": "Facilitated community building and direct interaction by combining location-based discovery with real-time video communication for social networking or shared interests.", "role": "Fullstack Developer, implemented the Node.js/Express backend, integrated real-time communication via Socket.io and Jitsi, and developed the React frontend with mapping.", "features": [ "Location-based User Discovery on a map (Leaflet)", "Real-time Video Calling (Jitsi integration) & Signaling (Socket.io)", "User Authentication and Profile Management", "Image Uploads for profiles using Cloudinary", "Protected Routes and Search functionality" ], "link": "https://freemap-puce.vercel.app/", "repoUrl": "https://github.com/AndreLiar/Freemap" },
-      { "title": "Digital Starter", "purpose": "A web application designed to provide a structured digital learning or onboarding experience, guiding users through various phases with integrated AI assistance and progress tracking.", "stack": ["Next.js", "React", "TypeScript", "Node.js", "MongoDB", "NextAuth.js", "CSS Modules", "Google Gemini API"], "impact": "Streamlined user onboarding with a multi-phase guided journey, AI-powered assistance for enhanced engagement, and personalized progress tracking to improve completion rates.", "role": "Fullstack Developer & Project Architect", "features": ["Multi-phase guided user onboarding experience", "Integrated AI assistant for real-time help", "Comprehensive user authentication & profile management", "Personalized progress tracking dashboard", "Secure authenticated routes and contact form"], "link": "https://digital-starter-5yx3e8xpc-andreliars-projects.vercel.app", "repoUrl": "https://github.com/AndreLiar/digital-starter" }
+      {
+        "title": "TransparAI",
+        "purpose": "An AI platform providing clear analysis of complex legal and technical documents, complete with secure authentication and subscriptions.",
+        "stack": ["React", "Vite", "TypeScript", "Node.js", "Express", "MongoDB", "Firebase", "Stripe", "Vercel", "Render"],
+        "impact": "Empowered users with AI-driven summaries, risk scores, and key clause extraction, significantly improving decision-making across legal and technical domains.",
+        "role": "Fullstack Developer, built the UI, integrated the Gemini AI API, and implemented secure auth with Stripe subscriptions, deploying to cloud platforms.",
+        "features": ["AI document analysis (summary, scoring)", "Secure Firebase authentication", "Stripe-based subscription management", "Analysis history & PDF export", "Responsive dashboard interface"],
+        "link": "https://transparai.vercel.app/",
+        "repoUrl": "https://github.com/AndreLiar/transparai.git"
+      },
+      {
+        "title": "PlatformPro Jobs",
+        "purpose": "A specialized job board connecting platform engineering talent with employers, featuring AI-powered candidate scoring and job description generation.",
+        "stack": ["Next.js", "TypeScript", "Firebase", "Genkit (Gemini AI)", "Tailwind CSS", "ShadCN UI", "Stripe", "Cloudinary", "Vercel", "Zod"],
+        "impact": "Streamlined hiring for platform engineering roles with AI-assisted tools for recruiters and a dedicated dashboard for candidates to manage applications and profiles.",
+        "role": "Fullstack Developer, architected the Next.js app, implemented Firebase services, integrated Genkit for AI features, and set up Stripe and Cloudinary.",
+        "features": ["Dedicated recruiter & candidate dashboards", "AI-powered CV analysis & scoring", "AI-assisted job description generation", "Job & application management tools", "Stripe integration for job posting credits"],
+        "link": "https://plateformprojob.vercel.app",
+        "repoUrl": "https://github.com/AndreLiar/Plateformprojob.git"
+      },
+      {
+        "title": "Freemap",
+        "purpose": "A location-based platform for real-time video communication, allowing users to discover others on a map and engage in direct video calls.",
+        "stack": ["Node.js", "Express.js", "MongoDB", "Socket.io", "Cloudinary", "Nodemailer", "React", "Leaflet", "Jitsi"],
+        "impact": "Facilitated community building by combining location-based discovery with real-time video communication for social networking or shared interests.",
+        "role": "Fullstack Developer, built the Node.js backend, integrated real-time communication via Socket.io/Jitsi, and developed the React frontend with mapping.",
+        "features": ["Location-based user discovery via Leaflet", "Real-time video calling with Jitsi", "User authentication & profile management", "Image uploads with Cloudinary", "Protected routes & user search"],
+        "link": "https://freemap-puce.vercel.app/",
+        "repoUrl": "https://github.com/AndreLiar/Freemap"
+      },
+      {
+        "title": "Digital Starter",
+        "purpose": "A web application providing a structured digital learning or onboarding experience with integrated AI assistance and progress tracking.",
+        "stack": ["Next.js", "React", "TypeScript", "Node.js", "MongoDB", "NextAuth.js", "CSS Modules", "Google Gemini API"],
+        "impact": "Streamlined user onboarding with a multi-phase guided journey and AI-powered assistance, improving engagement and completion rates.",
+        "role": "Fullstack Developer & Project Architect, designed the user flow, integrated AI assistance, and managed authentication and progress tracking features.",
+        "features": ["Multi-phase guided user onboarding", "Integrated AI assistant for help", "Comprehensive user authentication", "Personalized progress tracking", "Secure authenticated routes & contact form"],
+        "link": "https://digital-starter-5yx3e8xpc-andreliars-projects.vercel.app",
+        "repoUrl": "https://github.com/AndreLiar/digital-starter"
+      }
     ],
     "workExperience": [
         { "date": "Sep 2024 - Present", "title": "IT Support & Python Development (Apprentice)", "subtitle": "HDI France, Paris", "description": "<ul><li>Provided Level 1 & 2 technical support, managing user incidents for hardware, network, and software issues via GLPI.</li><li>Modernized and maintained legacy Python scripts, focusing on performance optimization, bug fixes, and code readability.</li><li>Developed automation scripts to streamline document exports, improving data accessibility and workflow efficiency.</li><li>Managed the IT asset lifecycle, including deployment, configuration, and network administration for user workstations and meeting room hardware (ClickShare).</li></ul>" },
