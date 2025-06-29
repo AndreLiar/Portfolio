@@ -84,46 +84,46 @@
       { "title": "Cloud & DevOps", "Icon": "Cloud", "skills": ["Azure", "Kubernetes", "Terraform", "GitHub Actions", "GitLab CI", "Jenkins", "Docker", "CI/CD", "Prometheus", "Grafana", "Alerting", "Tracing (OpenTelemetry)"] },
       { "title": "AI/ML", "Icon": "BrainCircuit", "skills": ["OpenAI API", "LangChain", "HuggingFace", "MLflow", "Transformers", "scikit-learn", "Gemini API", "Ollama"] },
       { "title": "Data & Analytics", "Icon": "Database", "skills": ["PostgreSQL", "MySQL", "MongoDB", "Redis", "Snowflake", "dbt", "SQL Server", "Streamlit", "ETL/ELT pipelines"] },
-      { "title": "Enterprise & Others", "Icon": "Type", "skills": ["Salesforce App Builder", "SAP UI5", "SAP BTP", "OAuth2", "JWT", "SAML", "Playwright", "Postman", "Firebase", "Supabase"] }
+      { "title": "Enterprise & Others", "Icon": "Type", "skills": ["Salesforce App Builder", "SAP UI5", "SAP BTP", "OAuth2", "JWT", "SAML", "Playwright", "Postman", "Firebase", "Supabase", "Agile/Scrum", "unit and integration testing"] }
     ],
     "projects": [
       {
         "title": "TransparAI",
-        "purpose": "An AI platform providing clear analysis of complex legal and technical documents, complete with secure authentication and subscriptions.",
+        "purpose": "An AI platform for analyzing complex legal and technical documents, with secure authentication and subscriptions.",
         "stack": ["React", "Vite", "TypeScript", "Node.js", "Express", "MongoDB", "Firebase", "Stripe", "Vercel", "Render"],
-        "impact": "Empowered users with AI-driven summaries, risk scores, and key clause extraction, improving decision-making across legal and technical domains.",
-        "role": "Fullstack Developer, built the UI, integrated the Gemini AI API, and implemented secure auth with Stripe subscriptions, deploying to cloud platforms.",
-        "features": ["AI document analysis (summary, scoring)", "Secure Firebase authentication", "Stripe-based subscription management", "Analysis history & PDF export", "Responsive dashboard interface"],
+        "impact": "Empowered users with AI-driven summaries and risk scores, improving decision-making in legal and technical fields.",
+        "role": "Fullstack Developer, built the UI, integrated the Gemini AI API, and implemented secure auth and subscriptions.",
+        "features": ["AI document analysis (summary, scoring)", "Secure Firebase authentication", "Stripe subscription management", "Analysis history & PDF export", "Responsive dashboard interface"],
         "link": "https://transparai.vercel.app/",
         "repoUrl": "https://github.com/AndreLiar/transparai.git"
       },
       {
         "title": "PlatformPro Jobs",
-        "purpose": "A specialized job board connecting platform engineering talent with employers, featuring AI-powered candidate scoring and job description generation.",
+        "purpose": "A job board for platform engineers with AI-powered candidate scoring and job description generation.",
         "stack": ["Next.js", "TypeScript", "Firebase", "Genkit (Gemini AI)", "Tailwind CSS", "ShadCN UI", "Stripe", "Cloudinary", "Vercel", "Zod"],
-        "impact": "Streamlined hiring for platform engineering roles with AI-assisted tools for recruiters and a dedicated dashboard for candidates to manage applications and profiles.",
-        "role": "Fullstack Developer, architected the Next.js app, implemented Firebase services, integrated Genkit for AI features, and set up Stripe and Cloudinary.",
-        "features": ["Dedicated recruiter & candidate dashboards", "AI-powered CV analysis & scoring", "AI-assisted job description generation", "Job & application management tools", "Stripe integration for job posting credits"],
+        "impact": "Streamlined hiring for platform roles with AI tools for recruiters and a dedicated dashboard for candidates.",
+        "role": "Fullstack Developer, architected the app, implemented Firebase services, and integrated Genkit for AI features.",
+        "features": ["Dedicated recruiter & candidate dashboards", "AI-powered CV analysis & scoring", "AI job description generation", "Job & application management tools", "Stripe integration for job posting credits"],
         "link": "https://plateformprojob.vercel.app",
         "repoUrl": "https://github.com/AndreLiar/Plateformprojob.git"
       },
       {
         "title": "Freemap",
-        "purpose": "A platform to connect users based on location and facilitate real-time communication through video calls, enabling profile creation and map-based discovery.",
-        "stack": ["Node.js", "Express.js", "MongoDB (Mongoose)", "Socket.io", "Cloudinary", "Nodemailer", "Firebase Admin", "JWT", "Multer", "React", "React Router DOM", "Axios", "Bootstrap", "Leaflet", "Socket.io-client", "Firebase", "Jitsi"],
-        "impact": "Facilitates community building by combining location-based discovery with real-time video, enabling users to connect for shared interests or local services.",
-        "role": "Fullstack Developer, designed the Node.js backend with MongoDB, integrated real-time communication via Socket.io and Jitsi, and built the React frontend.",
-        "features": ["User Authentication & Profile Management", "Location-based User Discovery via Leaflet", "Real-time Video Calling with Jitsi", "Secure Routes & User Search Functionality", "Image Uploads with Cloudinary for profiles"],
+        "purpose": "A platform connecting users by location for real-time video calls, enabling profile creation and map discovery.",
+        "stack": ["Node.js", "Express", "MongoDB", "Socket.io", "Cloudinary", "React", "Leaflet", "Jitsi"],
+        "impact": "Facilitates community building by combining location-based discovery with real-time video communication.",
+        "role": "Fullstack Developer, designed the backend, integrated real-time communication, and built the React frontend.",
+        "features": ["User Authentication & Profile Management", "Location-based User Discovery via Leaflet", "Real-time Video Calling with Jitsi", "Secure Routes & User Search", "Image Uploads with Cloudinary"],
         "link": "https://freemap-puce.vercel.app/",
         "repoUrl": "https://github.com/AndreLiar/Freemap"
       },
       {
         "title": "Digital Starter",
-        "purpose": "A web app designed to provide a structured digital learning or onboarding experience, guiding users through phases with integrated AI assistance and progress tracking.",
-        "stack": ["Next.js", "React", "TypeScript", "Node.js", "MongoDB", "NextAuth.js", "CSS Modules", "Google Gemini API"],
-        "impact": "Streamlines user onboarding by offering a clear, multi-phase journey, enhancing engagement through AI assistance and enabling personalized progress tracking.",
-        "role": "Fullstack Developer & Project Architect, designed the user flow, integrated AI assistance, and managed authentication and progress tracking features.",
-        "features": ["User Authentication & Profile Management", "Multi-phase Guided User Onboarding", "Integrated AI Assistant for Help & Support", "Comprehensive User Progress Tracking", "Secure Authenticated Routes & Contact Form"],
+        "purpose": "A web app for structured digital learning or onboarding, with integrated AI assistance and progress tracking.",
+        "stack": ["Next.js", "React", "TypeScript", "Node.js", "MongoDB", "NextAuth.js", "CSS Modules", "Gemini API"],
+        "impact": "Streamlines user onboarding by offering a clear, multi-phase journey with AI assistance and progress tracking.",
+        "role": "Fullstack Developer & Project Architect, designed the user flow and integrated AI and authentication features.",
+        "features": ["User Authentication & Profile Management", "Multi-phase Guided User Onboarding", "Integrated AI Assistant for Support", "User Progress Tracking", "Secure Authenticated Routes"],
         "link": "https://digital-starter-5yx3e8xpc-andreliars-projects.vercel.app",
         "repoUrl": "https://github.com/AndreLiar/digital-starter"
       }
@@ -142,3 +142,5 @@
     "interests": ["AI in Education", "Startup Tools", "Data Privacy", "Productivity Systems", "Music"]
   }
 }
+
+    
