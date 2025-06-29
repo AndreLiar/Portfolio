@@ -6,6 +6,7 @@
   "Header": {
     "projects": "Projects",
     "skills": "Skills",
+    "softSkills": "Soft Skills",
     "experience": "Experience",
     "contact": "Contact"
   },
@@ -20,6 +21,9 @@
     },
     "skills": {
       "title": "Core Technical Skills"
+    },
+    "softSkills": {
+      "title": "💬 Soft Skills"
     },
     "journey": {
       "title": "My Journey",
@@ -198,8 +202,7 @@
           "AI document analysis (summary, scoring)",
           "Secure Firebase authentication",
           "Stripe subscription management",
-          "Analysis history & PDF export",
-          "Responsive dashboard interface"
+          "Analysis history & PDF export"
         ],
         "link": "https://transparai.vercel.app/",
         "repoUrl": "https://github.com/AndreLiar/transparai.git"
@@ -222,7 +225,6 @@
         "impact": "Streamlines hiring for platform roles with AI tools for recruiters and a dedicated dashboard for candidates, boosting efficiency.",
         "role": "Fullstack Developer, architected the app, implemented Firebase services, and integrated Genkit for AI features.",
         "features": [
-          "Dedicated recruiter & candidate dashboards",
           "AI-powered CV analysis & scoring",
           "AI job description generation",
           "Job & application management tools",
@@ -233,33 +235,33 @@
       },
       {
         "title": "Freemap",
-        "purpose": "A platform designed to connect users based on location and facilitate real-time communication through video calls. It enables users to create profiles, discover others on a map, and engage in direct video interactions.",
+        "purpose": "A platform to connect users by location and facilitate real-time video calls, enabling profile discovery and direct interaction.",
         "stack": [
           "Node.js",
-          "Express",
+          "Express.js",
           "MongoDB",
           "Socket.io",
           "Cloudinary",
+          "Nodemailer",
+          "JWT",
           "React",
           "Leaflet",
           "Jitsi"
         ],
-        "impact": "Facilitates community building by combining location-based discovery with real-time video, enabling users to connect for various purposes.",
-        "role": "Fullstack Developer, designed the Node.js backend, integrated real-time communication, and developed the React frontend.",
+        "impact": "Facilitates community building by combining location-based discovery with real-time video, enabling diverse user connections.",
+        "role": "Fullstack Developer, responsible for the Node.js backend, real-time communication, React frontend, and user authentication.",
         "features": [
-          "User Authentication (Sign up, Log in)",
-          "User Profile Management",
-          "Location-based User Discovery (Leaflet)",
-          "Real-time Video Calling (Jitsi)",
-          "Real-time Communication (Socket.io)",
-          "Image Uploads via Cloudinary"
+          "User authentication & profile management",
+          "Location-based user discovery via Leaflet",
+          "Real-time video calling with Jitsi",
+          "Image uploads through Cloudinary"
         ],
         "link": "https://freemap-puce.vercel.app/",
         "repoUrl": "https://github.com/AndreLiar/Freemap"
       },
       {
         "title": "Digital Starter",
-        "purpose": "A web application designed to provide a structured digital learning or onboarding experience, guiding users through various phases with integrated AI assistance and progress tracking.",
+        "purpose": "A web application for structured digital learning or onboarding, guiding users through phases with AI assistance and progress tracking.",
         "stack": [
           "Next.js",
           "React",
@@ -270,15 +272,13 @@
           "CSS Modules",
           "Gemini API"
         ],
-        "impact": "Streamlines user onboarding by offering a clear, multi-phase journey, enhancing engagement through AI assistance and progress tracking.",
+        "impact": "Streamlines user onboarding with a clear, multi-phase journey, enhancing engagement through AI assistance and progress tracking.",
         "role": "This is a description of the project itself, not a specific role within its development.",
         "features": [
-          "User Authentication & Profile Management",
-          "Multi-phase Guided Experience",
-          "AI Assistant Integration",
-          "Contact Form",
-          "Progress Tracking",
-          "Protected Routes for authenticated users"
+          "User authentication & profile management",
+          "Multi-phase guided experience",
+          "AI assistant integration",
+          "Progress tracking for users"
         ],
         "link": "https://digital-starter-5yx3e8xpc-andreliars-projects.vercel.app",
         "repoUrl": "https://github.com/AndreLiar/digital-starter"
@@ -299,6 +299,12 @@
         "subtitle": "Ynov Campus, Paris",
         "description": "<p class=\"font-semibold\">📘 Key Modules:</p><ul class=\"list-disc pl-5 mt-2 space-y-1\"><li>Fullstack JavaScript Development (React, Node.js, Next.js)</li><li>DevOps & Cloud Computing (Docker, Kubernetes, GitHub Actions, AWS, Azure)</li><li>Software Design and Architecture</li><li>Enterprise Systems Integration (Salesforce, SAP, Oracle)</li><li>Agile Projects & Version Control (Scrum, Git)</li><li>Introduction to Artificial Intelligence and Data Science</li><li>Application Security and Web Performance</li></ul>"
       }
+    ],
+    "softSkills": [
+      "Problem-solving and system thinking",
+      "Communication and collaboration with cross-functional teams",
+      "Adaptability and fast learning in dynamic tech stacks",
+      "Project ownership, initiative, and continuous improvement mindset"
     ],
     "languages": [
       {

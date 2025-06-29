@@ -8,6 +8,7 @@ import {
   BrainCircuit,
   BotMessageSquare,
   Type,
+  CheckCircle,
 } from 'lucide-react';
 
 import { Header } from '@/components/portfolio/header';
@@ -42,6 +43,7 @@ export default function Home() {
   const projects = data.projects;
   const languages = data.languages;
   const interests = data.interests;
+  const softSkills = data.softSkills;
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -81,7 +83,25 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="experience" className="py-16 md:py-24">
+        <section id="soft-skills" className="py-16 md:py-24">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl md:text-4xl font-headline font-bold text-center mb-12">
+              {Page.softSkills.title}
+            </h2>
+            <div className="max-w-3xl mx-auto">
+              <ul className="space-y-4">
+                {softSkills.map((skill: string, index: number) => (
+                  <li key={index} className="flex items-start text-left">
+                    <CheckCircle className="w-6 h-6 text-accent mr-4 mt-1 flex-shrink-0" />
+                    <span className="text-lg text-muted-foreground">{skill}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="experience" className="py-16 md:py-24 bg-card">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl md:text-4xl font-headline font-bold text-center mb-12">
               {Page.journey.title}
@@ -105,7 +125,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="extras" className="py-16 md:py-24 bg-card">
+        <section id="extras" className="py-16 md:py-24">
           <div className="container mx-auto px-4 text-center">
             <div className="grid md:grid-cols-2 gap-8">
               <div>
@@ -145,7 +165,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="contact" className="py-16 md:py-24">
+        <section id="contact" className="py-16 md:py-24 bg-card">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-headline font-bold mb-2">
