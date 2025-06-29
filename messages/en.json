@@ -286,17 +286,19 @@
     ],
     "workExperience": [
       {
-        "date": "Your Dates (e.g., Jan 2023 - Dec 2023)",
-        "title": "Your Title at FedHub",
-        "subtitle": "FedHub, City, Country",
-        "description": "<ul><li>Please describe your responsibilities and achievements here.</li></ul>"
-      },
-      {
         "date": "Sep 2024 - Present",
         "title": "IT Support & Python Development (Apprentice)",
         "subtitle": "HDI France, Paris",
         "description": "<ul><li>Provided Level 1 & 2 technical support, managing user incidents for hardware, network, and software issues via GLPI.</li><li>Modernized and maintained legacy Python scripts, focusing on performance optimization, bug fixes, and code readability.</li><li>Developed automation scripts to streamline document exports, improving data accessibility and workflow efficiency.</li><li>Managed the IT asset lifecycle, including deployment, configuration, and network administration for user workstations and meeting room hardware (ClickShare).</li></ul>"
+      },
+      {
+        "date": "Jul 2024 – Aug 2024",
+        "title": "Software Developer Intern",
+        "subtitle": "FedHub, Remote",
+        "description": "<ul><li><strong>Web Scraping with Python</strong>: Developed a Python scraping algorithm using BeautifulSoup to extract and structure data, along with a simple web interface for practical use.</li><li><strong>SEO Optimization</strong>: Improved website SEO and performance using Laravel and React TypeScript. Optimized dynamic and static loading, compressed resources, and enhanced meta tags and descriptions for better search engine ranking.</li></ul>"
       }
+      
+      
     ],
     "education": [
       {
