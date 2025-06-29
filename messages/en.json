@@ -82,7 +82,7 @@
       { "title": "Languages & Backend", "Icon": "Code", "skills": ["TypeScript", "Python", "JavaScript", "Java", "Spring Boot", "C#/.NET", "Go", "Bash", "SQL", "Node.js", "Express", "NestJS"] },
       { "title": "Web Stack", "Icon": "BotMessageSquare", "skills": ["React", "Next.js", "Tailwind CSS", "Vite", "Bootstrap", "REST", "GraphQL"] },
       { "title": "Cloud & DevOps", "Icon": "Cloud", "skills": ["Azure", "Kubernetes", "Terraform", "GitHub Actions", "GitLab CI", "Jenkins", "Docker", "CI/CD", "Prometheus", "Grafana", "Alerting", "Tracing (OpenTelemetry)"] },
-      { "title": "AI/ML", "Icon": "BrainCircuit", "skills": ["OpenAI API", "LangChain", "HuggingFace", "MLflow", "Transformers", "scikit-learn", "Azure ML Studio"] },
+      { "title": "AI/ML", "Icon": "BrainCircuit", "skills": ["OpenAI API", "LangChain", "HuggingFace", "MLflow", "Transformers", "scikit-learn", "Gemini API", "Ollama"] },
       { "title": "Data & Analytics", "Icon": "Database", "skills": ["PostgreSQL", "MySQL", "Redis", "Snowflake", "dbt", "SQL Server", "Power BI", "Streamlit"] },
       { "title": "Enterprise & Others", "Icon": "Type", "skills": ["Salesforce App Builder", "SAP UI5", "SAP BTP", "OAuth2", "JWT", "SAML", "Playwright", "Postman", "Firebase", "Supabase"] }
     ],
@@ -109,28 +109,27 @@
       },
       {
         "title": "Freemap",
-        "purpose": "A location-based platform for real-time video communication, allowing users to discover others on a map and engage in direct video calls.",
-        "stack": ["Node.js", "Express.js", "MongoDB", "Socket.io", "Cloudinary", "Nodemailer", "React", "Leaflet", "Jitsi"],
-        "impact": "Facilitated community building by combining location-based discovery with real-time video communication for social networking or shared interests.",
-        "role": "Fullstack Developer, built the Node.js backend, integrated real-time communication via Socket.io/Jitsi, and developed the React frontend with mapping.",
-        "features": ["Location-based user discovery via Leaflet", "Real-time video calling with Jitsi", "User authentication & profile management", "Image uploads with Cloudinary", "Protected routes & user search"],
+        "purpose": "A platform designed to connect users based on location and facilitate real-time communication through video calls, enabling users to create profiles and discover others on a map.",
+        "stack": ["Node.js", "Express.js", "MongoDB (Mongoose)", "Socket.io", "Cloudinary", "Nodemailer", "Firebase Admin", "JWT", "Multer", "React", "React Router DOM", "Axios", "Bootstrap", "Leaflet", "Socket.io-client", "Firebase", "Jitsi"],
+        "impact": "Facilitates community building by combining location-based discovery with real-time video communication for social networking, shared interests, or local services.",
+        "role": "Fullstack Developer, responsible for designing and implementing the Node.js/Express backend with MongoDB, integrating real-time communication via Socket.io and Jitsi, developing the React frontend with mapping functionalities, and managing user authentication and profile features.",
+        "features": ["User Authentication & Profile Management", "Location-based User Discovery via Leaflet", "Real-time Video Calling with Jitsi", "Real-time Communication via Socket.io", "Image Uploads with Cloudinary", "Protected Routes & User Search Functionality"],
         "link": "https://freemap-puce.vercel.app/",
         "repoUrl": "https://github.com/AndreLiar/Freemap"
       },
       {
         "title": "Digital Starter",
-        "purpose": "A web application providing a structured digital learning or onboarding experience with integrated AI assistance and progress tracking.",
+        "purpose": "A web application designed to provide a structured digital learning or onboarding experience, guiding users through various phases with integrated AI assistance and progress tracking.",
         "stack": ["Next.js", "React", "TypeScript", "Node.js", "MongoDB", "NextAuth.js", "CSS Modules", "Google Gemini API"],
-        "impact": "Streamlined user onboarding with a multi-phase guided journey and AI-powered assistance, improving engagement and completion rates.",
+        "impact": "Streamlines user onboarding and learning by offering a clear, multi-phase journey, enhancing engagement through AI assistance, and enabling personalized progress tracking.",
         "role": "Fullstack Developer & Project Architect, designed the user flow, integrated AI assistance, and managed authentication and progress tracking features.",
-        "features": ["Multi-phase guided user onboarding", "Integrated AI assistant for help", "Comprehensive user authentication", "Personalized progress tracking", "Secure authenticated routes & contact form"],
+        "features": ["User Authentication & Profile Management", "Multi-phase Guided User Onboarding", "Integrated AI Assistant for Help & Support", "Comprehensive User Progress Tracking", "Secure Authenticated Routes & Contact Form"],
         "link": "https://digital-starter-5yx3e8xpc-andreliars-projects.vercel.app",
         "repoUrl": "https://github.com/AndreLiar/digital-starter"
       }
     ],
     "workExperience": [
-        { "date": "Sep 2024 - Present", "title": "IT Support & Python Development (Apprentice)", "subtitle": "HDI France, Paris", "description": "<ul><li>Provided Level 1 & 2 technical support, managing user incidents for hardware, network, and software issues via GLPI.</li><li>Modernized and maintained legacy Python scripts, focusing on performance optimization, bug fixes, and code readability.</li><li>Developed automation scripts to streamline document exports, improving data accessibility and workflow efficiency.</li><li>Managed the IT asset lifecycle, including deployment, configuration, and network administration for user workstations and meeting room hardware (ClickShare).</li></ul>" },
-        { "date": "Jul 2024 - Aug 2024", "title": "Developer Intern", "subtitle": "FEDHUBS, Remote", "description": "Developed a Python-based web scraper using BeautifulSoup to automate data extraction. Optimized SEO and performance for a Laravel and React/TypeScript site, improving loading strategies and asset compression." }
+        { "date": "Sep 2024 - Present", "title": "IT Support & Python Development (Apprentice)", "subtitle": "HDI France, Paris", "description": "<ul><li>Provided Level 1 & 2 technical support, managing user incidents for hardware, network, and software issues via GLPI.</li><li>Modernized and maintained legacy Python scripts, focusing on performance optimization, bug fixes, and code readability.</li><li>Developed automation scripts to streamline document exports, improving data accessibility and workflow efficiency.</li><li>Managed the IT asset lifecycle, including deployment, configuration, and network administration for user workstations and meeting room hardware (ClickShare).</li></ul>" }
     ],
     "education": [
         { "date": "2022 - 2027", "title": "Mastère – Expert en Développement Web Fullstack (Titre RNCP n°39583 — Niveau 7, Bac+5 reconnu par l'État)", "subtitle": "Ynov Campus, Paris", "description": "<p class=\"font-semibold\">📘 Key Modules:</p><ul class=\"list-disc pl-5 mt-2 space-y-1\"><li>Fullstack JavaScript Development (React, Node.js, Next.js)</li><li>DevOps & Cloud Computing (Docker, Kubernetes, GitHub Actions, AWS, Azure)</li><li>Software Design and Architecture</li><li>Enterprise Systems Integration (Salesforce, SAP, Oracle)</li><li>Agile Projects & Version Control (Scrum, Git)</li><li>Introduction to Artificial Intelligence and Data Science</li><li>Application Security and Web Performance</li></ul>" }
