@@ -148,13 +148,13 @@
         "skills": [
           "PostgreSQL",
           "MySQL",
-          "MongoDB",
           "Redis",
           "Snowflake",
           "dbt",
           "SQL Server",
           "Streamlit",
-          "ETL/ELT pipelines"
+          "ETL/ELT pipelines",
+          "MongoDB"
         ]
       },
       {
@@ -192,7 +192,7 @@
           "Vercel",
           "Render"
         ],
-        "impact": "Empowers users with AI-driven summaries and risk scores, improving decision-making in legal and technical fields.",
+        "impact": "Empowers users with AI-driven summaries, improving decision-making in legal fields. Features secure auth, subscriptions, and PDF export.",
         "role": "Fullstack Developer, built the UI, integrated the Gemini AI API, and implemented secure auth and subscriptions.",
         "features": [
           "AI document analysis (summary, scoring)",
@@ -219,7 +219,7 @@
           "Vercel",
           "Zod"
         ],
-        "impact": "Streamlined hiring for platform roles with AI tools for recruiters and a dedicated dashboard for candidates.",
+        "impact": "Streamlines hiring for platform roles with AI tools for recruiters and a dedicated dashboard for candidates, boosting efficiency.",
         "role": "Fullstack Developer, architected the app, implemented Firebase services, and integrated Genkit for AI features.",
         "features": [
           "Dedicated recruiter & candidate dashboards",
@@ -244,19 +244,15 @@
           "Leaflet",
           "Jitsi"
         ],
-        "impact": "Facilitates community building by combining location-based discovery with real-time video communication, enabling users to connect for various purposes (e.g., shared interests, local services, social networking).",
-        "role": "Fullstack Developer, responsible for designing and implementing the Node.js/Express backend with MongoDB, integrating real-time communication via Socket.io and Jitsi, developing the React frontend with mapping functionalities, and managing user authentication and profile features.",
+        "impact": "Facilitates community building by combining location-based discovery with real-time video, enabling users to connect for various purposes.",
+        "role": "Fullstack Developer, designed the Node.js backend, integrated real-time communication, and developed the React frontend.",
         "features": [
           "User Authentication (Sign up, Log in)",
-          "User Profile Management (creation, editing, viewing)",
-          "Location-based User Discovery (mapping using Leaflet)",
-          "Real-time Video Calling (Jitsi integration)",
-          "Real-time Communication (Socket.io for call signaling)",
-          "Image Uploads (Cloudinary integration for profile pictures/content)",
-          "Protected Routes for authenticated users",
-          "Search functionality for users/profiles",
-          "Email notifications (Nodemailer)",
-          "Firebase for authentication and potentially other services"
+          "User Profile Management",
+          "Location-based User Discovery (Leaflet)",
+          "Real-time Video Calling (Jitsi)",
+          "Real-time Communication (Socket.io)",
+          "Image Uploads via Cloudinary"
         ],
         "link": "https://freemap-puce.vercel.app/",
         "repoUrl": "https://github.com/AndreLiar/Freemap"
@@ -274,7 +270,7 @@
           "CSS Modules",
           "Gemini API"
         ],
-        "impact": "Streamlines user onboarding or learning processes by offering a clear, multi-phase journey, enhancing engagement through AI-powered assistance, and enabling personalized progress tracking.",
+        "impact": "Streamlines user onboarding by offering a clear, multi-phase journey, enhancing engagement through AI assistance and progress tracking.",
         "role": "This is a description of the project itself, not a specific role within its development.",
         "features": [
           "User Authentication & Profile Management",
@@ -320,10 +316,10 @@
     ],
     "interests": [
       "AI in Education",
-      "Startup Tools",
-      "Data Privacy",
-      "Productivity Systems",
-      "Music"
+      "Music",
+      "Football",
+      "Travel",
+      "Tech Trend"
     ]
   }
 }
