@@ -6,6 +6,12 @@ import {
   GraduationCap,
   Heart,
   CheckCircle,
+  Code,
+  Cloud,
+  Database,
+  BrainCircuit,
+  BotMessageSquare,
+  Type,
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
@@ -25,8 +31,16 @@ type Skill = {
 }
 interface MainContentProps {
   messages: any;
-  skillsWithIcons: Skill[];
 }
+
+const iconMap: { [key: string]: LucideIcon } = {
+  Code,
+  Cloud,
+  Database,
+  BrainCircuit,
+  BotMessageSquare,
+  Type,
+};
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 40 },
@@ -56,8 +70,13 @@ const itemVariants = {
   },
 };
 
-export function MainContent({ messages, skillsWithIcons }: MainContentProps) {
+export function MainContent({ messages }: MainContentProps) {
   const { data, Page, Header: headerData, Hero: heroData, ProjectList: projectListData, ProjectCard: projectCardData, ContactForm: contactFormData, Footer: footerData } = messages;
+
+  const skillsWithIcons = data.skills.map((skill: any) => ({
+    ...skill,
+    Icon: iconMap[skill.Icon],
+  }));
 
   const workExperience = data.workExperience;
   const education = data.education;
