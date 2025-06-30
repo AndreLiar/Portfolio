@@ -28,9 +28,30 @@ const itemVariants = {
   },
 };
 
+const sentenceVariant = {
+  hidden: { opacity: 1 },
+  visible: {
+    opacity: 1,
+    transition: {
+      delay: 0.4,
+      staggerChildren: 0.03,
+    },
+  },
+};
+
+const letterVariant = {
+  hidden: { opacity: 0, y: 10 },
+  visible: {
+    opacity: 1,
+    y: 0,
+  },
+};
+
 export function Hero({ heroData, data }: { heroData: any, data: any }) {
   const title = data.title;
   const titleParts = title.split(' | ');
+  const firstPart = titleParts[0];
+  const secondPart = titleParts[1] ? ` | ${titleParts[1]}` : '';
 
   return (
     <motion.section 
@@ -44,17 +65,28 @@ export function Hero({ heroData, data }: { heroData: any, data: any }) {
         <motion.h1 variants={itemVariants} className="text-4xl md:text-6xl font-headline font-bold mb-4">
           {data.fullName}
         </motion.h1>
-        <motion.h2 variants={itemVariants} className="text-xl md:text-2xl font-semibold mb-6">
-          {titleParts[0]}
-          {titleParts[1] && (
-            <>
-              {' | '}
-              <span className="text-primary">
-                {titleParts[1]}
-              </span>
-            </>
-          )}
+        
+        <motion.h2
+          className="text-xl md:text-2xl font-semibold mb-6 min-h-[56px] md:min-h-[32px]"
+          variants={sentenceVariant}
+          initial="hidden"
+          animate="visible"
+          aria-label={title}
+        >
+          {firstPart.split("").map((char, index) => (
+            <motion.span key={`p1-${index}`} variants={letterVariant} aria-hidden="true">
+              {char}
+            </motion.span>
+          ))}
+          <span className="text-primary">
+            {secondPart.split("").map((char, index) => (
+              <motion.span key={`p2-${index}`} variants={letterVariant} aria-hidden="true">
+                {char}
+              </motion.span>
+            ))}
+          </span>
         </motion.h2>
+
         <motion.div variants={itemVariants} className="flex justify-center items-center gap-4 text-muted-foreground mb-8">
           <div className="flex items-center gap-2">
             <MapPin className="h-4 w-4" />
