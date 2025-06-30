@@ -28,6 +28,7 @@ const listVariants = {
       staggerChildren: 0.2,
     },
   },
+  hidden: {},
 };
 
 const itemVariants = {
@@ -51,11 +52,14 @@ export function ProjectList({ projects, projectListData, projectCardData }: Proj
   return (
     <>
       <motion.div 
+        key={visibleCount}
         className="grid grid-cols-1 md:grid-cols-2 gap-8"
         variants={listVariants}
+        initial="hidden"
+        animate="visible"
       >
-        {projects.slice(0, visibleCount).map((project, index) => (
-          <motion.div key={index} variants={itemVariants}>
+        {projects.slice(0, visibleCount).map((project) => (
+          <motion.div key={project.title} variants={itemVariants}>
             <ProjectCard {...project} projectCardData={projectCardData} />
           </motion.div>
         ))}
