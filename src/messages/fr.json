@@ -1,1 +1,211 @@
-{}
+{
+  "Metadata": {
+    "title": "La Scène Numérique de Laurel",
+    "description": "Portfolio de Laurel, Ingénieur Logiciel Fullstack."
+  },
+  "Header": {
+    "projects": "Projets",
+    "skills": "Compétences",
+    "softSkills": "Savoir-être",
+    "experience": "Expérience",
+    "contact": "Contact",
+    "language": "Langue"
+  },
+  "Hero": {
+    "contactMe": "Contactez-moi",
+    "github": "GitHub",
+    "linkedin": "LinkedIn"
+  },
+  "Page": {
+    "projects": {
+      "title": "Expérience de projet"
+    },
+    "skills": {
+      "title": "Compétences techniques de base"
+    },
+    "softSkills": {
+      "title": "💬 Savoir-être"
+    },
+    "journey": {
+      "title": "Mon parcours",
+      "workExperienceTitle": "Expérience professionnelle",
+      "educationTitle": "Formation"
+    },
+    "extras": {
+      "languagesTitle": "Langues",
+      "interestsTitle": "Centres d'intérêt"
+    },
+    "contact": {
+      "title": "Contactez-moi",
+      "subtitle": "Vous avez un projet en tête, ou vous voulez simplement dire bonjour ? N'hésitez pas à me contacter."
+    }
+  },
+  "ProjectList": {
+    "loadMore": "Charger plus"
+  },
+  "ProjectCard": {
+    "role": "Rôle",
+    "impact": "Impact",
+    "features": "Fonctionnalités",
+    "stack": "Stack technique",
+    "liveDemo": "Démo en direct",
+    "github": "GitHub"
+  },
+  "Footer": {
+    "rights": "Tous droits réservés."
+  },
+  "ContactForm": {
+    "name": "Nom",
+    "namePlaceholder": "Votre nom",
+    "email": "Email",
+    "emailPlaceholder": "votre.email@exemple.com",
+    "message": "Message",
+    "messagePlaceholder": "Parlez-moi de votre projet ou de votre demande...",
+    "button": "Envoyer le message",
+    "buttonSending": "Envoi en cours...",
+    "toast": {
+      "successTitle": "Message envoyé !",
+      "successDescription": "Merci de m'avoir contacté. Je vous répondrai bientôt.",
+      "errorTitle": "Erreur",
+      "errorDescription": "Une erreur s'est produite. Veuillez réessayer.",
+      "errorResend": "La clé API Resend n'est pas configurée."
+    }
+  },
+  "data": {
+    "name": "Laurel",
+    "fullName": "Laurel Kanmegne",
+    "title": "Ingénieur Logiciel Fullstack | Systèmes Cloud-Natifs & IA",
+    "location": "Paris, France",
+    "contact": {
+      "email": "kanmegneandre@gmail.com",
+      "phone": "+33000000000",
+      "github": "https://github.com/AndreLiar",
+      "linkedin": "https://www.linkedin.com/in/laurel-kanmegne-2a861425a/"
+    },
+    "summary": "Bonjour ! Je suis un Ingénieur Logiciel Fullstack qui transforme des idées complexes en applications web rapides, fiables et intelligentes. Je travaille sur l'ensemble de la stack — de la conception de backends robustes et scalables, à l’intégration de services d’IA et la création d’interfaces réactives et ergonomiques. Je suis particulièrement passionné par le développement SaaS, l’architecture fullstack moderne, les applications web intelligentes, et l’intégration de solutions cloud & IA qui créent un véritable impact utilisateur. Poussé par la curiosité et la créativité, j’apprends en continu, je construis sans relâche — toujours avec la volonté de rapprocher la technologie des besoins réels.",
+    "skills": [
+      {
+        "title": "Langages & Backend",
+        "Icon": "Code",
+        "skills": [
+          "TypeScript", "Python", "JavaScript", "Java", "Spring Boot", "C#/.NET", "Go", "Bash", "SQL", "Node.js", "Express", "NestJS"
+        ]
+      },
+      {
+        "title": "Stack Web",
+        "Icon": "BotMessageSquare",
+        "skills": [
+          "React", "Next.js", "Tailwind CSS", "Vite", "Bootstrap", "REST", "GraphQL"
+        ]
+      },
+      {
+        "title": "Cloud & DevOps",
+        "Icon": "Cloud",
+        "skills": [
+          "Azure", "Kubernetes", "Terraform", "GitHub Actions", "GitLab CI", "Jenkins", "Docker", "CI/CD", "Prometheus", "Grafana", "Alerting", "Tracing (OpenTelemetry)"
+        ]
+      },
+      {
+        "title": "IA/ML",
+        "Icon": "BrainCircuit",
+        "skills": [
+          "OpenAI API", "LangChain", "HuggingFace", "MLflow", "Transformers", "scikit-learn", "Gemini API", "Ollama"
+        ]
+      },
+      {
+        "title": "Données & Analytique",
+        "Icon": "Database",
+        "skills": [
+          "PostgreSQL", "MySQL", "Redis", "Snowflake", "dbt", "SQL Server", "Streamlit", "Pipelines ETL/ELT", "MongoDB"
+        ]
+      },
+      {
+        "title": "Entreprise & Autres",
+        "Icon": "Type",
+        "skills": [
+          "Salesforce App Builder", "SAP UI5", "SAP BTP", "OAuth2", "JWT", "SAML", "Playwright", "Postman", "Firebase", "Supabase", "Agile/Scrum", "Tests unitaires et d'intégration"
+        ]
+      }
+    ],
+    "projects": [
+      {
+        "title": "TransparAI",
+        "purpose": "Une plateforme d'IA pour l'analyse de documents juridiques et techniques complexes, avec une authentification et des abonnements sécurisés.",
+        "stack": ["React", "Vite", "TypeScript", "Node.js", "Express", "MongoDB", "Firebase", "Stripe", "Vercel", "Render"],
+        "impact": "Permet aux utilisateurs d'obtenir des résumés générés par l'IA, améliorant la prise de décision dans les domaines juridiques. Comprend une authentification sécurisée, des abonnements et l'exportation PDF.",
+        "role": "Développeur Fullstack, a construit l'interface utilisateur, intégré l'API Gemini AI et mis en œuvre l'authentification et les abonnements sécurisés.",
+        "features": ["Analyse de documents par IA (résumé, notation)", "Authentification Firebase sécurisée", "Gestion des abonnements Stripe", "Historique des analyses & export PDF"],
+        "link": "https://transparai.vercel.app/",
+        "repoUrl": "https://github.com/AndreLiar/transparai.git"
+      },
+      {
+        "title": "PlatformPro Jobs",
+        "purpose": "Un site d'offres d'emploi pour les ingénieurs de plateforme avec une notation des candidats et une génération de descriptions de poste assistées par l'IA.",
+        "stack": ["Next.js", "TypeScript", "Firebase", "Genkit (Gemini AI)", "Tailwind CSS", "ShadCN UI", "Stripe", "Cloudinary", "Vercel", "Zod"],
+        "impact": "Rationalise le recrutement pour les postes de plateforme avec des outils d'IA pour les recruteurs et un tableau de bord dédié pour les candidats, augmentant l'efficacité.",
+        "role": "Développeur Fullstack, a conçu l'architecture de l'application, mis en œuvre les services Firebase et intégré Genkit pour les fonctionnalités d'IA.",
+        "features": ["Analyse et notation de CV par l'IA", "Génération de descriptions de poste par l'IA", "Outils de gestion des emplois et des candidatures", "Intégration de Stripe pour les crédits de publication d'offres"],
+        "link": "https://plateformprojob.vercel.app",
+        "repoUrl": "https://github.com/AndreLiar/Plateformprojob.git"
+      },
+      {
+        "title": "Freemap",
+        "purpose": "Une plateforme pour connecter les utilisateurs par localisation et faciliter les appels vidéo en temps réel, permettant la découverte de profils et l'interaction directe.",
+        "stack": ["Node.js", "Express.js", "MongoDB", "Socket.io", "Cloudinary", "Nodemailer", "JWT", "React", "Leaflet", "Jitsi"],
+        "impact": "Facilite la création de communautés en combinant la découverte basée sur la localisation avec la vidéo en temps réel, permettant des connexions utilisateur diverses.",
+        "role": "Développeur Fullstack, responsable du backend Node.js, de la communication en temps réel, du frontend React et de l'authentification des utilisateurs.",
+        "features": ["Authentification et gestion de profil utilisateur", "Découverte d'utilisateurs basée sur la localisation via Leaflet", "Appels vidéo en temps réel avec Jitsi", "Téléchargement d'images via Cloudinary"],
+        "link": "https://freemap-puce.vercel.app/",
+        "repoUrl": "https://github.com/AndreLiar/Freemap"
+      },
+      {
+        "title": "Digital Starter",
+        "purpose": "Une application web pour un apprentissage numérique structuré ou un onboarding, guidant les utilisateurs à travers des phases avec une assistance par l'IA et un suivi des progrès.",
+        "stack": ["Next.js", "React", "TypeScript", "Node.js", "MongoDB", "NextAuth.js", "CSS Modules", "Gemini API"],
+        "impact": "Rationalise l'accueil des utilisateurs avec un parcours guidé clair en plusieurs phases, améliorant l'engagement grâce à l'assistance de l'IA et au suivi des progrès.",
+        "role": "Ceci est une description du projet lui-même, et non un rôle spécifique dans son développement.",
+        "features": ["Authentification et gestion de profil utilisateur", "Expérience guidée en plusieurs phases", "Intégration d'un assistant IA", "Suivi des progrès pour les utilisateurs"],
+        "link": "https://digital-starter-5yx3e8xpc-andreliars-projects.vercel.app",
+        "repoUrl": "https://github.com/AndreLiar/digital-starter"
+      }
+    ],
+    "workExperience": [
+      {
+        "date": "Sep 2024 - Présent",
+        "title": "Support IT & Développement Python (Apprenti)",
+        "subtitle": "HDI France, Paris",
+        "description": "<ul><li>Fourni un support technique de niveau 1 & 2, gérant les incidents des utilisateurs pour le matériel, le réseau et les logiciels via GLPI.</li><li>Modernisé et maintenu des scripts Python existants, en se concentrant sur l'optimisation des performances, la correction des bogues et la lisibilité du code.</li><li>Développé des scripts d'automatisation pour rationaliser les exportations de documents, améliorant l'accessibilité des données et l'efficacité des flux de travail.</li><li>Géré le cycle de vie des actifs informatiques, y compris le déploiement, la configuration et l'administration réseau pour les postes de travail des utilisateurs et le matériel de salle de réunion (ClickShare).</li></ul>"
+      },
+      {
+        "date": "Juil 2024 – Août 2024",
+        "title": "Développeur Logiciel (Stagiaire)",
+        "subtitle": "FedHub, À distance",
+        "description": "<ul><li><strong>Web Scraping avec Python</strong> : Développement d’un algorithme de scraping en Python (BeautifulSoup) pour extraire et structurer des données, accompagné d’une interface web simple pour une utilisation pratique.</li><li><strong>Optimisation SEO</strong> : Amélioration du SEO et des performances du site en utilisant Laravel et React TypeScript. J’ai optimisé le chargement dynamique et statique, compressé les ressources, et travaillé sur les balises et descriptions pour un meilleur référencement.</li></ul>"
+      }
+    ],
+    "education": [
+      {
+        "date": "2022 - 2027",
+        "title": "Mastère – Expert en Développement Web Fullstack (Titre RNCP n°39583 — Niveau 7, Bac+5 reconnu par l'État)",
+        "subtitle": "Ynov Campus, Paris",
+        "description": "<p class=\"font-semibold\">📘 Modules clés :</p><ul class=\"list-disc pl-5 mt-2 space-y-1\"><li>Développement Fullstack JavaScript (React, Node.js, Next.js)</li><li>DevOps & Cloud Computing (Docker, Kubernetes, GitHub Actions, AWS, Azure)</li><li>Conception et Architecture Logicielle</li><li>Intégration des Systèmes d'Entreprise (Salesforce, SAP, Oracle)</li><li>Projets Agiles & Contrôle de Version (Scrum, Git)</li><li>Introduction à l'Intelligence Artificielle et à la Science des Données</li><li>Sécurité des Applications et Performance Web</li></ul>"
+      }
+    ],
+    "softSkills": [
+      "Résolution de problèmes et pensée systémique",
+      "Communication et collaboration avec des équipes interfonctionnelles",
+      "Adaptabilité et apprentissage rapide dans des environnements technologiques dynamiques",
+      "Appropriation des projets, initiative et esprit d'amélioration continue"
+    ],
+    "languages": [
+      { "name": "Anglais", "level": "C1" },
+      { "name": "Français", "level": "Natif" },
+      { "name": "Allemand", "level": "B1" }
+    ],
+    "interests": [
+      "IA dans l'éducation", "Musique", "Football", "Voyages", "Tendances technologiques"
+    ]
+  }
+}
+
+    

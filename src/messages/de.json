@@ -1,1 +1,211 @@
-{}
+{
+  "Metadata": {
+    "title": "Laurels Digitale Bühne",
+    "description": "Portfolio von Laurel, Fullstack Software Engineer."
+  },
+  "Header": {
+    "projects": "Projekte",
+    "skills": "Fähigkeiten",
+    "softSkills": "Soft Skills",
+    "experience": "Erfahrung",
+    "contact": "Kontakt",
+    "language": "Sprache"
+  },
+  "Hero": {
+    "contactMe": "Kontakt",
+    "github": "GitHub",
+    "linkedin": "LinkedIn"
+  },
+  "Page": {
+    "projects": {
+      "title": "Projekterfahrung"
+    },
+    "skills": {
+      "title": "Technische Kernkompetenzen"
+    },
+    "softSkills": {
+      "title": "💬 Soft Skills"
+    },
+    "journey": {
+      "title": "Mein Werdegang",
+      "workExperienceTitle": "Berufserfahrung",
+      "educationTitle": "Ausbildung"
+    },
+    "extras": {
+      "languagesTitle": "Sprachen",
+      "interestsTitle": "Interessen"
+    },
+    "contact": {
+      "title": "Kontakt aufnehmen",
+      "subtitle": "Haben Sie ein Projekt im Sinn oder möchten Sie einfach nur Hallo sagen? Zögern Sie nicht, mich zu kontaktieren."
+    }
+  },
+  "ProjectList": {
+    "loadMore": "Mehr laden"
+  },
+  "ProjectCard": {
+    "role": "Rolle",
+    "impact": "Auswirkung",
+    "features": "Funktionen",
+    "stack": "Technologien",
+    "liveDemo": "Live-Demo",
+    "github": "GitHub"
+  },
+  "Footer": {
+    "rights": "Alle Rechte vorbehalten."
+  },
+  "ContactForm": {
+    "name": "Name",
+    "namePlaceholder": "Ihr Name",
+    "email": "E-Mail",
+    "emailPlaceholder": "ihre.email@beispiel.com",
+    "message": "Nachricht",
+    "messagePlaceholder": "Erzählen Sie mir von Ihrem Projekt oder Ihrer Anfrage...",
+    "button": "Nachricht senden",
+    "buttonSending": "Wird gesendet...",
+    "toast": {
+      "successTitle": "Nachricht gesendet!",
+      "successDescription": "Danke für Ihre Kontaktaufnahme. Ich melde mich bald bei Ihnen.",
+      "errorTitle": "Fehler",
+      "errorDescription": "Etwas ist schiefgegangen. Bitte versuchen Sie es erneut.",
+      "errorResend": "Resend API-Schlüssel ist nicht konfiguriert."
+    }
+  },
+  "data": {
+    "name": "Laurel",
+    "fullName": "Laurel Kanmegne",
+    "title": "Fullstack Software Engineer | Cloud-Native & KI-gestützte Systeme",
+    "location": "Paris, Frankreich",
+    "contact": {
+      "email": "kanmegneandre@gmail.com",
+      "phone": "+33000000000",
+      "github": "https://github.com/AndreLiar",
+      "linkedin": "https://www.linkedin.com/in/laurel-kanmegne-2a861425a/"
+    },
+    "summary": "Hallo! Ich bin ein Fullstack-Softwareentwickler, der komplexe Ideen in schnelle, zuverlässige und intelligente Webanwendungen umsetzt. Ich arbeite über den gesamten Stack – von der Konzeption robuster und skalierbarer Backends über die Integration von KI-Diensten bis hin zur Erstellung reaktionsschneller und benutzerfreundlicher Oberflächen. Meine besondere Leidenschaft gilt der SaaS-Entwicklung, moderner Fullstack-Architektur, intelligenten Webanwendungen und der Integration von Cloud- & KI-Lösungen, die einen echten Mehrwert für den Nutzer schaffen. Angetrieben von Neugier und Kreativität, lerne ich kontinuierlich und baue unermüdlich – immer mit dem Ziel, Technologie mit realen Bedürfnissen zu verbinden.",
+    "skills": [
+      {
+        "title": "Sprachen & Backend",
+        "Icon": "Code",
+        "skills": [
+          "TypeScript", "Python", "JavaScript", "Java", "Spring Boot", "C#/.NET", "Go", "Bash", "SQL", "Node.js", "Express", "NestJS"
+        ]
+      },
+      {
+        "title": "Web-Stack",
+        "Icon": "BotMessageSquare",
+        "skills": [
+          "React", "Next.js", "Tailwind CSS", "Vite", "Bootstrap", "REST", "GraphQL"
+        ]
+      },
+      {
+        "title": "Cloud & DevOps",
+        "Icon": "Cloud",
+        "skills": [
+          "Azure", "Kubernetes", "Terraform", "GitHub Actions", "GitLab CI", "Jenkins", "Docker", "CI/CD", "Prometheus", "Grafana", "Alerting", "Tracing (OpenTelemetry)"
+        ]
+      },
+      {
+        "title": "KI/ML",
+        "Icon": "BrainCircuit",
+        "skills": [
+          "OpenAI API", "LangChain", "HuggingFace", "MLflow", "Transformers", "scikit-learn", "Gemini API", "Ollama"
+        ]
+      },
+      {
+        "title": "Daten & Analytik",
+        "Icon": "Database",
+        "skills": [
+          "PostgreSQL", "MySQL", "Redis", "Snowflake", "dbt", "SQL Server", "Streamlit", "ETL/ELT pipelines", "MongoDB"
+        ]
+      },
+      {
+        "title": "Enterprise & Sonstiges",
+        "Icon": "Type",
+        "skills": [
+          "Salesforce App Builder", "SAP UI5", "SAP BTP", "OAuth2", "JWT", "SAML", "Playwright", "Postman", "Firebase", "Supabase", "Agile/Scrum", "Unit- und Integrationstests"
+        ]
+      }
+    ],
+    "projects": [
+      {
+        "title": "TransparAI",
+        "purpose": "Eine KI-Plattform zur Analyse komplexer rechtlicher und technischer Dokumente mit sicherer Authentifizierung und Abonnements.",
+        "stack": ["React", "Vite", "TypeScript", "Node.js", "Express", "MongoDB", "Firebase", "Stripe", "Vercel", "Render"],
+        "impact": "Stärkt Benutzer mit KI-gesteuerten Zusammenfassungen und verbessert die Entscheidungsfindung in Rechtsbereichen. Bietet sichere Authentifizierung, Abonnements und PDF-Export.",
+        "role": "Fullstack-Entwickler, erstellte die Benutzeroberfläche, integrierte die Gemini AI API und implementierte sichere Authentifizierung und Abonnements.",
+        "features": ["KI-Dokumentenanalyse (Zusammenfassung, Bewertung)", "Sichere Firebase-Authentifizierung", "Stripe-Abonnementverwaltung", "Analysehistorie & PDF-Export"],
+        "link": "https://transparai.vercel.app/",
+        "repoUrl": "https://github.com/AndreLiar/transparai.git"
+      },
+      {
+        "title": "PlatformPro Jobs",
+        "purpose": "Eine Jobbörse für Plattform-Ingenieure mit KI-gestützter Kandidatenbewertung und Stellenausschreibungsgenerierung.",
+        "stack": ["Next.js", "TypeScript", "Firebase", "Genkit (Gemini AI)", "Tailwind CSS", "ShadCN UI", "Stripe", "Cloudinary", "Vercel", "Zod"],
+        "impact": "Optimiert die Einstellung für Plattform-Rollen mit KI-Tools für Recruiter und einem dedizierten Dashboard für Kandidaten, was die Effizienz steigert.",
+        "role": "Fullstack-Entwickler, entwarf die App, implementierte Firebase-Dienste und integrierte Genkit für KI-Funktionen.",
+        "features": ["KI-gestützte Lebenslaufanalyse & -bewertung", "KI-Generierung von Stellenbeschreibungen", "Tools zur Job- & Bewerbungsverwaltung", "Stripe-Integration für Job-Posting-Credits"],
+        "link": "https://plateformprojob.vercel.app",
+        "repoUrl": "https://github.com/AndreLiar/Plateformprojob.git"
+      },
+      {
+        "title": "Freemap",
+        "purpose": "Eine Plattform, um Benutzer nach Standort zu verbinden und Echtzeit-Videoanrufe zu ermöglichen, wodurch die Entdeckung von Profilen und die direkte Interaktion gefördert werden.",
+        "stack": ["Node.js", "Express.js", "MongoDB", "Socket.io", "Cloudinary", "Nodemailer", "JWT", "React", "Leaflet", "Jitsi"],
+        "impact": "Fördert den Community-Aufbau durch die Kombination von standortbasierter Entdeckung mit Echtzeit-Video und ermöglicht vielfältige Benutzerverbindungen.",
+        "role": "Fullstack-Entwickler, verantwortlich für das Node.js-Backend, die Echtzeitkommunikation, das React-Frontend und die Benutzerauthentifizierung.",
+        "features": ["Benutzerauthentifizierung & Profilverwaltung", "Standortbasierte Benutzerentdeckung über Leaflet", "Echtzeit-Videoanrufe mit Jitsi", "Bilduploads über Cloudinary"],
+        "link": "https://freemap-puce.vercel.app/",
+        "repoUrl": "https://github.com/AndreLiar/Freemap"
+      },
+      {
+        "title": "Digital Starter",
+        "purpose": "Eine Webanwendung für strukturiertes digitales Lernen oder Onboarding, die Benutzer durch Phasen mit KI-Unterstützung und Fortschrittsverfolgung führt.",
+        "stack": ["Next.js", "React", "TypeScript", "Node.js", "MongoDB", "NextAuth.js", "CSS Modules", "Gemini API"],
+        "impact": "Optimiert das Onboarding von Benutzern mit einer klaren, mehrphasigen Reise und steigert das Engagement durch KI-Unterstützung und Fortschrittsverfolgung.",
+        "role": "Dies ist eine Beschreibung des Projekts selbst, nicht einer bestimmten Rolle bei seiner Entwicklung.",
+        "features": ["Benutzerauthentifizierung & Profilverwaltung", "Mehrphasige geführte Erfahrung", "Integration eines KI-Assistenten", "Fortschrittsverfolgung für Benutzer"],
+        "link": "https://digital-starter-5yx3e8xpc-andreliars-projects.vercel.app",
+        "repoUrl": "https://github.com/AndreLiar/digital-starter"
+      }
+    ],
+    "workExperience": [
+      {
+        "date": "Sep 2024 - Heute",
+        "title": "IT-Support & Python-Entwicklung (Auszubildender)",
+        "subtitle": "HDI Frankreich, Paris",
+        "description": "<ul><li>Leistete technischen Support der Stufen 1 & 2 und verwaltete Benutzer-Vorfälle für Hardware-, Netzwerk- und Softwareprobleme über GLPI.</li><li>Modernisierte und wartete veraltete Python-Skripte mit Schwerpunkt auf Leistungsoptimierung, Fehlerbehebung und Lesbarkeit des Codes.</li><li>Entwickelte Automatisierungsskripte zur Optimierung von Dokumentenexporten, um die Datenzugänglichkeit und die Effizienz der Arbeitsabläufe zu verbessern.</li><li>Verwaltete den Lebenszyklus von IT-Assets, einschließlich Bereitstellung, Konfiguration und Netzwerkadministration für Benutzerarbeitsplätze und Konferenzraumhardware (ClickShare).</li></ul>"
+      },
+      {
+        "date": "Jul 2024 – Aug 2024",
+        "title": "Softwareentwickler-Praktikant",
+        "subtitle": "FedHub, Remote",
+        "description": "<ul><li><strong>Web-Scraping mit Python</strong>: Entwickelte einen Python-Scraping-Algorithmus mit BeautifulSoup zum Extrahieren und Strukturieren von Daten, zusammen mit einer einfachen Weboberfläche für die praktische Anwendung.</li><li><strong>SEO-Optimierung</strong>: Verbesserte die SEO und Leistung der Website mit Laravel und React TypeScript. Optimierte dynamisches und statisches Laden, komprimierte Ressourcen und verbesserte Meta-Tags und Beschreibungen für ein besseres Suchmaschinenranking.</li></ul>"
+      }
+    ],
+    "education": [
+      {
+        "date": "2022 - 2027",
+        "title": "Master – Experte für Fullstack-Webentwicklung (RNCP-Titel Nr. 39583 – Stufe 7, Bac+5 staatlich anerkannt)",
+        "subtitle": "Ynov Campus, Paris",
+        "description": "<p class=\"font-semibold\">📘 Schlüsselmodule:</p><ul class=\"list-disc pl-5 mt-2 space-y-1\"><li>Fullstack-JavaScript-Entwicklung (React, Node.js, Next.js)</li><li>DevOps & Cloud Computing (Docker, Kubernetes, GitHub Actions, AWS, Azure)</li><li>Software-Design und -Architektur</li><li>Integration von Unternehmenssystemen (Salesforce, SAP, Oracle)</li><li>Agile Projekte & Versionskontrolle (Scrum, Git)</li><li>Einführung in künstliche Intelligenz und Datenwissenschaft</li><li>Anwendungssicherheit und Web-Performance</li></ul>"
+      }
+    ],
+    "softSkills": [
+      "Problemlösung und systemisches Denken",
+      "Kommunikation und Zusammenarbeit mit funktionsübergreifenden Teams",
+      "Anpassungsfähigkeit und schnelles Lernen in dynamischen Tech-Stacks",
+      "Projektverantwortung, Eigeninitiative und kontinuierliche Verbesserungsmentalität"
+    ],
+    "languages": [
+      { "name": "Englisch", "level": "C1" },
+      { "name": "Französisch", "level": "Muttersprache" },
+      { "name": "Deutsch", "level": "B1" }
+    ],
+    "interests": [
+      "KI in der Bildung", "Musik", "Fußball", "Reisen", "Technik-Trends"
+    ]
+  }
+}
+
+    

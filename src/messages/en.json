@@ -8,7 +8,8 @@
     "skills": "Skills",
     "softSkills": "Soft Skills",
     "experience": "Experience",
-    "contact": "Contact"
+    "contact": "Contact",
+    "language": "Language"
   },
   "Hero": {
     "contactMe": "Contact Me",
@@ -81,7 +82,7 @@
       "github": "https://github.com/AndreLiar",
       "linkedin": "https://www.linkedin.com/in/laurel-kanmegne-2a861425a/"
     },
-    "summary": "Hey! I’m a Fullstack Software Engineer who turns complex ideas into fast, reliable, and intelligent web applications. I work across the stack — from building cloud-native backends and AI-powered features to crafting responsive, user-friendly interfaces. I’m especially passionate about real-time systems, DevOps workflows, and delivering solutions that create real impact. Driven by curiosity and creativity, I’m always learning, always building — and always focused on bridging technology with meaningful user experiences.",
+    "summary": "Hello! I'm a Fullstack Software Engineer who transforms complex ideas into fast, reliable, and intelligent web applications. I work across the entire stack—from designing robust and scalable backends to integrating AI services and creating responsive, user-friendly interfaces. I am particularly passionate about SaaS development, modern fullstack architecture, intelligent web applications, and integrating cloud & AI solutions that create real user impact. Driven by curiosity and creativity, I am constantly learning and relentlessly building—always with the aim of connecting technology with real-world needs.",
     "skills": [
       {
         "title": "Languages & Backend",
@@ -319,7 +320,7 @@
       },
       {
         "name": "French",
-        "level": "B2"
+        "level": "Native"
       },
       {
         "name": "German",
@@ -331,7 +332,7 @@
       "Music",
       "Football",
       "Travel",
-      "Tech Trend"
+      "Tech Trends"
     ]
   }
 }
