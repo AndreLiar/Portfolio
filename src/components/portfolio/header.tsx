@@ -12,7 +12,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Separator } from "@/components/ui/separator";
 
 
 export function Header({ headerData, name }: { headerData: any, name: string }) {
@@ -50,13 +49,11 @@ export function Header({ headerData, name }: { headerData: any, name: string }) 
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
             {locales.map((locale) => (
-                <Link href={redirectedPathName(locale.code)} key={locale.code} passHref legacyBehavior>
-                    <DropdownMenuItem asChild>
-                        <a onClick={() => isMobileMenuOpen && setIsMobileMenuOpen(false)}>
-                            {locale.name}
-                        </a>
-                    </DropdownMenuItem>
-                </Link>
+                <DropdownMenuItem asChild key={locale.code}>
+                    <Link href={redirectedPathName(locale.code)}>
+                        {locale.name}
+                    </Link>
+                </DropdownMenuItem>
             ))}
         </DropdownMenuContent>
     </DropdownMenu>
@@ -119,11 +116,14 @@ export function Header({ headerData, name }: { headerData: any, name: string }) 
                      <p className="text-sm text-muted-foreground mb-2">{headerData.language}</p>
                      <nav className="flex flex-col gap-2 text-base font-medium">
                         {locales.map((locale) => (
-                           <Link href={redirectedPathName(locale.code)} key={locale.code} passHref legacyBehavior>
-                              <a className="transition-colors hover:text-accent p-2 -mx-2 rounded-md" onClick={() => setIsMobileMenuOpen(false)}>
-                                  {locale.name}
-                              </a>
-                          </Link>
+                           <Link
+                              key={locale.code}
+                              href={redirectedPathName(locale.code)}
+                              className="transition-colors hover:text-accent p-2 -mx-2 rounded-md"
+                              onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                              {locale.name}
+                            </Link>
                         ))}
                      </nav>
                   </div>
