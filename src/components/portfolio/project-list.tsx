@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ProjectCard } from "./project-card";
 
@@ -21,6 +22,25 @@ interface ProjectListProps {
   projectCardData: any;
 }
 
+const listVariants = {
+  visible: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
+
 export function ProjectList({ projects, projectListData, projectCardData }: ProjectListProps) {
   const [visibleCount, setVisibleCount] = useState(2);
 
@@ -30,11 +50,16 @@ export function ProjectList({ projects, projectListData, projectCardData }: Proj
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <motion.div 
+        className="grid grid-cols-1 md:grid-cols-2 gap-8"
+        variants={listVariants}
+      >
         {projects.slice(0, visibleCount).map((project, index) => (
-          <ProjectCard key={index} {...project} projectCardData={projectCardData} />
+          <motion.div key={index} variants={itemVariants}>
+            <ProjectCard {...project} projectCardData={projectCardData} />
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
       {visibleCount < projects.length && (
         <div className="text-center mt-12">
           <Button onClick={showMoreProjects} size="lg">

@@ -1,20 +1,50 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { Mail, Github, Linkedin, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from 'next/link';
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
 
 export function Hero({ heroData, data }: { heroData: any, data: any }) {
   const title = data.title;
   const titleParts = title.split(' | ');
 
   return (
-    <section id="hero" className="py-20 md:py-32">
+    <motion.section 
+      id="hero" 
+      className="py-20 md:py-32"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
       <div className="container mx-auto px-4 text-center">
-        <h1 className="text-4xl md:text-6xl font-headline font-bold mb-4">
+        <motion.h1 variants={itemVariants} className="text-4xl md:text-6xl font-headline font-bold mb-4">
           {data.fullName}
-        </h1>
-        <h2 className="text-xl md:text-2xl font-semibold mb-6">
+        </motion.h1>
+        <motion.h2 variants={itemVariants} className="text-xl md:text-2xl font-semibold mb-6">
           {titleParts[0]}
           {titleParts[1] && (
             <>
@@ -24,17 +54,17 @@ export function Hero({ heroData, data }: { heroData: any, data: any }) {
               </span>
             </>
           )}
-        </h2>
-        <div className="flex justify-center items-center gap-4 text-muted-foreground mb-8">
+        </motion.h2>
+        <motion.div variants={itemVariants} className="flex justify-center items-center gap-4 text-muted-foreground mb-8">
           <div className="flex items-center gap-2">
             <MapPin className="h-4 w-4" />
             <span>{data.location}</span>
           </div>
-        </div>
-        <p className="max-w-3xl mx-auto text-base md:text-lg text-muted-foreground mb-10">
+        </motion.div>
+        <motion.p variants={itemVariants} className="max-w-3xl mx-auto text-base md:text-lg text-muted-foreground mb-10">
           {data.summary}
-        </p>
-        <div className="flex justify-center flex-wrap gap-4">
+        </motion.p>
+        <motion.div variants={itemVariants} className="flex justify-center flex-wrap gap-4">
           <Button size="lg" asChild>
             <a href="#contact">
               <Mail className="mr-2 h-4 w-4" /> {heroData.contactMe}
@@ -50,8 +80,8 @@ export function Hero({ heroData, data }: { heroData: any, data: any }) {
               <Linkedin className="mr-2 h-4 w-4" /> {heroData.linkedin}
             </a>
           </Button>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }
