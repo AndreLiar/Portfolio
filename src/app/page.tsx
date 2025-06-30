@@ -1,10 +1,6 @@
-import { MainContent } from '@/components/portfolio/main-content';
-import messages from '../../messages/en.json';
+import { redirect } from 'next/navigation';
 
-export default function Home() {
-  return (
-    <MainContent
-      messages={messages}
-    />
-  );
+// This page just redirects to the default language.
+export default function RootPage() {
+  redirect('/en');
 }

@@ -1,30 +1,10 @@
-import type { Metadata } from 'next';
-import { Toaster } from "@/components/ui/toaster";
-import "./globals.css";
-import messages from '../../messages/en.json';
-
-export const metadata: Metadata = {
-  title: messages.Metadata.title,
-  description: messages.Metadata.description,
-};
+// This is the root layout. It does not contain language-specific metadata.
+// The layout in [lang]/layout.tsx will handle the <html> and <body> tags.
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <html lang="en" className="dark" suppressHydrationWarning>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
-      </head>
-      <body className="font-body antialiased" suppressHydrationWarning>
-          {children}
-          <Toaster />
-      </body>
-    </html>
-  );
+  return children;
 }

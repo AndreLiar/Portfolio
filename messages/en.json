@@ -1,14 +1,15 @@
 {
   "Metadata": {
-    "title": "Andre's Digital Stage",
-    "description": "Portfolio of Andre, Fullstack Software Engineer."
+    "title": "Laurel's Digital Stage",
+    "description": "Portfolio of Laurel, Fullstack Software Engineer."
   },
   "Header": {
     "projects": "Projects",
     "skills": "Skills",
     "softSkills": "Soft Skills",
     "experience": "Experience",
-    "contact": "Contact"
+    "contact": "Contact",
+    "language": "Language"
   },
   "Hero": {
     "contactMe": "Contact Me",
@@ -71,8 +72,8 @@
     }
   },
   "data": {
-    "name": "Andredev",
-    "fullName": "laurel Kanmegne",
+    "name": "Laurel",
+    "fullName": "Laurel Kanmegne",
     "title": "Fullstack Software Engineer | Cloud-Native & AI-Powered Systems",
     "location": "Paris, France",
     "contact": {
@@ -96,8 +97,9 @@
           "Go",
           "Bash",
           "SQL",
-          "Node.js/Express"
-        
+          "Node.js",
+          "Express",
+          "NestJS"
         ]
       },
       {
@@ -296,8 +298,6 @@
         "subtitle": "FedHub, Remote",
         "description": "<ul><li><strong>Web Scraping with Python</strong>: Developed a Python scraping algorithm using BeautifulSoup to extract and structure data, along with a simple web interface for practical use.</li><li><strong>SEO Optimization</strong>: Improved website SEO and performance using Laravel and React TypeScript. Optimized dynamic and static loading, compressed resources, and enhanced meta tags and descriptions for better search engine ranking.</li></ul>"
       }
-      
-      
     ],
     "education": [
       {
@@ -320,7 +320,7 @@
       },
       {
         "name": "French",
-        "level": "B2"
+        "level": "Native"
       },
       {
         "name": "German",
