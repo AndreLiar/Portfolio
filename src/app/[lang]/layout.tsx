@@ -1,6 +1,4 @@
 import type { Metadata } from 'next';
-import { Toaster } from "@/components/ui/toaster";
-import "../globals.css";
 import { getDictionary } from '@/lib/dictionaries';
 
 // This function generates metadata dynamically based on the language.
@@ -13,24 +11,12 @@ export async function generateMetadata({ params: { lang } }: { params: { lang: s
 }
 
 export default function LangLayout({
-  children,
-  params,
+  children
 }: {
   children: React.ReactNode;
-  params: { lang: string };
 }) {
-  return (
-    <html lang={params.lang} className="dark" suppressHydrationWarning>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
-      </head>
-      <body className="font-body antialiased" suppressHydrationWarning>
-          {children}
-          <Toaster />
-      </body>
-    </html>
-  );
+  // This layout no longer defines the root HTML structure.
+  // It only provides the dynamic metadata and renders the page content.
+  // The RootLayout in src/app/layout.tsx handles the <html>, <body>, fonts, and Toaster.
+  return <>{children}</>;
 }
