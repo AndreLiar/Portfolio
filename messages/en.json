@@ -96,9 +96,8 @@
           "Go",
           "Bash",
           "SQL",
-          "Node.js",
-          "Express",
-          "NestJS"
+          "Node.js/Express"
+        
         ]
       },
       {
