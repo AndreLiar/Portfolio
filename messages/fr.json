@@ -159,15 +159,32 @@
         "repoUrl": "https://github.com/AndreLiar/Freemap"
       },
       {
-        "title": "Digital Starter",
-        "purpose": "Une application web pour un apprentissage numérique structuré ou un onboarding, guidant les utilisateurs à travers des phases avec une assistance par l'IA et un suivi des progrès.",
-        "stack": ["Next.js", "React", "TypeScript", "Node.js", "MongoDB", "NextAuth.js", "CSS Modules", "Gemini API"],
-        "impact": "Rationalise l'accueil des utilisateurs avec un parcours guidé clair en plusieurs phases, améliorant l'engagement grâce à l'assistance de l'IA et au suivi des progrès.",
-        "role": "Ceci est une description du projet lui-même, et non un rôle spécifique dans son développement.",
-        "features": ["Authentification et gestion de profil utilisateur", "Expérience guidée en plusieurs phases", "Intégration d'un assistant IA", "Suivi des progrès pour les utilisateurs"],
-        "link": "https://digital-starter-5yx3e8xpc-andreliars-projects.vercel.app",
+        "title": "DigitalSentinel",
+        "purpose": "Une application web qui sensibilise à la sécurité numérique grâce à une expérience d'apprentissage interactive et structurée. Les utilisateurs sont guidés à travers plusieurs phases pédagogiques avec l'assistance d'une IA et un suivi des progrès en temps réel.",
+        "stack": [
+          "Next.js",
+          "React",
+          "TypeScript",
+          "Node.js",
+          "MongoDB",
+          "NextAuth.js",
+          "CSS Modules",
+          "Gemini API"
+        ],
+        "impact": "Permet aux individus et aux équipes de développer de bonnes habitudes en matière de sécurité numérique grâce à des modules d'apprentissage interactifs, assistés par l'IA, et un suivi des progrès en temps réel.",
+        "role": "Responsable du développement frontend et de l'UX, conception du parcours d'apprentissage, intégration de l'assistant IA et mise en place du suivi gamifié de la progression des utilisateurs.",
+        "features": [
+          "Authentification et gestion de profils par rôles",
+          "Modules interactifs sur l'hygiène numérique",
+          "Assistance IA tout au long des leçons",
+          "Suivi des progrès et génération de certificats",
+          "Checklist gamifiée et simulations de phishing"
+        ],
+        "link": "https://digital-starter.vercel.app/",
         "repoUrl": "https://github.com/AndreLiar/digital-starter"
       }
+      
+      
     ],
     "workExperience": [
       {

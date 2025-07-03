@@ -159,15 +159,31 @@
         "repoUrl": "https://github.com/AndreLiar/Freemap"
       },
       {
-        "title": "Digital Starter",
-        "purpose": "Eine Webanwendung für strukturiertes digitales Lernen oder Onboarding, die Benutzer durch Phasen mit KI-Unterstützung und Fortschrittsverfolgung führt.",
-        "stack": ["Next.js", "React", "TypeScript", "Node.js", "MongoDB", "NextAuth.js", "CSS Modules", "Gemini API"],
-        "impact": "Optimiert das Onboarding von Benutzern mit einer klaren, mehrphasigen Reise und steigert das Engagement durch KI-Unterstützung und Fortschrittsverfolgung.",
-        "role": "Dies ist eine Beschreibung des Projekts selbst, nicht einer bestimmten Rolle bei seiner Entwicklung.",
-        "features": ["Benutzerauthentifizierung & Profilverwaltung", "Mehrphasige geführte Erfahrung", "Integration eines KI-Assistenten", "Fortschrittsverfolgung für Benutzer"],
-        "link": "https://digital-starter-5yx3e8xpc-andreliars-projects.vercel.app",
+        "title": "DigitalSentinel",
+        "purpose": "Eine Webanwendung zur Sensibilisierung für digitale Sicherheit durch ein strukturiertes, interaktives Onboarding-Erlebnis. Die Nutzer werden durch mehrere Lernphasen geführt – unterstützt von KI und mit Fortschrittsverfolgung in Echtzeit.",
+        "stack": [
+          "Next.js",
+          "React",
+          "TypeScript",
+          "Node.js",
+          "MongoDB",
+          "NextAuth.js",
+          "CSS Modules",
+          "Gemini API"
+        ],
+        "impact": "Befähigt Einzelpersonen und Teams, starke Sicherheitsgewohnheiten zu entwickeln – durch interaktive, KI-gestützte Lernmodule und eine fortlaufende Fortschrittsverfolgung.",
+        "role": "Verantwortlich für die Frontend- und UX-Entwicklung, Gestaltung des Lernflusses, Integration des KI-Assistenten und Implementierung des gamifizierten Fortschrittssystems.",
+        "features": [
+          "Benutzerauthentifizierung und rollenbasierte Profile",
+          "Interaktive Lernmodule zur digitalen Hygiene",
+          "KI-gestützte Unterstützung während der Lektionen",
+          "Fortschrittsverfolgung und Zertifikatsvergabe",
+          "Gamifizierte Checklisten und Phishing-Simulationen"
+        ],
+        "link": "https://digital-starter.vercel.app/",
         "repoUrl": "https://github.com/AndreLiar/digital-starter"
       }
+      
     ],
     "workExperience": [
       {

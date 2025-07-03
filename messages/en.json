@@ -261,7 +261,7 @@
         "repoUrl": "https://github.com/AndreLiar/Freemap"
       },
       {
-        "title": "Digital Starter",
+        "title": "DigitalSentinel",
         "purpose": "A web application for structured digital learning or onboarding, guiding users through phases with AI assistance and progress tracking.",
         "stack": [
           "Next.js",
@@ -273,15 +273,15 @@
           "CSS Modules",
           "Gemini API"
         ],
-        "impact": "Streamlines user onboarding with a clear, multi-phase journey, enhancing engagement through AI assistance and progress tracking.",
-        "role": "This is a description of the project itself, not a specific role within its development.",
+        "impact": "Empowers individuals and teams to develop strong digital security habits through interactive, AI-assisted learning modules and real-time progress tracking.",
+        "role": "Led frontend and UX development, designed learning flow structure, integrated AI assistant, and implemented gamified user progress tracking",
         "features": [
           "User authentication & profile management",
           "Multi-phase guided experience",
           "AI assistant integration",
           "Progress tracking for users"
         ],
-        "link": "https://digital-starter-5yx3e8xpc-andreliars-projects.vercel.app",
+        "link": "https://digital-starter.vercel.app/",
         "repoUrl": "https://github.com/AndreLiar/digital-starter"
       }
     ],
