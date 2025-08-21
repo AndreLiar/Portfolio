@@ -5,6 +5,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { ICON_VARIANTS } from "@/lib/icon-constants";
 import type { LucideIcon } from "lucide-react";
 
 interface SkillCardProps {
@@ -17,7 +18,7 @@ export function SkillCard({ title, skills, Icon }: SkillCardProps) {
   return (
     <Card>
       <CardHeader className="flex flex-row items-center gap-4">
-        <Icon className="w-8 h-8 text-accent" />
+        <Icon className={ICON_VARIANTS.skill} />
         <CardTitle className="font-headline">{title}</CardTitle>
       </CardHeader>
       <CardContent>

@@ -29,28 +29,28 @@ export function ProjectCard({ title, purpose, stack, impact, role, features, lin
   return (
     <Card className="flex flex-col h-full transition-transform transform hover:-translate-y-1 hover:shadow-xl">
       <CardHeader>
-        <CardTitle className="font-headline text-xl">{title}</CardTitle>
+        <CardTitle className="font-headline">{title}</CardTitle>
         <CardDescription>{purpose}</CardDescription>
       </CardHeader>
       <CardContent className="flex-grow space-y-4">
         <div>
-          <h4 className="font-semibold mb-2 text-sm">{t.role}</h4>
-          <p className="text-sm text-muted-foreground">{role}</p>
+          <h4 className="font-semibold mb-2 text-body-sm">{t.role}</h4>
+          <p className="text-body-sm text-muted-foreground leading-relaxed">{role}</p>
         </div>
         <div>
-          <h4 className="font-semibold mb-2 text-sm">{t.impact}</h4>
-          <p className="text-sm text-muted-foreground">{impact}</p>
+          <h4 className="font-semibold mb-2 text-body-sm">{t.impact}</h4>
+          <p className="text-body-sm text-muted-foreground leading-relaxed">{impact}</p>
         </div>
         <div>
-          <h4 className="font-semibold mb-2 text-sm">{t.features}</h4>
+          <h4 className="font-semibold mb-2 text-body-sm">{t.features}</h4>
           <ul className="space-y-1 pl-5 text-muted-foreground">
             {features.map((feature, index) => (
-              <li key={index} className="text-sm list-disc">{feature}</li>
+              <li key={index} className="text-body-sm list-disc leading-relaxed">{feature}</li>
             ))}
           </ul>
         </div>
         <div>
-            <h4 className="font-semibold mb-2 text-sm">{t.stack}</h4>
+            <h4 className="font-semibold mb-2 text-body-sm">{t.stack}</h4>
             <div className="mt-2 flex flex-wrap gap-2">
             {stack.map((tech, index) => (
                 <Badge key={index} variant="secondary">

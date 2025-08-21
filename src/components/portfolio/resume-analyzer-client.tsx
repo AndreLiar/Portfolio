@@ -4,7 +4,7 @@ import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Loader2, Sparkles, FileText, BarChart, Lightbulb } from "lucide-react";
+import { Loader2, Sparkles, FileText, BarChart, Lightbulb, AlertCircle, WifiOff } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -12,7 +12,6 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
@@ -44,6 +43,7 @@ export function ResumeAnalyzerClient() {
   const { toast } = useToast();
   const [analysis, setAnalysis] = useState<AnalyzeResumeOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [lastError, setLastError] = useState<string | null>(null);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -52,18 +52,69 @@ export function ResumeAnalyzerClient() {
     },
   });
 
+  const getErrorDetails = (error: any) => {
+    if (error?.message || typeof error === 'string') {
+      const errorMessage = error?.message || error;
+      
+      if (errorMessage.includes('network') || errorMessage.includes('fetch')) {
+        return {
+          title: 'Connection Issue',
+          description: 'Unable to reach the AI service. Please check your internet connection and try again.',
+          icon: WifiOff
+        };
+      }
+      
+      if (errorMessage.includes('timeout')) {
+        return {
+          title: 'Request Timeout',
+          description: 'The analysis is taking longer than expected. Please try again with a shorter resume.',
+          icon: AlertCircle
+        };
+      }
+      
+      if (errorMessage.includes('rate limit') || errorMessage.includes('quota')) {
+        return {
+          title: 'Service Temporarily Unavailable',
+          description: 'The AI service has reached its limit. Please try again in a few minutes.',
+          icon: AlertCircle
+        };
+      }
+      
+      if (errorMessage.includes('invalid') || errorMessage.includes('format')) {
+        return {
+          title: 'Invalid Content',
+          description: 'The resume content appears to be invalid. Please ensure you\'ve pasted readable text.',
+          icon: FileText
+        };
+      }
+    }
+    
+    return {
+      title: 'Analysis Failed',
+      description: 'An unexpected error occurred. Please try again or try with different content.',
+      icon: AlertCircle
+    };
+  };
+
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
     setAnalysis(null);
+    setLastError(null);
+    
     try {
       const result = await analyzeResume(values);
       setAnalysis(result);
+      setLastError(null);
     } catch (error) {
-      console.error("Resume analysis failed:", error);
+      console.error('Resume analysis failed:', error);
+      const errorDetails = getErrorDetails(error);
+      const errorString = error instanceof Error ? error.message : (typeof error === 'string' ? error : String(error));
+      setLastError(errorString);
+      
       toast({
-        title: "Analysis Failed",
-        description: "Something went wrong. Please try again.",
-        variant: "destructive",
+        title: errorDetails.title,
+        description: errorDetails.description,
+        variant: 'destructive',
       });
     } finally {
       setIsLoading(false);
@@ -96,6 +147,41 @@ export function ResumeAnalyzerClient() {
                   </FormItem>
                 )}
               />
+              
+              {/* Enhanced error display */}
+              {lastError && (
+                <div className="p-4 bg-destructive/10 border border-destructive/20 rounded-lg">
+                  <div className="flex items-start gap-3">
+                    {lastError.includes('network') || lastError.includes('fetch') ? (
+                      <WifiOff className="h-5 w-5 text-destructive mt-0.5 flex-shrink-0" />
+                    ) : lastError.includes('timeout') ? (
+                      <AlertCircle className="h-5 w-5 text-destructive mt-0.5 flex-shrink-0" />
+                    ) : (
+                      <AlertCircle className="h-5 w-5 text-destructive mt-0.5 flex-shrink-0" />
+                    )}
+                    <div className="space-y-1">
+                      <p className="text-sm font-medium text-destructive">
+                        {lastError.includes('network') || lastError.includes('fetch') ? 'Connection Issue' : 
+                         lastError.includes('timeout') ? 'Analysis Timeout' :
+                         lastError.includes('rate limit') ? 'Service Limit Reached' :
+                         lastError.includes('invalid') ? 'Invalid Content' : 'Analysis Failed'}
+                      </p>
+                      <p className="text-sm text-muted-foreground">
+                        {lastError.includes('network') || lastError.includes('fetch') ? 
+                          'Please check your internet connection and try again.' :
+                         lastError.includes('timeout') ? 
+                          'Try again with a shorter resume or check your connection.' :
+                         lastError.includes('rate limit') ? 
+                          'Please wait a few minutes before trying again.' :
+                         lastError.includes('invalid') ? 
+                          'Please ensure you\'ve pasted readable resume text.' :
+                          'Please try again or contact support if the issue persists.'}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+              
               <Button type="submit" className="w-full" disabled={isLoading}>
                 {isLoading ? (
                   <>

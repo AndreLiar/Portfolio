@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Github, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ICON_VARIANTS } from "@/lib/icon-constants";
 
 export function Footer({ footerData, data }: { footerData: any, data: any }) {
   const [year, setYear] = useState<number>();
@@ -20,12 +21,12 @@ export function Footer({ footerData, data }: { footerData: any, data: any }) {
         <div className="flex items-center gap-2">
           <Button variant="ghost" size="icon" asChild>
             <a href={data.contact.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-              <Github className="h-5 w-5" />
+              <Github className={ICON_VARIANTS.social} />
             </a>
           </Button>
           <Button variant="ghost" size="icon" asChild>
             <a href={data.contact.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              <Linkedin className="h-5 w-5" />
+              <Linkedin className={ICON_VARIANTS.social} />
             </a>
           </Button>
         </div>
