@@ -45,9 +45,9 @@ const nextConfig: NextConfig = {
     ];
   },
   // Optimize for better Core Web Vitals
-  experimental: {
-    optimizeCss: true,
-  },
+  // experimental: {
+  //   optimizeCss: true, // Disabled due to critters dependency issue
+  // },
   // Enable compression
   compress: true,
   // Power page extensions for SEO
