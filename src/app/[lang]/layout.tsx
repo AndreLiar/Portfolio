@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { getDictionary } from '@/lib/dictionaries';
 
 // This function generates metadata dynamically based on the language.
-export async function generateMetadata({ params }: { params: { lang: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
   const dictionary = await getDictionary(lang);
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://laurel-portfolio.vercel.app';

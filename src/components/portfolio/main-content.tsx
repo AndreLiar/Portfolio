@@ -26,10 +26,14 @@ import { Badge } from '@/components/ui/badge';
 import { ProjectList } from '@/components/portfolio/project-list';
 import { PageLoader } from '@/components/portfolio/page-loader';
 import { ScrollToTop } from '@/components/portfolio/scroll-to-top';
+import { LatestPosts } from '@/components/portfolio/latest-posts';
 import { ICON_VARIANTS } from '@/lib/icon-constants';
 
 interface MainContentProps {
   messages: any;
+  lang?: string;
+  blogPosts?: any[];
+  blogPostTags?: { [postId: string]: any[] };
 }
 
 const iconMap: { [key: string]: LucideIcon } = {
@@ -69,7 +73,7 @@ const itemVariants = {
   },
 };
 
-export function MainContent({ messages }: MainContentProps) {
+export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTags = {} }: MainContentProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [showContent, setShowContent] = useState(false);
 
@@ -301,6 +305,14 @@ export function MainContent({ messages }: MainContentProps) {
             </div>
           </div>
         </motion.section>
+
+        {/* Latest Blog Posts */}
+        <LatestPosts 
+          lang={lang} 
+          dictionary={messages} 
+          posts={blogPosts}
+          postTags={blogPostTags}
+        />
 
         <motion.section 
           id="contact" 

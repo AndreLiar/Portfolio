@@ -9,7 +9,10 @@
     "softSkills": "Soft Skills",
     "experience": "Experience",
     "contact": "Contact",
-    "language": "Language"
+    "language": "Language",
+    "nav": {
+      "blog": "Blog"
+    }
   },
   "Hero": {
     "contactMe": "Contact Me",

@@ -8,6 +8,7 @@
     "skills": "Compétences",
     "softSkills": "Savoir-être",
     "experience": "Expérience",
+    "blog": "Blog",
     "contact": "Contact",
     "language": "Langue"
   },
@@ -38,6 +39,13 @@
     "contact": {
       "title": "Contactez-moi",
       "subtitle": "Vous avez un projet en tête, ou vous voulez simplement dire bonjour ? N'hésitez pas à me contacter."
+    },
+    "blog": {
+      "title": "Blog",
+      "subtitle": "Réflexions, tutoriels et idées sur le développement logiciel",
+      "latestTitle": "Derniers Articles de Blog",
+      "latestSubtitle": "Réflexions, tutoriels et idées récents sur le développement logiciel",
+      "viewAll": "Voir Tous les Articles"
     }
   },
   "ProjectList": {

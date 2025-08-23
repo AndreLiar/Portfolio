@@ -63,6 +63,7 @@ export function Header({ headerData, name }: { headerData: any, name: string }) 
     { href: "#skills", label: headerData.skills },
     { href: "#soft-skills", label: headerData.softSkills },
     { href: "#experience", label: headerData.experience },
+    { href: `/${pathname.split('/')[1]}/blog`, label: headerData.blog || 'Blog', external: true },
     { href: "#contact", label: headerData.contact },
   ];
 
@@ -94,9 +95,11 @@ export function Header({ headerData, name }: { headerData: any, name: string }) 
         <div className="flex items-center gap-2">
             <nav className="hidden md:flex items-center gap-6 text-body-sm font-medium" role="navigation" aria-label="Main navigation">
             {navLinks.map((link) => {
-              const isActive = activeSection === link.href.substring(1);
+              const isActive = link.external ? pathname.includes('/blog') : activeSection === link.href.substring(1);
+              const Component = link.external ? Link : 'a';
+              
               return (
-                <a
+                <Component
                 key={link.href}
                 href={link.href}
                 className={`transition-all duration-200 hover:text-accent relative focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-md px-2 py-1 ${
@@ -111,7 +114,7 @@ export function Header({ headerData, name }: { headerData: any, name: string }) 
                 {isActive && (
                   <span className="absolute -bottom-2 left-0 right-0 h-0.5 bg-accent rounded-full" aria-hidden="true" />
                 )}
-                </a>
+                </Component>
               );
             })}
             </nav>
@@ -138,9 +141,11 @@ export function Header({ headerData, name }: { headerData: any, name: string }) 
                   </div>
                   <nav className="flex flex-col gap-2 font-medium" role="navigation" aria-label="Mobile main navigation">
                     {navLinks.map((link) => {
-                      const isActive = activeSection === link.href.substring(1);
+                      const isActive = link.external ? pathname.includes('/blog') : activeSection === link.href.substring(1);
+                      const Component = link.external ? Link : 'a';
+                      
                       return (
-                      <a
+                      <Component
                         key={link.href}
                         href={link.href}
                         className={`transition-all duration-200 hover:text-accent p-4 -mx-2 rounded-md relative focus:outline-none focus-visible:ring-2 focus-visible:ring-primary min-h-[48px] flex items-center ${
@@ -156,7 +161,7 @@ export function Header({ headerData, name }: { headerData: any, name: string }) 
                         {isActive && (
                           <span className="absolute left-0 top-0 bottom-0 w-1 bg-accent rounded-r-full" aria-hidden="true" />
                         )}
-                      </a>
+                      </Component>
                       );
                     })}
                   </nav>
