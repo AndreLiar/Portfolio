@@ -1,6 +1,9 @@
 import { NextResponse } from 'next/server';
 import { createSupabaseServer } from '@/lib/supabase/server';
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://laurel-portfolio.vercel.app';
   const currentDate = new Date().toISOString();
@@ -35,16 +38,18 @@ export async function GET() {
     </url>`),
   ];
 
-  // Add blog posts
+  // Add blog posts (only if Supabase is available)
   try {
-    const supabase = await createSupabaseServer();
-    
-    // Get published posts
-    const { data: posts } = await supabase
-      .from('posts')
-      .select('slug, updated_at, published_at')
-      .eq('status', 'published')
-      .order('published_at', { ascending: false });
+    // Check if Supabase environment variables are available
+    if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+      const supabase = await createSupabaseServer();
+      
+      // Get published posts
+      const { data: posts } = await supabase
+        .from('posts')
+        .select('slug, updated_at, published_at')
+        .eq('status', 'published')
+        .order('published_at', { ascending: false });
 
     if (posts && posts.length > 0) {
       const postEntries = languages.flatMap(lang => 
@@ -85,6 +90,7 @@ export async function GET() {
       );
       
       sitemapEntries.push(...tagEntries);
+    }
     }
   } catch (error) {
     console.error('Error generating blog sitemap entries:', error);

@@ -1,18 +1,21 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Eye, EyeOff, LogIn } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { supabase } from '@/lib/supabase/client';
+import { createBrowserClient } from '@supabase/ssr';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
+
+// Force dynamic rendering
+export const dynamic = 'force-dynamic';
 
 const loginSchema = z.object({
   email: z.string().email('Invalid email address'),
@@ -26,6 +29,21 @@ export default function LoginPage() {
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [supabase, setSupabase] = useState<any>(null);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+    
+    // Create Supabase client only on client side
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+    
+    if (supabaseUrl && supabaseKey) {
+      const client = createBrowserClient(supabaseUrl, supabaseKey);
+      setSupabase(client);
+    }
+  }, []);
 
   const {
     register,
@@ -36,6 +54,15 @@ export default function LoginPage() {
   });
 
   const onSubmit = async (data: LoginForm) => {
+    if (!supabase) {
+      toast({
+        title: 'Error',
+        description: 'Authentication service not available',
+        variant: 'destructive',
+      });
+      return;
+    }
+
     setIsLoading(true);
 
     try {
@@ -49,14 +76,10 @@ export default function LoginPage() {
       }
 
       if (authData.user) {
-        // Check if user has admin role
-        const { data: profile } = await supabase
-          .from('profiles')
-          .select('role')
-          .eq('id', authData.user.id)
-          .single();
-
-        if (profile?.role === 'admin') {
+        // Simple email-based admin check
+        const adminEmail = process.env.NEXT_PUBLIC_BLOG_ADMIN_EMAIL || 'kanmegnea@gmail.com';
+        
+        if (authData.user.email === adminEmail) {
           toast({
             title: 'Welcome back!',
             description: 'Successfully signed in.',
@@ -68,10 +91,11 @@ export default function LoginPage() {
           throw new Error('You do not have permission to access this area.');
         }
       }
-    } catch (error: any) {
+    } catch (error) {
+      console.error('Login error:', error);
       toast({
         title: 'Error',
-        description: error.message || 'Failed to sign in. Please try again.',
+        description: error instanceof Error ? error.message : 'Failed to sign in',
         variant: 'destructive',
       });
     } finally {
@@ -79,76 +103,81 @@ export default function LoginPage() {
     }
   };
 
+  // Show loading state until client-side hydration
+  if (!isClient) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <div className="w-full max-w-md space-y-8">
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-center">Loading...</CardTitle>
+            </CardHeader>
+          </Card>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center bg-background">
+      <div className="w-full max-w-md space-y-8">
         <Card>
-          <CardHeader className="text-center">
-            <CardTitle className="text-2xl">Admin Login</CardTitle>
-            <p className="text-muted-foreground">
-              Sign in to manage your blog content
-            </p>
+          <CardHeader>
+            <CardTitle className="text-center">Admin Login</CardTitle>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-              <div>
+              <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
                 <Input
                   id="email"
                   type="email"
+                  placeholder="Enter your email"
                   {...register('email')}
-                  placeholder="admin@example.com"
                   disabled={isLoading}
                 />
                 {errors.email && (
-                  <p className="text-sm text-destructive mt-1">
-                    {errors.email.message}
-                  </p>
+                  <p className="text-sm text-destructive">{errors.email.message}</p>
                 )}
               </div>
 
-              <div>
+              <div className="space-y-2">
                 <Label htmlFor="password">Password</Label>
                 <div className="relative">
                   <Input
                     id="password"
                     type={showPassword ? 'text' : 'password'}
-                    {...register('password')}
                     placeholder="Enter your password"
+                    {...register('password')}
                     disabled={isLoading}
                   />
-                  <Button
+                  <button
                     type="button"
-                    variant="ghost"
-                    size="sm"
-                    className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2"
                     onClick={() => setShowPassword(!showPassword)}
                     disabled={isLoading}
                   >
                     {showPassword ? (
-                      <EyeOff className="h-4 w-4" />
+                      <EyeOff className="h-4 w-4 text-muted-foreground" />
                     ) : (
-                      <Eye className="h-4 w-4" />
+                      <Eye className="h-4 w-4 text-muted-foreground" />
                     )}
-                  </Button>
+                  </button>
                 </div>
                 {errors.password && (
-                  <p className="text-sm text-destructive mt-1">
-                    {errors.password.message}
-                  </p>
+                  <p className="text-sm text-destructive">{errors.password.message}</p>
                 )}
               </div>
 
-              <Button
-                type="submit"
-                className="w-full"
-                disabled={isLoading}
-              >
+              <Button type="submit" className="w-full" disabled={isLoading}>
                 {isLoading ? (
-                  'Signing in...'
+                  <>
+                    <div className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
+                    Signing in...
+                  </>
                 ) : (
                   <>
-                    <LogIn className="w-4 h-4 mr-2" />
+                    <LogIn className="mr-2 h-4 w-4" />
                     Sign In
                   </>
                 )}
@@ -156,21 +185,12 @@ export default function LoginPage() {
             </form>
 
             <div className="mt-6 text-center">
-              <Link
-                href="/en"
-                className="text-sm text-muted-foreground hover:text-primary"
-              >
-                ← Back to portfolio
+              <Link href="/" className="text-sm text-muted-foreground hover:underline">
+                ← Back to Portfolio
               </Link>
             </div>
           </CardContent>
         </Card>
-
-        <div className="mt-6 text-center text-xs text-muted-foreground">
-          <p>
-            This is an admin-only area. Only users with admin privileges can access this page.
-          </p>
-        </div>
       </div>
     </div>
   );
