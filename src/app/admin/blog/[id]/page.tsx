@@ -1,67 +1,81 @@
-import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
-import { createSupabaseServer } from '@/lib/supabase/server';
-import { EditPostForm } from './edit-post-form';
-import type { Post, Tag } from '@/lib/supabase/types';
+import { Suspense } from 'react';
+import Link from 'next/link';
+import { ArrowLeft } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { Skeleton } from '@/components/ui/skeleton';
+import { getPostWithTags, getAllTags } from '../actions';
+import { BlogPostForm } from '@/components/admin/blog-post-form';
 
 interface EditPostPageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
-async function getPostForEdit(id: string): Promise<{
-  post: Post | null;
-  tags: Tag[];
-}> {
-  const supabase = await createSupabaseServer();
-
-  // Get the post
-  const { data: post } = await supabase
-    .from('posts')
-    .select('*')
-    .eq('id', id)
-    .single();
-
-  if (!post) {
-    return { post: null, tags: [] };
-  }
-
-  // Get post tags
-  const { data: postTags } = await supabase
-    .from('post_tags')
-    .select(`
-      tags (
-        id,
-        name,
-        slug
-      )
-    `)
-    .eq('post_id', post.id);
-
-  const tags = postTags?.map(pt => (pt as any).tags).filter(Boolean) || [];
-
-  return { post, tags };
+function FormSkeleton() {
+  return (
+    <Card>
+      <CardHeader>
+        <Skeleton className="h-8 w-48" />
+      </CardHeader>
+      <CardContent className="space-y-6">
+        <Skeleton className="h-10 w-full" />
+        <Skeleton className="h-10 w-full" />
+        <Skeleton className="h-32 w-full" />
+        <Skeleton className="h-64 w-full" />
+        <div className="flex gap-2">
+          <Skeleton className="h-10 w-24" />
+          <Skeleton className="h-10 w-24" />
+        </div>
+      </CardContent>
+    </Card>
+  );
 }
 
 export default async function EditPostPage({ params }: EditPostPageProps) {
   const { id } = await params;
   
-  if (!id) {
-    notFound();
-  }
-
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <EditPostContent postId={id} />
-    </Suspense>
+    <div className="space-y-6">
+      {/* Header */}
+      <div className="flex items-center gap-4">
+        <Link href="/admin/blog">
+          <Button variant="ghost" size="sm">
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Back to Posts
+          </Button>
+        </Link>
+        <div>
+          <h1 className="text-3xl font-bold">Edit Post</h1>
+          <p className="text-muted-foreground">
+            Make changes to your blog post
+          </p>
+        </div>
+      </div>
+
+      {/* Form */}
+      <Suspense fallback={<FormSkeleton />}>
+        <EditPostForm postId={id} />
+      </Suspense>
+    </div>
   );
 }
 
-async function EditPostContent({ postId }: { postId: string }) {
-  const { post, tags } = await getPostForEdit(postId);
+async function EditPostForm({ postId }: { postId: string }) {
+  const [post, tags] = await Promise.all([
+    getPostWithTags(postId),
+    getAllTags()
+  ]);
 
   if (!post) {
     notFound();
   }
 
-  return <EditPostForm post={post} tags={tags} />;
+  return (
+    <BlogPostForm 
+      post={post}
+      tags={tags}
+      mode="edit"
+    />
+  );
 }

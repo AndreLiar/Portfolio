@@ -1,0 +1,14 @@
+import { LanguageForm } from '@/components/admin/language-form';
+import { languageApi } from '@/lib/api/language-client';
+
+export default async function EditLanguagePage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const item = await languageApi.getLanguage(id);
+
+  return (
+    <div>
+      <h1 className="text-2xl font-bold mb-4">Edit Language</h1>
+      <LanguageForm mode="edit" item={item} />
+    </div>
+  );
+}

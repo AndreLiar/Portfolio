@@ -1,0 +1,14 @@
+import { ProjectForm } from '@/components/admin/project-form';
+import { projectApi } from '@/lib/api/project-client';
+
+export default async function EditProjectPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const project = await projectApi.getProject(id);
+
+  return (
+    <div>
+      <h1 className="text-2xl font-bold mb-4">Edit Project</h1>
+      <ProjectForm mode="edit" project={project} />
+    </div>
+  );
+}

@@ -26,7 +26,7 @@ import { Badge } from '@/components/ui/badge';
 import { ProjectList } from '@/components/portfolio/project-list';
 import { PageLoader } from '@/components/portfolio/page-loader';
 import { ScrollToTop } from '@/components/portfolio/scroll-to-top';
-import { LatestPosts } from '@/components/portfolio/latest-posts';
+// import { LatestPosts } from '@/components/portfolio/latest-posts';
 import { ICON_VARIANTS } from '@/lib/icon-constants';
 
 interface MainContentProps {
@@ -136,10 +136,7 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
         name={data.name}
       />
       <main id="main-content" className="flex-1" tabIndex={-1}>
-        <Hero
-          heroData={heroData}
-          data={data}
-        />
+        <Hero heroData={heroData} />
 
         <motion.section 
           id="projects" 
@@ -306,13 +303,13 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
           </div>
         </motion.section>
 
-        {/* Latest Blog Posts */}
-        <LatestPosts 
+        {/* Latest Blog Posts - Commented out for static portfolio */}
+        {/* <LatestPosts 
           lang={lang} 
           dictionary={messages} 
           posts={blogPosts}
           postTags={blogPostTags}
-        />
+        /> */}
 
         <motion.section 
           id="contact" 

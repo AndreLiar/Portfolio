@@ -5,7 +5,7 @@ This is a personal portfolio website for ktayl, a Fullstack Software Engineer. I
 ## ✨ Features
 
 - **Responsive Design**: Looks great on all devices, from mobile phones to desktop screens.
-- **Dynamic Content**: All text and portfolio data are managed through a single JSON file (`messages/en.json`) for easy updates.
+- **Dynamic Content**: All text and portfolio data are managed through a single JSON file (`src/locales/en.json`) for easy updates.
 - **Component-Based Architecture**: Built with reusable React components for maintainability.
 - **AI-Powered Resume Analyzer**: An integrated Genkit flow provides AI-driven feedback on resumes.
 - **Interactive UI**: Smooth animations and a polished user interface thanks to ShadCN UI and Tailwind CSS.
@@ -70,4 +70,4 @@ Open [http://localhost:9002](http://localhost:9002) with your browser to see the
 
 ## ✏️ Customization
 
-All the text, project details, skills, and other content displayed on the portfolio can be easily modified by editing the `messages/en.json` file. No code changes are needed for content updates.
+All the text, project details, skills, and other content displayed on the portfolio can be easily modified by editing the `src/locales/en.json` file. No code changes are needed for content updates.

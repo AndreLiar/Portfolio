@@ -1,7 +1,6 @@
 import { Suspense } from 'react';
 import Link from 'next/link';
 import { Plus, Search } from 'lucide-react';
-import { createSupabaseServer } from '@/lib/supabase/server';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -21,9 +20,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import type { PostWithAuthor, PostStatus } from '@/lib/supabase/types';
+import type { PostStatus } from '@/lib/firebase/types';
 import { AdminPostsClient } from '@/components/admin/admin-posts-client';
-import { PostImportExport } from '@/components/admin/post-import-export';
 
 interface AdminBlogPageProps {
   searchParams: Promise<{
@@ -32,43 +30,6 @@ interface AdminBlogPageProps {
     page?: string;
   }>;
 }
-
-const POSTS_PER_PAGE = 10;
-
-async function getAdminPosts(
-  page: number = 1,
-  status?: PostStatus,
-  searchQuery?: string
-): Promise<{
-  posts: PostWithAuthor[];
-  totalCount: number;
-}> {
-  const supabase = await createSupabaseServer();
-  const offset = (page - 1) * POSTS_PER_PAGE;
-
-  let query = supabase
-    .from('posts_with_author')
-    .select('*', { count: 'exact' })
-    .order('updated_at', { ascending: false })
-    .range(offset, offset + POSTS_PER_PAGE - 1);
-
-  if (status && status !== 'all' as PostStatus) {
-    query = query.eq('status', status);
-  }
-
-  if (searchQuery) {
-    query = query.or(`title.ilike.%${searchQuery}%,excerpt.ilike.%${searchQuery}%`);
-  }
-
-  const { data: posts, count } = await query;
-
-  return {
-    posts: posts || [],
-    totalCount: count || 0,
-  };
-}
-
-
 
 function AdminPostsSkeleton() {
   return (
@@ -126,22 +87,19 @@ export default async function AdminBlogPage({ searchParams }: AdminBlogPageProps
   const currentPage = parseInt(pageParam || '1', 10);
 
   return (
-    <div className="space-y-6">
+    <div className="h-full flex flex-col space-y-6 max-w-7xl mx-auto">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-6 border-b border-gray-200/50">
         <div>
-          <h1 className="text-3xl font-bold">Blog Posts</h1>
-          <p className="text-muted-foreground">
-            Manage your blog posts and content
+          <h1 className="text-3xl font-bold text-gray-900">Blog Posts</h1>
+          <p className="text-lg text-muted-foreground mt-1">
+            Manage your blog posts and content creation
           </p>
         </div>
-        <div className="flex gap-2">
-          <Suspense fallback={<div>Loading...</div>}>
-            <PostImportExportWrapper />
-          </Suspense>
+        <div className="flex gap-3">
           <Link href="/admin/blog/new">
-            <Button>
-              <Plus className="w-4 h-4 mr-2" />
+            <Button size="lg" className="shadow-sm">
+              <Plus className="w-5 h-5 mr-2" />
               New Post
             </Button>
           </Link>
@@ -149,9 +107,9 @@ export default async function AdminBlogPage({ searchParams }: AdminBlogPageProps
       </div>
 
       {/* Filters */}
-      <Card>
+      <Card className="bg-white/80 backdrop-blur-sm border shadow-sm">
         <CardHeader>
-          <CardTitle>Filters</CardTitle>
+          <CardTitle className="text-lg font-semibold text-gray-900">Filters & Search</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="flex flex-col sm:flex-row gap-4">
@@ -160,12 +118,12 @@ export default async function AdminBlogPage({ searchParams }: AdminBlogPageProps
               <Input
                 placeholder="Search posts..."
                 defaultValue={search}
-                className="pl-10"
+                className="pl-10 h-10"
                 name="search"
               />
             </div>
             <Select defaultValue={status || 'all'} name="status">
-              <SelectTrigger className="w-full sm:w-48">
+              <SelectTrigger className="w-full sm:w-48 h-10">
                 <SelectValue placeholder="Filter by status" />
               </SelectTrigger>
               <SelectContent>
@@ -180,35 +138,17 @@ export default async function AdminBlogPage({ searchParams }: AdminBlogPageProps
       </Card>
 
       {/* Posts Table */}
-      <Suspense fallback={<AdminPostsSkeleton />}>
-        <AdminPostsContent
-          currentPage={currentPage}
-          status={status as PostStatus}
-          searchQuery={search}
-        />
-      </Suspense>
+      <div className="flex-1">
+        <Suspense fallback={<AdminPostsSkeleton />}>
+          <AdminPostsContent
+            currentPage={currentPage}
+            status={status as PostStatus}
+            searchQuery={search}
+          />
+        </Suspense>
+      </div>
     </div>
   );
-}
-
-async function PostImportExportWrapper() {
-  const { posts } = await getAdminPosts(1, undefined, undefined);
-  
-  // Transform posts for import/export component
-  const exportPosts = posts.map(post => ({
-    id: post.id,
-    title: post.title,
-    slug: post.slug,
-    excerpt: post.excerpt || '',
-    content_md: post.content_md,
-    status: post.status,
-    published_at: post.published_at,
-    created_at: post.created_at,
-    updated_at: post.updated_at,
-    tags: [], // TODO: Add tags if needed
-  }));
-
-  return <PostImportExport posts={exportPosts} />;
 }
 
 async function AdminPostsContent({
@@ -220,54 +160,27 @@ async function AdminPostsContent({
   status?: PostStatus;
   searchQuery?: string;
 }) {
-  const { posts, totalCount } = await getAdminPosts(currentPage, status, searchQuery);
-  const totalPages = Math.ceil(totalCount / POSTS_PER_PAGE);
+  // For now, show empty state since API endpoints aren't set up yet
+  const mockPosts: any[] = [];
 
   return (
     <div className="space-y-4">
       <AdminPostsClient
-        initialPosts={posts}
-        totalCount={totalCount}
+        initialPosts={mockPosts}
+        totalCount={0}
         currentPage={currentPage}
-        totalPages={totalPages}
+        totalPages={0}
       />
 
-      {/* Pagination */}
-      {totalPages > 1 && (
-        <div className="flex justify-center items-center space-x-2">
-          {currentPage > 1 && (
-            <Link
-              href={`/admin/blog?${new URLSearchParams({
-                ...(status && { status }),
-                ...(searchQuery && { search: searchQuery }),
-                page: (currentPage - 1).toString(),
-              })}`}
-            >
-              <Button variant="outline">Previous</Button>
-            </Link>
-          )}
-          
-          <span className="text-sm text-muted-foreground px-3">
-            Page {currentPage} of {totalPages}
-          </span>
-
-          {currentPage < totalPages && (
-            <Link
-              href={`/admin/blog?${new URLSearchParams({
-                ...(status && { status }),
-                ...(searchQuery && { search: searchQuery }),
-                page: (currentPage + 1).toString(),
-              })}`}
-            >
-              <Button variant="outline">Next</Button>
-            </Link>
-          )}
-        </div>
-      )}
-
-      {/* Stats */}
-      <div className="text-sm text-muted-foreground text-center">
-        Showing {posts.length} of {totalCount} posts
+      {/* Empty state */}
+      <div className="text-center py-8">
+        <p className="text-muted-foreground">No posts found. Create your first blog post!</p>
+        <Link href="/admin/blog/new" className="mt-4 inline-block">
+          <Button>
+            <Plus className="w-4 h-4 mr-2" />
+            Create First Post
+          </Button>
+        </Link>
       </div>
     </div>
   );

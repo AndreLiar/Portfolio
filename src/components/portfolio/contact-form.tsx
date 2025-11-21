@@ -17,7 +17,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Send, Loader2, Wifi, WifiOff, AlertCircle } from "lucide-react";
-import { sendEmail } from "@/app/actions";
+// Removed server action import - now using API endpoint
 
 export function ContactForm({ contactFormData }: { contactFormData: any }) {
   const t = contactFormData;
@@ -68,10 +68,19 @@ export function ContactForm({ contactFormData }: { contactFormData: any }) {
     setSubmitAttempted(true);
     
     try {
-      const result = await sendEmail(values);
-      if (result?.error) {
-        const errorInfo = getErrorMessage(result.error);
-        setLastError(result.error);
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      });
+
+      const result = await response.json();
+      
+      if (!response.ok || result?.error) {
+        const errorInfo = getErrorMessage(result.error || 'Request failed');
+        setLastError(result.error || 'Request failed');
         toast({
           title: t.toast.errorTitle,
           description: errorInfo.message,

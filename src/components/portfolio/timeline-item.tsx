@@ -21,7 +21,7 @@ export function TimelineItem({
           <time className="sm:absolute left-0 translate-y-0.5 inline-flex items-center justify-center text-xs font-semibold uppercase w-20 h-6 mb-3 sm:mb-0 text-accent bg-accent/20 rounded-full">{date}</time>
           <h4 className="font-bold font-headline text-primary">{title}</h4>
       </div>
-      <p className="text-muted-foreground sm:pl-32 text-body-sm leading-relaxed">{subtitle}</p>
+      <div className="text-muted-foreground sm:pl-32 text-body-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: subtitle }} />
       <div className="text-muted-foreground mt-2 sm:pl-32 text-body-sm leading-loose" dangerouslySetInnerHTML={{ __html: description }} />
     </div>
   );

@@ -1,75 +1,42 @@
-import { Suspense } from 'react';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { Calendar, Clock, Eye, ArrowLeft, Tag as TagIcon } from 'lucide-react';
-import { createSupabaseServer } from '@/lib/supabase/server';
-import { formatBlogDate, calculateReadingTime } from '@/lib/blog-utils';
+import { Metadata } from 'next';
+import Link from 'next/link';
+import { Calendar, Clock, Tag, ArrowLeft, Share2 } from 'lucide-react';
 import { getDictionary } from '@/lib/dictionaries';
-import { Button } from '@/components/ui/button';
+import { PostsService, PostTagsService } from '@/lib/firebase/firestore';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import type { PostWithAuthor, Tag, PostView } from '@/lib/supabase/types';
-import type { Metadata } from 'next';
+import type { Post, Tag as TagType } from '@/lib/firebase/types';
 
 interface BlogPostPageProps {
-  params: Promise<{ 
-    lang: string;
-    slug: string;
-  }>;
+  params: Promise<{ lang: string; slug: string }>;
 }
 
-async function getBlogPost(slug: string): Promise<{
-  post: PostWithAuthor | null;
-  tags: Tag[];
-  views: number;
-}> {
-  const supabase = await createSupabaseServer();
+interface PostWithTags extends Post {
+  tags: TagType[];
+}
 
-  // Get the post
-  const { data: post } = await supabase
-    .from('posts_with_author')
-    .select('*')
-    .eq('slug', slug)
-    .eq('status', 'published')
-    .single();
+async function getPostBySlug(slug: string): Promise<PostWithTags | null> {
+  try {
+    const post = await PostsService.getPostBySlug(slug);
+    if (!post) return null;
 
-  if (!post) {
-    return { post: null, tags: [], views: 0 };
+    const tags = await PostTagsService.getTagsForPost(post.id);
+    
+    // Increment view count
+    await PostsService.incrementViews(post.id);
+    
+    return { ...post, tags };
+  } catch (error) {
+    console.error('Error fetching blog post:', error);
+    return null;
   }
-
-  // Get post tags
-  const { data: postTags } = await supabase
-    .from('post_tags')
-    .select(`
-      tags (
-        id,
-        name,
-        slug
-      )
-    `)
-    .eq('post_id', post.id);
-
-  const tags = postTags?.map(pt => (pt as any).tags).filter(Boolean) || [];
-
-  // Get view count
-  const { data: viewData } = await supabase
-    .from('post_views')
-    .select('views')
-    .eq('post_id', post.id)
-    .single();
-
-  const views = viewData?.views || 0;
-
-  // Increment view count
-  await supabase.rpc('increment_post_view', { p_post_id: post.id });
-
-  return { post, tags, views: views + 1 };
 }
 
-// Generate metadata for SEO
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
-  const { lang, slug } = await params;
-  const { post } = await getBlogPost(slug);
+  const { slug } = await params;
+  const post = await getPostBySlug(slug);
   
   if (!post) {
     return {
@@ -77,199 +44,146 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     };
   }
 
-  const dictionary = await getDictionary(lang);
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://laurel-portfolio.vercel.app';
-
   return {
-    title: `${post.title} | ${dictionary?.Page?.blog?.title || 'Blog'}`,
-    description: post.excerpt || `Read ${post.title} on the blog`,
-    keywords: [
-      'blog',
-      'software development',
-      'programming',
-      'tech',
-      ...(post.title.split(' ').slice(0, 5)), // Add title words as keywords
-    ],
-    authors: [{ name: post.author_name || 'Author' }],
+    title: post.title,
+    description: post.excerpt || undefined,
     openGraph: {
       title: post.title,
-      description: post.excerpt || `Read ${post.title} on the blog`,
+      description: post.excerpt || undefined,
       type: 'article',
-      modifiedTime: post.updated_at,
-      authors: [post.author_name || 'Author'],
-      url: `${baseUrl}/${lang}/blog/${slug}`,
-      images: post.cover_url ? [
-        {
-          url: post.cover_url,
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        },
-      ] : undefined,
+      publishedTime: post.published_at?.toISOString(),
+      modifiedTime: post.updated_at.toISOString(),
+      authors: ['Laurel Kanmegne'],
+      tags: post.tags?.map(tag => tag.name),
     },
     twitter: {
       card: 'summary_large_image',
       title: post.title,
-      description: post.excerpt || `Read ${post.title} on the blog`,
-      images: post.cover_url ? [post.cover_url] : undefined,
-    },
-    alternates: {
-      canonical: `${baseUrl}/${lang}/blog/${slug}`,
+      description: post.excerpt || undefined,
     },
   };
 }
 
-function BlogPostHeader({ 
-  post, 
-  tags, 
-  views, 
-  lang 
-}: { 
-  post: PostWithAuthor;
-  tags: Tag[];
-  views: number;
-  lang: string;
-}) {
-  const readingTime = calculateReadingTime(post.content_md);
-
-  return (
-    <header className="space-y-6">
-      {/* Back to blog */}
-      <div>
-        <Link href={`/${lang}/blog`}>
-          <Button variant="ghost" size="sm">
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to blog
-          </Button>
-        </Link>
-      </div>
-
-      {/* Cover image */}
-      {post.cover_url && (
-        <div className="aspect-video relative overflow-hidden rounded-lg">
-          <img
-            src={post.cover_url}
-            alt={post.title}
-            className="object-cover w-full h-full"
-          />
-        </div>
-      )}
-
-      {/* Title and meta */}
-      <div className="space-y-4">
-        <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-          {post.title}
-        </h1>
-        
-        {post.excerpt && (
-          <p className="text-xl text-muted-foreground leading-relaxed">
-            {post.excerpt}
-          </p>
-        )}
-
-        {/* Meta information */}
-        <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
-          {post.author_name && (
-            <div className="flex items-center gap-2">
-              <span className="font-medium text-foreground">
-                by {post.author_name}
-              </span>
-            </div>
-          )}
-          
-          {post.published_at && (
-            <div className="flex items-center gap-1">
-              <Calendar className="w-4 h-4" />
-              <span>{formatBlogDate(post.published_at)}</span>
-            </div>
-          )}
-          
-          <div className="flex items-center gap-1">
-            <Clock className="w-4 h-4" />
-            <span>{readingTime} min read</span>
-          </div>
-
-          <div className="flex items-center gap-1">
-            <Eye className="w-4 h-4" />
-            <span>{views.toLocaleString()} views</span>
-          </div>
-        </div>
-
-        {/* Tags */}
-        {tags.length > 0 && (
-          <div className="flex flex-wrap gap-2">
-            {tags.map((tag) => (
-              <Link key={tag.id} href={`/${lang}/blog?tag=${tag.slug}`}>
-                <Badge variant="secondary" className="hover:bg-primary/90 cursor-pointer">
-                  <TagIcon className="w-3 h-3 mr-1" />
-                  {tag.name}
-                </Badge>
-              </Link>
-            ))}
-          </div>
-        )}
-      </div>
-
-      <Separator />
-    </header>
-  );
-}
-
-function BlogPostContent({ content }: { content: string }) {
-  return (
-    <article 
-      className="prose prose-lg dark:prose-invert max-w-none"
-      dangerouslySetInnerHTML={{ __html: content }}
-    />
-  );
-}
-
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { lang, slug } = await params;
-  
-  // Validate language
-  const supportedLanguages = ['en', 'fr', 'de'];
-  if (!supportedLanguages.includes(lang)) {
+  const dictionary = await getDictionary(lang);
+  const post = await getPostBySlug(slug);
+
+  if (!post) {
     notFound();
   }
 
-  const { post, tags, views } = await getBlogPost(slug);
+  const formatDate = (date: Date) => {
+    return new Intl.DateTimeFormat(lang, {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    }).format(date);
+  };
 
-  if (!post || !post.content_html) {
-    notFound();
-  }
+  const estimatedReadTime = Math.ceil(post.content_md.split(' ').length / 200);
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-12">
-        <div className="max-w-4xl mx-auto">
-          <BlogPostHeader 
-            post={post} 
-            tags={tags} 
-            views={views}
-            lang={lang}
-          />
-          
-          <div className="mt-8">
-            <BlogPostContent content={post.content_html} />
-          </div>
+      <div className="container mx-auto px-4 py-8">
+        {/* Navigation */}
+        <div className="mb-8">
+          <Link href={`/${lang}/blog`}>
+            <Button variant="ghost" className="mb-4">
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Back to Blog
+            </Button>
+          </Link>
+        </div>
 
-          {/* Footer with back to blog link */}
-          <footer className="mt-12 pt-8 border-t border-border">
-            <div className="flex justify-between items-center">
-              <Link href={`/${lang}/blog`}>
-                <Button variant="outline">
-                  <ArrowLeft className="w-4 h-4 mr-2" />
-                  Back to all posts
-                </Button>
-              </Link>
-              
+        {/* Article */}
+        <article className="max-w-4xl mx-auto">
+          {/* Header */}
+          <header className="mb-8">
+            <h1 className="text-4xl font-bold mb-4 leading-tight">
+              {post.title}
+            </h1>
+            
+            {post.excerpt && (
+              <p className="text-xl text-muted-foreground mb-6 leading-relaxed">
+                {post.excerpt}
+              </p>
+            )}
+
+            {/* Meta information */}
+            <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground mb-6">
+              <div className="flex items-center gap-2">
+                <Calendar className="w-4 h-4" />
+                <time dateTime={post.published_at?.toISOString()}>
+                  {formatDate(post.published_at || post.created_at)}
+                </time>
+              </div>
+              <div className="flex items-center gap-2">
+                <Clock className="w-4 h-4" />
+                {estimatedReadTime} min read
+              </div>
+              <div className="flex items-center gap-2">
+                <Share2 className="w-4 h-4" />
+                <button 
+                  onClick={() => {
+                    if (navigator.share) {
+                      navigator.share({
+                        title: post.title,
+                        url: window.location.href,
+                      });
+                    } else {
+                      navigator.clipboard.writeText(window.location.href);
+                    }
+                  }}
+                  className="hover:text-foreground transition-colors"
+                >
+                  Share
+                </button>
+              </div>
+            </div>
+
+            {/* Tags */}
+            {post.tags && post.tags.length > 0 && (
+              <div className="flex flex-wrap gap-2 mb-8">
+                {post.tags.map((tag) => (
+                  <Link key={tag.id} href={`/${lang}/blog/tags/${tag.slug}`}>
+                    <Badge variant="secondary" className="hover:bg-primary hover:text-primary-foreground transition-colors">
+                      <Tag className="w-3 h-3 mr-1" />
+                      {tag.name}
+                    </Badge>
+                  </Link>
+                ))}
+              </div>
+            )}
+
+            <Separator className="mb-8" />
+          </header>
+
+          {/* Content */}
+          <div 
+            className="prose prose-lg max-w-none dark:prose-invert prose-headings:font-bold prose-headings:tracking-tight prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-pre:bg-muted prose-pre:border prose-code:bg-muted prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none"
+            dangerouslySetInnerHTML={{ 
+              __html: post.content_html || post.content_md.replace(/\n/g, '<br>') 
+            }}
+          />
+
+          {/* Footer */}
+          <footer className="mt-12 pt-8 border-t">
+            <div className="flex items-center justify-between">
               <div className="text-sm text-muted-foreground">
-                Last updated: {formatBlogDate(post.updated_at)}
+                Last updated on {formatDate(post.updated_at)}
+              </div>
+              <div className="flex gap-2">
+                <Link href={`/${lang}/blog`}>
+                  <Button variant="outline">More Posts</Button>
+                </Link>
+                <Link href={`/${lang}`}>
+                  <Button>Back to Portfolio</Button>
+                </Link>
               </div>
             </div>
           </footer>
-        </div>
+        </article>
       </div>
     </div>
   );

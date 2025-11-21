@@ -1,4 +1,17 @@
-import { config } from 'dotenv';
-config();
+import { genkit } from 'genkit';
+import { googleAI } from '@genkit-ai/googleai';
 
-import '@/ai/flows/resume-analyzer.ts';
+// Import our flows
+import './blog-generator';
+
+// Configure Genkit
+export const ai = genkit({
+  plugins: [
+    googleAI({
+      apiKey: process.env.GOOGLE_AI_API_KEY,
+    }),
+  ],
+});
+
+console.log('🚀 Genkit AI development server started');
+console.log('📝 Blog generation flow loaded and ready');

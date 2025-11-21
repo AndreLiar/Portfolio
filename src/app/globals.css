@@ -2,7 +2,158 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Force light theme for admin section */
+.admin-layout,
+.admin-layout * {
+  color-scheme: light !important;
+}
+
+/* Prevent dark theme bleeding and ensure content visibility */
+[data-theme="dark"] .admin-layout,
+html.dark .admin-layout {
+  --background: 0 0% 100% !important;
+  --foreground: 240 10% 3.9% !important;
+  --card: 0 0% 100% !important;
+  --card-foreground: 240 10% 3.9% !important;
+  --muted: 240 4.8% 95.9% !important;
+  --muted-foreground: 240 3.8% 46.1% !important;
+  --border: 240 5.9% 90% !important;
+}
+
+/* Ensure all admin content is visible */
+.admin-layout * {
+  color: inherit !important;
+}
+
+/* Fix gradient text visibility */
+.admin-layout .text-transparent {
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  color: transparent !important;
+}
+
+/* Ensure text colors are visible */
+.admin-layout .text-muted-foreground {
+  color: hsl(240 3.8% 46.1%) !important;
+}
+
+.admin-layout .text-gray-900 {
+  color: rgb(17 24 39) !important;
+}
+
+.admin-layout .text-gray-700 {
+  color: rgb(55 65 81) !important;
+}
+
+.admin-layout .text-gray-600 {
+  color: rgb(75 85 99) !important;
+}
+
+.admin-layout .text-blue-900 {
+  color: rgb(30 58 138) !important;
+}
+
+.admin-layout .text-green-900 {
+  color: rgb(20 83 45) !important;
+}
+
+.admin-layout .text-purple-900 {
+  color: rgb(76 29 149) !important;
+}
+
+/* Ensure headings are visible */
+.admin-layout h1, 
+.admin-layout h2, 
+.admin-layout h3, 
+.admin-layout h4 {
+  color: rgb(17 24 39) !important;
+}
+
+/* Ensure all text has minimum contrast */
+.admin-layout p,
+.admin-layout span,
+.admin-layout div {
+  color: rgb(55 65 81) !important;
+}
+
+/* Table visibility */
+.admin-layout table {
+  background-color: white !important;
+}
+
+.admin-layout th,
+.admin-layout td {
+  color: rgb(17 24 39) !important;
+  border-color: rgb(229 231 235) !important;
+}
+
+.admin-layout .table-header th {
+  background-color: rgb(249 250 251) !important;
+}
+
+/* Card and component visibility */
+.admin-layout .card,
+.admin-layout [data-radix-collection-item] {
+  background-color: white !important;
+  color: rgb(17 24 39) !important;
+}
+
+/* Button text visibility */
+.admin-layout button {
+  color: inherit !important;
+}
+
+.admin-layout .text-primary {
+  color: hsl(180 70% 32%) !important;
+}
+
 @layer base {
+  /* Ensure full width layout */
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
+    background-color: white;
+  }
+
+  /* Admin layout full width enforcement */
+  .admin-layout {
+    width: 100vw !important;
+    background-color: white !important;
+    display: flex !important;
+  }
+
+  /* Ensure main content takes full remaining width */
+  .admin-layout main {
+    flex: 1 !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    background-color: white !important;
+  }
+
+  /* Force content containers to full width */
+  .admin-layout main > div,
+  .admin-layout main > div > div {
+    width: 100% !important;
+    background-color: white !important;
+  }
+
+  /* Prevent any container width restrictions */
+  .admin-layout * {
+    max-width: none !important;
+  }
+
+  /* Ensure no dark backgrounds show through */
+  .admin-layout,
+  .admin-layout *:not(.bg-primary):not(.bg-secondary):not(.bg-accent) {
+    background-color: white !important;
+  }
+
+  /* Force viewport width usage */
+  .admin-layout {
+    min-width: 100vw !important;
+    max-width: 100vw !important;
+  }
+
   :root {
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
@@ -27,25 +178,25 @@
   }
 
   .dark {
-    --background: 240 10% 3.9%;
+    --background: 220 13% 9%;
     --foreground: 0 0% 98%;
-    --card: 240 10% 8%;
+    --card: 220 13% 7%;
     --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
+    --popover: 220 13% 9%;
     --popover-foreground: 0 0% 98%;
-    --primary: 180 60% 55%;
-    --primary-foreground: 240 10% 3.9%;
-    --secondary: 240 3.7% 15.9%;
+    --primary: 186 100% 50%;
+    --primary-foreground: 220 13% 9%;
+    --secondary: 215 25% 27%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 180 60% 55%;
-    --accent-foreground: 240 10% 3.9%;
+    --muted: 215 25% 27%;
+    --muted-foreground: 220 9% 71%;
+    --accent: 186 100% 50%;
+    --accent-foreground: 220 13% 9%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 180 60% 55%;
+    --border: 215 25% 27%;
+    --input: 215 25% 27%;
+    --ring: 186 100% 50%;
   }
 }
 
@@ -317,5 +468,58 @@
     bottom: 0;
     opacity: 0.4;
     pointer-events: none;
+  }
+
+  /* Consistent button styles throughout the app */
+  .btn-primary {
+    @apply bg-primary hover:bg-primary/90 text-primary-foreground font-semibold;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary hover:bg-secondary/80 text-secondary-foreground;
+  }
+
+  .btn-outline {
+    @apply border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground;
+  }
+
+  /* Consistent card styles */
+  .card-gradient {
+    background: linear-gradient(135deg, 
+      hsl(var(--card)) 0%, 
+      hsl(var(--card) / 0.8) 100%
+    );
+  }
+
+  /* Consistent text accent colors */
+  .text-accent-cyan {
+    @apply text-primary;
+  }
+
+  /* Consistent background for alternating sections */
+  .section-bg-default {
+    @apply bg-background;
+  }
+
+  .section-bg-alternate {
+    @apply bg-card;
+  }
+
+  .section-bg-contact {
+    @apply bg-subtle-gradient;
+  }
+
+  /* Consistent focus styles for the cyan theme */
+  .focus-cyan {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
+  }
+
+  /* Consistent hover animations */
+  .hover-lift {
+    @apply transition-transform duration-300 hover:-translate-y-1;
+  }
+
+  .hover-glow {
+    @apply transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/20;
   }
 }

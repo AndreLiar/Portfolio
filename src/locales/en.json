@@ -1,0 +1,376 @@
+{
+  "Metadata": {
+    "title": "Laurel's Digital Stage",
+    "description": "Portfolio of Laurel, Fullstack Software Engineer."
+  },
+  "Header": {
+    "projects": "Projects",
+    "skills": "Skills",
+    "softSkills": "Soft Skills",
+    "experience": "Experience",
+    "contact": "Contact",
+    "language": "Language",
+    "nav": {
+      "blog": "Blog"
+    }
+  },
+  "Hero": {
+    "contactMe": "Contact Me",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "name": "Laurel Kanmegne",
+    "title": "T-Shaped Fullstack & DevOps Engineer — Building Scalable, Data-Driven, and",
+    "titleHighlight": "AI-Integrated Systems",
+    "location": "Paris, France 🇫🇷",
+    "description1": "I design and engineer intelligent, cloud-native systems that merge software craftsmanship with automation and AI.",
+    "description2": "My work bridges code, infrastructure, and data, turning complex business challenges into fast, reliable, and self-improving digital solutions.",
+    "whatIBuildTitle": "What I Build:",
+    "tagline": "Engineer by craft, architect by mindset — I connect intelligence, automation, and impact.",
+    "skills": {
+      "fullstack": {
+        "title": "Full-Stack Applications",
+        "desc": "Clean, modular, and production-ready architectures"
+      },
+      "devops": {
+        "title": "DevOps & Cloud Automation",
+        "desc": "CI/CD, containerization, infrastructure as code, and monitoring"
+      },
+      "ai": {
+        "title": "AI-Integrated Systems",
+        "desc": "AI agent systems, predictive workflows, intelligent APIs, and enterprise-grade AI integration for custom applications"
+      },
+      "data": {
+        "title": "Data-Driven Platforms",
+        "desc": "Analytics-enabled apps that learn and adapt"
+      },
+      "performance": {
+        "title": "Performance & Reliability",
+        "desc": "Systems built to scale and sustain"
+      }
+    },
+    "buttons": {
+      "viewProjects": "💼 View Projects",
+      "techStack": "📚 Tech Stack",
+      "letsConnect": "📬 Let's Connect"
+    }
+  },
+  "Page": {
+    "projects": {
+      "title": "Project Experience"
+    },
+    "skills": {
+      "title": "Core Technical Skills"
+    },
+    "softSkills": {
+      "title": "💬 Soft Skills"
+    },
+    "journey": {
+      "title": "My Journey",
+      "workExperienceTitle": "Work Experience",
+      "educationTitle": "Education"
+    },
+    "extras": {
+      "languagesTitle": "Languages",
+      "interestsTitle": "Interests"
+    },
+    "contact": {
+      "title": "Get In Touch",
+      "subtitle": "Have a project in mind, or just want to say hi? Feel free to reach out."
+    }
+  },
+  "ProjectList": {
+    "loadMore": "Load More"
+  },
+  "ProjectCard": {
+    "role": "Role",
+    "impact": "Impact",
+    "features": "Features",
+    "stack": "Stack",
+    "liveDemo": "Live Demo",
+    "github": "GitHub"
+  },
+  "Footer": {
+    "rights": "All rights reserved."
+  },
+  "ContactForm": {
+    "name": "Name",
+    "namePlaceholder": "Your Name",
+    "email": "Email",
+    "emailPlaceholder": "your.email@example.com",
+    "message": "Message",
+    "messagePlaceholder": "Tell me about your project or inquiry...",
+    "button": "Send Message",
+    "buttonSending": "Sending...",
+    "toast": {
+      "successTitle": "Message Sent!",
+      "successDescription": "Thanks for reaching out. I'll get back to you soon.",
+      "errorTitle": "Error",
+      "errorDescription": "Something went wrong. Please try again.",
+      "errorResend": "Resend API Key is not configured."
+    }
+  },
+  "data": {
+    "name": "Laurel",
+    "fullName": "Laurel Kanmegne",
+    "title": "Fullstack Software Engineer | Scalable & AI-Powered Systems",
+    "location": "Paris, France",
+    "contact": {
+      "email": "kanmegneandre@gmail.com",
+      "phone": "+33000000000",
+      "github": "https://github.com/AndreLiar",
+      "linkedin": "https://www.linkedin.com/in/laurel-kanmegne-2a861425a/"
+    },
+"summary": "Hi! I'm a **Fullstack Software Engineer** who transforms complex business challenges into fast, reliable, and intelligent digital solutions.\n\n• **🚀 Full-Stack Mastery**: Architecting robust backends and crafting seamless user experiences\n• **🤖 AI-Powered Innovation**: Building intelligent applications that learn and adapt\n• **☁️ Cloud-Native Architecture**: Designing scalable, production-ready systems on modern platforms\n• **💡 SaaS Excellence**: Creating subscription-ready products with enterprise-grade reliability\n• **⚡ Performance Optimization**: Delivering lightning-fast applications with exceptional user experience\n\n*Passionate about cutting-edge technology, driven by user impact — where innovation meets execution.*",
+    "skills": [
+      {
+        "title": "Languages & Backend",
+        "Icon": "Code",
+        "skills": [
+          "TypeScript",
+          "Python",
+          "JavaScript",
+          "Java",
+          "Spring Boot",
+          "C#/.NET",
+          "Go",
+          "Bash",
+          "SQL",
+          "Node.js",
+          "Express",
+          "NestJS"
+        ]
+      },
+      {
+        "title": "Web Stack",
+        "Icon": "BotMessageSquare",
+        "skills": [
+          "React",
+          "Next.js",
+          "Tailwind CSS",
+          "Vite",
+          "Bootstrap",
+          "REST",
+          "GraphQL"
+        ]
+      },
+      {
+        "title": "Cloud & DevOps",
+        "Icon": "Cloud",
+        "skills": [
+          "Azure",
+          "Kubernetes",
+          "Terraform",
+          "GitHub Actions",
+          "GitLab CI",
+          "Jenkins",
+          "Docker",
+          "CI/CD",
+          "Prometheus",
+          "Grafana",
+          "Alerting",
+          "Tracing (OpenTelemetry)"
+        ]
+      },
+      {
+        "title": "AI/ML",
+        "Icon": "BrainCircuit",
+        "skills": [
+          "OpenAI API",
+          "LangChain",
+          "HuggingFace",
+          "MLflow",
+          "Transformers",
+          "scikit-learn",
+          "Gemini API",
+          "Ollama"
+        ]
+      },
+      {
+        "title": "Data & Analytics",
+        "Icon": "Database",
+        "skills": [
+          "PostgreSQL",
+          "MySQL",
+          "Redis",
+          "Snowflake",
+          "dbt",
+          "SQL Server",
+          "Streamlit",
+          "ETL/ELT pipelines",
+          "MongoDB"
+        ]
+      },
+      {
+        "title": "Enterprise & Others",
+        "Icon": "Type",
+        "skills": [
+          "Salesforce App Builder",
+          "SAP UI5",
+          "SAP BTP",
+          "OAuth2",
+          "JWT",
+          "SAML",
+          "Playwright",
+          "Postman",
+          "Firebase",
+          "Supabase",
+          "Agile/Scrum",
+          "unit and integration testing"
+        ]
+      }
+    ],
+    "projects": [
+      {
+        "title": "TransparAI",
+        "purpose": "An AI platform for analyzing complex legal and technical documents, with secure authentication and subscriptions.",
+        "stack": [
+          "React",
+          "Vite",
+          "TypeScript",
+          "Node.js",
+          "Express",
+          "MongoDB",
+          "Firebase",
+          "Stripe",
+          "Vercel",
+          "Render"
+        ],
+        "impact": "Empowers users with AI-driven summaries, improving decision-making in legal fields. Features secure auth, subscriptions, and PDF export.",
+        "role": "Fullstack Developer, built the UI, integrated the Gemini AI API, and implemented secure auth and subscriptions.",
+        "features": [
+          "AI document analysis (summary, scoring)",
+          "Secure Firebase authentication",
+          "Stripe subscription management",
+          "Analysis history & PDF export"
+        ],
+        "link": "https://transparai.vercel.app/",
+        "repoUrl": "https://github.com/AndreLiar/transparai.git"
+      },
+      {
+        "title": "PlatformPro Jobs",
+        "purpose": "A job board for platform engineers with AI-powered candidate scoring and job description generation.",
+        "stack": [
+          "Next.js",
+          "TypeScript",
+          "Firebase",
+          "Genkit (Gemini AI)",
+          "Tailwind CSS",
+          "ShadCN UI",
+          "Stripe",
+          "Cloudinary",
+          "Vercel",
+          "Zod"
+        ],
+        "impact": "Streamlines hiring for platform roles with AI tools for recruiters and a dedicated dashboard for candidates, boosting efficiency.",
+        "role": "Fullstack Developer, architected the app, implemented Firebase services, and integrated Genkit for AI features.",
+        "features": [
+          "AI-powered CV analysis & scoring",
+          "AI job description generation",
+          "Job & application management tools",
+          "Stripe integration for job posting credits"
+        ],
+        "link": "https://plateformprojob.vercel.app",
+        "repoUrl": "https://github.com/AndreLiar/Plateformprojob.git"
+      },
+      {
+        "title": "Freemap",
+        "purpose": "A platform to connect users by location and facilitate real-time video calls, enabling profile discovery and direct interaction.",
+        "stack": [
+          "Node.js",
+          "Express.js",
+          "MongoDB",
+          "Socket.io",
+          "Cloudinary",
+          "Nodemailer",
+          "JWT",
+          "React",
+          "Leaflet",
+          "Jitsi"
+        ],
+        "impact": "Facilitates community building by combining location-based discovery with real-time video, enabling diverse user connections.",
+        "role": "Fullstack Developer, responsible for the Node.js backend, real-time communication, React frontend, and user authentication.",
+        "features": [
+          "User authentication & profile management",
+          "Location-based user discovery via Leaflet",
+          "Real-time video calling with Jitsi",
+          "Image uploads through Cloudinary"
+        ],
+        "link": "https://freemap-puce.vercel.app/",
+        "repoUrl": "https://github.com/AndreLiar/Freemap"
+      },
+      {
+        "title": "DigitalSentinel",
+        "purpose": "A web application for structured digital learning or onboarding, guiding users through phases with AI assistance and progress tracking.",
+        "stack": [
+          "Next.js",
+          "React",
+          "TypeScript",
+          "Node.js",
+          "MongoDB",
+          "NextAuth.js",
+          "CSS Modules",
+          "Gemini API"
+        ],
+        "impact": "Empowers individuals and teams to develop strong digital security habits through interactive, AI-assisted learning modules and real-time progress tracking.",
+        "role": "Led frontend and UX development, designed learning flow structure, integrated AI assistant, and implemented gamified user progress tracking",
+        "features": [
+          "User authentication & profile management",
+          "Multi-phase guided experience",
+          "AI assistant integration",
+          "Progress tracking for users"
+        ],
+        "link": "https://digital-starter.vercel.app/",
+        "repoUrl": "https://github.com/AndreLiar/digital-starter"
+      }
+    ],
+    "workExperience": [
+      {
+        "date": "Sep 2024 - Present",
+        "title": "IT Support & Python Development (Apprentice)",
+        "subtitle": "HDI France, Paris",
+        "description": "<ul><li>Provided Level 1 & 2 technical support, managing user incidents for hardware, network, and software issues via GLPI.</li><li>Modernized and maintained legacy Python scripts, focusing on performance optimization, bug fixes, and code readability.</li><li>Developed automation scripts to streamline document exports, improving data accessibility and workflow efficiency.</li><li>Managed the IT asset lifecycle, including deployment, configuration, and network administration for user workstations and meeting room hardware (ClickShare).</li></ul>"
+      },
+      {
+        "date": "Jul 2024 – Aug 2024",
+        "title": "Software Developer Intern",
+        "subtitle": "FedHub, Remote",
+        "description": "<ul><li><strong>Web Scraping with Python</strong>: Developed a Python scraping algorithm using BeautifulSoup to extract and structure data, along with a simple web interface for practical use.</li><li><strong>SEO Optimization</strong>: Improved website SEO and performance using Laravel and React TypeScript. Optimized dynamic and static loading, compressed resources, and enhanced meta tags and descriptions for better search engine ranking.</li></ul>"
+      }
+    ],
+    "education": [
+      {
+        "date": "2022 - 2027",
+        "title": "Mastère – Expert en Développement Web Fullstack (Titre RNCP n°39583 — Niveau 7, Bac+5 reconnu par l'État)",
+        "subtitle": "Ynov Campus, Paris",
+        "description": "<p class=\"font-semibold\">📘 Key Modules:</p><ul class=\"list-disc pl-5 mt-2 space-y-1\"><li>Fullstack JavaScript Development (React, Node.js, Next.js)</li><li>DevOps & Cloud Computing (Docker, Kubernetes, GitHub Actions, AWS, Azure)</li><li>Software Design and Architecture</li><li>Enterprise Systems Integration (Salesforce, SAP, Oracle)</li><li>Agile Projects & Version Control (Scrum, Git)</li><li>Introduction to Artificial Intelligence and Data Science</li><li>Application Security and Web Performance</li></ul>"
+      }
+    ],
+    "softSkills": [
+      "Problem-solving and system thinking",
+      "Communication and collaboration with cross-functional teams",
+      "Adaptability and fast learning in dynamic tech stacks",
+      "Project ownership, initiative, and continuous improvement mindset"
+    ],
+    "languages": [
+      {
+        "name": "English",
+        "level": "C1"
+      },
+      {
+        "name": "French",
+        "level": "Native"
+      },
+      {
+        "name": "German",
+        "level": "B1"
+      }
+    ],
+    "interests": [
+      "AI in Education",
+      "Music",
+      "Football",
+      "Travel",
+      "Tech Trend"
+    ]
+  }
+}
