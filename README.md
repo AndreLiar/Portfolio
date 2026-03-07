@@ -1,73 +1,60 @@
-# ktayl's Digital Stage - A Personal Portfolio
+# Andre Kanmegne - Professional Portfolio & CV
 
-This is a personal portfolio website for ktayl, a Fullstack Software Engineer. It showcases projects, skills, and professional experience in a clean, modern, and responsive design. The project is built with Next.js and styled with Tailwind CSS and ShadCN UI components.
+A modern, high-performance portfolio website for a **Fullstack Software & DevOps Engineer**, featuring internationalization (EN, FR, DE), a completely dynamic architecture, and an integrated enterprise-grade CV generation engine.
 
-## ✨ Features
+Live Preview: [https://devandre.sbs](https://devandre.sbs)
 
-- **Responsive Design**: Looks great on all devices, from mobile phones to desktop screens.
-- **Dynamic Content**: All text and portfolio data are managed through a single JSON file (`src/locales/en.json`) for easy updates.
-- **Component-Based Architecture**: Built with reusable React components for maintainability.
-- **AI-Powered Resume Analyzer**: An integrated Genkit flow provides AI-driven feedback on resumes.
-- **Interactive UI**: Smooth animations and a polished user interface thanks to ShadCN UI and Tailwind CSS.
+## ✨ Core Features
+
+- **Enterprise CV Generator:** Fully automated, 1-page CV generation tailored for Applicant Tracking Systems (ATS), powered by native browser PDF formatting (`window.print()`).
+- **Internationalization (i18n):** Complete content translation in 3 languages (English, French, German).
+- **Server-Side Rendering (SSR):** Built with Next.js 15 App Router for blistering fast load times and optimized Core Web Vitals.
+- **Dynamic Content:** All content (skills, projects, work experience, bio) is managed entirely via central locale JSON files, separating code from content.
+- **Modern UI/UX:** Clean, accessible styling powered by Tailwind CSS and ShadCN UI components.
+- **Cloud/DevOps Focus:** The content schema is specifically engineered to highlight heavy cloud infrastructure, CI/CD, and Fullstack architecture skills.
 
 ## 🚀 Tech Stack
 
-- **Framework**: [Next.js](https://nextjs.org/) (App Router)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **UI Components**: [ShadCN UI](https://ui.shadcn.com/)
-- **AI**: [Genkit](https://firebase.google.com/docs/genkit)
-- **Icons**: [Lucide React](https://lucide.dev/guide/packages/lucide-react)
-- **Deployment**: Firebase App Hosting
+- **Framework:** [Next.js 15](https://nextjs.org/) (React 18)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **Components:** [ShadCN UI](https://ui.shadcn.com/) / [Radix UI](https://www.radix-ui.com/)
+- **Icons:** [Lucide React](https://lucide.dev/)
+- **Deployment:** [Vercel](https://vercel.com/) (CI/CD Automated Integration)
 
 ## 🛠️ Getting Started
 
 ### Prerequisites
-
-- Node.js (v18 or later)
-- npm or yarn
+- Node.js `v18+` (or `v20+` recommended)
+- `npm`
 
 ### Installation
+1. Clone the repository:
+```bash
+git clone https://github.com/AndreLiar/Portfolio.git
+```
+2. Navigate to the directory:
+```bash
+cd Portfolio
+```
+3. Install dependencies:
+```bash
+npm install
+```
 
-1.  Clone the repository:
-    ```bash
-    git clone <repository-url>
-    ```
-2.  Navigate to the project directory:
-    ```bash
-    cd <project-directory>
-    ```
-3.  Install dependencies:
-    ```bash
-    npm install
-    ```
-
-### Running the Development Server
-
-To start the development server, run the following command:
-
+### Running Locally
+To spin up the development server, run:
 ```bash
 npm run dev
 ```
+Open [http://localhost:9009](http://localhost:9009) in your browser. The localized versions are available at `/en`, `/fr`, and `/de`.
 
-Open [http://localhost:9002](http://localhost:9002) with your browser to see the result.
+## 📁 Content Management
 
-## 📁 Project Structure
+No code changes are required to update the portfolio. Everything is purely data-driven.
+To update your projects, skills, and summary, edit the corresponding localized JSON files:
+- `src/locales/en.json` (English)
+- `src/locales/fr.json` (French)
+- `src/locales/de.json` (German)
 
-```
-.
-├── src
-│   ├── app                 # Next.js App Router pages
-│   ├── components
-│   │   ├── portfolio       # Custom components for the portfolio
-│   │   └── ui              # ShadCN UI components
-│   ├── ai                  # Genkit AI flows
-│   │   └── flows
-│   └── lib                 # Utility functions
-├── messages
-│   └── en.json             # All portfolio data and text content
-└── public                  # Static assets (images, fonts)
-```
-
-## ✏️ Customization
-
-All the text, project details, skills, and other content displayed on the portfolio can be easily modified by editing the `src/locales/en.json` file. No code changes are needed for content updates.
+---
+*Designed & Build for Enterprise Scale.*
