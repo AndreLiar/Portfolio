@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -16,22 +15,18 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { Send, Loader2, Wifi, WifiOff, AlertCircle } from "lucide-react";
-// Removed server action import - now using API endpoint
+import { Send } from "lucide-react";
 
-export function ContactForm({ contactFormData }: { contactFormData: any }) {
+export function ContactForm({ contactFormData, contactEmail }: { contactFormData: any; contactEmail?: string }) {
   const t = contactFormData;
-  
+
   const formSchema = z.object({
     name: z.string().min(2, "Name must be at least 2 characters."),
     email: z.string().email("Please enter a valid email address."),
     message: z.string().min(10, "Message must be at least 10 characters."),
   });
-  
+
   const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [lastError, setLastError] = useState<string | null>(null);
-  const [submitAttempted, setSubmitAttempted] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -42,99 +37,35 @@ export function ContactForm({ contactFormData }: { contactFormData: any }) {
     },
   });
 
-  const getErrorMessage = (error: any) => {
-    if (typeof error === 'string') {
-      if (error.includes('network') || error.includes('fetch')) {
-        return { message: t.toast.errorNetwork || 'Network error. Please check your connection and try again.', icon: WifiOff };
-      }
-      if (error.includes('timeout')) {
-        return { message: t.toast.errorTimeout || 'Request timed out. Please try again.', icon: AlertCircle };
-      }
-      if (error.includes('Resend API Key')) {
-        return { message: t.toast.errorResend || 'Email service temporarily unavailable.', icon: AlertCircle };
-      }
-    }
-    
-    if (error instanceof TypeError && error.message.includes('fetch')) {
-      return { message: t.toast.errorNetwork || 'Network error. Please check your connection and try again.', icon: WifiOff };
-    }
-    
-    return { message: t.toast.errorDescription || 'Something went wrong. Please try again.', icon: AlertCircle };
-  };
-
-  async function onSubmit(values: z.infer<typeof formSchema>) {
-    setIsSubmitting(true);
-    setLastError(null);
-    setSubmitAttempted(true);
-    
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(values),
-      });
-
-      const result = await response.json();
-      
-      if (!response.ok || result?.error) {
-        const errorInfo = getErrorMessage(result.error || 'Request failed');
-        setLastError(result.error || 'Request failed');
-        toast({
-          title: t.toast.errorTitle,
-          description: errorInfo.message,
-          variant: "destructive",
-        });
-      } else {
-        setLastError(null);
-        toast({
-          title: t.toast.successTitle,
-          description: t.toast.successDescription,
-        });
-        form.reset();
-        setSubmitAttempted(false);
-        // Focus back to name field after successful submission
-        setTimeout(() => {
-          const nameField = document.querySelector('input[name="name"]') as HTMLInputElement;
-          if (nameField) nameField.focus();
-        }, 100);
-      }
-    } catch (e) {
-      console.error('Contact form error:', e);
-      const errorInfo = getErrorMessage(e);
-      setLastError(e instanceof Error ? e.message : 'Unknown error');
-      toast({
-        title: t.toast.errorTitle,
-        description: errorInfo.message,
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-      // Focus on error message if there was an error
-      if (lastError) {
-        setTimeout(() => {
-          const errorElement = document.querySelector('[role="alert"]');
-          if (errorElement) {
-            (errorElement as HTMLElement).focus();
-          }
-        }, 100);
-      }
-    }
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    const subject = encodeURIComponent(`Portfolio contact from ${values.name}`);
+    const body = encodeURIComponent(
+      `Name: ${values.name}\nEmail: ${values.email}\n\nMessage:\n${values.message}`
+    );
+    const mailto = `mailto:${contactEmail || 'kanmegneandre@gmail.com'}?subject=${subject}&body=${body}`;
+    window.location.href = mailto;
+    toast({
+      title: t.toast.successTitle,
+      description: t.toast.successDescription,
+    });
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 bg-card/30 backdrop-blur-sm p-8 rounded-2xl border border-border/50 shadow-sm">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <FormField
             control={form.control}
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>{t.name}</FormLabel>
+                <FormLabel className="text-foreground/80 font-medium">{t.name}</FormLabel>
                 <FormControl>
-                  <Input placeholder={t.namePlaceholder} {...field} />
+                  <Input
+                    placeholder={t.namePlaceholder}
+                    {...field}
+                    className="bg-background/50 border-border/50 focus:border-primary focus:ring-primary/20 transition-all duration-300 h-12"
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -145,9 +76,13 @@ export function ContactForm({ contactFormData }: { contactFormData: any }) {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>{t.email}</FormLabel>
+                <FormLabel className="text-foreground/80 font-medium">{t.email}</FormLabel>
                 <FormControl>
-                  <Input placeholder={t.emailPlaceholder} {...field} />
+                  <Input
+                    placeholder={t.emailPlaceholder}
+                    {...field}
+                    className="bg-background/50 border-border/50 focus:border-primary focus:ring-primary/20 transition-all duration-300 h-12"
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -159,11 +94,11 @@ export function ContactForm({ contactFormData }: { contactFormData: any }) {
           name="message"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>{t.message}</FormLabel>
+              <FormLabel className="text-foreground/80 font-medium">{t.message}</FormLabel>
               <FormControl>
                 <Textarea
                   placeholder={t.messagePlaceholder}
-                  className="min-h-[150px]"
+                  className="min-h-[150px] bg-background/50 border-border/50 focus:border-primary focus:ring-primary/20 transition-all duration-300 resize-none"
                   {...field}
                 />
               </FormControl>
@@ -171,55 +106,14 @@ export function ContactForm({ contactFormData }: { contactFormData: any }) {
             </FormItem>
           )}
         />
-        
-        {/* Enhanced error display */}
-        {lastError && (
-          <div 
-            className="p-4 bg-destructive/10 border border-destructive/20 rounded-lg"
-            role="alert"
-            aria-live="polite"
-            tabIndex={-1}
+
+        <div className="text-center pt-4">
+          <Button
+            type="submit"
+            size="lg"
+            className="min-h-[56px] px-12 bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-lg shadow-lg hover:shadow-primary/25 hover:-translate-y-1 transition-all duration-300 rounded-full"
           >
-            <div className="flex items-start gap-3">
-              <AlertCircle className="h-5 w-5 text-destructive mt-0.5 flex-shrink-0" aria-hidden="true" />
-              <div className="space-y-1">
-                <p className="text-sm font-medium text-destructive">
-                  {lastError.includes('network') || lastError.includes('fetch') ? 'Connection Issue' : 
-                   lastError.includes('timeout') ? 'Request Timeout' :
-                   lastError.includes('Resend') ? 'Service Unavailable' : 'Error'}
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  {lastError.includes('network') || lastError.includes('fetch') ? 
-                    'Please check your internet connection and try again.' :
-                   lastError.includes('timeout') ? 
-                    'The request took too long. Please try again.' :
-                   lastError.includes('Resend') ? 
-                    'Email service is temporarily unavailable. Please try again later.' :
-                    'Please try again or contact me directly.'}
-                </p>
-              </div>
-            </div>
-          </div>
-        )}
-        
-        <div className="text-center">
-          <Button 
-            type="submit" 
-            size="lg" 
-            disabled={isSubmitting}
-            className="min-h-[52px] px-10 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold shadow-lg hover:shadow-xl transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
-            aria-describedby={submitAttempted && lastError ? "form-error" : undefined}
-          >
-             {isSubmitting ? (
-              <>
-                <Loader2 className="mr-3 h-5 w-5 animate-spin" aria-hidden="true" />
-                {t.buttonSending}
-              </>
-            ) : (
-              <>
-                {t.button} <Send className="ml-3 h-5 w-5" aria-hidden="true" />
-              </>
-            )}
+            {t.button} <Send className="ml-3 h-5 w-5" aria-hidden="true" />
           </Button>
         </div>
       </form>

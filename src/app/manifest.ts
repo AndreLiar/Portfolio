@@ -2,9 +2,9 @@ import { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Laurel Kanmegne - Fullstack Software Engineer Portfolio",
-    short_name: "Laurel Portfolio",
-    description: "Portfolio of Laurel Kanmegne, Fullstack Software Engineer specializing in TypeScript, React, Next.js, and AI integration.",
+    name: "Andre Kanmegne - Fullstack Software Engineer Portfolio",
+    short_name: "Andre Portfolio",
+    description: "Portfolio of Andre Kanmegne, Fullstack Software Engineer specializing in TypeScript, React, Next.js, and AI integration.",
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",
@@ -44,7 +44,7 @@ export default function manifest(): MetadataRoute.Manifest {
         label: "Portfolio homepage featuring projects and skills"
       },
       {
-        src: "/images/screenshot-narrow.png", 
+        src: "/images/screenshot-narrow.png",
         sizes: "640x1136",
         type: "image/png",
         form_factor: "narrow",

@@ -155,48 +155,50 @@ html.dark .admin-layout {
   }
 
   :root {
-    --background: 0 0% 100%;
+    /* Premium Light Theme */
+    --background: 0 0% 98%; /* Slightly off-white for warmth */
     --foreground: 240 10% 3.9%;
-    --card: 0 0% 96%;
+    --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
-    --primary: 180 70% 32%;
+    --primary: 220 15% 15%; /* Deep charcoal/navy for primary actions */
     --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 180 70% 32%;
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 240 6% 10%;
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%;
+    --accent: 220 15% 15%; /* Matching primary for consistency */
     --accent-foreground: 0 0% 98%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
     --ring: 240 10% 3.9%;
-    --radius: 0.5rem;
+    --radius: 0.75rem; /* Slightly more rounded for modern feel */
   }
 
   .dark {
-    --background: 220 13% 9%;
-    --foreground: 0 0% 98%;
-    --card: 220 13% 7%;
-    --card-foreground: 0 0% 98%;
-    --popover: 220 13% 9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 186 100% 50%;
-    --primary-foreground: 220 13% 9%;
-    --secondary: 215 25% 27%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 215 25% 27%;
-    --muted-foreground: 220 9% 71%;
-    --accent: 186 100% 50%;
-    --accent-foreground: 220 13% 9%;
+    /* Premium Dark Theme */
+    --background: 224 20% 8%; /* Rich, deep dark blue/grey */
+    --foreground: 210 20% 98%;
+    --card: 224 20% 10%; /* Slightly lighter than background */
+    --card-foreground: 210 20% 98%;
+    --popover: 224 20% 10%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 210 20% 98%; /* White/Off-white for high contrast against dark */
+    --primary-foreground: 224 20% 8%;
+    --secondary: 224 15% 16%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 224 15% 16%;
+    --muted-foreground: 215 15% 65%;
+    --accent: 210 20% 98%;
+    --accent-foreground: 224 20% 8%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 215 25% 27%;
-    --input: 215 25% 27%;
-    --ring: 186 100% 50%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 224 15% 16%;
+    --input: 224 15% 16%;
+    --ring: 210 20% 98%;
   }
 }
 
@@ -521,5 +523,18 @@ html.dark .admin-layout {
 
   .hover-glow {
     @apply transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/20;
+  }
+}
+
+/* Print styles for skills / resume pages */
+@media print {
+  .sticky {
+    position: relative !important;
+  }
+  .print\:hide {
+    display: none !important;
+  }
+  .container {
+    max-width: 100% !important;
   }
 }

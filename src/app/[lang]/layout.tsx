@@ -5,14 +5,14 @@ import { getDictionary } from '@/lib/dictionaries';
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
   const dictionary = await getDictionary(lang);
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://laurel-portfolio.vercel.app';
-  
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://andre-portfolio.vercel.app';
+
   return {
     title: dictionary.Metadata.title,
     description: dictionary.Metadata.description,
     keywords: [
       'Fullstack Developer',
-      'Software Engineer', 
+      'Software Engineer',
       'TypeScript',
       'React',
       'Next.js',
@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       'AI Integration',
       'Web Development',
       'Portfolio',
-      'Laurel Kanmegne'
+      'Andre Kanmegne'
     ],
     authors: [{ name: dictionary.data.fullName }],
     creator: dictionary.data.fullName,

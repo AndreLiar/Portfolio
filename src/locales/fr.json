@@ -1,7 +1,7 @@
 {
   "Metadata": {
-    "title": "La Scène Numérique de Laurel",
-    "description": "Portfolio de Laurel, Ingénieur Logiciel Fullstack."
+    "title": "La Scène Numérique d'Andre",
+    "description": "Portfolio d'Andre, Ingénieur Logiciel Fullstack."
   },
   "Header": {
     "projects": "Projets",
@@ -18,41 +18,49 @@
     "contactMe": "Contactez-moi",
     "github": "GitHub",
     "linkedin": "LinkedIn",
-    "name": "Laurel Kanmegne",
-    "title": "Ingénieur Fullstack & DevOps en T — Développement de systèmes évolutifs, pilotés par les données et",
-    "titleHighlight": "intégrés à l'IA",
+    "name": "Andre Kanmegne",
+    "title": "Ingénieur Logiciel & Architecte Cloud — Solutions d'Entreprise, Data et ",
+    "titleHighlight": "Intégration IA",
     "location": "Paris, France 🇫🇷",
-    "description1": "Je conçois et développe des systèmes intelligents natifs du cloud qui allient l'artisanat logiciel avec l'automatisation et l'IA.",
-    "description2": "Mon travail fait le lien entre le code, l'infrastructure et les données, transformant les défis commerciaux complexes en solutions numériques rapides, fiables et auto-améliorantes.",
-    "whatIBuildTitle": "Ce que je développe :",
-    "tagline": "Ingénieur par métier, architecte par état d'esprit — je connecte intelligence, automatisation et impact.",
+    "description1": "Je conçois et déploie des systèmes distribués, résilients et sécurisés, taillés pour les exigences des environnements complexes et des grands comptes.",
+    "description2": "Mon expertise relie l'ingénierie logicielle, l'automatisation Cloud et la gouvernance des données pour transformer des enjeux métiers complexes en plateformes numériques performantes et évolutives.",
+    "whatIBuildTitle": "Expertise & Réalisations :",
+    "tagline": "Architecte par état d'esprit, ingénieur par métier — J'allie sécurité, automatisation et intelligence artificielle.",
     "skills": {
       "fullstack": {
-        "title": "Applications Full-Stack",
-        "desc": "Architectures propres, modulaires et prêtes pour la production"
+        "title": "Plateformes d'Entreprise (Full-Stack)",
+        "desc": "Architectures microservices, modulaires et hautement disponibles"
       },
       "devops": {
-        "title": "DevOps & Automatisation Cloud",
-        "desc": "CI/CD, conteneurisation, infrastructure as code et surveillance"
+        "title": "Cloud, DevOps & FinOps",
+        "desc": "Automatisation CI/CD, Infrastructure as Code et optimisation des ressources cloud"
       },
       "ai": {
-        "title": "Systèmes Intégrés à l'IA",
-        "desc": "Systèmes d'agents IA, flux de travail prédictifs, APIs intelligentes et intégration IA de niveau entreprise pour applications personnalisées"
+        "title": "IA Gouvernée & Agentique",
+        "desc": "Orchestration d'agents IA, RAG d'entreprise et conformité algorithmique"
       },
       "data": {
-        "title": "Plateformes Pilotées par les Données",
-        "desc": "Applications avec analyses intégrées qui apprennent et s'adaptent"
+        "title": "Data Engineering & Analytics",
+        "desc": "Pipelines de données robustes, lacs de données et BI en temps réel"
       },
       "performance": {
-        "title": "Performance & Fiabilité",
-        "desc": "Systèmes conçus pour évoluer et perdurer"
+        "title": "Sécurité, Gouvernance & Fiabilité",
+        "desc": "Conception Zero Trust, monitoring avancé et conformité RGPD"
       }
     },
     "buttons": {
       "viewProjects": "💼 Voir les Projets",
       "techStack": "📚 Stack Technique",
-      "letsConnect": "📬 Connectons-nous"
+      "letsConnect": "📬 Connectons-nous",
+      "downloadCV": "📄 Télécharger le CV"
     }
+  },
+  "Resume": {
+    "printSavePdf": "Imprimer / Enregistrer en PDF",
+    "downloadPdf": "Télécharger le PDF",
+    "downloading": "Génération…",
+    "backToHome": "Retour à l'accueil",
+    "openInNewTab": "Ouvrir dans un nouvel onglet"
   },
   "Page": {
     "projects": {
@@ -90,7 +98,34 @@
     "github": "GitHub"
   },
   "Footer": {
-    "rights": "Tous droits réservés."
+    "rights": "Tous droits réservés.",
+    "copyEmail": "Copier l'email",
+    "copied": "Copié !"
+  },
+  "Testimonials": {
+    "title": "Ce qu'on dit de moi",
+    "items": [
+      {
+        "quote": "Andre livre un code propre et maintenable et communique clairement avec les parties prenantes.",
+        "author": "Lead technique",
+        "role": "HDI France"
+      },
+      {
+        "quote": "Solides compétences fullstack et un vrai sens de l'automatisation et de l'intégration IA.",
+        "author": "Mentor",
+        "role": "Ynov Campus"
+      }
+    ]
+  },
+  "LookingFor": {
+    "title": "Ce que je recherche",
+    "subtitle": "Je suis ouvert aux opportunités où je peux :",
+    "items": [
+      "Concevoir et construire des systèmes fullstack ou backend évolutifs",
+      "Intégrer l'IA/ML dans les produits et les processus",
+      "Porter des fonctionnalités de bout en bout dans une équipe agile et collaborative",
+      "Progresser en DevOps, architecture cloud et fiabilité système"
+    ]
   },
   "ContactForm": {
     "name": "Nom",
@@ -110,8 +145,8 @@
     }
   },
   "data": {
-    "name": "Laurel",
-    "fullName": "Laurel Kanmegne",
+    "name": "Andre",
+    "fullName": "Andre Kanmegne",
     "title": "Ingénieur Logiciel Fullstack | Systèmes Scalables et Propulsés par l’IA",
     "location": "Paris, France",
     "contact": {
@@ -120,85 +155,434 @@
       "github": "https://github.com/AndreLiar",
       "linkedin": "https://www.linkedin.com/in/laurel-kanmegne-2a861425a/"
     },
-"summary": "Bonjour ! Je suis un **Ingénieur Logiciel Fullstack** qui transforme les défis complexes en solutions numériques rapides, fiables et intelligentes.\n\n• **🚀 Maîtrise Full-Stack**: Architecture de backends robustes et création d'expériences utilisateur fluides\n• **🤖 Innovation IA**: Développement d'applications intelligentes qui apprennent et s'adaptent\n• **☁️ Architecture Cloud-Native**: Conception de systèmes scalables et prêts pour la production\n• **💡 Excellence SaaS**: Création de produits de qualité entreprise avec fiabilité exceptionnelle\n• **⚡ Optimisation Performance**: Applications ultra-rapides avec expérience utilisateur remarquable\n\n*Passionné par les technologies de pointe, motivé par l'impact utilisateur — là où l'innovation rencontre l'exécution.*",
+    "summary": "Ingénieur Fullstack & DevOps spécialisé dans le développement d'applications scalables avec chaîne CI/CD, Docker, monitoring et infrastructure Cloud. Je conçois, développe et déploie des applications qui font le lien entre l'ingénierie logicielle et des opérations systèmes fiables. Mon expertise couvre la conception de backends événementiels robustes, l'optimisation des architectures front-end, et l'orchestration de pipelines de déploiement sécurisés sur Azure et Kubernetes.",
+    "resumeSkills": [
+      {
+        "title": "Cloud & DevOps",
+        "skills": [
+          "Microsoft Azure",
+          "Docker",
+          "Kubernetes",
+          "Terraform (IaC)",
+          "CI/CD (GitHub Actions, GitLab CI)",
+          "ArgoCD (GitOps)"
+        ]
+      },
+      {
+        "title": "Backend & Architecture",
+        "skills": [
+          "Node.js",
+          "Python",
+          "C# (.NET Core)",
+          "Go",
+          "Microservices",
+          "Événementiel (Kafka)",
+          "API REST/GraphQL"
+        ]
+      },
+      {
+        "title": "Ingénierie Frontend",
+        "skills": [
+          "React",
+          "Next.js",
+          "TypeScript",
+          "Tailwind CSS",
+          "SSR/SSG",
+          "Zustand"
+        ]
+      },
+      {
+        "title": "Bases de Données & Observabilité",
+        "skills": [
+          "PostgreSQL",
+          "MongoDB",
+          "Redis",
+          "Prometheus",
+          "Grafana",
+          "ELK Stack"
+        ]
+      }
+    ],
     "skills": [
       {
         "title": "Langages & Backend",
         "Icon": "Code",
-        "skills": [
-          "TypeScript", "Python", "JavaScript", "Java", "Spring Boot", "C#/.NET", "Go", "Bash", "SQL", "Node.js", "Express", "NestJS"
+        "description": "Construction d'API évolutives, de services backend et d'applications d'entreprise",
+        "subcategories": [
+          {
+            "name": "Langages",
+            "items": [
+              "TypeScript",
+              "Python",
+              "JavaScript",
+              "C#",
+              "Go",
+              "SQL"
+            ]
+          },
+          {
+            "name": "Frameworks & Runtimes",
+            "items": [
+              "ASP.NET Core",
+              "Node.js",
+              "Express",
+              "NestJS",
+              "Django",
+              "FastAPI"
+            ]
+          },
+          {
+            "name": "ORM & Accès aux Données",
+            "items": [
+              "Entity Framework Core",
+              "Prisma",
+              "SQLAlchemy"
+            ]
+          },
+          {
+            "name": "Bases de Données",
+            "items": [
+              "Microsoft SQL Server",
+              "PostgreSQL",
+              "MongoDB",
+              "Redis"
+            ]
+          },
+          {
+            "name": "Message Brokers & Event Streaming",
+            "items": [
+              "Apache Kafka",
+              "RabbitMQ",
+              "Azure Service Bus",
+              "Redis Pub/Sub"
+            ]
+          },
+          {
+            "name": "Architecture & Design Patterns",
+            "items": [
+              "Microservices",
+              "Systèmes Distribués",
+              "Event-Driven Architecture",
+              "System Design",
+              "Serverless"
+            ]
+          },
+          {
+            "name": "Architecture API & Protocoles",
+            "items": [
+              "REST",
+              "GraphQL",
+              "WebSockets",
+              "gRPC"
+            ]
+          },
+          {
+            "name": "Qualité & Tests Backend",
+            "items": [
+              "xUnit / NUnit (C#)",
+              "Pytest (Python)",
+              "Supertest (Node.js)",
+              "Vitest",
+              "Selenium",
+              "Playwright",
+              "SonarQube / CodeQL"
+            ]
+          }
         ]
       },
       {
-        "title": "Stack Web",
+        "title": "Technologies Frontend & Web",
         "Icon": "BotMessageSquare",
-        "skills": [
-          "React", "Next.js", "Tailwind CSS", "Vite", "Bootstrap", "REST", "GraphQL"
+        "description": "Développement UI moderne, conception responsive, intégration full-stack",
+        "subcategories": [
+          {
+            "name": "Frameworks Frontend",
+            "items": [
+              "React",
+              "Next.js",
+              "React Native"
+            ]
+          },
+          {
+            "name": "Interface & Apparence",
+            "items": [
+              "Tailwind CSS",
+              "Shadcn UI",
+              "Bootstrap",
+              "Framer Motion"
+            ]
+          },
+          {
+            "name": "État & Gestion des Données",
+            "items": [
+              "Redux",
+              "Zustand",
+              "TanStack Query",
+              "React Context"
+            ]
+          },
+          {
+            "name": "Outils & Écosystème",
+            "items": [
+              "Vite",
+              "Webpack",
+              "Zod",
+              "Storybook",
+              "Jest",
+              "Vitest",
+              "React Testing Library",
+              "Cypress",
+              "Playwright",
+              "ESLint / Prettier"
+            ]
+          }
         ]
       },
       {
         "title": "Cloud & DevOps",
         "Icon": "Cloud",
-        "skills": [
-          "Azure", "Kubernetes", "Terraform", "GitHub Actions", "GitLab CI", "Jenkins", "Docker", "CI/CD", "Prometheus", "Grafana", "Alerting", "Tracing (OpenTelemetry)"
+        "subcategories": [
+          {
+            "name": "Cloud & Conteneurisation",
+            "items": [
+              "Azure",
+              "DigitalOcean",
+              "Kubernetes",
+              "Helm",
+              "Terraform",
+              "Ansible",
+              "Docker"
+            ]
+          },
+          {
+            "name": "CI/CD & Automatisation",
+            "items": [
+              "GitHub Actions",
+              "GitLab CI",
+              "Jenkins",
+              "SonarQube",
+              "ArgoCD",
+              "GitOps"
+            ]
+          },
+          {
+            "name": "Observabilité et Monitoring",
+            "items": [
+              "Prometheus",
+              "Grafana",
+              "ELK Stack (Elasticsearch, Logstash, Kibana)",
+              "Alertmanager",
+              "Tracing (OpenTelemetry)"
+            ]
+          },
+          {
+            "name": "Scripting & Automatisation OS",
+            "items": [
+              "Bash",
+              "PowerShell"
+            ]
+          }
         ]
       },
       {
-        "title": "IA/ML",
+        "title": "IA & Automatisation Intelligente",
         "Icon": "BrainCircuit",
-        "skills": [
-          "OpenAI API", "LangChain", "HuggingFace", "MLflow", "Transformers", "scikit-learn", "Gemini API", "Ollama"
+        "description": "Cycle de vie de l'IA d'entreprise : de l'orchestration agentique aux pipelines ML de production",
+        "subcategories": [
+          {
+            "name": "Orchestration Agentique",
+            "items": [
+              "LangChain",
+              "LangGraph",
+              "CrewAI",
+              "MCP (Model Context Protocol)"
+            ]
+          },
+          {
+            "name": "Intégration IA & Automatisation",
+            "items": [
+              "n8n",
+              "Hugging Face",
+              "OpenAI API",
+              "Anthropic (Claude)",
+              "Gemini API"
+            ]
+          },
+          {
+            "name": "Ingénierie Modèle & MLOps",
+            "items": [
+              "PyTorch",
+              "MLflow",
+              "Fine-tuning (PEFT/LoRA)",
+              "Ollama"
+            ]
+          }
         ]
       },
       {
         "title": "Données & Analytique",
         "Icon": "Database",
-        "skills": [
-          "PostgreSQL", "MySQL", "Redis", "Snowflake", "dbt", "SQL Server", "Streamlit", "Pipelines ETL/ELT", "MongoDB"
+        "description": "Cycle de vie complet des données : de l'ingestion au stockage jusqu'à l'analytique temps réel",
+        "subcategories": [
+          {
+            "name": "Lacs de Données & Warehouses",
+            "items": [
+              "Azure Data Lake Storage",
+              "Amazon S3",
+              "Snowflake",
+              "Databricks (Lakehouse)",
+              "Azure Synapse Analytics"
+            ]
+          },
+          {
+            "name": "Ingestion & Pipelines de Données",
+            "items": [
+              "Apache Airflow",
+              "Azure Data Factory",
+              "Talend",
+              "Fivetran",
+              "Airbyte"
+            ]
+          },
+          {
+            "name": "Transformation & Couche Sémantique",
+            "items": [
+              "dbt (Modélisation de Données)",
+              "Apache Spark",
+              "Cube.js (Semantic Layer)",
+              "Architecture ETL/ELT"
+            ]
+          },
+          {
+            "name": "BI & Analytique IA",
+            "items": [
+              "Power BI",
+              "Tableau",
+              "Looker",
+              "Streamlit (Data Apps IA)",
+              "Pandas / NumPy"
+            ]
+          }
         ]
       },
       {
-        "title": "Entreprise & Autres",
+        "title": "Architecture d'Entreprise, Sécurité & Gouvernance",
         "Icon": "Type",
-        "skills": [
-          "Salesforce App Builder", "SAP UI5", "SAP BTP", "OAuth2", "JWT", "SAML", "Playwright", "Postman", "Firebase", "Supabase", "Agile/Scrum", "Tests unitaires et d'intégration"
+        "description": "Systèmes de gestion des identités, plateformes d'entreprise et conformité réglementaire",
+        "subcategories": [
+          {
+            "name": "Identity & Access Management (IAM)",
+            "items": [
+              "Keycloak",
+              "OAuth2 / OIDC",
+              "SAML / Single Sign-On",
+              "RBAC & Zero Trust Architecture",
+              "JWT"
+            ]
+          },
+          {
+            "name": "Plateformes d'Entreprise (ERP, CRM & Low-Code)",
+            "items": [
+              "Microsoft Dynamics 365",
+              "Microsoft Power Platform",
+              "Odoo ERP",
+              "ServiceNow",
+              "SharePoint / Microsoft 365"
+            ]
+          },
+          {
+            "name": "Gouvernance & Conformité",
+            "items": [
+              "Conformité RGPD & EU AI Act",
+              "Traçabilité & Auditabilité",
+              "Éthique & Sécurité IA",
+              "DORA"
+            ]
+          },
+          {
+            "name": "Backend as a Service (BaaS) & APIs",
+            "items": [
+              "Firebase",
+              "Supabase",
+              "Postman"
+            ]
+          },
+          {
+            "name": "Méthodologies d'Ingénierie",
+            "items": [
+              "Agile / Scrum / SAFe"
+            ]
+          }
         ]
       }
     ],
     "projects": [
       {
         "title": "TransparAI",
-        "purpose": "Une plateforme d'IA pour l'analyse de documents juridiques et techniques complexes, avec une authentification et des abonnements sécurisés.",
-        "stack": ["React", "Vite", "TypeScript", "Node.js", "Express", "MongoDB", "Firebase", "Stripe", "Vercel", "Render"],
-        "impact": "Permet aux utilisateurs d'obtenir des résumés générés par l'IA, améliorant la prise de décision dans les domaines juridiques. Comprend une authentification sécurisée, des abonnements et l'exportation PDF.",
-        "role": "Développeur Fullstack, a construit l'interface utilisateur, intégré l'API Gemini AI et mis en œuvre l'authentification et les abonnements sécurisés.",
-        "features": ["Analyse de documents par IA (résumé, notation)", "Authentification Firebase sécurisée", "Gestion des abonnements Stripe", "Historique des analyses & export PDF"],
+        "purpose": "Architecture et déploiement d'une plateforme SaaS transactionnelle pilotée par l'IA, orchestrant des pipelines de données LLM asynchrones pour l'analyse du domaine juridique. Conception d'une infrastructure découplée et hautement disponible, intégrant une gestion sécurisée des identités (IAM) et une orchestration robuste des paiements.",
+        "stack": [
+          "React",
+          "Vite",
+          "TypeScript",
+          "Node.js",
+          "Express",
+          "MongoDB",
+          "Firebase",
+          "Stripe",
+          "Vercel",
+          "Render"
+        ],
+        "impact": "Rationalisation du traitement de documents juridiques en dissociant l'analytique IA de la logique métier, garantissant haute disponibilité et sécurité des données.",
+        "role": "Architecte Système & Ingénieur Fullstack. Design de l'architecture distribuée, intégration RAG/Gemini, et implémentation du contrôle d'accès RBAC.",
+        "features": [],
         "link": "https://transparai.vercel.app/",
         "repoUrl": "https://github.com/AndreLiar/transparai.git"
       },
       {
         "title": "PlatformPro Jobs",
-        "purpose": "Un site d'offres d'emploi pour les ingénieurs de plateforme avec une notation des candidats et une génération de descriptions de poste assistées par l'IA.",
-        "stack": ["Next.js", "TypeScript", "Firebase", "Genkit (Gemini AI)", "Tailwind CSS", "ShadCN UI", "Stripe", "Cloudinary", "Vercel", "Zod"],
-        "impact": "Rationalise le recrutement pour les postes de plateforme avec des outils d'IA pour les recruteurs et un tableau de bord dédié pour les candidats, augmentant l'efficacité.",
-        "role": "Développeur Fullstack, a conçu l'architecture de l'application, mis en œuvre les services Firebase et intégré Genkit pour les fonctionnalités d'IA.",
-        "features": ["Analyse et notation de CV par l'IA", "Génération de descriptions de poste par l'IA", "Outils de gestion des emplois et des candidatures", "Intégration de Stripe pour les crédits de publication d'offres"],
+        "purpose": "Conception et développement d'une plateforme distribuée serverless évolutive pour automatiser les processus de recrutement d'ingénieurs. Implémentation de pipelines de traitement de données non structurées via Genkit et l'IA Gemini pour l'évaluation automatisée des CV, établissant une architecture événementielle éliminant le tri manuel.",
+        "stack": [
+          "Next.js",
+          "TypeScript",
+          "Firebase",
+          "Genkit (Gemini AI)",
+          "Tailwind CSS",
+          "ShadCN UI",
+          "Stripe",
+          "Cloudinary",
+          "Vercel",
+          "Zod"
+        ],
+        "impact": "Automatisation complète des pipelines d'évaluation des candidats, établissant un flux de travail événementiel scalable et sans serveur.",
+        "role": "Architecte Système & Ingénieur Fullstack. Conception des couches API, gestion du déploiement serverless, et optimisation des requêtes de recherche IA.",
+        "features": [],
         "link": "https://plateformprojob.vercel.app",
         "repoUrl": "https://github.com/AndreLiar/Plateformprojob.git"
       },
       {
         "title": "Freemap",
-        "purpose": "Une plateforme pour connecter les utilisateurs par localisation et faciliter les appels vidéo en temps réel, permettant la découverte de profils et l'interaction directe.",
-        "stack": ["Node.js", "Express.js", "MongoDB", "Socket.io", "Cloudinary", "Nodemailer", "JWT", "React", "Leaflet", "Jitsi"],
-        "impact": "Facilite la création de communautés en combinant la découverte basée sur la localisation avec la vidéo en temps réel, permettant des connexions utilisateur diverses.",
-        "role": "Développeur Fullstack, responsable du backend Node.js, de la communication en temps réel, du frontend React et de l'authentification des utilisateurs.",
-        "features": ["Authentification et gestion de profil utilisateur", "Découverte d'utilisateurs basée sur la localisation via Leaflet", "Appels vidéo en temps réel avec Jitsi", "Téléchargement d'images via Cloudinary"],
+        "purpose": "Développement d'une architecture orientée événements (EDA) haute performance gérant en temps réel la découverte de données géospatiales et la communication. Orchestration de boucles d'événements WebSocket à faible latence et de streaming multimédia, livrant une application distribuée réactive et capable de gérer des sessions vidéo sécurisées à grande échelle.",
+        "stack": [
+          "Node.js",
+          "Express.js",
+          "MongoDB",
+          "Socket.io",
+          "Cloudinary",
+          "Nodemailer",
+          "JWT",
+          "React",
+          "Leaflet",
+          "Jitsi"
+        ],
+        "impact": "Déploiement d'une application distribuée capable de gérer des requêtes géospatiales concurrentes et des sessions vidéo en temps réel de manière sécurisée.",
+        "role": "Ingénieur Backend & Intégrateur Système. Orchestration des boucles d'événements Node.js, optimisation des requêtes géospatiales MongoDB, et gestion de l'autorisation JWT.",
+        "features": [],
         "link": "https://freemap-puce.vercel.app/",
         "repoUrl": "https://github.com/AndreLiar/Freemap"
       },
       {
         "title": "DigitalSentinel",
-        "purpose": "Une application web qui sensibilise à la sécurité numérique grâce à une expérience d'apprentissage interactive et structurée. Les utilisateurs sont guidés à travers plusieurs phases pédagogiques avec l'assistance d'une IA et un suivi des progrès en temps réel.",
+        "purpose": "Pilotage de l'architecture et du développement d'une plateforme d'intégration d'entreprise interactive et assistée par l'IA, s'appuyant sur des workflows complexes à états multiples. Intégration avancée de la gestion des identités (NextAuth.js) et de la logique d'IA générative embarquée pour centraliser les opérations de formation à la sécurité et offrir un suivi vérifiable en temps réel.",
         "stack": [
           "Next.js",
           "React",
@@ -209,33 +593,25 @@
           "CSS Modules",
           "Gemini API"
         ],
-        "impact": "Permet aux individus et aux équipes de développer de bonnes habitudes en matière de sécurité numérique grâce à des modules d'apprentissage interactifs, assistés par l'IA, et un suivi des progrès en temps réel.",
-        "role": "Responsable du développement frontend et de l'UX, conception du parcours d'apprentissage, intégration de l'assistant IA et mise en place du suivi gamifié de la progression des utilisateurs.",
-        "features": [
-          "Authentification et gestion de profils par rôles",
-          "Modules interactifs sur l'hygiène numérique",
-          "Assistance IA tout au long des leçons",
-          "Suivi des progrès et génération de certificats",
-          "Checklist gamifiée et simulations de phishing"
-        ],
+        "impact": "Centralisation des opérations de formation en sécurité grâce à un environnement d'apprentissage gouverné, avec analyses en temps réel et suivi vérifiable.",
+        "role": "Architecte Frontend Lead. Structuration du moteur d'apprentissage gamifié, intégration de l'assistance IA embarquée, et création de composants UI modulaires.",
+        "features": [],
         "link": "https://digital-starter.vercel.app/",
         "repoUrl": "https://github.com/AndreLiar/digital-starter"
       }
-      
-      
     ],
     "workExperience": [
       {
         "date": "Sep 2024 - Présent",
-        "title": "Support IT & Développement Python (Apprenti)",
+        "title": "Ingénieur Opérations IT & Automatisation (Alternant)",
         "subtitle": "HDI France, Paris",
-        "description": "<ul><li>Fourni un support technique de niveau 1 & 2, gérant les incidents des utilisateurs pour le matériel, le réseau et les logiciels via GLPI.</li><li>Modernisé et maintenu des scripts Python existants, en se concentrant sur l'optimisation des performances, la correction des bogues et la lisibilité du code.</li><li>Développé des scripts d'automatisation pour rationaliser les exportations de documents, améliorant l'accessibilité des données et l'efficacité des flux de travail.</li><li>Géré le cycle de vie des actifs informatiques, y compris le déploiement, la configuration et l'administration réseau pour les postes de travail des utilisateurs et le matériel de salle de réunion (ClickShare).</li></ul>"
+        "description": "<ul><li><strong>Ingénierie d'Automatisation :</strong> Développement de flux d'automatisation (scripts Batch) pour la génération de fichiers XML d'importation de données, réduisant le temps de traitement de 70 % et éliminant les erreurs manuelles.</li><li><strong>Digitalisation & Flux IAM :</strong> Architecture et digitalisation des workflows de demande d'accès IT (SharePoint & Power Automate), optimisant la gestion des identités pour plus de 200 collaborateurs.</li><li><strong>Patch Management & Déploiements :</strong> Exécution des tests de non-régression (ALM Octane) en environnement de production lors des cycles mensuels de Patch Management, garantissant une continuité de service métier sans interruption.</li><li><strong>IT Service Management (ITSM) :</strong> Support infrastructure et applicatif N1/N2 (ServiceNow, GLPI). Coordination du renouvellement complet du parc informatique collaborateurs (~200 postes) tout en assurant le respect des accords de niveau de service (SLA).</li><li><strong>Gouvernance de Sécurité :</strong> Restructuration des modèles de contrôle d'accès basé sur les rôles (RBAC) sur plusieurs applications internes, standardisant les permissions et renforçant la conformité de sécurité.</li></ul>"
       },
       {
         "date": "Juil 2024 – Août 2024",
-        "title": "Développeur Logiciel (Stagiaire)",
+        "title": "Ingénieur Logiciel (Stagiaire)",
         "subtitle": "FedHub, À distance",
-        "description": "<ul><li><strong>Web Scraping avec Python</strong> : Développement d’un algorithme de scraping en Python (BeautifulSoup) pour extraire et structurer des données, accompagné d’une interface web simple pour une utilisation pratique.</li><li><strong>Optimisation SEO</strong> : Amélioration du SEO et des performances du site en utilisant Laravel et React TypeScript. J’ai optimisé le chargement dynamique et statique, compressé les ressources, et travaillé sur les balises et descriptions pour un meilleur référencement.</li></ul>"
+        "description": "<ul><li><strong>Pipelines d'Extraction de Données :</strong> Ingénierie et déploiement de pipelines ETL et de scraping de données robustes (Python, BeautifulSoup) pour automatiser la collecte d'informations métier, éliminant avec succès de nombreuses heures de traitement manuel chaque semaine.</li><li><strong>Performances Front-End & SEO :</strong> Développement d'une refonte complète de l'interface utilisateur sur une stack hybride (React, TypeScript, Laravel). Implémentation de stratégies de rendu avancées et de compression des actifs pour améliorer de manière drastique les Core Web Vitals et le référencement.</li></ul>"
       }
     ],
     "education": [
@@ -243,7 +619,7 @@
         "date": "2022 - 2027",
         "title": "Mastère – Expert en Développement Web Fullstack (Titre RNCP n°39583 — Niveau 7, Bac+5 reconnu par l'État)",
         "subtitle": "Ynov Campus, Paris",
-        "description": "<p class=\"font-semibold\">📘 Modules clés :</p><ul class=\"list-disc pl-5 mt-2 space-y-1\"><li>Développement Fullstack JavaScript (React, Node.js, Next.js)</li><li>DevOps & Cloud Computing (Docker, Kubernetes, GitHub Actions, AWS, Azure)</li><li>Conception et Architecture Logicielle</li><li>Intégration des Systèmes d'Entreprise (Salesforce, SAP, Oracle)</li><li>Projets Agiles & Contrôle de Version (Scrum, Git)</li><li>Introduction à l'Intelligence Artificielle et à la Science des Données</li><li>Sécurité des Applications et Performance Web</li></ul>"
+        "description": "<p>Programme integre de cinq ans couvrant le developpement fullstack, le DevOps, l'infrastructure cloud et les systemes d'entreprise. Modules : React, Node.js, Next.js, Docker, Kubernetes, GitHub Actions, AWS, Azure, Architecture Logicielle, Agile/Scrum, IA et Data Science, Securite Applicative.</p>"
       }
     ],
     "softSkills": [
@@ -253,12 +629,25 @@
       "Appropriation des projets, initiative et esprit d'amélioration continue"
     ],
     "languages": [
-      { "name": "Anglais", "level": "C1" },
-      { "name": "Français", "level": "Natif" },
-      { "name": "Allemand", "level": "B1" }
+      {
+        "name": "Anglais",
+        "level": "C1"
+      },
+      {
+        "name": "Français",
+        "level": "Natif"
+      },
+      {
+        "name": "Allemand",
+        "level": "B1"
+      }
     ],
     "interests": [
-      "IA dans l'éducation", "Musique", "Football", "Voyages", "Tendances technologiques"
+      "IA dans l'éducation",
+      "Musique",
+      "Football",
+      "Voyages",
+      "Tendances technologiques"
     ]
   }
 }

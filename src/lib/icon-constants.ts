@@ -4,6 +4,31 @@
  * Usage: Import and use these class names consistently across components
  */
 
+import {
+  Code,
+  Cloud,
+  Database,
+  BrainCircuit,
+  BotMessageSquare,
+  Type,
+  Users,
+} from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
+
+const iconMap: Record<string, LucideIcon> = {
+  Code,
+  Cloud,
+  Database,
+  BrainCircuit,
+  BotMessageSquare,
+  Type,
+  Users,
+};
+
+export function getIconComponent(name: string): LucideIcon {
+  return iconMap[name] ?? Code;
+}
+
 // Icon Size Classes
 export const ICON_SIZES = {
   // Extra Small: 16px - For inline icons, button icons in compact areas

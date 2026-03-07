@@ -1,4 +1,5 @@
-import { Briefcase, type LucideIcon } from "lucide-react";
+import { Briefcase, Calendar, type LucideIcon } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface TimelineItemProps {
   date: string;
@@ -6,6 +7,7 @@ interface TimelineItemProps {
   subtitle: string;
   description: string;
   icon?: LucideIcon;
+  isLast?: boolean;
 }
 
 export function TimelineItem({
@@ -14,15 +16,39 @@ export function TimelineItem({
   subtitle,
   description,
   icon: Icon = Briefcase,
+  isLast
 }: TimelineItemProps) {
   return (
-    <div className="relative pl-8 sm:pl-32 py-6 group">
-      <div className="flex flex-col sm:flex-row items-start mb-1 group-last:before:hidden before:absolute before:left-2 sm:before:left-0 before:h-full before:px-px before:bg-border sm:before:ml-[6.5rem] before:self-start before:-translate-x-1/2 before:translate-y-3 after:absolute after:left-2 sm:after:left-0 after:w-2 after:h-2 after:bg-accent after:border-2 after:box-content after:border-border after:rounded-full sm:after:ml-[6.5rem] after:-translate-x-1/2 after:translate-y-1.5">
-          <time className="sm:absolute left-0 translate-y-0.5 inline-flex items-center justify-center text-xs font-semibold uppercase w-20 h-6 mb-3 sm:mb-0 text-accent bg-accent/20 rounded-full">{date}</time>
-          <h4 className="font-bold font-headline text-primary">{title}</h4>
+    <div className="relative pl-8 sm:pl-12 py-2 group">
+      {/* Timeline Line */}
+      {!isLast && (
+        <div className="absolute left-[11px] sm:left-[15px] top-10 bottom-0 w-px bg-border group-hover:bg-primary/50 transition-colors duration-300" />
+      )}
+
+      {/* Timeline Dot */}
+      <div className="absolute left-0 sm:left-1 top-1 w-6 h-6 rounded-full border-2 border-primary bg-background flex items-center justify-center z-10 group-hover:scale-110 transition-transform duration-300 shadow-sm group-hover:shadow-primary/20">
+        <div className="w-2 h-2 rounded-full bg-primary" />
       </div>
-      <div className="text-muted-foreground sm:pl-32 text-body-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: subtitle }} />
-      <div className="text-muted-foreground mt-2 sm:pl-32 text-body-sm leading-loose" dangerouslySetInnerHTML={{ __html: description }} />
+
+      {/* Content Card */}
+      <motion.div
+        className="ml-2 sm:ml-4 p-4 sm:p-6 rounded-2xl bg-card/50 border border-border/50 hover:border-primary/20 hover:bg-card/80 hover:shadow-lg transition-all duration-300 backdrop-blur-sm"
+        whileHover={{ x: 5 }}
+      >
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
+          <h4 className="text-xl font-bold font-headline text-foreground group-hover:text-primary transition-colors">
+            {title}
+          </h4>
+          <div className="flex items-center text-xs font-medium text-muted-foreground bg-secondary/50 px-3 py-1 rounded-full w-fit border border-transparent group-hover:border-primary/10 transition-colors">
+            <Calendar className="w-3 h-3 mr-2" />
+            {date}
+          </div>
+        </div>
+
+        <div className="text-primary/80 font-medium mb-3 flex items-center text-sm" dangerouslySetInnerHTML={{ __html: subtitle }} />
+
+        <div className="text-muted-foreground text-sm leading-relaxed prose prose-sm dark:prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: description }} />
+      </motion.div>
     </div>
   );
 }
