@@ -19,9 +19,9 @@
     "github": "GitHub",
     "linkedin": "LinkedIn",
     "name": "Andre Kanmegne",
-    "title": "Software Engineer & Cloud Architect — Enterprise Solutions, Data, and ",
+    "title": "Software Engineer & Cloud Architect — Enterprise Solutions, Data &",
     "titleHighlight": "AI Integration",
-    "location": "Paris, France 🇫🇷",
+    "location": "Paris, France",
     "description1": "I design and deploy distributed, resilient, and secure systems tailored for the complex demands of large-scale enterprise environments.",
     "description2": "My expertise bridges software engineering, cloud automation, and data governance to transform complex business challenges into high-performance, scalable digital platforms.",
     "whatIBuildTitle": "Expertise & Deliverables:",
@@ -49,16 +49,16 @@
       }
     },
     "buttons": {
-      "viewProjects": "💼 View Projects",
-      "techStack": "📚 Tech Stack",
-      "letsConnect": "📬 Let's Connect",
-      "downloadCV": "📄 Download CV"
+      "viewProjects": "View Projects",
+      "techStack": "Tech Stack",
+      "letsConnect": "Let's Connect",
+      "downloadCV": "Download CV"
     }
   },
   "Resume": {
     "printSavePdf": "Print / Save as PDF",
     "downloadPdf": "Download PDF",
-    "downloading": "Generating…",
+    "downloading": "Generating”¦",
     "backToHome": "Back to home",
     "openInNewTab": "Open in new tab"
   },
@@ -70,7 +70,7 @@
       "title": "Core Technical Skills"
     },
     "softSkills": {
-      "title": "💬 Soft Skills"
+      "title": "Soft Skills"
     },
     "journey": {
       "title": "My Journey",
@@ -106,7 +106,7 @@
     "title": "What others say",
     "items": [
       {
-        "quote": "Andre delivers clean, maintainable code and communicates clearly with stakeholders.",
+        "quote": "One of the most driven apprentices I've worked with — curious by nature, quick to take ownership, and never intimidated by a challenge.",
         "author": "Véronique Deschampt",
         "role": "IT Manager, HDI Global SE France"
       },
@@ -147,7 +147,7 @@
   "data": {
     "name": "Andre",
     "fullName": "Andre Kanmegne",
-    "title": "Fullstack Software Engineer | Scalable & AI-Powered Systems",
+    "title": "Fullstack Software Engineer & DevOps Apprentice",
     "location": "Paris, France",
     "contact": {
       "email": "kanmegneandre@gmail.com",
@@ -155,7 +155,7 @@
       "github": "https://github.com/AndreLiar",
       "linkedin": "https://www.linkedin.com/in/laurel-kanmegne-2a861425a/"
     },
-    "summary": "Fullstack Software Engineer specializing in scalable application development and CI/CD, Docker, and Cloud infrastructure operations. I architect, develop, and deploy production-grade applications that bridge the gap between engineering and system reliability. My expertise spans building robust event-driven backend systems, optimizing frontend architectures, and orchestrating entirely automated deployment pipelines with Azure and Kubernetes.",
+    "summary": "Fullstack Software Engineer with Bac+5 (RNCP Level 7) and 3 years of hands-on experience building and deploying web applications, automating enterprise workflows, and integrating AI into production systems. Experienced across the full stack — Node.js, React, Azure, Docker — with a DevOps mindset applied in a real corporate environment. Looking for a first CDI as a Fullstack or Backend Engineer in a product-driven team.",
     "resumeSkills": [
       {
         "title": "Cloud & DevOps",
@@ -542,7 +542,7 @@
     "projects": [
       {
         "title": "TransparAI",
-        "purpose": "Architected and deployed a transactional AI-driven SaaS platform, orchestrating asynchronous LLM data pipelines for legal domain analysis. Engineered a decoupled, highly available infrastructure integrated with secure Identity & Access Management (IAM) and robust payment orchestration to streamline complex document processing securely.",
+        "purpose": "SaaS platform for AI-assisted legal document analysis. Built REST API with Node.js/Express, integrated OpenAI for async document processing, implemented Firebase Auth for user management and Stripe for subscription billing.",
         "stack": [
           "React",
           "Vite",
@@ -563,7 +563,7 @@
       },
       {
         "title": "PlatformPro Jobs",
-        "purpose": "Designed and engineered a scalable, serverless distributed platform to automate specialized engineering recruitment workflows. Implemented unstructured data processing pipelines leveraging Genkit and Gemini AI for automated candidate CV evaluation, establishing a robust event-driven architecture that eliminated manual screening operations.",
+        "purpose": "Serverless recruitment platform automating CV screening with Gemini AI (Genkit). Built document parsing pipeline, implemented candidate scoring logic, and integrated Stripe for payments.",
         "stack": [
           "Next.js",
           "TypeScript",
@@ -584,7 +584,7 @@
       },
       {
         "title": "Freemap",
-        "purpose": "Developed a high-performance Event-Driven Architecture (EDA) handling concurrent geospatial data discovery and real-time communication. Orchestrated low-latency WebSocket event loops and secure multimedia streaming, delivering a responsive, distributed application capable of managing secure, real-time video sessions at scale.",
+        "purpose": "Real-time geospatial and video communication app. Implemented WebSocket event handling (Socket.io) for live location updates and integrated Jitsi for peer-to-peer video sessions.",
         "stack": [
           "Node.js",
           "Express.js",
@@ -605,7 +605,7 @@
       },
       {
         "title": "DigitalSentinel",
-        "purpose": "Led the architecture and development of an interactive, AI-assisted enterprise onboarding platform leveraging complex, multi-phase state machine workflows. Integrated advanced Identity & Access Management (NextAuth.js) and embedded generative AI logic to centralize security training operations and provide real-time, verifiable tracking.",
+        "purpose": "Enterprise onboarding platform with AI-assisted security training. Built multi-step onboarding workflows, integrated NextAuth.js for RBAC, and embedded Gemini API for real-time Q&A.",
         "stack": [
           "Next.js",
           "React",
@@ -628,13 +628,13 @@
         "date": "Sep 2024 - Present",
         "title": "IT Operations & Automation Engineer (Apprentice)",
         "subtitle": "HDI Global SE France, Paris",
-        "description": "<ul><li><strong>Automation Engineering:</strong> Developed advanced batch scripting workflows for XML data import generation, eliminating manual data entry errors and reducing processing time by 70%.</li><li><strong>IAM & Workflow Digitalization:</strong> Architected and digitalized Identity & Access Management (IAM) workflows using SharePoint and Power Automate, streamlining IT access requests for 200+ employees.</li><li><strong>Release & Patch Management:</strong> Managed production environments and executed non-regression testing (ALM Octane) during monthly Patch Management cycles, ensuring seamless business continuity and zero-downtime deployments.</li><li><strong>IT Service Management (ITSM):</strong> Managed N1/N2 application and infrastructure support via ServiceNow and GLPI. Coordinated the complete renewal and deployment of the corporate IT fleet (~200 workstations) while upholding stringent SLAs.</li><li><strong>Security Governance & RBAC:</strong> Restructured Role-Based Access Control (RBAC) models across enterprise applications, standardizing security permissions and significantly reducing unauthorized access incidents.</li></ul>"
+        "description": "<ul><li><strong>Automation:</strong> Built batch scripting workflows for XML data import generation → reduced manual processing time by 70% (Python, Batch).</li><li><strong>IAM & Workflow:</strong> Digitalized IT access request workflows using SharePoint and Power Automate, covering 200+ employees.</li><li><strong>Patch Management:</strong> Supported monthly patch cycles and non-regression testing (ALM Octane) across production environments.</li><li><strong>ITSM:</strong> Handled N1/N2 support via ServiceNow and GLPI; coordinated renewal of ~200 workstations.</li><li><strong>RBAC:</strong> Restructured role-based access control across enterprise applications, reducing unauthorized access incidents.</li></ul>"
       },
       {
-        "date": "Jul 2024 – Aug 2024",
+        "date": "Jul 2024 ”“ Aug 2024",
         "title": "Software Engineer Intern",
         "subtitle": "FedHub, Remote",
-        "description": "<ul><li><strong>Data Extraction Pipelines:</strong> Engineered and deployed robust ETL and data scraping pipelines (Python, BeautifulSoup) to automate on-demand business intelligence gathering, successfully eliminating hours of manual data processing per week.</li><li><strong>Frontend & Performance Optimization:</strong> Developed a comprehensive UI refactor across a hybrid stack (React, TypeScript, Laravel). Implemented advanced rendering strategies and asset compression to drastically enhance Core Web Vitals and search engine metrics.</li></ul>"
+        "description": "<ul><li><strong>ETL Pipelines:</strong> Built data scraping and extraction pipelines (Python, BeautifulSoup) to automate business intelligence gathering, saving several hours of manual work per week.</li><li><strong>Frontend Refactor:</strong> Refactored UI across a hybrid stack (React, TypeScript, Laravel) and applied rendering and asset optimizations to improve Core Web Vitals scores.</li></ul>"
       }
     ],
     "education": [
@@ -642,7 +642,7 @@
         "date": "2022 - 2027",
         "title": "Mastère – Expert en Développement Web Fullstack (Titre RNCP n°39583 — Niveau 7, Bac+5 reconnu par l'État)",
         "subtitle": "Ynov Campus, Paris",
-        "description": "<p>Five-year integrated programme covering fullstack development, DevOps, cloud infrastructure, and enterprise systems. Coursework: React, Node.js, Next.js, Docker, Kubernetes, GitHub Actions, AWS, Azure, Software Architecture, Agile/Scrum, AI and Data Science, Application Security.</p>"
+        "description": "<p>Bac+5 programme (RNCP Level 7) covering fullstack development, DevOps, cloud infrastructure, and enterprise systems. Stack: React, Node.js, Next.js, Docker, Kubernetes, GitHub Actions, Azure, Software Architecture, AI & Data Science.</p>"
       }
     ],
     "softSkills": [

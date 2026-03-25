@@ -116,7 +116,7 @@ export function ResumeView({ data, lang, labels }: ResumeViewProps) {
   );
 
   return (
-    <div className="min-h-screen bg-gray-100 py-8 font-sans print:bg-white print:py-0">
+    <div className="min-h-screen bg-gray-100 py-8 print:bg-white print:py-0" style={{ fontFamily: "'Inter', 'Segoe UI', Arial, sans-serif" }}>
       <div className="mx-auto max-w-[8.5in] px-4 print:max-w-full print:px-0">
         {/* Toolbar - Hidden in Print */}
         <div className="mb-6 flex flex-wrap items-center justify-between gap-3 print:hidden">
@@ -145,11 +145,11 @@ export function ResumeView({ data, lang, labels }: ResumeViewProps) {
         <div
           className="bg-white text-black shadow-xl print:shadow-none mx-auto overflow-hidden"
           id="resume-content"
-          style={{ padding: "0.4in 0.6in", boxSizing: "border-box" }}
+          style={{ padding: "0.35in 0.55in", boxSizing: "border-box", fontSize: "11px", lineHeight: "1.5", letterSpacing: "normal" }}
         >
           {/* ── Header ── */}
           <header className="text-center mb-3 pb-2 border-b-2 border-gray-300">
-            <h1 className="text-2xl font-headline font-bold uppercase tracking-wider text-black mb-1">
+            <h1 className="font-headline font-bold uppercase tracking-wider text-black mb-1" style={{ fontSize: "22px", lineHeight: "1.2", letterSpacing: "0.05em" }}>
               {displayName}
             </h1>
             <p className="text-[11px] font-medium text-gray-600">
@@ -168,7 +168,7 @@ export function ResumeView({ data, lang, labels }: ResumeViewProps) {
           {/* ── Professional Summary ── */}
           {(summaryIntro || summaryBullets.length > 0) && (
             <section className="mb-3">
-              <h2 className="text-[12px] font-bold uppercase tracking-widest text-black border-b border-gray-300 pb-0.5 mb-1.5">
+              <h2 className="font-bold uppercase text-black border-b border-gray-300 pb-0.5 mb-1.5" style={{ fontSize: "12px", letterSpacing: "0.1em", lineHeight: "1.3" }}>
                 Professional Summary
               </h2>
               {summaryIntro && (
@@ -189,10 +189,10 @@ export function ResumeView({ data, lang, labels }: ResumeViewProps) {
           {/* ── Experience ── */}
           {workExperience && workExperience.length > 0 && (
             <section className="mb-3">
-              <h2 className="text-[12px] font-bold uppercase tracking-widest text-black border-b border-gray-300 pb-0.5 mb-1.5">
+              <h2 className="font-bold uppercase text-black border-b border-gray-300 pb-0.5 mb-1.5" style={{ fontSize: "12px", letterSpacing: "0.1em", lineHeight: "1.3" }}>
                 Experience
               </h2>
-              <div className="space-y-2.5">
+              <div className="space-y-2">
                 {workExperience.map((job: any, index: number) => {
                   const { bullets, paragraphs } = htmlToPlainLines(job.description || "");
                   return (
@@ -231,7 +231,7 @@ export function ResumeView({ data, lang, labels }: ResumeViewProps) {
           {/* ── Education ── */}
           {education && education.length > 0 && (
             <section className="mb-3">
-              <h2 className="text-[12px] font-bold uppercase tracking-widest text-black border-b border-gray-300 pb-0.5 mb-1.5">
+              <h2 className="font-bold uppercase text-black border-b border-gray-300 pb-0.5 mb-1.5" style={{ fontSize: "12px", letterSpacing: "0.1em", lineHeight: "1.3" }}>
                 Education
               </h2>
               <div className="space-y-2">
@@ -264,7 +264,7 @@ export function ResumeView({ data, lang, labels }: ResumeViewProps) {
           {/* ── Technical Skills ── */}
           {normalizedSkills.length > 0 && (
             <section className="mb-3">
-              <h2 className="text-[12px] font-bold uppercase tracking-widest text-black border-b border-gray-300 pb-0.5 mb-1.5">
+              <h2 className="font-bold uppercase text-black border-b border-gray-300 pb-0.5 mb-1.5" style={{ fontSize: "12px", letterSpacing: "0.1em", lineHeight: "1.3" }}>
                 Technical Skills
               </h2>
               <div className="space-y-0.5">
@@ -281,11 +281,11 @@ export function ResumeView({ data, lang, labels }: ResumeViewProps) {
           {/* ── Projects ── */}
           {projects && projects.length > 0 && (
             <section className="mb-3">
-              <h2 className="text-[12px] font-bold uppercase tracking-widest text-black border-b border-gray-300 pb-0.5 mb-1.5">
+              <h2 className="font-bold uppercase text-black border-b border-gray-300 pb-0.5 mb-1.5" style={{ fontSize: "12px", letterSpacing: "0.1em", lineHeight: "1.3" }}>
                 Projects
               </h2>
-              <div className="space-y-3">
-                {projects.slice(0, 2).map((project: any, index: number) => (
+              <div className="space-y-2">
+                {projects.map((project: any, index: number) => (
                   <div key={index}>
                     <div className="flex justify-between items-baseline mb-0.5">
                       <span className="font-bold text-[12px] text-black">{stripEmoji(project.title)}</span>
@@ -322,10 +322,10 @@ export function ResumeView({ data, lang, labels }: ResumeViewProps) {
           )}
 
           {/* ── Languages & Interests ── */}
-          <div className="grid grid-cols-2 gap-4 mt-1">
+          <div className="grid grid-cols-2 gap-4 mt-2">
             {languages && languages.length > 0 && (
               <section>
-                <h2 className="text-[12px] font-bold uppercase tracking-widest text-black border-b border-gray-300 pb-0.5 mb-1.5">
+                <h2 className="font-bold uppercase text-black border-b border-gray-300 pb-0.5 mb-1.5" style={{ fontSize: "12px", letterSpacing: "0.1em", lineHeight: "1.3" }}>
                   Languages
                 </h2>
                 <div className="space-y-0.5">
@@ -341,7 +341,7 @@ export function ResumeView({ data, lang, labels }: ResumeViewProps) {
 
             {interests && interests.length > 0 && (
               <section>
-                <h2 className="text-[12px] font-bold uppercase tracking-widest text-black border-b border-gray-300 pb-0.5 mb-1.5">
+                <h2 className="font-bold uppercase text-black border-b border-gray-300 pb-0.5 mb-1.5" style={{ fontSize: "12px", letterSpacing: "0.1em", lineHeight: "1.3" }}>
                   Interests
                 </h2>
                 <p className="text-[11px] text-gray-800 leading-snug">

@@ -537,4 +537,43 @@ html.dark .admin-layout {
   .container {
     max-width: 100% !important;
   }
+
+  /* Reset global typography overrides so resume inline sizes are respected */
+  #resume-content h1,
+  #resume-content h2,
+  #resume-content h3,
+  #resume-content h4 {
+    font-size: unset !important;
+    line-height: unset !important;
+    letter-spacing: unset !important;
+    margin: unset !important;
+  }
+
+  #resume-content p,
+  #resume-content span,
+  #resume-content li,
+  #resume-content div {
+    font-size: unset !important;
+    line-height: unset !important;
+    letter-spacing: unset !important;
+  }
+
+  /* Ensure colors and fonts print correctly */
+  #resume-content {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color: black !important;
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif !important;
+  }
+
+  /* Ensure all text inside resume uses the same font during print */
+  #resume-content * {
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif !important;
+  }
+
+  /* Remove browser-injected header/footer (date, title, URL) */
+  @page {
+    margin: 0;
+    size: A4;
+  }
 }

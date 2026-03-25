@@ -19,9 +19,9 @@
     "github": "GitHub",
     "linkedin": "LinkedIn",
     "name": "Andre Kanmegne",
-    "title": "Software Engineer & Cloud Architect — Enterprise-Lösungen, Data und ",
+    "title": "Software Engineer & Cloud Architect — Enterprise-Lösungen, Data und",
     "titleHighlight": "KI-Integration",
-    "location": "Paris, Frankreich 🇫🇷",
+    "location": "Paris, Frankreich",
     "description1": "Ich entwerfe und implementiere verteilte, resiliente und sichere Systeme, die auf die komplexen Anforderungen von Großunternehmen zugeschnitten sind.",
     "description2": "Meine Expertise verbindet Software-Engineering, Cloud-Automatisierung und Data Governance, um komplexe geschäftliche Herausforderungen in leistungsstarke, skalierbare digitale Plattformen zu verwandeln.",
     "whatIBuildTitle": "Expertise & Leistungen:",
@@ -49,10 +49,10 @@
       }
     },
     "buttons": {
-      "viewProjects": "💼 Projekte ansehen",
-      "techStack": "📚 Tech-Stack",
-      "letsConnect": "📬 Verbinden",
-      "downloadCV": "📄 Lebenslauf herunterladen"
+      "viewProjects": "Projekte ansehen",
+      "techStack": "Tech-Stack",
+      "letsConnect": "Verbinden",
+      "downloadCV": "Lebenslauf herunterladen"
     }
   },
   "Resume": {
@@ -70,7 +70,7 @@
       "title": "Technische Kernkompetenzen"
     },
     "softSkills": {
-      "title": "💬 Soft Skills"
+      "title": "Soft Skills"
     },
     "journey": {
       "title": "Mein Werdegang",
@@ -106,7 +106,7 @@
     "title": "Was andere sagen",
     "items": [
       {
-        "quote": "Andre liefert sauberen, wartbaren Code und kommuniziert klar mit Stakeholdern.",
+        "quote": "Einer der engagiertesten Auszubildenden, mit denen ich je zusammengearbeitet habe — von Natur aus neugierig, übernimmt schnell Verantwortung und lässt sich von keiner Herausforderung einschüchtern.",
         "author": "Véronique Deschampt",
         "role": "IT-Manager, HDI Global SE France"
       },
@@ -155,7 +155,7 @@
       "github": "https://github.com/AndreLiar",
       "linkedin": "https://www.linkedin.com/in/laurel-kanmegne-2a861425a/"
     },
-    "summary": "Fullstack Software Engineer & DevOps-Spezialist mit Fokus auf skalierbare Anwendungsentwicklung, CI/CD, Docker und Cloud-Infrastruktur-Operationen. Ich architekte, entwickle und stelle Produktionsanwendungen bereit, welche die Brücke zwischen Software-Engineering und zuverlässigen Systemoperationen schlagen. Meine Expertise reicht vom Aufbau robuster ereignisgesteuerter Backend-Systeme über die Optimierung von Frontend-Architekturen bis hin zur Orchestrierung sicherer Deployment-Pipelines mit Azure und Kubernetes.",
+    "summary": "Fullstack Software Engineer mit Bac+5 (RNCP Level 7) und 3 Jahren praktischer Erfahrung in der Entwicklung und dem Deployment von Webanwendungen, der Automatisierung von Unternehmens-Workflows und der Integration von KI in Produktionssysteme. Erfahren im gesamten Stack — Node.js, React, Azure, Docker — mit einer DevOps-Denkweise aus einem realen Unternehmensumfeld. Auf der Suche nach einem ersten unbefristeten Vertrag (CDI) als Fullstack- oder Backend-Ingenieur in einem produktorientierten Team.",
     "resumeSkills": [
       {
         "title": "Cloud & DevOps",

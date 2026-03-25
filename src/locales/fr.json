@@ -19,9 +19,9 @@
     "github": "GitHub",
     "linkedin": "LinkedIn",
     "name": "Andre Kanmegne",
-    "title": "Ingénieur Logiciel & Architecte Cloud — Solutions d'Entreprise, Data et ",
+    "title": "Ingénieur Logiciel & Architecte Cloud — Solutions d'Entreprise, Data et",
     "titleHighlight": "Intégration IA",
-    "location": "Paris, France 🇫🇷",
+    "location": "Paris, France",
     "description1": "Je conçois et déploie des systèmes distribués, résilients et sécurisés, taillés pour les exigences des environnements complexes et des grands comptes.",
     "description2": "Mon expertise relie l'ingénierie logicielle, l'automatisation Cloud et la gouvernance des données pour transformer des enjeux métiers complexes en plateformes numériques performantes et évolutives.",
     "whatIBuildTitle": "Expertise & Réalisations :",
@@ -49,10 +49,10 @@
       }
     },
     "buttons": {
-      "viewProjects": "💼 Voir les Projets",
-      "techStack": "📚 Stack Technique",
-      "letsConnect": "📬 Connectons-nous",
-      "downloadCV": "📄 Télécharger le CV"
+      "viewProjects": "Voir les Projets",
+      "techStack": "Stack Technique",
+      "letsConnect": "Connectons-nous",
+      "downloadCV": "Télécharger le CV"
     }
   },
   "Resume": {
@@ -70,7 +70,7 @@
       "title": "Compétences techniques de base"
     },
     "softSkills": {
-      "title": "💬 Savoir-être"
+      "title": "Savoir-être"
     },
     "journey": {
       "title": "Mon parcours",
@@ -106,7 +106,7 @@
     "title": "Ce qu'on dit de moi",
     "items": [
       {
-        "quote": "Andre livre un code propre et maintenable et communique clairement avec les parties prenantes.",
+        "quote": "L'un des alternants les plus motivés avec qui j'ai travaillé — curieux de nature, rapide à prendre des initiatives et jamais intimidé par un défi.",
         "author": "Véronique Deschampt",
         "role": "Responsable IT, HDI Global SE France"
       },
@@ -155,7 +155,7 @@
       "github": "https://github.com/AndreLiar",
       "linkedin": "https://www.linkedin.com/in/laurel-kanmegne-2a861425a/"
     },
-    "summary": "Ingénieur Fullstack & DevOps spécialisé dans le développement d'applications scalables avec chaîne CI/CD, Docker, monitoring et infrastructure Cloud. Je conçois, développe et déploie des applications qui font le lien entre l'ingénierie logicielle et des opérations systèmes fiables. Mon expertise couvre la conception de backends événementiels robustes, l'optimisation des architectures front-end, et l'orchestration de pipelines de déploiement sécurisés sur Azure et Kubernetes.",
+    "summary": "Ingénieur Fullstack Bac+5 (RNCP Niveau 7) avec 3 ans d'expérience concrète dans le développement et le déploiement d'applications web, l'automatisation de workflows en entreprise et l'intégration de l'IA en production. Maîtrise de la stack complète — Node.js, React, Azure, Docker — avec une approche DevOps appliquée en environnement professionnel réel. À la recherche d'un premier CDI en tant qu'ingénieur Fullstack ou Backend dans une équipe orientée produit.",
     "resumeSkills": [
       {
         "title": "Cloud & DevOps",
