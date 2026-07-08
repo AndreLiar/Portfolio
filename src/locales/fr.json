@@ -591,7 +591,8 @@
           "minicloud-postgresql-noavx512 : vector.so reconstruit sans AVX-512 — corrige SIGILL sur i7-8565U/i7-10510U (bug SIMD pgvector 0.8.4)",
           "BM25 français : stemmer Snowball NLTK + stop-words assurance patchés dans rank_bm25 via init container Kubernetes",
           "Récupération hybride : vecteur bge-m3 1024 dimensions + BM25 + re-ranking cross-encoder (ms-marco-MiniLM-L-6-v2, top-3)",
-          "Chaîne d'approvisionnement : Dockerfile + CI GitHub Actions + signature cosign keyless sur les deux microservices"
+          "Chaîne d'approvisionnement : Dockerfile + CI GitHub Actions + signature cosign keyless sur les deux microservices",
+          "Étape de génération routée via la Passerelle IA d'entreprise (LiteLLM) — récupération RAG + sélection de modèle cloud/local dans un seul pipeline"
         ],
         "stack": [
           "Python",
