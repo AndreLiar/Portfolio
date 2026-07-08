@@ -155,7 +155,7 @@
       "github": "https://github.com/AndreLiar",
       "linkedin": "https://www.linkedin.com/in/laurel-kanmegne-2a861425a/"
     },
-    "summary": "Ingénieur Fullstack Bac+5 (RNCP Niveau 7) avec 3 ans d'expérience concrète dans le développement et le déploiement d'applications web, l'automatisation de workflows en entreprise et l'intégration de l'IA en production. Maîtrise de la stack complète — Node.js, React, Azure, Docker — avec une approche DevOps appliquée en environnement professionnel réel. À la recherche d'un premier CDI en tant qu'ingénieur Fullstack ou Backend dans une équipe orientée produit.",
+    "summary": "Ingénieur Logiciel et praticien du Platform Engineering, titulaire d'un Bac+5 RNCP Niveau 7 — je conçois des systèmes de production sécurisés, observables et natifs IA. Auteur de la plateforme minicloud : un projet Kubernetes d'entreprise de 67 phases exécutant 54+ workloads en production, 9/9 politiques d'admission OPA Gatekeeper en mode deny, et une AI Gateway complète avec RAG, LLMOps et 62 tests de régression automatisés. Actuellement Ingénieur IT Automation en alternance chez HDI Global SE France, appliquant la même rigueur d'ingénierie aux workflows d'entreprise réels.",
     "resumeSkills": [
       {
         "title": "Cloud & DevOps",
@@ -518,8 +518,79 @@
     ],
     "projects": [
       {
+        "title": "Minicloud Platform",
+        "purpose": "Plateforme Kubernetes d'entreprise en production, construite sur 4 ordinateurs portables ThinkPad bare-metal pour démontrer le cycle complet d'ingénierie cloud privé. 54+ workloads déployés via ArgoCD GitOps : gestion des secrets Vault, SSO/OIDC Authentik, registre Harbor, sécurité runtime Falco, stack Prometheus/Grafana/Loki, et une AI Gateway d'entreprise (LiteLLM + Ollama) avec routage multi-fournisseurs, guardrails PII/DLP, et un pipeline RAG complet. Durcie avec une politique zero-trust NetworkPolicy sur les 23 namespaces et une sécurité de la chaîne d'approvisionnement (cosign, SBOM, commits signés GPG).",
+        "role": "Platform Engineer & Architecte de Solutions. Conception de la topologie réseau zero-trust, construction de l'AI Gateway avec 7 fournisseurs cloud/locaux et guardrails Presidio PII, implémentation du pipeline RAG (embeddings bge-m3 + pgvector HNSW + BM25 hybride + re-ranking cross-encoder + OCR Docling), gestion de la chaîne GitOps avec signature cosign et protection des branches, et automatisation de 62 tests de régression couvrant l'ensemble de la plateforme.",
+        "impact": "62 tests de régression automatisés en continu au vert. 9/9 politiques d'admission OPA Gatekeeper en mode deny avec 0 violations. NetworkPolicy zero-trust appliquée sur les 23 namespaces. Dévérouillage automatique de Vault via AWS KMS. RAG d'entreprise avec latence d'embedding < 400ms et scan vectoriel HNSW < 1ms. AI Gateway routant 7 fournisseurs avec circuit-breaker, gouvernance de clés par département et tracing LLMOps Langfuse.",
+        "features": [
+          "54+ workloads sur k3s via ArgoCD GitOps (Helm + Kustomize)",
+          "9/9 politiques d'admission OPA Gatekeeper — mode deny, 0 violations",
+          "NetworkPolicy zero-trust sur les 23 namespaces Kubernetes",
+          "AI Gateway : 7 fournisseurs, guardrails PII/DLP, chaîne de fallback cloud, cache Valkey",
+          "RAG d'entreprise : bge-m3 + pgvector HNSW + recherche hybride BM25 + OCR Docling",
+          "Chaîne d'approvisionnement complète : cosign, SBOM, commits GPG, protection de branches, Dependabot"
+        ],
+        "stack": [
+          "k3s (Kubernetes)",
+          "ArgoCD",
+          "Helm / Kustomize",
+          "HashiCorp Vault",
+          "Authentik (OIDC/SSO)",
+          "OPA Gatekeeper",
+          "Falco",
+          "Prometheus / Grafana / Loki",
+          "LiteLLM (AI Gateway)",
+          "Ollama",
+          "pgvector (RAG)",
+          "Langfuse (LLMOps)",
+          "Backstage (IDP)",
+          "Harbor",
+          "Longhorn",
+          "Velero",
+          "NATS / KEDA",
+          "External Secrets Operator",
+          "Ansible / OpenTofu"
+        ],
+        "link": "https://andrelair-platform.github.io/minicloud-platform-docs/",
+        "repoUrl": "https://github.com/andrelair-platform/minicloud-gitops"
+      },
+      {
+        "title": "phi3-financial — Pipeline PromptOps d'entreprise",
+        "purpose": "Assistant IA financier à domaine restreint avec une architecture PromptOps en production. Construction d'un CustomLogger LiteLLM (LangfusePromptHandler) qui récupère le prompt de production actif depuis Langfuse à chaque requête avec un cache en mémoire de 5 minutes et une chaîne de fallback en trois niveaux — permettant des rollbacks de prompt instantanés sans redéploiement ni rebuild d'image. Inclut une suite d'évaluation CI de 25 cas imposant un taux de passage de 100% comme porte de déploiement.",
+        "role": "Ingénieur IA. Conception de l'architecture trois niveaux (service de modèles Ollama → routage LiteLLM + injection de prompt à l'exécution → LLMOps Langfuse), construction du CustomLogger async_pre_call_hook, rédaction de la suite d'évaluation de 25 cas sur 5 catégories comportementales, et implémentation du versionnage sémantique avec tagging git automatique à chaque run CI réussi.",
+        "impact": "25/25 cas d'évaluation passants (100% — déploiement bloqué sur toute régression). Temps de rollback de prompt : moins de 5 minutes via changement de label Langfuse — sans push git, sans redémarrage de pod. Diagnostic d'une panne CI de 90 secondes (redémarrage ArgoCD Recreate chevauchant les runs d'évaluation) et correction en deux couches : stratégie RollingUpdate + logique de retry exponentielle.",
+        "features": [
+          "LangfusePromptHandler : injection de prompt à l'exécution via LiteLLM CustomLogger (async_pre_call_hook)",
+          "Suite d'évaluation de 25 cas : Q&R financière, résistance aux injections, refus hors-domaine, domaine mixte, manipulation de marché",
+          "Versionnage sémantique (MAJOR/MINOR/PATCH) + tagging git CI automatique à 100% de réussite",
+          "Chaîne fail-open : Langfuse → cache obsolète → variable d'environnement ConfigMap — ne bloque jamais les requêtes",
+          "CI d'évaluation hebdomadaire planifiée + porte de déploiement via GitHub Actions"
+        ],
+        "stack": [
+          "Ollama (phi3.5 + Modelfile)",
+          "LiteLLM (CustomLogger)",
+          "Langfuse (Gestion de prompts + Tracing)",
+          "Python",
+          "GitHub Actions (Eval CI)",
+          "pgvector + bge-m3 (RAG)",
+          "Kubernetes (k3s)",
+          "Presidio (guardrail PII/DLP)",
+          "Valkey (cache de prompts)"
+        ],
+        "link": "https://langfuse.devandre.sbs",
+        "repoUrl": "https://github.com/andrelair-platform/hackathon_ynov"
+      },
+      {
         "title": "TransparAI",
-        "purpose": "Architecture et déploiement d'une plateforme SaaS transactionnelle pilotée par l'IA, orchestrant des pipelines de données LLM asynchrones pour l'analyse du domaine juridique. Conception d'une infrastructure découplée et hautement disponible, intégrant une gestion sécurisée des identités (IAM) et une orchestration robuste des paiements.",
+        "purpose": "Plateforme SaaS d'analyse de documents juridiques assistée par IA, ciblant les documents de conformité assurance français (CGAs). Construction d'un pipeline de traitement de documents asynchrone découplant l'inférence IA du cycle de requête HTTP — évitant les timeouts sur les documents volumineux. Implémentation d'un RBAC multi-niveaux avec Firebase Auth et gestion des abonnements Stripe.",
+        "role": "Architecte Systèmes & Ingénieur Fullstack. Conception du pipeline asynchrone (upload → file d'attente de traitement → analyse Gemini AI → notification webhook), implémentation des niveaux d'accès (viewer/analyst/admin) avec isolation des données par organisation, et déploiement sur Vercel (frontend) et Render (API).",
+        "impact": "Réduction du temps de révision des documents juridiques de plusieurs heures à quelques minutes pour les workflows de conformité. Architecture asynchrone gérant des documents de plus de 100 pages sans timeout. RBAC multi-tenant supportant l'onboarding enterprise avec isolation des données par organisation.",
+        "features": [
+          "Pipeline de traitement asynchrone — inférence IA découplée du cycle de requête",
+          "RBAC multi-niveaux : viewer / analyst / admin avec isolation des données par organisation",
+          "Facturation par abonnement Stripe avec application des niveaux d'utilisation",
+          "Intégration Gemini AI pour l'extraction structurée de clauses et le tagging de conformité"
+        ],
         "stack": [
           "React",
           "Vite",
@@ -527,77 +598,40 @@
           "Node.js",
           "Express",
           "MongoDB",
-          "Firebase",
+          "Firebase Auth",
+          "Gemini AI",
           "Stripe",
           "Vercel",
           "Render"
         ],
-        "impact": "Rationalisation du traitement de documents juridiques en dissociant l'analytique IA de la logique métier, garantissant haute disponibilité et sécurité des données.",
-        "role": "Architecte Système & Ingénieur Fullstack. Design de l'architecture distribuée, intégration RAG/Gemini, et implémentation du contrôle d'accès RBAC.",
-        "features": [],
         "link": "https://transparai.vercel.app/",
         "repoUrl": "https://github.com/AndreLiar/transparai.git"
       },
       {
-        "title": "PlatformPro Jobs",
-        "purpose": "Conception et développement d'une plateforme distribuée serverless évolutive pour automatiser les processus de recrutement d'ingénieurs. Implémentation de pipelines de traitement de données non structurées via Genkit et l'IA Gemini pour l'évaluation automatisée des CV, établissant une architecture événementielle éliminant le tri manuel.",
-        "stack": [
-          "Next.js",
-          "TypeScript",
-          "Firebase",
-          "Genkit (Gemini AI)",
-          "Tailwind CSS",
-          "ShadCN UI",
-          "Stripe",
-          "Cloudinary",
-          "Vercel",
-          "Zod"
-        ],
-        "impact": "Automatisation complète des pipelines d'évaluation des candidats, établissant un flux de travail événementiel scalable et sans serveur.",
-        "role": "Architecte Système & Ingénieur Fullstack. Conception des couches API, gestion du déploiement serverless, et optimisation des requêtes de recherche IA.",
-        "features": [],
-        "link": "https://plateformprojob.vercel.app",
-        "repoUrl": "https://github.com/AndreLiar/Plateformprojob.git"
-      },
-      {
         "title": "Freemap",
-        "purpose": "Développement d'une architecture orientée événements (EDA) haute performance gérant en temps réel la découverte de données géospatiales et la communication. Orchestration de boucles d'événements WebSocket à faible latence et de streaming multimédia, livrant une application distribuée réactive et capable de gérer des sessions vidéo sécurisées à grande échelle.",
+        "purpose": "Carte collaborative en temps réel avec vidéo pair-à-pair, construite autour d'un bus d'événements Socket.io pour la synchronisation d'état géospatial en direct. Conçue pour des utilisateurs simultanés partageant leur localisation en temps réel, avec indexation géospatiale MongoDB 2dsphere pour les requêtes spatiales et Jitsi Meet pour la vidéo pair-à-pair sans serveur multimédia.",
+        "role": "Ingénieur Backend & Intégrateur Systèmes. Architecture du modèle d'événements Socket.io (modèle room-par-session, mises à jour de localisation optimistes), conception du schéma géospatial MongoDB avec index 2dsphere (requêtes $near, recherche par rayon), et intégration de Jitsi Meet pour une vidéo entièrement pair-à-pair — éliminant l'infrastructure serveur multimédia.",
+        "impact": "Latence de mise à jour de localisation inférieure à 100ms pour les sessions simultanées via bus d'événements WebSocket. Requêtes géospatiales par rayon exécutées en moins de 5ms avec l'indexation 2dsphere. Aucun coût de serveur multimédia — Jitsi fonctionne en pair-à-pair, rendant l'architecture horizontalement scalable sans modification d'infrastructure.",
+        "features": [
+          "Synchronisation de localisation en temps réel via bus d'événements Socket.io (modèle room-par-session)",
+          "Indexation géospatiale MongoDB 2dsphere pour requêtes par rayon et utilisateur le plus proche",
+          "Vidéo pair-à-pair Jitsi Meet — aucun serveur multimédia requis",
+          "Sessions sécurisées JWT avec autorisation par room"
+        ],
         "stack": [
           "Node.js",
           "Express.js",
-          "MongoDB",
           "Socket.io",
-          "Cloudinary",
-          "Nodemailer",
+          "MongoDB (2dsphere géospatial)",
           "JWT",
           "React",
           "Leaflet",
-          "Jitsi"
+          "Jitsi",
+          "Cloudinary",
+          "Nodemailer"
         ],
-        "impact": "Déploiement d'une application distribuée capable de gérer des requêtes géospatiales concurrentes et des sessions vidéo en temps réel de manière sécurisée.",
-        "role": "Ingénieur Backend & Intégrateur Système. Orchestration des boucles d'événements Node.js, optimisation des requêtes géospatiales MongoDB, et gestion de l'autorisation JWT.",
-        "features": [],
         "link": "https://freemap-puce.vercel.app/",
         "repoUrl": "https://github.com/AndreLiar/Freemap"
-      },
-      {
-        "title": "DigitalSentinel",
-        "purpose": "Pilotage de l'architecture et du développement d'une plateforme d'intégration d'entreprise interactive et assistée par l'IA, s'appuyant sur des workflows complexes à états multiples. Intégration avancée de la gestion des identités (NextAuth.js) et de la logique d'IA générative embarquée pour centraliser les opérations de formation à la sécurité et offrir un suivi vérifiable en temps réel.",
-        "stack": [
-          "Next.js",
-          "React",
-          "TypeScript",
-          "Node.js",
-          "MongoDB",
-          "NextAuth.js",
-          "CSS Modules",
-          "Gemini API"
-        ],
-        "impact": "Centralisation des opérations de formation en sécurité grâce à un environnement d'apprentissage gouverné, avec analyses en temps réel et suivi vérifiable.",
-        "role": "Architecte Frontend Lead. Structuration du moteur d'apprentissage gamifié, intégration de l'assistance IA embarquée, et création de composants UI modulaires.",
-        "features": [],
-        "link": "https://digital-starter.vercel.app/",
-        "repoUrl": "https://github.com/AndreLiar/digital-starter"
       }
     ],
     "workExperience": [
