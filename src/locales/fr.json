@@ -579,59 +579,6 @@
         ],
         "link": "https://langfuse.devandre.sbs",
         "repoUrl": "https://github.com/andrelair-platform/hackathon_ynov"
-      },
-      {
-        "title": "TransparAI",
-        "purpose": "Plateforme SaaS d'analyse de documents juridiques assistée par IA, ciblant les documents de conformité assurance français (CGAs). Construction d'un pipeline de traitement de documents asynchrone découplant l'inférence IA du cycle de requête HTTP — évitant les timeouts sur les documents volumineux. Implémentation d'un RBAC multi-niveaux avec Firebase Auth et gestion des abonnements Stripe.",
-        "role": "Architecte Systèmes & Ingénieur Fullstack. Conception du pipeline asynchrone (upload → file d'attente de traitement → analyse Gemini AI → notification webhook), implémentation des niveaux d'accès (viewer/analyst/admin) avec isolation des données par organisation, et déploiement sur Vercel (frontend) et Render (API).",
-        "impact": "Réduction du temps de révision des documents juridiques de plusieurs heures à quelques minutes pour les workflows de conformité. Architecture asynchrone gérant des documents de plus de 100 pages sans timeout. RBAC multi-tenant supportant l'onboarding enterprise avec isolation des données par organisation.",
-        "features": [
-          "Pipeline de traitement asynchrone — inférence IA découplée du cycle de requête",
-          "RBAC multi-niveaux : viewer / analyst / admin avec isolation des données par organisation",
-          "Facturation par abonnement Stripe avec application des niveaux d'utilisation",
-          "Intégration Gemini AI pour l'extraction structurée de clauses et le tagging de conformité"
-        ],
-        "stack": [
-          "React",
-          "Vite",
-          "TypeScript",
-          "Node.js",
-          "Express",
-          "MongoDB",
-          "Firebase Auth",
-          "Gemini AI",
-          "Stripe",
-          "Vercel",
-          "Render"
-        ],
-        "link": "https://transparai.vercel.app/",
-        "repoUrl": "https://github.com/AndreLiar/transparai.git"
-      },
-      {
-        "title": "Freemap",
-        "purpose": "Carte collaborative en temps réel avec vidéo pair-à-pair, construite autour d'un bus d'événements Socket.io pour la synchronisation d'état géospatial en direct. Conçue pour des utilisateurs simultanés partageant leur localisation en temps réel, avec indexation géospatiale MongoDB 2dsphere pour les requêtes spatiales et Jitsi Meet pour la vidéo pair-à-pair sans serveur multimédia.",
-        "role": "Ingénieur Backend & Intégrateur Systèmes. Architecture du modèle d'événements Socket.io (modèle room-par-session, mises à jour de localisation optimistes), conception du schéma géospatial MongoDB avec index 2dsphere (requêtes $near, recherche par rayon), et intégration de Jitsi Meet pour une vidéo entièrement pair-à-pair — éliminant l'infrastructure serveur multimédia.",
-        "impact": "Latence de mise à jour de localisation inférieure à 100ms pour les sessions simultanées via bus d'événements WebSocket. Requêtes géospatiales par rayon exécutées en moins de 5ms avec l'indexation 2dsphere. Aucun coût de serveur multimédia — Jitsi fonctionne en pair-à-pair, rendant l'architecture horizontalement scalable sans modification d'infrastructure.",
-        "features": [
-          "Synchronisation de localisation en temps réel via bus d'événements Socket.io (modèle room-par-session)",
-          "Indexation géospatiale MongoDB 2dsphere pour requêtes par rayon et utilisateur le plus proche",
-          "Vidéo pair-à-pair Jitsi Meet — aucun serveur multimédia requis",
-          "Sessions sécurisées JWT avec autorisation par room"
-        ],
-        "stack": [
-          "Node.js",
-          "Express.js",
-          "Socket.io",
-          "MongoDB (2dsphere géospatial)",
-          "JWT",
-          "React",
-          "Leaflet",
-          "Jitsi",
-          "Cloudinary",
-          "Nodemailer"
-        ],
-        "link": "https://freemap-puce.vercel.app/",
-        "repoUrl": "https://github.com/AndreLiar/Freemap"
       }
     ],
     "workExperience": [

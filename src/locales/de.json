@@ -579,59 +579,6 @@
         ],
         "link": "https://langfuse.devandre.sbs",
         "repoUrl": "https://github.com/andrelair-platform/hackathon_ynov"
-      },
-      {
-        "title": "TransparAI",
-        "purpose": "SaaS-Plattform für KI-gestützte Analyse juristischer Dokumente, ausgerichtet auf französische Versicherungs-Compliance-Dokumente (CGAs). Aufbau einer asynchronen Dokumentenverarbeitungs-Pipeline, die KI-Inferenz vom HTTP-Anfragezyklus entkoppelt — verhindert Timeouts bei großen Dokumenten. Implementierung von mehrstufigem RBAC mit Firebase Auth und Stripe-Abonnementverwaltung.",
-        "role": "Systemarchitekt & Fullstack-Ingenieur. Entwurf der asynchronen Pipeline (Upload → Verarbeitungswarteschlange → Gemini AI-Analyse → Webhook-Benachrichtigung), Implementierung von Zugriffsebenen (Viewer/Analyst/Admin) mit organisationsweiser Datenisolierung und Deployment auf Vercel (Frontend) und Render (API).",
-        "impact": "Reduzierung der Dokumentenprüfungszeit von Stunden auf Minuten für Compliance-Workflows. Asynchrone Architektur verarbeitet Dokumente mit über 100 Seiten ohne Timeout. Multi-Tenant-RBAC unterstützt Enterprise-Onboarding mit isolierten Daten pro Organisation.",
-        "features": [
-          "Asynchrone Verarbeitungs-Pipeline — KI-Inferenz vom Anfragezyklus entkoppelt",
-          "Mehrstufiges RBAC: Viewer / Analyst / Admin mit organisationsweiser Datenisolierung",
-          "Stripe-Abonnementabrechnung mit nutzungsbasierter Ebenen-Durchsetzung",
-          "Gemini AI-Integration für strukturierte Klauselextraktion und Compliance-Tagging"
-        ],
-        "stack": [
-          "React",
-          "Vite",
-          "TypeScript",
-          "Node.js",
-          "Express",
-          "MongoDB",
-          "Firebase Auth",
-          "Gemini AI",
-          "Stripe",
-          "Vercel",
-          "Render"
-        ],
-        "link": "https://transparai.vercel.app/",
-        "repoUrl": "https://github.com/AndreLiar/transparai.git"
-      },
-      {
-        "title": "Freemap",
-        "purpose": "Echtzeit-Kollaborationskarte mit Peer-to-Peer-Video, aufgebaut auf einem Socket.io-Ereignisbus für Live-Geospatial-Zustandssynchronisation. Konzipiert für gleichzeitige Nutzer, die ihren Standort in Echtzeit teilen, mit MongoDB 2dsphere geospatialem Indexing für räumliche Abfragen und Jitsi Meet für Peer-to-Peer-Video ohne Medienserver-Abhängigkeit.",
-        "role": "Backend-Ingenieur & Systemintegrator. Architektur des Socket.io-Ereignismodells (Room-per-Session-Modell, optimistische Standort-Updates), Entwurf des MongoDB Geospatial-Schemas mit 2dsphere-Indizes ($near-Abfragen, Radius-Suche) und Integration von Jitsi Meet für vollständig Peer-to-Peer-Video — eliminiert Medienserver-Infrastruktur.",
-        "impact": "Unter 100ms Standortaktualisierungslatenz für gleichzeitige Sitzungen via WebSocket-Ereignisbus. Geospatiale Radius-Abfragen unter 5ms mit 2dsphere-Indexierung. Keine Medienserver-Kosten — Jitsi läuft Peer-to-Peer, macht die Architektur horizontal skalierbar ohne Infrastrukturänderungen.",
-        "features": [
-          "Echtzeit-Standortsync via Socket.io-Ereignisbus (Room-per-Session-Modell)",
-          "MongoDB 2dsphere Geospatial-Indexierung für Radius- und Nächster-Nutzer-Abfragen",
-          "Jitsi Meet Peer-to-Peer-Video — kein Medienserver erforderlich",
-          "JWT-gesicherte Sitzungen mit raumbasierter Autorisierung"
-        ],
-        "stack": [
-          "Node.js",
-          "Express.js",
-          "Socket.io",
-          "MongoDB (2dsphere Geospatial)",
-          "JWT",
-          "React",
-          "Leaflet",
-          "Jitsi",
-          "Cloudinary",
-          "Nodemailer"
-        ],
-        "link": "https://freemap-puce.vercel.app/",
-        "repoUrl": "https://github.com/AndreLiar/Freemap"
       }
     ],
     "workExperience": [
