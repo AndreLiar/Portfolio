@@ -609,6 +609,37 @@
         ],
         "link": "https://andrelair-platform.github.io/minicloud-platform-docs/",
         "repoUrl": "https://github.com/andrelair-platform/minicloud-rag-ingest"
+      },
+      {
+        "title": "Passerelle IA d'entreprise",
+        "purpose": "Plateforme de routage multi-fournisseurs LLM et de gouvernance d'entreprise construite sur LiteLLM sous Kubernetes. Unification de 8 fournisseurs cloud et locaux (Groq, OpenAI, Gemini, DeepSeek, Mistral, Anthropic Claude, HuggingFace featherless-ai via router.huggingface.co, et Ollama local) derrière un seul endpoint API avec un routage intelligent (Ollama→Groq→DeepSeek), filtrage PII/DLP Presidio, détection de credentials detect_secrets, gouvernance des clés par département à 3 niveaux avec plafonds budgétaires, disjoncteur, cache sémantique Valkey, et traçage LLMOps complet via Langfuse. Visibilité des coûts via un tableau de bord Grafana lisant les tables d'usage PostgreSQL de LiteLLM. Inclut Langfuse v3.201.1 avec ClickHouse, Authentik OIDC, et un palier NVIDIA NIM (nemotron-70b, llama-8b, deepseek-r1).",
+        "role": "Ingénieur Plateforme IA. Conception de la topologie de routage 8 fournisseurs et de la chaîne de fallback en 3 étapes, implémentation de Presidio PII et detect_secrets comme couches de hooks LiteLLM, construction du modèle de gouvernance des clés à 3 niveaux avec plafonds budgétaires et listes d'autorisation de modèles par département, configuration du disjoncteur (cooldown_time=60s, allowed_fails=3), déploiement de Langfuse v3.201.1 avec ClickHouse+Valkey et intégration OIDC Authentik, et création du tableau de bord Grafana avec requêtes SQL sur les tables d'usage PostgreSQL de LiteLLM.",
+        "impact": "8 fournisseurs LLM unifiés derrière un seul endpoint — cloud ou local, de façon transparente. deepseek-r1:7b en priorité cloud réduit la latence d'inférence de 40+s (CPU local) à 5-8s (API DeepSeek). Basculement automatique : les applications survivent à une panne fournisseur sans modification de code. Les plafonds budgétaires par département imposent des limites FinOps au niveau de la couche API. Chaque requête tracée dans Langfuse avec coût, latence et métadonnées du modèle pour un audit complet.",
+        "features": [
+          "Routage 8 fournisseurs : Groq, OpenAI, Gemini, DeepSeek, Mistral, Anthropic Claude, HuggingFace featherless-ai, Ollama — endpoint LiteLLM unique",
+          "Chaîne de fallback intelligente : Ollama → Groq → DeepSeek — basculement automatique en cas d'indisponibilité",
+          "Guardrails Presidio PII/DLP + detect_secrets — protection de la vie privée et des credentials sur chaque requête",
+          "Gouvernance des clés à 3 niveaux : plafonds budgétaires, listes de modèles autorisés et quotas d'usage par département",
+          "Disjoncteur (cooldown=60s, allowed_fails=3) + cache sémantique Valkey — résilience et optimisation des coûts",
+          "LLMOps Langfuse (v3.201.1 + ClickHouse + Valkey + Authentik OIDC) + tableau de bord Grafana via SQL PostgreSQL"
+        ],
+        "stack": [
+          "LiteLLM (Passerelle IA)",
+          "Presidio (PII/DLP)",
+          "detect_secrets",
+          "Valkey (cache sémantique)",
+          "Langfuse v3.201.1 (LLMOps)",
+          "ClickHouse (analytique Langfuse)",
+          "Grafana (tableau de bord des coûts)",
+          "PostgreSQL (données d'usage)",
+          "Ollama (inférence locale)",
+          "Python",
+          "Kubernetes (k3s)",
+          "Authentik (OIDC/SSO)",
+          "GitHub Actions"
+        ],
+        "link": "https://grafana.devandre.sbs",
+        "repoUrl": "https://github.com/andrelair-platform/minicloud-gitops"
       }
     ],
     "workExperience": [

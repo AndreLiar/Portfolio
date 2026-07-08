@@ -609,6 +609,37 @@
         ],
         "link": "https://andrelair-platform.github.io/minicloud-platform-docs/",
         "repoUrl": "https://github.com/andrelair-platform/minicloud-rag-ingest"
+      },
+      {
+        "title": "Enterprise KI-Gateway",
+        "purpose": "Multi-Provider-LLM-Routing- und Enterprise-Governance-Plattform auf LiteLLM-Basis unter Kubernetes. Vereinheitlichung von 8 Cloud- und lokalen Providern (Groq, OpenAI, Gemini, DeepSeek, Mistral, Anthropic Claude, HuggingFace featherless-ai via router.huggingface.co und lokales Ollama) hinter einem einzigen API-Endpoint mit intelligentem Fallback-Routing (Ollama→Groq→DeepSeek), Presidio PII/DLP-Bereinigung, detect_secrets-Credential-Scanning, 3-stufiger Abteilungsschlüssel-Governance mit abteilungsspezifischen Budget-Caps und Modell-Allowlists, Circuit-Breaker-Schutz, Valkey-Semantic-Cache und vollständigem Langfuse-LLMOps-Tracing. Kostentransparenz über ein Grafana-Dashboard mit SQL-Abfragen auf LiteLLMs PostgreSQL-Nutzungstabellen. Beinhaltet Langfuse v3.201.1 mit ClickHouse-Analytics-Backend, Authentik OIDC und einer NVIDIA NIM-Tier (nemotron-70b, llama-8b, deepseek-r1).",
+        "role": "KI-Plattformingenieur. Entwurf der 8-Provider-Routing-Topologie und der 3-stufigen Fallback-Kette, Implementierung von Presidio PII und detect_secrets als LiteLLM-Hook-Schichten, Aufbau des 3-stufigen Abteilungsschlüssel-Governance-Modells mit Budget-Caps und Modell-Allowlists, Konfiguration des Circuit Breakers (cooldown_time=60s, allowed_fails=3), Deployment von Langfuse v3.201.1 mit ClickHouse+Valkey und Authentik OIDC-Integration sowie Erstellung des Grafana-Kostendashboards mit SQL-Abfragen auf LiteLLMs PostgreSQL-Nutzungstabellen.",
+        "impact": "8 LLM-Provider hinter einem Endpoint vereint — Cloud oder lokal, transparent. deepseek-r1:7b cloud-first reduziert die Inferenzlatenz von 40+s (lokale CPU) auf 5-8s (DeepSeek Cloud API). Automatisches Failover: Anwendungen überleben Provider-Ausfälle ohne Codeänderungen. Abteilungs-Budget-Caps erzwingen FinOps-Grenzen auf API-Ebene. Jede Anfrage in Langfuse mit Kosten, Latenz und Modell-Metadaten für vollständiges Audit protokolliert.",
+        "features": [
+          "8-Provider-Routing: Groq, OpenAI, Gemini, DeepSeek, Mistral, Anthropic Claude, HuggingFace featherless-ai, Ollama — einzelner LiteLLM-Endpoint",
+          "Intelligente Fallback-Kette: Ollama → Groq → DeepSeek — automatisches Failover bei Provider-Ausfall",
+          "Presidio PII/DLP + detect_secrets Guardrails — Datenschutz und Credential-Schutz bei jeder Anfrage",
+          "3-stufige Abteilungsschlüssel-Governance: Budget-Caps, Modell-Allowlists und Nutzungsquoten pro Abteilung",
+          "Circuit Breaker (Cooldown=60s, allowed_fails=3) + Valkey Semantic Cache — Resilienz und Kostenoptimierung",
+          "Langfuse LLMOps (v3.201.1 + ClickHouse + Valkey + Authentik OIDC) + Grafana-Kostendashboard via PostgreSQL SQL"
+        ],
+        "stack": [
+          "LiteLLM (KI-Gateway)",
+          "Presidio (PII/DLP)",
+          "detect_secrets",
+          "Valkey (Semantic Cache)",
+          "Langfuse v3.201.1 (LLMOps)",
+          "ClickHouse (Langfuse-Analytics)",
+          "Grafana (Kostendashboard)",
+          "PostgreSQL (Nutzungsdaten)",
+          "Ollama (lokale Inferenz)",
+          "Python",
+          "Kubernetes (k3s)",
+          "Authentik (OIDC/SSO)",
+          "GitHub Actions"
+        ],
+        "link": "https://grafana.devandre.sbs",
+        "repoUrl": "https://github.com/andrelair-platform/minicloud-gitops"
       }
     ],
     "workExperience": [
