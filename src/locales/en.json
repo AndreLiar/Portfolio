@@ -580,14 +580,14 @@
       {
         "title": "phi3-financial — Enterprise PromptOps Pipeline",
         "purpose": "Domain-restricted AI financial assistant with a production PromptOps architecture. Built a LiteLLM CustomLogger (LangfusePromptHandler) that fetches the active production-labelled prompt from Langfuse at request time with 5-minute in-process cache and a three-layer fail-open chain — enabling instant prompt rollbacks without code deploys or image rebuilds. Includes a 25-case CI eval suite enforcing 100% pass rate as a deployment gate.",
-        "role": "AI Engineer. Designed the three-tier architecture (Ollama model serving → LiteLLM routing + runtime prompt injection → Langfuse LLMOps), built the async_pre_call_hook CustomLogger, wrote the 25-case eval suite across 5 behavioral categories, and implemented semantic versioning with automatic git tagging on every passing CI run.",
+        "role": "AI Engineer & Prompt Architect. Designed the 5-section XML prompt architecture (system_intent, domain_knowledge_constraints, safety_and_guardrails, jailbreak_defenses, output_format) with explicit off-topic taxonomy (medical/culinary/gambling/sports, each with named sub-items) and 5 jailbreak defense patterns covering roleplay injection, system override, credential phishing, translation-based bypass, and prompt extraction. Built the three-tier PromptOps infrastructure (Ollama model serving → LiteLLM routing + runtime prompt injection → Langfuse LLMOps), implemented the async_pre_call_hook CustomLogger, and wrote the 25-case behavioral eval suite with semantic versioning and automatic git tagging.",
         "impact": "25/25 eval cases passing (100% — deployment blocked on any regression). Prompt rollback time: under 5 minutes via Langfuse label change — no git push, no pod restart required. Root-caused a 90-second CI outage (ArgoCD Recreate restart overlapping eval runs) and fixed at two layers: RollingUpdate strategy + exponential retry logic in the eval harness.",
         "features": [
-          "LangfusePromptHandler: runtime prompt injection via LiteLLM CustomLogger (async_pre_call_hook)",
-          "25-case eval suite: financial Q&A, injection resistance, off-topic refusal, mixed-domain, market manipulation",
-          "Semantic versioning (MAJOR/MINOR/PATCH) + CI auto git-tagging on 100% pass",
-          "Fail-open chain: Langfuse → stale cache → ConfigMap env var — never blocks requests",
-          "Weekly scheduled CI eval + deployment gate enforced via GitHub Actions"
+          "XML-structured Modelfile: 5 behavioral sections (system_intent, domain_constraints, safety_guardrails, jailbreak_defenses, output_format) — explicit prompt architecture, not a single instruction block",
+          "5 jailbreak defense patterns: FIXED RUNTIME, UNTRUSTED INPUT, INJECTION RESPONSE, PROMPT ISOLATION, PERSISTENCE — covers roleplay, system override, credential phishing, translation bypass",
+          "LangfusePromptHandler: runtime prompt injection via LiteLLM CustomLogger (async_pre_call_hook) — instant rollback, zero redeploy",
+          "25-case eval suite across 5 behavioral categories — 100% pass rate enforced as deployment gate, weekly scheduled baseline run",
+          "Semantic versioning (MAJOR/MINOR/PATCH) + CI auto git-tagging + fail-open chain: Langfuse → stale cache → env var"
         ],
         "stack": [
           "Ollama (phi3.5 + Modelfile)",

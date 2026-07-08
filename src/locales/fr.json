@@ -557,14 +557,14 @@
       {
         "title": "phi3-financial — Pipeline PromptOps d'entreprise",
         "purpose": "Assistant IA financier à domaine restreint avec une architecture PromptOps en production. Construction d'un CustomLogger LiteLLM (LangfusePromptHandler) qui récupère le prompt de production actif depuis Langfuse à chaque requête avec un cache en mémoire de 5 minutes et une chaîne de fallback en trois niveaux — permettant des rollbacks de prompt instantanés sans redéploiement ni rebuild d'image. Inclut une suite d'évaluation CI de 25 cas imposant un taux de passage de 100% comme porte de déploiement.",
-        "role": "Ingénieur IA. Conception de l'architecture trois niveaux (service de modèles Ollama → routage LiteLLM + injection de prompt à l'exécution → LLMOps Langfuse), construction du CustomLogger async_pre_call_hook, rédaction de la suite d'évaluation de 25 cas sur 5 catégories comportementales, et implémentation du versionnage sémantique avec tagging git automatique à chaque run CI réussi.",
+        "role": "Ingénieur IA & Architecte de Prompts. Conception de l'architecture XML en 5 sections (system_intent, domain_knowledge_constraints, safety_and_guardrails, jailbreak_defenses, output_format) avec taxonomie hors-domaine explicite (médical/culinaire/jeux/sport, chacun avec des sous-items nommés) et 5 patterns de défense anti-jailbreak couvrant l'injection par roleplay, la commande système, le phishing de credentials, le contournement par traduction et l'extraction de prompt. Construction de l'infrastructure PromptOps trois niveaux (service Ollama → routage LiteLLM + injection de prompt à l'exécution → LLMOps Langfuse), implémentation du CustomLogger async_pre_call_hook, et rédaction de la suite d'évaluation comportementale de 25 cas avec versionnage sémantique et tagging git automatique.",
         "impact": "25/25 cas d'évaluation passants (100% — déploiement bloqué sur toute régression). Temps de rollback de prompt : moins de 5 minutes via changement de label Langfuse — sans push git, sans redémarrage de pod. Diagnostic d'une panne CI de 90 secondes (redémarrage ArgoCD Recreate chevauchant les runs d'évaluation) et correction en deux couches : stratégie RollingUpdate + logique de retry exponentielle.",
         "features": [
-          "LangfusePromptHandler : injection de prompt à l'exécution via LiteLLM CustomLogger (async_pre_call_hook)",
-          "Suite d'évaluation de 25 cas : Q&R financière, résistance aux injections, refus hors-domaine, domaine mixte, manipulation de marché",
-          "Versionnage sémantique (MAJOR/MINOR/PATCH) + tagging git CI automatique à 100% de réussite",
-          "Chaîne fail-open : Langfuse → cache obsolète → variable d'environnement ConfigMap — ne bloque jamais les requêtes",
-          "CI d'évaluation hebdomadaire planifiée + porte de déploiement via GitHub Actions"
+          "Modelfile structuré XML : 5 sections comportementales (system_intent, domain_constraints, safety_guardrails, jailbreak_defenses, output_format) — architecture de prompt explicite, pas un bloc d'instruction unique",
+          "5 patterns de défense anti-jailbreak : FIXED RUNTIME, UNTRUSTED INPUT, INJECTION RESPONSE, PROMPT ISOLATION, PERSISTENCE — couvre roleplay, commande système, phishing credentials, contournement par traduction",
+          "LangfusePromptHandler : injection de prompt à l'exécution via LiteLLM CustomLogger (async_pre_call_hook) — rollback instantané, zéro redéploiement",
+          "Suite d'évaluation de 25 cas sur 5 catégories comportementales — taux de réussite 100% comme porte de déploiement, run de référence hebdomadaire planifié",
+          "Versionnage sémantique (MAJOR/MINOR/PATCH) + tagging git CI automatique + chaîne fail-open : Langfuse → cache obsolète → variable d'environnement"
         ],
         "stack": [
           "Ollama (phi3.5 + Modelfile)",

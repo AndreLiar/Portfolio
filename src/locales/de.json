@@ -557,14 +557,14 @@
       {
         "title": "phi3-financial — Enterprise PromptOps Pipeline",
         "purpose": "Domain-beschränkter KI-Finanzassistent mit einer Production-PromptOps-Architektur. Entwicklung eines LiteLLM CustomLogger (LangfusePromptHandler), der den aktiven Produktions-Prompt zur Laufzeit aus Langfuse abruft — mit 5-minütigem In-Process-Cache und dreistufiger Fail-Open-Kette. Ermöglicht sofortige Prompt-Rollbacks ohne Code-Deployment oder Image-Rebuild. Enthält eine 25-Fall-CI-Eval-Suite, die eine 100%-Bestehensquote als Deployment-Gate erzwingt.",
-        "role": "KI-Ingenieur. Entwurf der Drei-Schichten-Architektur (Ollama Model Serving → LiteLLM Routing + Laufzeit-Prompt-Injektion → Langfuse LLMOps), Entwicklung des async_pre_call_hook CustomLogger, Erstellung der 25-Fall-Eval-Suite über 5 Verhaltenskategorien und Implementierung von Semantic Versioning mit automatischem Git-Tagging bei erfolgreichem CI-Run.",
+        "role": "KI-Ingenieur & Prompt-Architekt. Entwurf der 5-Abschnitt-XML-Prompt-Architektur (system_intent, domain_knowledge_constraints, safety_and_guardrails, jailbreak_defenses, output_format) mit expliziter Off-Topic-Taxonomie (Medizin/Kulinarik/Glücksspiel/Sport, jeweils mit benannten Unterpunkten) und 5 Jailbreak-Abwehrmustern für Roleplay-Injection, System-Override, Credential-Phishing, Übersetzungs-Bypass und Prompt-Extraktion. Aufbau der dreischichtigen PromptOps-Infrastruktur (Ollama Model Serving → LiteLLM Routing + Laufzeit-Prompt-Injektion → Langfuse LLMOps), Implementierung des async_pre_call_hook CustomLogger und Erstellung der 25-Fall-Verhaltens-Eval-Suite mit Semantic Versioning und automatischem Git-Tagging.",
         "impact": "25/25 Eval-Fälle bestanden (100% — Deployment bei jeder Regression blockiert). Prompt-Rollback-Zeit: unter 5 Minuten via Langfuse-Label-Wechsel — kein Git-Push, kein Pod-Neustart erforderlich. Ursachenanalyse eines 90-Sekunden-CI-Ausfalls (ArgoCD Recreate-Neustart überlappend mit Eval-Runs) und Behebung auf zwei Ebenen: RollingUpdate-Strategie + exponentielle Retry-Logik.",
         "features": [
-          "LangfusePromptHandler: Laufzeit-Prompt-Injektion via LiteLLM CustomLogger (async_pre_call_hook)",
-          "25-Fall-Eval-Suite: Finanz-Q&A, Injection-Resistenz, Off-Topic-Ablehnung, Mixed-Domain, Marktmanipulation",
-          "Semantic Versioning (MAJOR/MINOR/PATCH) + CI Auto-Git-Tagging bei 100% Bestehen",
-          "Fail-Open-Kette: Langfuse → veralteter Cache → ConfigMap-Env-Var — blockiert niemals Anfragen",
-          "Wöchentliche geplante CI-Eval + Deployment-Gate via GitHub Actions"
+          "XML-strukturiertes Modelfile: 5 Verhaltensabschnitte (system_intent, domain_constraints, safety_guardrails, jailbreak_defenses, output_format) — explizite Prompt-Architektur, kein einzelner Anweisungsblock",
+          "5 Jailbreak-Abwehrmuster: FIXED RUNTIME, UNTRUSTED INPUT, INJECTION RESPONSE, PROMPT ISOLATION, PERSISTENCE — deckt Roleplay, System-Override, Credential-Phishing, Übersetzungs-Bypass ab",
+          "LangfusePromptHandler: Laufzeit-Prompt-Injektion via LiteLLM CustomLogger (async_pre_call_hook) — sofortiger Rollback, kein Redeployment",
+          "25-Fall-Eval-Suite über 5 Verhaltenskategorien — 100% Bestehensquote als Deployment-Gate, wöchentlicher Baseline-Run",
+          "Semantic Versioning (MAJOR/MINOR/PATCH) + CI Auto-Git-Tagging + Fail-Open-Kette: Langfuse → veralteter Cache → Env-Var"
         ],
         "stack": [
           "Ollama (phi3.5 + Modelfile)",
