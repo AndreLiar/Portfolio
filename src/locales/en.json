@@ -543,13 +543,13 @@
       {
         "title": "Minicloud Platform",
         "purpose": "Production-grade enterprise Kubernetes platform built on 4 bare-metal ThinkPad laptops to demonstrate the full private-cloud engineering lifecycle. Deployed 54+ workloads via ArgoCD GitOps: Vault secrets management, Authentik SSO/OIDC, Harbor private registry, Falco runtime security, Prometheus/Grafana/Loki observability stack, and an enterprise AI Gateway (LiteLLM + Ollama) with multi-provider routing, PII/DLP guardrails, and a full RAG pipeline. Hardened with zero-trust NetworkPolicy across all 23 namespaces and supply-chain security (cosign, SBOM, GPG-signed commits).",
-        "role": "Platform Engineer & Solutions Architect. Designed the zero-trust network topology, built the AI Gateway with 7 cloud/local providers and Presidio PII guardrails, implemented the RAG pipeline (bge-m3 embeddings + pgvector HNSW + hybrid BM25 + cross-encoder re-ranking + Docling OCR), managed GitOps supply chain with cosign signing and branch protection, and automated 62 regression checks covering the full platform.",
+        "role": "Platform Engineer & Solutions Architect. Designed the enterprise GitOps repository structure (app-of-apps pattern, Kustomize Combo 1 base+overlays, 3-branch CI promotion flow, AppProject with locked sourceRepos and clusterResourceWhitelist). Built the zero-trust network topology, the AI Gateway with 8 cloud/local providers and Presidio PII guardrails, the RAG pipeline (bge-m3 + pgvector HNSW + hybrid BM25 + cross-encoder re-ranking + Docling OCR), and automated 62 regression checks covering the full platform.",
         "impact": "62 automated regression checks continuously green. 9/9 OPA Gatekeeper admission policies in deny mode with 0 violations. Zero-trust NetworkPolicy enforced across all 23 namespaces. Vault auto-unseal via AWS KMS. Enterprise RAG with sub-400ms embedding latency and <1ms HNSW vector scan. AI Gateway routing 7 providers with circuit-breaker, per-department key governance, and Langfuse LLMOps tracing.",
         "features": [
-          "54+ workloads on k3s via ArgoCD GitOps (Helm + Kustomize)",
+          "Enterprise GitOps: app-of-apps ArgoCD pattern, Kustomize base+overlays (dev/staging/prod), CI promotes via kustomize edit set image to dev only — PR-gated staging and prod, AppProject with locked sourceRepos and explicit namespace/resource whitelist",
           "9/9 OPA Gatekeeper admission policies — deny mode, 0 violations",
           "Zero-trust NetworkPolicy across 23 Kubernetes namespaces",
-          "AI Gateway: 7 providers, PII/DLP guardrails, cloud fallback chain, Valkey cache",
+          "AI Gateway: 8 providers, PII/DLP guardrails, cloud fallback chain, Valkey cache",
           "Enterprise RAG: bge-m3 + pgvector HNSW + BM25 hybrid search + Docling OCR",
           "Full supply chain: cosign signing, SBOM, GPG commits, branch protection, Dependabot"
         ],

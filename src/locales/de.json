@@ -520,13 +520,13 @@
       {
         "title": "Minicloud Platform",
         "purpose": "Produktionsreife Enterprise-Kubernetes-Plattform auf 4 Bare-Metal-ThinkPad-Laptops, um den vollständigen Private-Cloud-Engineering-Lifecycle zu demonstrieren. 54+ Workloads via ArgoCD GitOps bereitgestellt: Vault Secrets-Management, Authentik SSO/OIDC, Harbor Private Registry, Falco Runtime Security, Prometheus/Grafana/Loki Observability-Stack und ein Enterprise AI Gateway (LiteLLM + Ollama) mit Multi-Provider-Routing, PII/DLP-Guardrails und einer vollständigen RAG-Pipeline. Gehärtet mit Zero-Trust NetworkPolicy über alle 23 Namespaces und Supply-Chain-Security (cosign, SBOM, GPG-signierte Commits).",
-        "role": "Platform Engineer & Solutions Architekt. Entwurf der Zero-Trust-Netzwerktopologie, Aufbau des AI Gateways mit 7 Cloud/lokalen Providern und Presidio PII-Guardrails, Implementierung der RAG-Pipeline (bge-m3 Embeddings + pgvector HNSW + hybrides BM25 + Cross-Encoder Re-Ranking + Docling OCR), GitOps Supply-Chain-Management mit Cosign-Signierung und Branch-Protection sowie Automatisierung von 62 Regressionstests.",
-        "impact": "62 automatisierte Regressionstests dauerhaft grün. 9/9 OPA Gatekeeper Admission-Policies im Deny-Modus mit 0 Verstößen. Zero-Trust NetworkPolicy auf allen 23 Namespaces. Vault Auto-Unseal via AWS KMS. Enterprise RAG mit unter 400ms Embedding-Latenz und unter 1ms HNSW-Vektorscan. AI Gateway mit 7 Providern, Circuit-Breaker, abteilungsweiser Schlüsselverwaltung und Langfuse LLMOps-Tracing.",
+        "role": "Platform Engineer & Solutions Architekt. Entwurf der Enterprise-GitOps-Repository-Struktur (App-of-Apps-Pattern, Kustomize Combo 1 Base+Overlays, 3-Branch-CI-Promotions-Flow, AppProject mit gesperrten sourceRepos und expliziter clusterResourceWhitelist). Aufbau der Zero-Trust-Netzwerktopologie, des AI Gateways mit 8 Cloud/lokalen Providern und Presidio PII-Guardrails, der RAG-Pipeline (bge-m3 + pgvector HNSW + hybrides BM25 + Cross-Encoder Re-Ranking + Docling OCR) und Automatisierung von 62 Regressionstests.",
+        "impact": "62 automatisierte Regressionstests dauerhaft grün. 9/9 OPA Gatekeeper Admission-Policies im Deny-Modus mit 0 Verstößen. Zero-Trust NetworkPolicy auf allen 23 Namespaces. Vault Auto-Unseal via AWS KMS. Enterprise RAG mit unter 400ms Embedding-Latenz und unter 1ms HNSW-Vektorscan. AI Gateway mit 8 Providern, Circuit-Breaker, abteilungsweiser Schlüsselverwaltung und Langfuse LLMOps-Tracing.",
         "features": [
-          "54+ Workloads auf k3s via ArgoCD GitOps (Helm + Kustomize)",
+          "Enterprise GitOps: App-of-Apps ArgoCD-Pattern, Kustomize Base+Overlays (dev/staging/prod), CI-Promotion via kustomize edit set image nur nach dev — staging und prod per PR, AppProject mit gesperrten sourceRepos",
           "9/9 OPA Gatekeeper Admission-Policies — Deny-Modus, 0 Verstöße",
           "Zero-Trust NetworkPolicy über 23 Kubernetes-Namespaces",
-          "AI Gateway: 7 Provider, PII/DLP-Guardrails, Cloud-Fallback-Kette, Valkey-Cache",
+          "AI Gateway: 8 Provider, PII/DLP-Guardrails, Cloud-Fallback-Kette, Valkey-Cache",
           "Enterprise RAG: bge-m3 + pgvector HNSW + hybride BM25-Suche + Docling OCR",
           "Vollständige Supply Chain: cosign-Signierung, SBOM, GPG-Commits, Branch-Protection, Dependabot"
         ],
