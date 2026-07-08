@@ -641,6 +641,34 @@
         ],
         "link": "https://grafana.devandre.sbs",
         "repoUrl": "https://github.com/andrelair-platform/minicloud-gitops"
+      },
+      {
+        "title": "Plateforme IA Chat d'entreprise",
+        "purpose": "Déploiement d'Open WebUI comme interface de chat IA d'entreprise en production, accessible à 16 départements métier via SSO Authentik OIDC. Connecte l'ensemble du backend IA — Passerelle LiteLLM (8 fournisseurs), pipeline RAG (base documentaire assurance française) et recherche web temps réel SearXNG — dans un produit unique accessible aux utilisateurs métier non techniques. phi3-financial est le modèle par défaut pour les analystes financiers, avec restriction de domaine et gouvernance du prompt en temps réel via Langfuse. Historique des conversations et gestion des utilisateurs persistés en PostgreSQL.",
+        "role": "Ingénieur Plateforme & Produit IA. Intégration d'Authentik OIDC dans Open WebUI, avec résolution de l'échec de vérification SSL contre le CA auto-signé du cluster via un init container concaténant les CAs système et le CA minicloud en un bundle unique (SSL_CERT_FILE=/ca-bundle/bundle.crt). Déploiement de SearXNG avec deux gotchas non évidents : enableServiceLinks=false pour éviter que Kubernetes injecte une variable SEARXNG_PORT crashant granian, et BYPASS_WEB_SEARCH_WEB_LOADER=true pour la compatibilité avec les sites d'actualité. Migration du stockage de SQLite vers PostgreSQL et câblage de la Passerelle IA et du pipeline RAG comme backends.",
+        "impact": "16 départements métier avec accès IA contrôlé par SSO — chaque utilisateur ne voit que son propre historique. Les analystes financiers disposent de phi3-financial par défaut : restreint au domaine financier, rollback du prompt en moins de 5 minutes via Langfuse. Les utilisateurs interrogent une base documentaire d'assurance française directement dans le chat via le pipeline RAG. Recherche web temps réel via SearXNG auto-hébergé. Zéro perte de données de conversation au redémarrage du pod — stockage PostgreSQL.",
+        "features": [
+          "SSO Authentik OIDC — 16 groupes départementaux, modèles par défaut par département, isolation des conversations by design",
+          "phi3-financial par défaut pour la finance — restreint au domaine, injection de prompt runtime via Langfuse (rollback instantané, sans redéploiement)",
+          "RAG en chat — base documentaire assurance française interrogeable via bge-m3 + recherche hybride + re-ranking cross-encoder",
+          "Recherche web temps réel SearXNG — méta-recherche auto-hébergée, sans tracking, icône globe dans l'UI",
+          "Persistance des conversations PostgreSQL — production, migré de SQLite, zéro perte de données au redémarrage",
+          "Init container bundle CA SSL — résout l'échec de vérification SSL OIDC token/JWKS contre le CA auto-signé du cluster"
+        ],
+        "stack": [
+          "Open WebUI",
+          "Authentik (OIDC/SSO)",
+          "LiteLLM (Passerelle IA)",
+          "Ollama (inférence locale)",
+          "SearXNG (recherche web)",
+          "PostgreSQL (persistance)",
+          "pgvector + bge-m3 (RAG)",
+          "Langfuse (gestion des prompts)",
+          "Kubernetes (k3s)",
+          "Helm"
+        ],
+        "link": "https://chat.devandre.sbs",
+        "repoUrl": "https://github.com/andrelair-platform/minicloud-gitops"
       }
     ],
     "workExperience": [

@@ -664,6 +664,34 @@
         ],
         "link": "https://grafana.devandre.sbs",
         "repoUrl": "https://github.com/andrelair-platform/minicloud-gitops"
+      },
+      {
+        "title": "Enterprise AI Chat Platform",
+        "purpose": "Deployed Open WebUI as a production enterprise AI chat interface serving 16 business departments through Authentik OIDC SSO. Connects the full AI backend stack — LiteLLM AI Gateway (8 providers), RAG pipeline (French insurance knowledge base), and SearXNG real-time web search — into a single product accessible to non-technical business users. phi3-financial serves as the default model for finance analysts, domain-restricted and prompt-governed at runtime via Langfuse. Conversation history and user management backed by PostgreSQL for production-grade persistence.",
+        "role": "Platform & AI Product Engineer. Wired Authentik OIDC into Open WebUI, resolving SSL verification failure against the self-signed cluster CA via an init container that concatenates system CAs and the minicloud CA into a single bundle (SSL_CERT_FILE=/ca-bundle/bundle.crt). Deployed SearXNG with two non-obvious gotchas: enableServiceLinks=false to prevent Kubernetes injecting a SEARXNG_PORT env var that crashes granian, and BYPASS_WEB_SEARCH_WEB_LOADER=true for news site scraping compatibility. Migrated conversation storage from SQLite to PostgreSQL and wired the AI Gateway and RAG pipeline as backends.",
+        "impact": "16 business departments with SSO-controlled AI access — each user sees only their own conversation history. Finance analysts get phi3-financial by default: domain-restricted, prompt-rolled-back in under 5 minutes via Langfuse. Users query a French insurance document knowledge base directly in chat via the RAG pipeline. Real-time web search via self-hosted SearXNG. Zero conversation data loss on pod restarts — PostgreSQL-backed.",
+        "features": [
+          "Authentik OIDC SSO — 16 department groups, per-dept model defaults, conversation isolation enforced by design",
+          "phi3-financial default for finance — domain-restricted, runtime prompt injection via Langfuse (instant rollback, no redeploy)",
+          "Enterprise RAG in chat — French insurance knowledge base queryable via bge-m3 hybrid search + cross-encoder re-ranking",
+          "SearXNG real-time web search — self-hosted meta-search, no tracking, globe icon in chat UI",
+          "PostgreSQL conversation persistence — production-grade, migrated from SQLite, zero data loss on pod restart",
+          "SSL CA bundle init container — solved OIDC token/JWKS SSL verification failure against self-signed cluster CA"
+        ],
+        "stack": [
+          "Open WebUI",
+          "Authentik (OIDC/SSO)",
+          "LiteLLM (AI Gateway)",
+          "Ollama (local model serving)",
+          "SearXNG (web search)",
+          "PostgreSQL (persistence)",
+          "pgvector + bge-m3 (RAG)",
+          "Langfuse (prompt management)",
+          "Kubernetes (k3s)",
+          "Helm"
+        ],
+        "link": "https://chat.devandre.sbs",
+        "repoUrl": "https://github.com/andrelair-platform/minicloud-gitops"
       }
     ],
     "workExperience": [
