@@ -579,6 +579,36 @@
         ],
         "link": "https://langfuse.devandre.sbs",
         "repoUrl": "https://github.com/andrelair-platform/hackathon_ynov"
+      },
+      {
+        "title": "Enterprise RAG Pipeline",
+        "purpose": "Aufbau einer vollständigen mehrsprachigen RAG-Pipeline für die Suche in französischen Versicherungsdokumenten über drei benutzerdefinierte Repos. minicloud-markitdown-proxy (FastAPI): leitet Dokumente nach Typ weiter — PDF/Bilder zu Docling OCR, Office/HTML zu MarkItDown im Pod — mit Docling-kompatibler API-Oberfläche. minicloud-rag-ingest (FastAPI): vollständige Ingestion-Pipeline in einem HTTP-Endpoint — Konvertierung → strukturiertes Heading-Chunking (französisches Versicherungs-Regex) → bge-m3 1024-dim Embedding → pgvector HNSW INSERT. minicloud-postgresql-noavx512: benutzerdefiniertes PostgreSQL-Image mit pgvector's vector.so neu gebaut ohne -mavx512f/bw/vl/dq — behebt SIGILL-Absturz auf i7-8565U/i7-10510U CPUs durch AVX-512 EVEX-Instruktionen in pgvector 0.8.4. Hybrid-Such-Schicht: BM25 mit französischem Snowball-Stemmer + NLTK-Stoppwörter via Init-Container in rank_bm25/utils.py gepatcht. Cross-Encoder-Re-Ranking (ms-marco-MiniLM-L-6-v2) filtert auf Top-3.",
+        "role": "Systems Engineer & ML Engineer. Diagnose der SIGILL-Grundursache (pgvector 0.8.4 HNSW-Code emittiert AVX-512 EVEX-Instruktionen, nicht unterstützt von i7-8565U/i7-10510U), Neukompilierung von vector.so ohne AVX-512 und Paketierung als benutzerdefiniertes Harbor-Image. Entwurf der Zwei-Microservice-Ingestion-Architektur, Entwicklung des französischen BM25-Preprocessors (NLTK-Snowball-Stemmer + Versicherungs-Stoppwörter via Init-Container subPath-Mount in rank_bm25/utils.py gepatcht) und Integration von Docling als PDF/OCR-Backend. Beide Microservices mit Dockerfile, GitHub Actions CI und cosign Keyless-Signierung ausgeliefert.",
+        "impact": "Alle HNSW-Index-Operationen auf CPUs ohne AVX-512 entsperrt — null SIGILL-Abstürze nach dem Fix. Gemessene Pipeline-Latenzen: HNSW-Vektorscan 0,31ms, BM25-GIN-FTS 2,71ms, INSERT + HNSW-Update 6,8ms/Zeile, bge-m3-Embedding 393ms. Französisches Stemming verifiziert: sinistres/sinistre → sinistr ✅, réassurance/réassurer → réassur ✅. Vollständig im Cluster end-to-end: PDF-Upload → Docling OCR → strukturierte Chunks → 1024-dim Vektoren → pgvector HNSW + BM25 Hybrid → Cross-Encoder Top-3. Keine externen API-Aufrufe.",
+        "features": [
+          "minicloud-markitdown-proxy: PDF/Bilder → Docling OCR, Office/HTML → MarkItDown im Pod (Docling-kompatible API)",
+          "minicloud-rag-ingest: einzelner HTTP-Endpoint — konvertieren → chunken → bge-m3 embedding → pgvector HNSW INSERT",
+          "minicloud-postgresql-noavx512: vector.so ohne AVX-512 neu gebaut — behebt SIGILL auf i7-8565U/i7-10510U (pgvector 0.8.4 SIMD-Bug)",
+          "Französischer BM25: NLTK-Snowball-Stemmer + Versicherungs-Stoppwörter via Kubernetes Init-Container in rank_bm25 gepatcht",
+          "Hybrid-Retrieval: bge-m3 1024-dim Vektor + BM25 + Cross-Encoder-Re-Ranking (ms-marco-MiniLM-L-6-v2, Top-3)",
+          "Supply Chain: Dockerfile + GitHub Actions CI + cosign Keyless-Signierung auf beiden Microservices"
+        ],
+        "stack": [
+          "Python",
+          "FastAPI",
+          "PostgreSQL + pgvector (benutzerdefinierter noavx512-Build, C / Makefile)",
+          "bge-m3 (Ollama)",
+          "Docling (OCR/PDF)",
+          "MarkItDown",
+          "rank_bm25 + NLTK (französisches BM25)",
+          "ms-marco-MiniLM-L-6-v2 (Cross-Encoder)",
+          "Docker",
+          "GitHub Actions",
+          "cosign",
+          "Kubernetes Init-Container"
+        ],
+        "link": "https://andrelair-platform.github.io/minicloud-platform-docs/",
+        "repoUrl": "https://github.com/andrelair-platform/minicloud-rag-ingest"
       }
     ],
     "workExperience": [
