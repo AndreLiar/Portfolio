@@ -691,7 +691,7 @@
           "Regression integration: LiteLLM /health, Langfuse tracing active, Grafana datasource reachable, and dept key routing all included in the 62-check automated regression suite (regression checks #17–#26 — 62 PASS / 0 FAIL)"
         ],
         "link": "https://litellm.devandre.sbs/v1/models",
-        "repoUrl": "https://github.com/andrelair-platform/minicloud-gitops",
+        "repoUrl": "https://github.com/andrelair-platform/minicloud-litellm-custom",
         "screenshots": [
           {
             "title": "Grafana Cost Dashboard — Live Spend Data",
