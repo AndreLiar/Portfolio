@@ -662,23 +662,16 @@
           "GitHub Actions"
         ],
         "architecture": [
-          "LiteLLM router: 8 provider configs (Groq, OpenAI, Gemini, DeepSeek, Mistral, Anthropic Claude, HuggingFace featherless-ai, Ollama) behind a single /v1/chat/completions endpoint — model aliasing maps friendly names to provider-specific IDs",
-          "3-tier department key governance: Premium (IT/Data/Actuariat — $100/30d), Standard (Cyber/Finance/Audit — $30/30d), Basic (Sinistres/Ops/RH — $5/30d) — budget caps and model allowlists enforced at LiteLLM key level, not application layer",
-          "Presidio guardrail as LiteLLM pre_call_hook — PII entities detected and masked before any provider sees the prompt; financial-context allow-list excludes DATE_TIME and LOCATION to preserve years (2024) and country references (France)",
-          "Langfuse v3.201.1 + ClickHouse OLAP backend + Valkey cache — every request traced with cost, latency, model, and department tag; ClickHouse replaces PostgreSQL for high-cardinality trace analytics at scale",
-          "Valkey prompt cache (exact-match, 600s TTL) — identical queries return cached responses without hitting any provider; reduces cloud API spend on repeated analytical queries",
-          "Circuit breaker (cooldown_time=60s, allowed_fails=3) — automatic provider failover: Ollama → Groq → DeepSeek; failed providers quarantined for 60s before retry",
-          "ESO ExternalSecret + HashiCorp Vault KV — all 8 provider API keys injected at pod start from Vault; zero secrets in git or container images",
-          "Grafana cost dashboard reads LiteLLM_SpendLogs + LiteLLM_VerificationToken via PostgreSQL datasource provisioned by Grafana sidecar ConfigMap; password injected via envValueFrom from ESO-managed secret"
+          "Model aliasing layer: friendly names (e.g. 'gpt-4o', 'claude-sonnet') map to provider-specific model IDs in LiteLLM config — callers use stable aliases regardless of which provider is actually serving the request",
+          "Budget enforcement at the API key layer, not the application: LiteLLM VirtualKey stores max_budget + allowed_models per department; the gateway rejects overspent or out-of-allowlist requests before they reach any provider",
+          "Presidio pre_call_hook: DATE_TIME and LOCATION entities explicitly excluded from the Presidio analyzer — a necessity for financial queries where '2024' and 'France' are meaningful data, not PII to scrub",
+          "ClickHouse as Langfuse analytics backend instead of PostgreSQL: high-cardinality trace writes (cost, latency, tokens per request) saturate PostgreSQL write throughput at eval-pipeline scale; ClickHouse OLAP handles the same workload with no schema contention",
+          "Grafana dashboard provisioned declaratively: cost dashboard JSON stored in git as a ConfigMap labelled grafana_dashboard: '1' — Grafana sidecar watches for the label and injects it without any UI interaction; PostgreSQL datasource password injected via envValueFrom from an ESO-managed secret"
         ],
-        "repoBlueprint": "minicloud-gitops/\n├── helm-values/\n│   ├── litellm-values.yaml              # LiteLLM Helm (8 providers, circuit breaker)\n│   └── kube-prometheus-stack-values.yaml # Grafana datasource + cost dashboard\n├── manifests/\n│   ├── ai/\n│   │   ├── 00-litellm-configmap.yaml    # router models, fallback chain, Presidio hook\n│   │   ├── 06-langfuse.yaml             # Langfuse v3.201.1 + ClickHouse + Valkey\n│   │   └── 07-litellm-grafana-dashboard.yaml  # cost dashboard ConfigMap\n│   └── eso-platform-secrets/\n│       ├── 10-ai-postgresql.yaml        # Vault → ai-postgresql-secret (8 provider keys)\n│       └── 12-grafana-litellm-db.yaml   # Vault → grafana-litellm-db (PG password)\n└── apps/\n    └── litellm.yaml                     # ArgoCD Helm application (multi-source)",
         "atsKeywords": [
           "LLM Gateway", "Multi-provider LLM routing", "LiteLLM", "AI governance",
-          "Presidio", "PII masking", "DLP guardrail", "Langfuse", "LLMOps",
-          "ClickHouse", "Valkey", "Circuit breaker", "Fallback chain",
-          "Department key governance", "FinOps", "Cost management",
-          "Grafana", "PostgreSQL", "HashiCorp Vault", "External Secrets Operator",
-          "Kubernetes", "Helm", "ArgoCD", "GitOps", "Authentik OIDC", "NVIDIA NIM"
+          "Presidio PII/DLP", "Langfuse", "LLMOps", "Circuit breaker",
+          "Department key governance", "FinOps", "Kubernetes", "NVIDIA NIM"
         ],
         "scope": [
           "Phase 1 — Core gateway: LiteLLM with local Ollama; department virtual keys with model allowlists and per-key budget caps",
@@ -720,6 +713,11 @@
           }
         ],
         "liveEndpoints": [
+          {
+            "label": "Open WebUI — Live AI Gateway (phi3-financial + 8 providers)",
+            "command": "https://chat.devandre.sbs",
+            "url": "https://chat.devandre.sbs"
+          },
           {
             "label": "Grafana — LiteLLM Cost Dashboard",
             "command": "https://grafana.devandre.sbs/d/litellm-cost-dept",
