@@ -721,7 +721,7 @@
           {
             "label": "Grafana — LiteLLM Cost Dashboard",
             "command": "https://grafana.devandre.sbs/d/litellm-cost-dept",
-            "url": "https://grafana.devandre.sbs"
+            "url": "https://grafana.devandre.sbs/d/litellm-cost-dept"
           },
           {
             "label": "Langfuse — LLMOps Tracing (ai-gateway project)",
