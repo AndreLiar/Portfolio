@@ -662,7 +662,39 @@
           "GitHub Actions"
         ],
         "link": "https://grafana.devandre.sbs",
-        "repoUrl": "https://github.com/andrelair-platform/minicloud-gitops"
+        "repoUrl": "https://github.com/andrelair-platform/minicloud-gitops",
+        "screenshots": [
+          {
+            "title": "Grafana Cost Dashboard — Live Spend Data",
+            "caption": "LiteLLM PostgreSQL datasource provisioned via ESO + Grafana sidecar. SQL queries against LiteLLM_SpendLogs: $1.67 spend, 2.52M tokens, 1.38K requests — real production traffic.",
+            "src": "/screenshots/grafana-litellm-cost.png",
+            "link": "https://grafana.devandre.sbs"
+          },
+          {
+            "title": "Langfuse — phi3-financial Eval Trace (correctness: 1.00)",
+            "caption": "Trace eval-T11 from the RAG eval CI gate. Input: 'Explain the difference between a call option and a put option.' Tagged prompt-eval, git release pinned. Ragas faithfulness=0.80, hit_rate=0.80.",
+            "src": "/screenshots/langfuse-phi3-trace.png",
+            "link": "https://langfuse.devandre.sbs"
+          },
+          {
+            "title": "Langfuse — 25-Trace Eval Pipeline (ai-gateway project)",
+            "caption": "All 25 eval traces (T1–T25) from the ArgoCD PostSync CI gate. Financial domain questions with per-trace correctness scores. Columns: answer_relevancy, faithfulness, hit_rate, mrr, rouge_l.",
+            "src": "/screenshots/langfuse-eval-traces.png",
+            "link": "https://langfuse.devandre.sbs"
+          }
+        ],
+        "liveEndpoints": [
+          {
+            "label": "Grafana — LiteLLM Cost Dashboard",
+            "command": "https://grafana.devandre.sbs/d/litellm-cost-dept",
+            "url": "https://grafana.devandre.sbs"
+          },
+          {
+            "label": "Langfuse — LLMOps Tracing (ai-gateway project)",
+            "command": "https://langfuse.devandre.sbs",
+            "url": "https://langfuse.devandre.sbs"
+          }
+        ]
       },
       {
         "title": "Enterprise AI Chat Platform",

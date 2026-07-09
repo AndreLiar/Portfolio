@@ -9,7 +9,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { CheckCircle, Code, Cpu, FileText, Layers, Lightbulb, ShieldCheck, Terminal } from "lucide-react";
+import { CheckCircle, Code, Cpu, ExternalLink, FileText, Layers, Lightbulb, ShieldCheck, Terminal } from "lucide-react";
 
 interface ProjectDetailsModalProps {
     project: any;
@@ -43,11 +43,14 @@ export function ProjectDetailsModal({ project, isOpen, onClose }: ProjectDetails
 
                 <ScrollArea className="flex-1 p-4 sm:p-6">
                     <Tabs defaultValue="overview" className="w-full">
-                        <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 mb-8 h-auto gap-1">
+                        <TabsList className={`grid w-full mb-8 h-auto gap-1 ${project.screenshots?.length ? 'grid-cols-3 sm:grid-cols-5' : 'grid-cols-2 sm:grid-cols-4'}`}>
                             <TabsTrigger value="overview">Overview</TabsTrigger>
                             <TabsTrigger value="technical">Technical</TabsTrigger>
                             <TabsTrigger value="process">Process</TabsTrigger>
                             <TabsTrigger value="impact">Impact</TabsTrigger>
+                            {project.screenshots?.length > 0 && (
+                                <TabsTrigger value="proof">Live Proof</TabsTrigger>
+                            )}
                         </TabsList>
 
                         <TabsContent value="overview" className="space-y-8">
@@ -201,6 +204,71 @@ export function ProjectDetailsModal({ project, isOpen, onClose }: ProjectDetails
                                 </section>
                             )}
                         </TabsContent>
+
+                        {/* Live Proof tab — screenshots + live links */}
+                        {project.screenshots?.length > 0 && (
+                            <TabsContent value="proof" className="space-y-8">
+                                <section>
+                                    <h3 className="text-lg font-semibold mb-2 flex items-center gap-2 text-primary">
+                                        <ShieldCheck className="w-5 h-5" /> Live System Evidence
+                                    </h3>
+                                    <p className="text-sm text-muted-foreground mb-6">
+                                        Screenshots and live endpoints from the running production system — not mocked, not demo data.
+                                    </p>
+                                    <div className="space-y-8">
+                                        {project.screenshots.map((s: { title: string; caption: string; src: string; link?: string }, i: number) => (
+                                            <div key={i} className="rounded-xl border border-border/50 overflow-hidden bg-muted/20">
+                                                <img
+                                                    src={s.src}
+                                                    alt={s.title}
+                                                    className="w-full object-cover"
+                                                    loading="lazy"
+                                                />
+                                                <div className="p-4 flex items-start justify-between gap-3">
+                                                    <div>
+                                                        <p className="font-semibold text-sm">{s.title}</p>
+                                                        <p className="text-xs text-muted-foreground mt-1">{s.caption}</p>
+                                                    </div>
+                                                    {s.link && (
+                                                        <a
+                                                            href={s.link}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="shrink-0 flex items-center gap-1 text-xs text-primary hover:underline"
+                                                        >
+                                                            <ExternalLink className="w-3 h-3" /> Live
+                                                        </a>
+                                                    )}
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </section>
+
+                                {/* Live endpoints */}
+                                {project.liveEndpoints && (
+                                    <section>
+                                        <h3 className="text-lg font-semibold mb-3 flex items-center gap-2 text-primary">
+                                            <Terminal className="w-5 h-5" /> Live Endpoints
+                                        </h3>
+                                        <div className="space-y-3">
+                                            {project.liveEndpoints.map((ep: { label: string; command: string; url: string }, i: number) => (
+                                                <div key={i} className="rounded-lg border border-border/50 p-3 bg-muted/30">
+                                                    <div className="flex items-center justify-between mb-2">
+                                                        <span className="text-xs font-semibold text-primary">{ep.label}</span>
+                                                        <a href={ep.url} target="_blank" rel="noopener noreferrer"
+                                                            className="text-xs text-muted-foreground hover:text-primary flex items-center gap-1">
+                                                            <ExternalLink className="w-3 h-3" /> Open
+                                                        </a>
+                                                    </div>
+                                                    <pre className="text-xs font-mono text-muted-foreground overflow-x-auto">{ep.command}</pre>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </section>
+                                )}
+                            </TabsContent>
+                        )}
                     </Tabs>
                 </ScrollArea>
             </DialogContent>
