@@ -661,6 +661,42 @@
           "Authentik (OIDC/SSO)",
           "GitHub Actions"
         ],
+        "architecture": [
+          "LiteLLM router: 8 provider configs (Groq, OpenAI, Gemini, DeepSeek, Mistral, Anthropic Claude, HuggingFace featherless-ai, Ollama) behind a single /v1/chat/completions endpoint — model aliasing maps friendly names to provider-specific IDs",
+          "3-tier department key governance: Premium (IT/Data/Actuariat — $100/30d), Standard (Cyber/Finance/Audit — $30/30d), Basic (Sinistres/Ops/RH — $5/30d) — budget caps and model allowlists enforced at LiteLLM key level, not application layer",
+          "Presidio guardrail as LiteLLM pre_call_hook — PII entities detected and masked before any provider sees the prompt; financial-context allow-list excludes DATE_TIME and LOCATION to preserve years (2024) and country references (France)",
+          "Langfuse v3.201.1 + ClickHouse OLAP backend + Valkey cache — every request traced with cost, latency, model, and department tag; ClickHouse replaces PostgreSQL for high-cardinality trace analytics at scale",
+          "Valkey prompt cache (exact-match, 600s TTL) — identical queries return cached responses without hitting any provider; reduces cloud API spend on repeated analytical queries",
+          "Circuit breaker (cooldown_time=60s, allowed_fails=3) — automatic provider failover: Ollama → Groq → DeepSeek; failed providers quarantined for 60s before retry",
+          "ESO ExternalSecret + HashiCorp Vault KV — all 8 provider API keys injected at pod start from Vault; zero secrets in git or container images",
+          "Grafana cost dashboard reads LiteLLM_SpendLogs + LiteLLM_VerificationToken via PostgreSQL datasource provisioned by Grafana sidecar ConfigMap; password injected via envValueFrom from ESO-managed secret"
+        ],
+        "repoBlueprint": "minicloud-gitops/\n├── helm-values/\n│   ├── litellm-values.yaml              # LiteLLM Helm (8 providers, circuit breaker)\n│   └── kube-prometheus-stack-values.yaml # Grafana datasource + cost dashboard\n├── manifests/\n│   ├── ai/\n│   │   ├── 00-litellm-configmap.yaml    # router models, fallback chain, Presidio hook\n│   │   ├── 06-langfuse.yaml             # Langfuse v3.201.1 + ClickHouse + Valkey\n│   │   └── 07-litellm-grafana-dashboard.yaml  # cost dashboard ConfigMap\n│   └── eso-platform-secrets/\n│       ├── 10-ai-postgresql.yaml        # Vault → ai-postgresql-secret (8 provider keys)\n│       └── 12-grafana-litellm-db.yaml   # Vault → grafana-litellm-db (PG password)\n└── apps/\n    └── litellm.yaml                     # ArgoCD Helm application (multi-source)",
+        "atsKeywords": [
+          "LLM Gateway", "Multi-provider LLM routing", "LiteLLM", "AI governance",
+          "Presidio", "PII masking", "DLP guardrail", "Langfuse", "LLMOps",
+          "ClickHouse", "Valkey", "Circuit breaker", "Fallback chain",
+          "Department key governance", "FinOps", "Cost management",
+          "Grafana", "PostgreSQL", "HashiCorp Vault", "External Secrets Operator",
+          "Kubernetes", "Helm", "ArgoCD", "GitOps", "Authentik OIDC", "NVIDIA NIM"
+        ],
+        "scope": [
+          "Phase 1 — Core gateway: LiteLLM with local Ollama; department virtual keys with model allowlists and per-key budget caps",
+          "Phase 2 — Cloud expansion: Groq, OpenAI, Gemini, DeepSeek, Mistral, Anthropic Claude, HuggingFace featherless-ai added; 3-stage fallback chain Ollama→Groq→DeepSeek configured",
+          "Phase 3 — PII/DLP: Presidio integrated as LiteLLM pre_call_hook; financial-context allow-list tuned to stop DATE_TIME masking years and LOCATION masking country names in financial queries",
+          "Phase 4 — Resilience: Circuit breaker (cooldown=60s, allowed_fails=3) + Valkey exact-match prompt cache (600s TTL) added; deepseek-r1:7b moved to cloud-first routing (5–8s vs 40+s on local CPU)",
+          "Phase 5 — LLMOps: Langfuse v3.201.1 deployed with ClickHouse analytics backend + Valkey trace cache; Authentik OIDC SSO wired; every LiteLLM request traced with cost, latency, model, and department tag",
+          "Phase 6 — Cost visibility: Grafana dashboard built with 6 SQL panels against LiteLLM_SpendLogs; PostgreSQL datasource provisioned via ESO + Grafana sidecar ConfigMap injection",
+          "Phase 7 — NVIDIA NIM tier: nemotron-70b, llama-8b, deepseek-r1 added as a premium model tier; API key synced from Vault via ESO ExternalSecret"
+        ],
+        "testPlan": [
+          "Department key enforcement: 16 virtual keys (dept-it, dept-cyber, dept-data…) — each verified to reject models outside its allowlist and block calls once budget is exhausted",
+          "Fallback chain smoke test: Ollama pod killed mid-request → confirmed automatic failover to Groq within circuit breaker cooldown window; zero application-side changes required",
+          "PII guardrail verification: test prompts with IBAN, SSN, email addresses — masking confirmed; years (2024, 2025) and country names (France, Belgium) verified to pass through the financial allow-list unchanged",
+          "Grafana dashboard query test: SQL executed from Grafana Explore against LiteLLM_SpendLogs — row count matched expected request volume; rawQuery:true confirmed required for Grafana PostgreSQL plugin",
+          "Langfuse trace audit: spot-check 10 LiteLLM requests — each verified as a Langfuse trace with correct cost attribution, model name, and department tag attached",
+          "Regression integration: LiteLLM /health, Langfuse tracing active, Grafana datasource reachable, and dept key routing all included in the 62-check automated regression suite (regression checks #17–#26 — 62 PASS / 0 FAIL)"
+        ],
         "link": "https://grafana.devandre.sbs",
         "repoUrl": "https://github.com/andrelair-platform/minicloud-gitops",
         "screenshots": [
