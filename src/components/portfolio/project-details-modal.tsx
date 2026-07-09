@@ -5,7 +5,6 @@ import {
     DialogHeader,
     DialogTitle,
 } from "@/components/ui/dialog";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -41,7 +40,7 @@ export function ProjectDetailsModal({ project, isOpen, onClose }: ProjectDetails
                     </div>
                 </DialogHeader>
 
-                <ScrollArea className="flex-1 p-4 sm:p-6">
+                <div className="flex-1 overflow-y-auto overflow-x-hidden p-4 sm:p-6 min-w-0">
                     <Tabs defaultValue="overview" className="w-full">
                         <TabsList className={`grid w-full mb-8 h-auto gap-1 ${project.screenshots?.length ? 'grid-cols-3 sm:grid-cols-5' : 'grid-cols-2 sm:grid-cols-4'}`}>
                             <TabsTrigger value="overview">Overview</TabsTrigger>
@@ -215,13 +214,13 @@ export function ProjectDetailsModal({ project, isOpen, onClose }: ProjectDetails
                                     <p className="text-sm text-muted-foreground mb-6">
                                         Screenshots and live endpoints from the running production system — not mocked, not demo data.
                                     </p>
-                                    <div className="space-y-8">
+                                                    <div className="space-y-8">
                                         {project.screenshots.map((s: { title: string; caption: string; src: string; link?: string }, i: number) => (
-                                            <div key={i} className="rounded-xl border border-border/50 overflow-hidden bg-muted/20">
+                                            <div key={i} className="rounded-xl border border-border/50 overflow-hidden bg-muted/20 min-w-0">
                                                 <img
                                                     src={s.src}
                                                     alt={s.title}
-                                                    className="w-full object-cover"
+                                                    className="w-full h-auto block"
                                                     loading="lazy"
                                                 />
                                                 <div className="p-4 flex items-start justify-between gap-3">
@@ -270,7 +269,7 @@ export function ProjectDetailsModal({ project, isOpen, onClose }: ProjectDetails
                             </TabsContent>
                         )}
                     </Tabs>
-                </ScrollArea>
+                </div>
             </DialogContent>
         </Dialog>
     );
