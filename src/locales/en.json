@@ -714,9 +714,9 @@
         ],
         "liveEndpoints": [
           {
-            "label": "Open WebUI — Live AI Gateway (phi3-financial + 8 providers)",
-            "command": "https://chat.devandre.sbs",
-            "url": "https://chat.devandre.sbs"
+            "label": "LiteLLM API — Live curl (Groq via Enterprise Gateway)",
+            "command": "curl -s -X POST https://litellm.devandre.sbs/v1/chat/completions -H \"Authorization: Bearer sk-portfolio-demo\" -H \"Content-Type: application/json\" -d '{\"model\": \"groq-fallback\", \"messages\": [{\"role\": \"user\", \"content\": \"What is an LLM gateway?\"}], \"max_tokens\": 60}'",
+            "url": "https://litellm.devandre.sbs/v1/models"
           },
           {
             "label": "Grafana — LiteLLM Cost Dashboard",
