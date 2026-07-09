@@ -696,19 +696,19 @@
           {
             "title": "Grafana Cost Dashboard — Live Spend Data",
             "caption": "LiteLLM PostgreSQL datasource provisioned via ESO + Grafana sidecar. SQL queries against LiteLLM_SpendLogs: $1.67 spend, 2.52M tokens, 1.38K requests — real production traffic.",
-            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-gitops/main/docs/ai-gateway/screenshots/grafana-litellm-cost.png",
+            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-litellm-custom/main/docs/screenshots/grafana-litellm-cost.png",
             "link": "https://grafana.devandre.sbs"
           },
           {
             "title": "Langfuse — phi3-financial Eval Trace (correctness: 1.00)",
             "caption": "Trace eval-T11 from the RAG eval CI gate. Input: 'Explain the difference between a call option and a put option.' Tagged prompt-eval, git release pinned. Ragas faithfulness=0.80, hit_rate=0.80.",
-            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-gitops/main/docs/ai-gateway/screenshots/langfuse-phi3-trace.png",
+            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-litellm-custom/main/docs/screenshots/langfuse-phi3-trace.png",
             "link": "https://langfuse.devandre.sbs"
           },
           {
             "title": "Langfuse — 25-Trace Eval Pipeline (ai-gateway project)",
             "caption": "All 25 eval traces (T1–T25) from the ArgoCD PostSync CI gate. Financial domain questions with per-trace correctness scores. Columns: answer_relevancy, faithfulness, hit_rate, mrr, rouge_l.",
-            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-gitops/main/docs/ai-gateway/screenshots/langfuse-eval-traces.png",
+            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-litellm-custom/main/docs/screenshots/langfuse-eval-traces.png",
             "link": "https://langfuse.devandre.sbs"
           }
         ],
