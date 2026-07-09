@@ -667,7 +667,7 @@
           "Langfuse-Trace-Audit: 10 LiteLLM-Anfragen stichprobenartig geprüft — jede als Langfuse-Trace mit korrekter Kostenzuordnung, Modellname und Abteilungs-Tag verifiziert",
           "Regressionsintegration: LiteLLM /health, Langfuse-Tracing aktiv, Grafana-Datasource erreichbar und Abteilungsschlüssel-Routing in der automatisierten 62-Check-Regressionsuite enthalten (Regressionsprüfungen #17–#26 — 62 PASS / 0 FAIL)"
         ],
-        "link": "https://litellm.devandre.sbs/v1/models",
+        "link": "https://litellm.devandre.sbs/",
         "repoUrl": "https://github.com/andrelair-platform/minicloud-litellm-custom",
         "screenshots": [
           {
@@ -693,7 +693,7 @@
           {
             "label": "LiteLLM API — Live curl (Groq via Enterprise Gateway)",
             "command": "curl -s -X POST https://litellm.devandre.sbs/v1/chat/completions -H \"Authorization: Bearer sk-portfolio-demo\" -H \"Content-Type: application/json\" -d '{\"model\": \"groq-fallback\", \"messages\": [{\"role\": \"user\", \"content\": \"What is an LLM gateway?\"}], \"max_tokens\": 60}'",
-            "url": "https://litellm.devandre.sbs/v1/models"
+            "url": "https://litellm.devandre.sbs/"
           },
           {
             "label": "Grafana — LiteLLM Kostendashboard",
