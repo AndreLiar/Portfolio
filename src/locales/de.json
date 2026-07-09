@@ -667,7 +667,7 @@
           "Langfuse-Trace-Audit: 10 LiteLLM-Anfragen stichprobenartig geprüft — jede als Langfuse-Trace mit korrekter Kostenzuordnung, Modellname und Abteilungs-Tag verifiziert",
           "Regressionsintegration: LiteLLM /health, Langfuse-Tracing aktiv, Grafana-Datasource erreichbar und Abteilungsschlüssel-Routing in der automatisierten 62-Check-Regressionsuite enthalten (Regressionsprüfungen #17–#26 — 62 PASS / 0 FAIL)"
         ],
-        "link": "https://grafana.devandre.sbs",
+        "link": "https://litellm.devandre.sbs/v1/models",
         "repoUrl": "https://github.com/andrelair-platform/minicloud-gitops",
         "screenshots": [
           {

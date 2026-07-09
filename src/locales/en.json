@@ -690,7 +690,7 @@
           "Langfuse trace audit: spot-check 10 LiteLLM requests — each verified as a Langfuse trace with correct cost attribution, model name, and department tag attached",
           "Regression integration: LiteLLM /health, Langfuse tracing active, Grafana datasource reachable, and dept key routing all included in the 62-check automated regression suite (regression checks #17–#26 — 62 PASS / 0 FAIL)"
         ],
-        "link": "https://grafana.devandre.sbs",
+        "link": "https://litellm.devandre.sbs/v1/models",
         "repoUrl": "https://github.com/andrelair-platform/minicloud-gitops",
         "screenshots": [
           {
