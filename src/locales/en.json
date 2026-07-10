@@ -670,6 +670,28 @@
           "Goal: make BM25 keyword retrieval work for French legal text. Open WebUI hybrid search runs rank_bm25 alongside HNSW. rank_bm25 tokenises by whitespace only — sinistres, sinistre, and sinistres are three different tokens with zero overlap. For French insurance documents where queries and clauses use different inflections of the same term, this makes BM25 almost useless. Problem: we could not modify rank_bm25 (it runs inside the Open WebUI pod, not our image). Solution: init container that patches rank_bm25/utils.py at pod start — injects an NLTK Snowball French stemmer and a hardcoded insurance stop-word set — via a ConfigMap subPath volume that shadows the original file. The patch applies every restart with no image rebuild.",
           "Goal: eliminate the Mac-side ingestion dependency. The original pipeline required a local Python script, local DB port-forward, and local credentials to ingest documents — creating a hard dependency on one developer's machine. Solution: minicloud-rag-ingest is a cluster-native FastAPI service accepting a single multipart POST. The full pipeline runs in-cluster: convert via markitdown-proxy, structure-aware chunk, embed via LiteLLM, INSERT into ragdb. Any pod in the ai namespace — or any developer with a port-forward — can ingest a document with one curl call.",
           "Goal: build a conversion layer for both scanned documents (needing OCR) and machine-generated PDFs and Office files. Running everything through Docling would work but its CPU image is 4.4 GB and its layout analysis uses hundreds of MB per page — impractical for a CPU-only cluster handling mostly text-based files. Solution: minicloud-markitdown-proxy routes by file extension: scanned images go to Docling, everything else is handled in-pod with MarkItDown (PyMuPDF for PDFs). The API contract matches Docling /v1/convert/file, so both Open WebUI and rag-ingest call the same endpoint without knowing which backend ran."
+        ],
+        "screenshots": [
+          {
+            "title": "phi3-financial answering a French CET1 query",
+            "caption": "Open WebUI with the domain-specific phi3-financial model responding to a French financial question. The model is configured with a SYSTEM prompt restricting it to finance topics and connected to the pgvector knowledge base via hybrid BM25 + HNSW retrieval.",
+            "src": "/screenshots/rag-openwebui-query.png"
+          },
+          {
+            "title": "French insurance knowledge base in Open WebUI",
+            "caption": "Open WebUI Workspace > Knowledge showing the 'Finance D'entreprise, Réglementation Bancaire' collection — 911 chunks ingested via rag-ingest, covering Basel III regulatory capital, BNP Paribas Fortis 2024 annual report, and LVMH 2023 report, all embedded with bge-m3 (1024-dim).",
+            "src": "/screenshots/rag-knowledge-bases.png"
+          },
+          {
+            "title": "rag-ingest component in Backstage IDP",
+            "caption": "Backstage catalog entry for the rag-ingest service — showing owner (andrelair-platform), lifecycle (production), system (minicloud-platform), and its description as a cluster-native RAG ingestion pipeline. Source Repository and ArgoCD Application links visible in the sidebar.",
+            "src": "/screenshots/rag-ingest-component.png"
+          },
+          {
+            "title": "rag-ingest OpenAPI spec in Backstage",
+            "caption": "Backstage API tab showing the rag-ingest-api OpenAPI 3.1 spec rendered live. Endpoints: GET /health (liveness probe), GET /ready (readiness probe), POST /ingest (document ingestion into pgvector). The service runs as an internal cluster service at rag-ingest.ai.svc.cluster.local:8001.",
+            "src": "/screenshots/rag-ingest-api-overview.png"
+          }
         ]
       },
       {
