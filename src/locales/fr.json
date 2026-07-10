@@ -669,6 +669,78 @@
         ],
         "link": "https://chat.devandre.sbs",
         "repoUrl": "https://github.com/andrelair-platform/minicloud-gitops"
+      },
+      {
+        "title": "Portail Développeur Interne Backstage",
+        "purpose": "Portail développeur interne durci pour la production, basé sur Backstage 1.52, déployé sur la plateforme Kubernetes minicloud avec livraison GitOps complète, SSO Authentik OIDC et un Tech Radar personnalisé.",
+        "role": "Ingénieur Plateforme — conception et implémentation du système frontend personnalisé, intégration OIDC, module Tech Radar, pipeline CI/CD et livraison GitOps via ArgoCD.",
+        "impact": "Panneau de contrôle unique pour 18+ services de plateforme. Interface Swagger complète par API. Statut des pods Kubernetes en temps réel par composant. Tech Radar avec 39 entrées sur 4 quadrants. GitOps entièrement automatisé — zéro étape manuelle après un git push.",
+        "features": [
+          "Catalogue logiciel — 18 composants, APIs et outils suivis avec métadonnées propriétaire, système, cycle de vie et tags",
+          "Documentation API — interface Swagger/OpenAPI intégrée pour chaque entité API (ex. rag-ingest-api : GET /health, POST /ingest)",
+          "Vue Kubernetes en direct — nombre de pods et état des erreurs en temps réel par composant depuis le cluster k3s",
+          "Tech Radar personnalisé — radar 4-quadrants (Plateformes, IA & ML, Sécurité, Langages) avec 39 entrées, récupéré en direct depuis minicloud-gitops sans recompilation",
+          "SSO Authentik OIDC — connexion unique via Authentik ; pas de comptes Backstage séparés ; TOTP obligatoire",
+          "CI/CD GitOps — scan CVE Trivy + signature Cosign sans clé sur chaque image ; bump gitops signé GPG ; déploiement ArgoCD Recreate"
+        ],
+        "stack": [
+          "Backstage 1.52",
+          "TypeScript",
+          "React",
+          "Node.js",
+          "ArgoCD",
+          "Authentik OIDC",
+          "Harbor",
+          "Cosign (keyless)",
+          "Trivy",
+          "PostgreSQL",
+          "k3s",
+          "Tailscale"
+        ],
+        "link": "https://backstage.devandre.sbs",
+        "repoUrl": "https://github.com/andrelair-platform/minicloud-backstage",
+        "oneLinePitch": "Un IDP de production sur Kubernetes — vue unifiée de 18 services, documentation API en direct, état Kubernetes et Tech Radar personnalisé, le tout livré par GitOps.",
+        "whyItMatters": "À mesure que la complexité de la plateforme croît, les ingénieurs passent plus de temps à localiser les ressources qu'à construire. Backstage centralise la propriété des services, les contrats API et l'état du cluster en un portail authentifié unique — réduisant la charge cognitive et rendant la plateforme auto-documentée.",
+        "differentiators": [
+          "Module Tech Radar personnalisé — le plugin npm était silencieusement ignoré à l'exécution en raison d'un conflit de version de frontend-plugin-api imbriqué ; reconstruit comme un createFrontendPlugin local en workspace avec la bonne version d'API",
+          "Onglet Kubernetes en direct — chaque composant affiche l'état réel des pods depuis le cluster k3s sans quitter Backstage",
+          "OIDC via Authentik — les 16 utilisateurs départementaux de la plateforme ont un accès SSO avec TOTP ; pas de comptes Backstage séparés",
+          "Chaîne d'approvisionnement sécurisée — chaque image est scannée par Trivy, signée par Cosign (sans clé via GitHub OIDC → Sigstore Fulcio), et le commit de bump gitops est signé GPG"
+        ],
+        "architecture": [
+          "Frontend : createApp() de @backstage/frontend-defaults — plugins enregistrés en tant qu'objets FrontendFeature typés",
+          "Auth : SignInPageBlueprint.make() avec Authentik OIDC ; secret de session injecté via Kubernetes ConfigMap",
+          "Tech Radar : createFrontendPlugin personnalisé sur /tech-radar ; récupère tech-radar.json depuis minicloud-gitops en direct",
+          "Backend : Node 24 (trixie-slim) ; PostgreSQL via sous-chart Bitnami sur PVC Longhorn",
+          "CI : yarn build:backend → Docker → Harbor (via Tailscale) → Trivy → cosign sign → bump gitops signé GPG",
+          "GitOps : stratégie ArgoCD Recreate (évite le blocage de quota lors du rolling-update avec un seul réplica + ResourceQuota)"
+        ],
+        "screenshots": [
+          {
+            "title": "Catalogue Logiciel",
+            "caption": "18 composants — services, outils et APIs — avec tags, cycle de vie, propriétaire et métadonnées système visibles en un coup d'œil.",
+            "src": "/screenshots/screenshot-catalog.png",
+            "link": "https://backstage.devandre.sbs"
+          },
+          {
+            "title": "Tech Radar",
+            "caption": "Radar 4-quadrants personnalisé : Plateformes, IA & ML, Sécurité & Identité, Langages & Frameworks. 39 entrées technologiques avec anneaux ADOPT / TRIAL / ASSESS / HOLD. Données récupérées en direct depuis minicloud-gitops — aucune recompilation nécessaire.",
+            "src": "/screenshots/screenshot-tech-radar.png",
+            "link": "https://backstage.devandre.sbs/tech-radar"
+          },
+          {
+            "title": "Documentation API — rag-ingest-api",
+            "caption": "Interface Swagger intégrée pour la spec OpenAPI du service rag-ingest : GET /health, GET /ready, POST /ingest. Rendue directement depuis l'entité API enregistrée dans le catalogue.",
+            "src": "/screenshots/screenshot-api-docs.png",
+            "link": "https://backstage.devandre.sbs/catalog/default/api/rag-ingest-api"
+          },
+          {
+            "title": "Vue Kubernetes en Direct",
+            "caption": "Onglet Kubernetes en direct pour le composant rag-ingest — 1 pod en cours d'exécution, aucune erreur, données issues du cluster k3s minicloud en temps réel.",
+            "src": "/screenshots/screenshot-kubernetes-tab.png",
+            "link": "https://backstage.devandre.sbs/catalog/default/component/rag-ingest/kubernetes"
+          }
+        ]
       }
     ],
     "workExperience": [

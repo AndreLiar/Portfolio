@@ -646,9 +646,18 @@
           "Grafana-Dashboard deklarativ bereitgestellt: Das Kostendashboard-JSON wird in Git als ConfigMap mit Label grafana_dashboard: '1' gespeichert — der Grafana-Sidecar überwacht das Label und injiziert es ohne UI-Interaktion; PostgreSQL-Datasource-Passwort via envValueFrom aus einem ESO-verwalteten Secret injiziert"
         ],
         "atsKeywords": [
-          "LLM-Gateway", "Multi-Provider-LLM-Routing", "LiteLLM", "KI-Governance",
-          "Presidio PII/DLP", "Langfuse", "LLMOps", "Circuit Breaker",
-          "Abteilungsschlüssel-Governance", "FinOps", "Kubernetes", "NVIDIA NIM"
+          "LLM-Gateway",
+          "Multi-Provider-LLM-Routing",
+          "LiteLLM",
+          "KI-Governance",
+          "Presidio PII/DLP",
+          "Langfuse",
+          "LLMOps",
+          "Circuit Breaker",
+          "Abteilungsschlüssel-Governance",
+          "FinOps",
+          "Kubernetes",
+          "NVIDIA NIM"
         ],
         "scope": [
           "Phase 1 — Core-Gateway: LiteLLM mit lokalem Ollama; virtuelle Abteilungsschlüssel mit Modell-Allowlists und Budget-Caps",
@@ -734,6 +743,78 @@
         ],
         "link": "https://chat.devandre.sbs",
         "repoUrl": "https://github.com/andrelair-platform/minicloud-gitops"
+      },
+      {
+        "title": "Backstage Internes Entwicklerportal",
+        "purpose": "Produktionsgereiftes internes Entwicklerportal auf Basis von Backstage 1.52, bereitgestellt auf der minicloud Kubernetes-Plattform mit vollständiger GitOps-Lieferung, Authentik OIDC SSO und einem benutzerdefinierten Tech Radar.",
+        "role": "Plattformingenieur — Entwurf und Implementierung des benutzerdefinierten Frontend-Systems, OIDC-Integration, Tech-Radar-Modul, CI/CD-Pipeline und GitOps-Lieferung über ArgoCD.",
+        "impact": "Einheitliche Übersicht über 18+ Plattformdienste. Vollständige Swagger-Oberfläche pro API. Kubernetes-Pod-Status in Echtzeit pro Komponente. Tech Radar mit 39 Einträgen in 4 Quadranten. Vollständig automatisiertes GitOps — keine manuellen Schritte nach einem git push.",
+        "features": [
+          "Software-Katalog — 18 Komponenten, APIs und Tools mit Eigentümer-, System-, Lebenszyklus- und Tag-Metadaten",
+          "API-Dokumentation — integrierte Swagger/OpenAPI-Oberfläche für jede registrierte API-Entität (z.B. rag-ingest-api: GET /health, POST /ingest)",
+          "Kubernetes-Live-Ansicht — Echtzeit-Pod-Anzahl und Fehlerstatus pro Komponente aus dem k3s-Cluster",
+          "Benutzerdefinierter Tech Radar — 4-Quadranten-Radar (Plattformen, KI & ML, Sicherheit, Sprachen) mit 39 Einträgen, live aus minicloud-gitops abgerufen ohne Neucompilierung",
+          "Authentik OIDC SSO — Single Sign-On über Authentik; keine separaten Backstage-Benutzerkonten; TOTP erzwungen",
+          "GitOps CI/CD — Trivy CVE-Scan + schlüsselloser Cosign-Signatur auf jedem Image; GPG-signierter GitOps-Bump; ArgoCD Recreate Rollout"
+        ],
+        "stack": [
+          "Backstage 1.52",
+          "TypeScript",
+          "React",
+          "Node.js",
+          "ArgoCD",
+          "Authentik OIDC",
+          "Harbor",
+          "Cosign (keyless)",
+          "Trivy",
+          "PostgreSQL",
+          "k3s",
+          "Tailscale"
+        ],
+        "link": "https://backstage.devandre.sbs",
+        "repoUrl": "https://github.com/andrelair-platform/minicloud-backstage",
+        "oneLinePitch": "Ein Produktions-IDP auf Kubernetes — einheitliche Übersicht über 18 Dienste, Live-API-Dokumentation, Kubernetes-Status und benutzerdefinierter Tech Radar, alles per GitOps geliefert.",
+        "whyItMatters": "Mit wachsender Plattformkomplexität verbringen Ingenieure mehr Zeit damit, Ressourcen zu finden, als zu bauen. Backstage zentralisiert Service-Eigentümerschaft, API-Verträge und Live-Cluster-Status in einem authentifizierten Portal — reduziert den kognitiven Aufwand und macht die Plattform selbstdokumentierend.",
+        "differentiators": [
+          "Benutzerdefiniertes Tech-Radar-Modul — das npm-Plugin wurde zur Laufzeit silently verworfen aufgrund eines verschachtelten frontend-plugin-api-Versionskonflikts; als workspace-lokales createFrontendPlugin mit der korrekten API-Version neu aufgebaut",
+          "Live-Kubernetes-Tab — jede Komponente zeigt den realen Pod-Zustand aus dem k3s-Cluster ohne Backstage zu verlassen",
+          "OIDC über Authentik — alle 16 Plattform-Abteilungsbenutzer erhalten SSO-Zugang mit TOTP; keine separaten Backstage-Konten",
+          "Lieferkette gesichert — jedes Image wird von Trivy gescannt, von Cosign signiert (schlüssellos über GitHub OIDC → Sigstore Fulcio) und der GitOps-Bump-Commit ist GPG-signiert"
+        ],
+        "architecture": [
+          "Frontend: createApp() von @backstage/frontend-defaults — Plugins als typisierte FrontendFeature-Objekte registriert",
+          "Auth: SignInPageBlueprint.make() mit Authentik OIDC; Session-Secret über Kubernetes ConfigMap injiziert",
+          "Tech Radar: benutzerdefiniertes createFrontendPlugin unter /tech-radar; ruft tech-radar.json live aus minicloud-gitops ab",
+          "Backend: Node 24 (trixie-slim); PostgreSQL über Bitnami-Subchart auf Longhorn PVC",
+          "CI: yarn build:backend → Docker → Harbor (über Tailscale) → Trivy → cosign sign → GPG-signierter GitOps-Bump",
+          "GitOps: ArgoCD Recreate-Strategie (verhindert Rolling-Update-Quota-Deadlock bei einzelnem Replikat + ResourceQuota)"
+        ],
+        "screenshots": [
+          {
+            "title": "Software-Katalog",
+            "caption": "18 verwaltete Komponenten — Dienste, Tools und APIs — mit Tags, Lebenszyklus, Eigentümer und System-Metadaten auf einen Blick.",
+            "src": "/screenshots/screenshot-catalog.png",
+            "link": "https://backstage.devandre.sbs"
+          },
+          {
+            "title": "Tech Radar",
+            "caption": "Benutzerdefinierter 4-Quadranten-Radar: Plattformen, KI & ML, Sicherheit & Identität, Sprachen & Frameworks. 39 Technologieeinträge mit ADOPT / TRIAL / ASSESS / HOLD Ringen. Daten live aus minicloud-gitops abgerufen — kein Neuaufbau erforderlich.",
+            "src": "/screenshots/screenshot-tech-radar.png",
+            "link": "https://backstage.devandre.sbs/tech-radar"
+          },
+          {
+            "title": "API-Dokumentation — rag-ingest-api",
+            "caption": "Integrierte Swagger-Oberfläche für die OpenAPI-Spezifikation des rag-ingest-Dienstes: GET /health, GET /ready, POST /ingest. Direkt aus der im Katalog registrierten API-Entität gerendert.",
+            "src": "/screenshots/screenshot-api-docs.png",
+            "link": "https://backstage.devandre.sbs/catalog/default/api/rag-ingest-api"
+          },
+          {
+            "title": "Kubernetes Live-Ansicht",
+            "caption": "Live-Kubernetes-Tab für die rag-ingest-Komponente — 1 Pod läuft, keine Fehler, Daten aus dem minicloud k3s-Cluster in Echtzeit.",
+            "src": "/screenshots/screenshot-kubernetes-tab.png",
+            "link": "https://backstage.devandre.sbs/catalog/default/component/rag-ingest/kubernetes"
+          }
+        ]
       }
     ],
     "workExperience": [
