@@ -740,6 +740,24 @@
             "src": "/screenshots/screenshot-kubernetes-tab.png",
             "link": "https://backstage.devandre.sbs/catalog/default/component/rag-ingest/kubernetes"
           }
+        ],
+        "scope": [
+          "Phase 1 — Amorçage : Backstage 1.52 déployé via ArgoCD Helm chart ; sous-chart PostgreSQL sur PVC Longhorn ; app-config injectée via ConfigMap Helm",
+          "Phase 2 — SSO OIDC : fournisseur Authentik configuré (grant_types, clé de signature HS256, property_mappings) ; SignInPageBlueprint câblé ; 6 problèmes OIDC diagnostiqués et résolus (barre oblique finale dans l'émetteur, grant_types vide, pas d'appartenance org bloquant la connexion)",
+          "Phase 3 — Population du catalogue : 14 composants, 1 système, 10 emplacements, 1 groupe, 1 utilisateur enregistrés ; règles de catalogue mises à jour pour inclure les types User et Group ; route racine / explicitement mappée vers le catalogue",
+          "Phase 4 — Plugin Kubernetes : jeton ServiceAccount + certificat CA injectés via secret géré par ESO ; statut des pods en direct visible par composant sur le cluster k3s minicloud",
+          "Phase 5 — Documentation API : entités OpenAPI rag-ingest-api et markitdown-proxy-api enregistrées ; interface Swagger complète affichée en ligne par entité API",
+          "Phase 6 — Tech Radar personnalisé : @backstage/plugin-tech-radar abandonné (frontend-plugin-api@0.6.7 imbriqué vs workspace 0.17.2 provoque une disparition silencieuse du plugin) ; reconstruit comme createFrontendPlugin local au workspace ; 39 entrées sur 4 quadrants ; données récupérées en direct depuis tech-radar.json de minicloud-gitops",
+          "Phase 7 — Sécurisation de la chaîne d'approvisionnement : scan Trivy CRITICAL sur chaque image ; signature Cosign sans clé (GitHub OIDC → Sigstore Fulcio) ; commit de bump gitops signé GPG ; stratégie ArgoCD Recreate pour éviter le blocage de quota lors du rolling-update"
+        ],
+        "testPlan": [
+          "Test de connexion OIDC : navigation vers backstage.devandre.sbs → Connexion → Authentik → redirection vers le catalogue en tant qu'utilisateur authentifié (testé sur 3 personas de département Authentik)",
+          "Nombre d'entités du catalogue : exec dans le pod backstage → 36 entités confirmées dans la base bn_backstage ; l'interface affiche 18 composants + 1 système + 10 emplacements",
+          "Test de rendu de la documentation API : catalogue → rag-ingest-api → onglet DÉFINITION → interface Swagger chargée avec GET /health, GET /ready, POST /ingest avec schémas requête/réponse",
+          "Onglet Kubernetes en direct : catalogue → rag-ingest → onglet KUBERNETES → affiche 1 pod Running, 0 erreurs sur le cluster en direct ; nombre de pods validé par kubectl get pods -n ai",
+          "Test de rendu du Tech Radar : /tech-radar → 4 quadrants affichés avec les positions d'anneaux correctes ; tech-radar.json modifié dans minicloud-gitops → radar mis à jour sans reconstruction de l'image",
+          "Porte CI : push vers main → build GitHub Actions + scan Trivy réussi → image Harbor taguée avec SHA → webhook ArgoCD déclenché → déploiement Recreate terminé → pod backstage 1/1 Ready",
+          "Régression : NotImplementedError de SidebarSearchModal — searchPlugin vérifié dans le tableau features ; aucune erreur apiRef dans la console navigateur après correction"
         ]
       }
     ],

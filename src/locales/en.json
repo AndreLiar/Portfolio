@@ -837,6 +837,24 @@
             "src": "/screenshots/screenshot-kubernetes-tab.png",
             "link": "https://backstage.devandre.sbs/catalog/default/component/rag-ingest/kubernetes"
           }
+        ],
+        "scope": [
+          "Phase 1 — Bootstrap: bare Backstage 1.52 deployed via ArgoCD Helm chart; PostgreSQL subchart on Longhorn PVC; app-config injected via Helm ConfigMap",
+          "Phase 2 — OIDC SSO: Authentik provider configured (grant_types, HS256 signing key, property_mappings); SignInPageBlueprint wired; 6 OIDC gotchas diagnosed and fixed (trailing slash in issuer, empty grant_types, no org membership blocking login)",
+          "Phase 3 — Catalog population: 14 Components, 1 System, 10 Locations, 1 Group, 1 User registered; catalog rules updated to include User + Group kinds; root route / mapped explicitly to catalog",
+          "Phase 4 — Kubernetes plugin: ServiceAccount token + CA cert injected via ESO-managed secret; live pod status visible per component against the minicloud k3s cluster",
+          "Phase 5 — API Docs: rag-ingest-api and markitdown-proxy-api OpenAPI entities registered; full Swagger UI rendered inline per API entity",
+          "Phase 6 — Custom Tech Radar: @backstage/plugin-tech-radar dropped (nested frontend-plugin-api@0.6.7 vs workspace 0.17.2 causes silent plugin drop); rebuilt as workspace-local createFrontendPlugin; 39 entries across 4 quadrants; data fetched live from minicloud-gitops tech-radar.json",
+          "Phase 7 — Supply chain hardening: Trivy CRITICAL scan on every image; keyless Cosign signing (GitHub OIDC → Sigstore Fulcio); GPG-signed gitops bump commit; ArgoCD Recreate strategy to avoid rolling-update quota deadlock"
+        ],
+        "testPlan": [
+          "OIDC login smoke test: navigate to backstage.devandre.sbs → Sign In → Authentik → redirects to catalog as authenticated user (tested across 3 Authentik department personas)",
+          "Catalog entity count: kubectl exec into backstage pod → confirmed 36 entities in bn_backstage DB; UI shows 18 Components + 1 System + 10 Locations",
+          "API Docs render test: catalog → rag-ingest-api → DEFINITION tab → Swagger UI loads GET /health, GET /ready, POST /ingest with request/response schemas",
+          "Kubernetes live tab: catalog → rag-ingest → KUBERNETES tab → shows 1 pod Running, 0 errors against live cluster; validated pod count matches kubectl get pods -n ai",
+          "Tech Radar render test: /tech-radar → 4 quadrants render with correct ring positions; modified tech-radar.json in minicloud-gitops → radar updated without image rebuild",
+          "CI gate: push to main → GitHub Actions build + Trivy scan passes → Harbor image tagged with SHA → ArgoCD webhook fires → Recreate rollout completes → backstage pod 1/1 Ready",
+          "Regression: SidebarSearchModal NotImplementedError — verified searchPlugin in features array; no apiRef errors in browser console after fix"
         ]
       }
     ],
