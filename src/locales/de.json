@@ -802,7 +802,7 @@
           "Helm"
         ],
         "link": "https://chat.devandre.sbs",
-        "repoUrl": "https://github.com/andrelair-platform/minicloud-gitops"
+        "repoUrl": "https://github.com/andrelair-platform/minicloud-open-webui"
       },
       {
         "title": "Backstage Internes Entwicklerportal",
