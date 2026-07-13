@@ -80,9 +80,9 @@ export function ProjectList({ projects, projectListData, projectCardData }: Proj
         initial="hidden"
         animate="visible"
       >
-        {projects.slice(0, visibleCount).map((project) => (
+        {projects.slice(0, visibleCount).map((project, index) => (
           <motion.div key={project.title} variants={itemVariants}>
-            <ProjectCard {...project} projectCardData={projectCardData} />
+            <ProjectCard {...project} projectCardData={projectCardData} accentIndex={index} />
           </motion.div>
         ))}
         

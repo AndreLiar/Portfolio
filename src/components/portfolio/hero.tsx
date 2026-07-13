@@ -2,8 +2,6 @@
 
 import { motion } from "framer-motion";
 import { MapPin, Monitor, Cloud, Bot, BarChart3, Settings } from "lucide-react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { InteractiveBackground } from "./interactive-background";
 
@@ -31,9 +29,6 @@ const itemVariants = {
 };
 
 export function Hero({ heroData, lang = "en" }: { heroData: any; lang?: string }) {
-  const pathname = usePathname();
-  const locale = (pathname?.split("/")[1] || lang) as string;
-  const resumeHref = `/${locale}/resume`;
 
   const skills = [
     {
@@ -113,29 +108,34 @@ export function Hero({ heroData, lang = "en" }: { heroData: any; lang?: string }
           </p>
         </motion.div>
 
+        {/* Metrics band */}
+        <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-stretch justify-center max-w-lg mx-auto mb-12 rounded-2xl border border-border/50 bg-card/40 backdrop-blur-sm overflow-hidden">
+          {[
+            { value: "4+", label: heroData.metrics?.years ?? "Years building" },
+            { value: "10+", label: heroData.metrics?.projects ?? "Projects shipped" },
+            { value: "3", label: heroData.metrics?.domains ?? "Cloud domains" },
+          ].map((metric, i) => (
+            <div
+              key={i}
+              className={`flex-1 text-center py-5 px-6 ${i < 2 ? "sm:border-r border-b sm:border-b-0 border-border/40" : ""}`}
+            >
+              <p className="text-3xl font-extrabold text-primary leading-none">{metric.value}</p>
+              <p className="text-xs text-muted-foreground mt-1.5 font-medium uppercase tracking-wide">{metric.label}</p>
+            </div>
+          ))}
+        </motion.div>
+
         {/* CTA Buttons */}
-        <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-20 flex-wrap">
-          <Button size="lg" asChild className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-8 py-6 text-lg shadow-lg hover:shadow-primary/25 hover:-translate-y-1 transition-all duration-300 rounded-full">
+        <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-20">
+          <Button size="lg" asChild className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-10 py-6 text-lg shadow-lg hover:shadow-primary/25 hover:-translate-y-1 transition-all duration-300 rounded-full">
             <a href="#projects">
               {heroData.buttons.viewProjects}
             </a>
           </Button>
 
-          <Button size="lg" variant="outline" asChild className="border-2 border-primary/20 text-primary hover:bg-primary/5 hover:border-primary font-semibold px-8 py-6 text-lg transition-all duration-300 rounded-full hover:-translate-y-1">
-            <Link href={resumeHref}>
-              {heroData.buttons.downloadCV ?? "Download CV"}
-            </Link>
-          </Button>
-
-          <Button size="lg" variant="outline" asChild className="border-2 border-primary/20 text-primary hover:bg-primary/5 hover:border-primary font-semibold px-8 py-6 text-lg transition-all duration-300 rounded-full hover:-translate-y-1">
-            <a href="#skills">
-              {heroData.buttons.techStack}
-            </a>
-          </Button>
-
-          <Button size="lg" variant="ghost" asChild className="text-muted-foreground hover:text-foreground font-semibold px-8 py-6 text-lg transition-all duration-300 rounded-full hover:bg-muted/50">
+          <Button size="lg" variant="outline" asChild className="border-2 border-primary/50 text-primary hover:bg-primary/5 hover:border-primary font-semibold px-10 py-6 text-lg transition-all duration-300 rounded-full hover:-translate-y-1">
             <a href="#contact">
-              {heroData.buttons.letsConnect}
+              {heroData.contactMe}
             </a>
           </Button>
         </motion.div>

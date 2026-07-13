@@ -14,6 +14,8 @@ import { Button } from "@/components/ui/button";
 import { Github, PlayCircle, BookOpen } from "lucide-react";
 import { ProjectDetailsModal } from "./project-details-modal";
 
+const PROJECT_ACCENTS = ["#3b82f6", "#10b981", "#f59e0b", "#8b5cf6", "#f43f5e", "#0ea5e9"];
+
 interface ProjectCardProps {
   title: string;
   purpose: string;
@@ -24,6 +26,7 @@ interface ProjectCardProps {
   link?: string;
   repoUrl?: string;
   projectCardData: any;
+  accentIndex?: number;
   // New detailed fields
   oneLinePitch?: string;
   whyItMatters?: string;
@@ -48,8 +51,10 @@ export function ProjectCard({
   link,
   repoUrl,
   projectCardData: t,
+  accentIndex = 0,
   ...details
 }: ProjectCardProps) {
+  const accent = PROJECT_ACCENTS[accentIndex % PROJECT_ACCENTS.length];
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const fullProjectData = {
@@ -67,7 +72,9 @@ export function ProjectCard({
   return (
     <>
       <Card className="flex flex-col h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl border-border/50 bg-card/50 backdrop-blur-sm group overflow-hidden relative">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+        {/* Color accent stripe */}
+        <div className="h-1 w-full flex-shrink-0" style={{ backgroundColor: accent }} />
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ background: `linear-gradient(135deg, ${accent}0d 0%, transparent 60%)` }} />
 
         <CardHeader className="relative z-10 pb-2">
           <div className="flex justify-between items-start gap-4">

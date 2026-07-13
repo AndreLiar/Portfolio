@@ -48,6 +48,11 @@
         "desc": "Zero-Trust-Design, fortschrittliches Monitoring und DSGVO-Compliance"
       }
     },
+    "metrics": {
+      "years": "Jahre Erfahrung",
+      "projects": "Projekte geliefert",
+      "domains": "Cloud-Bereiche"
+    },
     "buttons": {
       "viewProjects": "Projekte ansehen",
       "techStack": "Tech-Stack",
@@ -126,6 +131,11 @@
       "Features end-to-end in einem agilen Team verantworten kann",
       "In DevOps, Cloud-Architektur und Zuverlässigkeit wachsen kann"
     ]
+  },
+  "AvailableCTA": {
+    "title": "Verfügbar für neue Möglichkeiten",
+    "subtitle": "Offen für Positionen in Cloud Engineering, Cloud Architektur, DevOps und KI-Integration — bereit ab dem ersten Tag beizutragen.",
+    "cta": "Kontakt aufnehmen"
   },
   "ContactForm": {
     "name": "Name",

@@ -47,9 +47,6 @@ export function Footer({ footerData, data }: { footerData: any; data: any }) {
               </Button>
             </div>
           )}
-          <p className="text-xs text-muted-foreground/60">
-            Built with Next.js, Tailwind CSS & Framer Motion
-          </p>
         </div>
 
         <div className="flex items-center gap-4">

@@ -48,6 +48,11 @@
         "desc": "Conception Zero Trust, monitoring avancé et conformité RGPD"
       }
     },
+    "metrics": {
+      "years": "Années d'expérience",
+      "projects": "Projets livrés",
+      "domains": "Domaines cloud"
+    },
     "buttons": {
       "viewProjects": "Voir les Projets",
       "techStack": "Stack Technique",
@@ -126,6 +131,11 @@
       "Porter des fonctionnalités de bout en bout dans une équipe agile et collaborative",
       "Progresser en DevOps, architecture cloud et fiabilité système"
     ]
+  },
+  "AvailableCTA": {
+    "title": "Disponible pour de nouvelles opportunités",
+    "subtitle": "Ouvert aux rôles d'Ingénierie Cloud, Architecture Cloud, DevOps et IA — prêt à contribuer dès le premier jour.",
+    "cta": "Discutons"
   },
   "ContactForm": {
     "name": "Nom",

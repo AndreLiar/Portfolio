@@ -48,6 +48,11 @@
         "desc": "Zero Trust design, advanced monitoring, and GDPR compliance"
       }
     },
+    "metrics": {
+      "years": "Years building",
+      "projects": "Projects shipped",
+      "domains": "Cloud domains"
+    },
     "buttons": {
       "viewProjects": "View Projects",
       "techStack": "Tech Stack",
@@ -126,6 +131,11 @@
       "Own features end-to-end in an agile, collaborative team",
       "Grow in DevOps, cloud architecture, and system reliability"
     ]
+  },
+  "AvailableCTA": {
+    "title": "Available for opportunities",
+    "subtitle": "Open to Platform Engineering, Cloud Architecture, AI Engineering, and MLOps roles — ready to contribute from day one.",
+    "cta": "Let's talk"
   },
   "ContactForm": {
     "name": "Name",

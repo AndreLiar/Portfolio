@@ -20,20 +20,32 @@ interface SkillCardProps {
   skills?: string[];
   subcategories?: Subcategory[];
   Icon: LucideIcon;
+  accent?: string;
 }
 
-export function SkillCard({ title, description, skills, subcategories, Icon }: SkillCardProps) {
-  // Use subcategories if available, otherwise fall back to skills array
+export function SkillCard({ title, description, skills, subcategories, Icon, accent }: SkillCardProps) {
   const hasSubcategories = subcategories && subcategories.length > 0;
+  const iconStyle = accent ? { color: accent } : undefined;
+  const iconBgStyle = accent ? { backgroundColor: `${accent}18` } : undefined;
+  const borderStyle = accent ? { borderLeftColor: accent } : undefined;
 
   return (
-    <Card className="h-full transition-all duration-300 hover:-translate-y-1 hover:shadow-lg border-border/50 bg-card/50 backdrop-blur-sm group">
+    <Card
+      className="h-full transition-all duration-300 hover:-translate-y-1 hover:shadow-lg border-border/50 bg-card/50 backdrop-blur-sm group border-l-[3px]"
+      style={borderStyle}
+    >
       <CardHeader className="flex flex-row items-center gap-4 pb-3">
-        <div className="p-2 bg-primary/5 rounded-lg group-hover:bg-primary/10 transition-colors duration-300">
-          <Icon className={`${ICON_VARIANTS.skill} text-primary transition-transform duration-300 group-hover:scale-110`} />
+        <div
+          className="p-2 rounded-lg transition-colors duration-300"
+          style={iconBgStyle ?? { backgroundColor: "hsl(var(--primary) / 0.05)" }}
+        >
+          <Icon
+            className={`${ICON_VARIANTS.skill} transition-transform duration-300 group-hover:scale-110`}
+            style={iconStyle ?? { color: "hsl(var(--primary))" }}
+          />
         </div>
         <div className="flex-1">
-          <CardTitle className="font-headline text-xl group-hover:text-primary transition-colors duration-300">{title}</CardTitle>
+          <CardTitle className="font-headline text-xl transition-colors duration-300">{title}</CardTitle>
           {description && (
             <CardDescription className="text-sm text-muted-foreground mt-1">
               {description}

@@ -103,16 +103,19 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
   const [isLoading, setIsLoading] = useState(true);
   const [showContent, setShowContent] = useState(false);
 
-  const { data, Page, Header: headerData, Hero: heroData, ProjectList: projectListData, ProjectCard: projectCardData, ContactForm: contactFormData, Footer: footerData, Testimonials: testimonialsData, LookingFor: lookingForData } = messages;
+  const { data, Page, Header: headerData, Hero: heroData, ProjectList: projectListData, ProjectCard: projectCardData, ContactForm: contactFormData, Footer: footerData, Testimonials: testimonialsData, LookingFor: lookingForData, AvailableCTA: availableCTAData } = messages;
 
   // Separate technical skills (with subcategories) from soft skills
   const technicalSkills = data.skills.filter((skill: any) => skill.title !== 'Professional & Soft Skills');
   const softSkillsCategory = data.skills.find((skill: any) => skill.title === 'Professional & Soft Skills');
   // Use category from data.skills if present, otherwise use standalone data.softSkills (used in FR/DE locales)
   const softSkills = (softSkillsCategory?.skills?.length ? softSkillsCategory.skills : data.softSkills) || [];
-  const skillsWithIcons = technicalSkills.map((skill: any) => ({
+
+  const SKILL_ACCENTS = ['#3b82f6', '#0ea5e9', '#8b5cf6', '#f59e0b', '#10b981', '#f43f5e'];
+  const skillsWithIcons = technicalSkills.map((skill: any, index: number) => ({
     ...skill,
     Icon: iconMap[skill.icon] || Code,
+    accent: SKILL_ACCENTS[index % SKILL_ACCENTS.length],
   }));
 
   const workExperience = data.workExperience;
@@ -232,7 +235,7 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
         {/* Experience */}
         <motion.section
           id="experience"
-          className="py-10 md:py-16 bg-card bg-geometric-pattern"
+          className="py-10 md:py-16 bg-card"
           variants={sectionVariants}
           initial="hidden"
           whileInView="visible"
@@ -392,6 +395,25 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
           </div>
         </motion.section>
       </main>
+
+      {/* Available for opportunities banner */}
+      {availableCTAData && (
+        <section className="py-16 bg-primary text-primary-foreground">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{availableCTAData.title}</h2>
+            <p className="text-primary-foreground/80 mb-8 max-w-xl mx-auto text-lg leading-relaxed">
+              {availableCTAData.subtitle}
+            </p>
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 bg-primary-foreground text-primary font-semibold px-8 py-3 rounded-full hover:bg-primary-foreground/90 transition-all duration-300 hover:-translate-y-0.5 shadow-lg"
+            >
+              {availableCTAData.cta} →
+            </a>
+          </div>
+        </section>
+      )}
+
       <Footer footerData={footerData} data={data} />
       <ScrollToTop />
     </motion.div>
