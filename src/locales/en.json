@@ -955,7 +955,7 @@
         "date": "2022 - 2027",
         "title": "Expert en développement logiciel — RNCP 39583 · Niveau 7 · Bac+5 (Ynov Mastère Fullstack)",
         "subtitle": "Ynov Campus, Paris",
-        "description": "<p>State-recognised Bac+5 (RNCP Level 7) covering software architecture, DevOps, cloud-native infrastructure, and enterprise systems. Applied through the andrelair-platform homelab: bare-metal k3s cluster, ArgoCD GitOps, Vault, OPA Gatekeeper, Prometheus/Grafana/Loki, and a full AI stack (Ollama, LiteLLM, RAG pipeline, Langfuse).</p>"
+        "description": "<p>State-recognised Bac+5 (RNCP Level 7) covering fullstack development, DevOps, cloud infrastructure, software architecture, and enterprise systems. Core modules: React, Node.js, Next.js, Docker, Kubernetes, GitHub Actions, Azure, Software Architecture, Agile/Scrum, AI & Data Science, Application Security.</p>"
       }
     ],
     "softSkills": [
