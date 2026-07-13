@@ -66,6 +66,7 @@ export function Header({ headerData, name }: { headerData: any, name: string }) 
     { href: "#experience", label: headerData.experience },
     { href: `/${pathname.split('/')[1]}/resume`, label: "Resume", external: true },
     { href: "#contact", label: headerData.contact },
+    { href: "https://andrelair-platform.github.io/minicloud-platform-docs/blog", label: headerData.nav?.blog ?? "Blog", newTab: true },
   ];
 
   const LanguageSwitcher = () => (
@@ -109,13 +110,14 @@ export function Header({ headerData, name }: { headerData: any, name: string }) 
         <div className="flex items-center gap-4">
           <nav className="hidden md:flex items-center gap-1 text-body-sm font-medium" role="navigation" aria-label="Main navigation">
             {navLinks.map((link) => {
-              const isActive = link.external ? pathname.includes('/resume') : activeSection === link.href.substring(1);
+              const isActive = link.external ? pathname.includes('/resume') : !link.newTab && activeSection === link.href.substring(1);
               const Component = link.external ? Link : 'a';
 
               return (
                 <Component
                   key={link.href}
                   href={link.href}
+                  {...(link.newTab ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                   className={`relative px-4 py-2 rounded-full transition-all duration-300 hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${isActive
                     ? 'text-primary font-semibold bg-primary/5'
                     : 'text-muted-foreground hover:bg-muted/50'
@@ -155,13 +157,14 @@ export function Header({ headerData, name }: { headerData: any, name: string }) 
                 </div>
                 <nav className="flex flex-col gap-2 font-medium" role="navigation" aria-label="Mobile main navigation">
                   {navLinks.map((link) => {
-                    const isActive = link.external ? pathname.includes('/resume') : activeSection === link.href.substring(1);
+                    const isActive = link.external ? pathname.includes('/resume') : !link.newTab && activeSection === link.href.substring(1);
                     const Component = link.external ? Link : 'a';
 
                     return (
                       <Component
                         key={link.href}
                         href={link.href}
+                        {...(link.newTab ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                         className={`transition-all duration-200 px-4 py-3 rounded-xl relative focus:outline-none focus-visible:ring-2 focus-visible:ring-primary flex items-center justify-between group ${isActive
                           ? 'text-primary font-semibold bg-primary/10'
                           : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
