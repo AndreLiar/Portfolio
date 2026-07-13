@@ -19,11 +19,11 @@
     "github": "GitHub",
     "linkedin": "LinkedIn",
     "name": "Andre Kanmegne",
-    "title": "Ingénieur Logiciel & Architecte Cloud — Solutions d'Entreprise, Data et",
-    "titleHighlight": "Intégration IA",
+    "title": "Ingénieur Plateforme & Constructeur de Systèmes IA —",
+    "titleHighlight": "Cloud Bare-Metal · GitOps · Pipelines LLM",
     "location": "Paris, France",
-    "description1": "Je conçois et déploie des systèmes distribués, résilients et sécurisés, taillés pour les exigences des environnements complexes et des grands comptes.",
-    "description2": "Mon expertise relie l'ingénierie logicielle, l'automatisation Cloud et la gouvernance des données pour transformer des enjeux métiers complexes en plateformes numériques performantes et évolutives.",
+    "description1": "Je construis et exploite une infrastructure de qualité production depuis le bare-metal : provisioning MAAS, cluster k3s, livraison GitOps, et services IA self-hosted tournant 24h/24 sur du vrai matériel.",
+    "description2": "Mon travail couvre le cycle de vie complet d'une plateforme : réseau zero-trust, pipelines CI/CD, gestion des secrets, observabilité et pipelines LLM — sans cloud managé, sans abstractions qui cachent la complexité.",
     "whatIBuildTitle": "Expertise & Réalisations :",
     "tagline": "Architecte par état d'esprit, ingénieur par métier — J'allie sécurité, automatisation et intelligence artificielle.",
     "skills": {
@@ -856,9 +856,9 @@
     "education": [
       {
         "date": "2022 - 2027",
-        "title": "Mastère – Expert en Développement Web Fullstack (Titre RNCP n°39583 — Niveau 7, Bac+5 reconnu par l'État)",
+        "title": "Expert en développement logiciel — RNCP 39583 · Niveau 7 · Bac+5 (Ynov Mastère Fullstack)",
         "subtitle": "Ynov Campus, Paris",
-        "description": "<p>Programme integre de cinq ans couvrant le developpement fullstack, le DevOps, l'infrastructure cloud et les systemes d'entreprise. Modules : React, Node.js, Next.js, Docker, Kubernetes, GitHub Actions, AWS, Azure, Architecture Logicielle, Agile/Scrum, IA et Data Science, Securite Applicative.</p>"
+        "description": "<p>Bac+5 reconnu par l'État (RNCP Niveau 7) couvrant l'architecture logicielle, le DevOps, l'infrastructure cloud-native et les systèmes d'entreprise. Mis en pratique via le homelab andrelair-platform : cluster k3s bare-metal, GitOps ArgoCD, Vault, OPA Gatekeeper, Prometheus/Grafana/Loki, et une stack IA complète (Ollama, LiteLLM, pipeline RAG, Langfuse).</p>"
       }
     ],
     "softSkills": [

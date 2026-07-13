@@ -19,11 +19,11 @@
     "github": "GitHub",
     "linkedin": "LinkedIn",
     "name": "Andre Kanmegne",
-    "title": "Software Engineer & Cloud Architect — Enterprise Solutions, Data &",
-    "titleHighlight": "AI Integration",
+    "title": "Platform Engineer & AI Systems Builder —",
+    "titleHighlight": "Bare-Metal Cloud · GitOps · LLM Pipelines",
     "location": "Paris, France",
-    "description1": "I design and deploy distributed, resilient, and secure systems tailored for the complex demands of large-scale enterprise environments.",
-    "description2": "My expertise bridges software engineering, cloud automation, and data governance to transform complex business challenges into high-performance, scalable digital platforms.",
+    "description1": "I build and operate production-grade infrastructure from bare metal up — MAAS provisioning, k3s clusters, GitOps delivery, and self-hosted AI services running 24/7 on real hardware.",
+    "description2": "My work spans the full platform lifecycle: zero-trust network design, CI/CD pipelines, secrets management, observability, and LLM pipelines — no managed cloud, no abstractions hiding the complexity.",
     "whatIBuildTitle": "Expertise & Deliverables:",
     "tagline": "Architect by mindset, engineer by craft — I unite security, automation, and artificial intelligence.",
     "skills": {
@@ -953,9 +953,9 @@
     "education": [
       {
         "date": "2022 - 2027",
-        "title": "Mastère – Expert en Développement Web Fullstack (Titre RNCP n°39583 — Niveau 7, Bac+5 reconnu par l'État)",
+        "title": "Expert en développement logiciel — RNCP 39583 · Niveau 7 · Bac+5 (Ynov Mastère Fullstack)",
         "subtitle": "Ynov Campus, Paris",
-        "description": "<p>Bac+5 programme (RNCP Level 7) covering fullstack development, DevOps, cloud infrastructure, and enterprise systems. Stack: React, Node.js, Next.js, Docker, Kubernetes, GitHub Actions, Azure, Software Architecture, AI & Data Science.</p>"
+        "description": "<p>State-recognised Bac+5 (RNCP Level 7) covering software architecture, DevOps, cloud-native infrastructure, and enterprise systems. Applied through the andrelair-platform homelab: bare-metal k3s cluster, ArgoCD GitOps, Vault, OPA Gatekeeper, Prometheus/Grafana/Loki, and a full AI stack (Ollama, LiteLLM, RAG pipeline, Langfuse).</p>"
       }
     ],
     "softSkills": [
