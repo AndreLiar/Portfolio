@@ -111,7 +111,7 @@ export function ContactForm({ contactFormData, contactEmail }: { contactFormData
           <Button
             type="submit"
             size="lg"
-            className="min-h-[56px] px-12 bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-lg shadow-lg hover:shadow-primary/25 hover:-translate-y-1 transition-all duration-300 rounded-full"
+            className="min-h-[56px] px-12 bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-lg shadow-lg hover:shadow-primary/25 hover:-translate-y-1 transition-all duration-300 rounded-xl"
           >
             {t.button} <Send className="ml-3 h-5 w-5" aria-hidden="true" />
           </Button>

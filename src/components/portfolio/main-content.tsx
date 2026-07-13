@@ -178,7 +178,7 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
         {/* Technical Skills */}
         <motion.section
           id="skills"
-          className="py-10 md:py-16 bg-card bg-dots-pattern"
+          className="py-10 md:py-16 bg-card"
           variants={sectionVariants}
           initial="hidden"
           whileInView="visible"
@@ -205,7 +205,7 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
         {/* Soft Skills */}
         <motion.section
           id="soft-skills"
-          className="py-10 md:py-16 bg-grid-pattern"
+          className="py-10 md:py-16"
           variants={sectionVariants}
           initial="hidden"
           whileInView="visible"
@@ -310,7 +310,7 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
         {testimonialsData?.items?.length > 0 && (
           <motion.section
             id="testimonials"
-            className="py-10 md:py-16 bg-card bg-dots-pattern"
+            className="py-10 md:py-16 bg-card"
             variants={sectionVariants}
             initial="hidden"
             whileInView="visible"
@@ -345,7 +345,7 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
         {lookingForData?.items?.length > 0 && (
           <motion.section
             id="looking-for"
-            className="py-10 md:py-16 bg-grid-pattern"
+            className="py-10 md:py-16"
             variants={sectionVariants}
             initial="hidden"
             whileInView="visible"
@@ -406,7 +406,7 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
             </p>
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 bg-primary-foreground text-primary font-semibold px-8 py-3 rounded-full hover:bg-primary-foreground/90 transition-all duration-300 hover:-translate-y-0.5 shadow-lg"
+              className="inline-flex items-center gap-2 bg-primary-foreground text-primary font-semibold px-8 py-3 rounded-xl hover:bg-primary-foreground/90 transition-all duration-300 hover:-translate-y-0.5 shadow-lg"
             >
               {availableCTAData.cta} →
             </a>

@@ -180,25 +180,25 @@ html.dark .admin-layout {
 
   .dark {
     /* Premium Dark Theme */
-    --background: 224 20% 8%; /* Rich, deep dark blue/grey */
+    --background: 224 20% 8%;
     --foreground: 210 20% 98%;
-    --card: 224 20% 10%; /* Slightly lighter than background */
+    --card: 224 20% 10%;
     --card-foreground: 210 20% 98%;
     --popover: 224 20% 10%;
     --popover-foreground: 210 20% 98%;
-    --primary: 210 20% 98%; /* White/Off-white for high contrast against dark */
-    --primary-foreground: 224 20% 8%;
+    --primary: 217 91% 60%; /* Brand blue #3b82f6 — consistent identity in dark mode */
+    --primary-foreground: 0 0% 100%;
     --secondary: 224 15% 16%;
     --secondary-foreground: 210 20% 98%;
     --muted: 224 15% 16%;
     --muted-foreground: 215 15% 65%;
-    --accent: 210 20% 98%;
-    --accent-foreground: 224 20% 8%;
+    --accent: 217 91% 60%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 20% 98%;
     --border: 224 15% 16%;
     --input: 224 15% 16%;
-    --ring: 210 20% 98%;
+    --ring: 217 91% 60%;
   }
 }
 
