@@ -577,18 +577,107 @@
           "Semantic Versioning (MAJOR/MINOR/PATCH) + CI Auto-Git-Tagging + Fail-Open-Kette: Langfuse → veralteter Cache → Env-Var"
         ],
         "stack": [
-          "Ollama (phi3.5 + Modelfile)",
-          "LiteLLM (CustomLogger)",
+          "Groq llama-3.1-8b-instant (primär)",
+          "Ollama phi4-mini ×3 (Fallback)",
+          "LiteLLM (Routing + CustomLogger)",
           "Langfuse (Prompt Management + Tracing)",
           "Python",
           "GitHub Actions (Eval CI)",
-          "pgvector + bge-m3 (RAG)",
           "Kubernetes (k3s)",
           "Presidio (PII/DLP-Guardrail)",
           "Valkey (Prompt-Cache)"
         ],
         "link": "https://langfuse.devandre.sbs",
-        "repoUrl": "https://github.com/andrelair-platform/hackathon_ynov"
+        "repoUrl": "https://github.com/andrelair-platform/phi3-financial",
+        "oneLinePitch": "Eine Production-PromptOps-Pipeline für einen domänenbeschränkten Finanz-KI — Laufzeit-Prompt-Injektion via LiteLLM CustomLogger, sofortiges Langfuse-Rollback, und ein 25-Fall-CI-Gate mit 100% Bestehensquote.",
+        "whyItMatters": "Die meisten LLM-Deployments behandeln den System-Prompt als Code — in eine ConfigMap oder ein Image eingebaut, was ein vollständiges Redeployment für Änderungen erfordert. Diese Pipeline trennt Prompt-Governance von Infrastruktur: der aktive Produktions-Prompt lebt in Langfuse, wird zur Laufzeit von einem LiteLLM CustomLogger injiziert und kann in unter 5 Minuten durch einen Label-Wechsel zurückgerollt werden — ohne Git-Push, ohne Pod-Neustart. Die 25-Fall-CI-Eval-Suite erzwingt Verhaltenskorrektheit bei jedem Commit.",
+        "differentiators": [
+          "Runtime prompt injection via LiteLLM CustomLogger (async_pre_call_hook) — prompt fetched from Langfuse at request time, not baked into the image; rollback is a single label flip in the Langfuse UI",
+          "Three-layer fail-open chain: live Langfuse → stale in-process cache → ConfigMap env var — LiteLLM never fails because Langfuse is temporarily unreachable",
+          "Deterministic 25-case eval suite — no LLM-as-judge, no probabilistic scoring; keyword presence/absence per case; CI blocks on any regression below 100%",
+          "Explicit off-topic taxonomy in XML system prompt (medical, culinary, gambling, sports — each with named sub-items), making every domain boundary independently testable"
+        ],
+        "architecture": [
+          "LangfusePromptHandler (langfuse_prompt_handler.py) — LiteLLM CustomLogger; async_pre_call_hook fetches production-labelled prompt, strips user-supplied system messages (anti-injection), injects authoritative prompt as sole system message; 5-min in-process cache per worker pod",
+          "Groq llama-3.1-8b-instant (weight 10) + Ollama phi4-mini ×3 (weight 1 each) — weighted load balancing behind a single LiteLLM virtual model 'phi3-financial'; Groq primary for sub-1s latency, Ollama fallback activates on quota exceeded or API down",
+          "Langfuse prompt management — phi3-financial-system versioned with semantic versioning (MAJOR.MINOR.PATCH); 'production' label controls which version LangfusePromptHandler fetches at runtime; full audit trail and one-click rollback",
+          "sync_prompt_to_litellm.py — fetches production-labelled prompt, renders into a Kubernetes ConfigMap YAML, GPG-signed commit + push to minicloud-gitops; ArgoCD deploys in ~3 min",
+          "Presidio PII/DLP guardrail — PERSON, PHONE, EMAIL, IP_ADDRESS masked before Langfuse trace logging; DATE_TIME and LOCATION pass through unchanged (financial context entities)"
+        ],
+        "repoBlueprint": "phi3-financial/\n  langfuse_prompt_handler.py   LiteLLM CustomLogger — async_pre_call_hook runtime injection\n  ollama_server/\n    Modelfile                  phi4-mini + 5-section XML system prompt (baked fallback)\n  scripts/\n    eval.py                    25-case behavioral eval suite — exits 1 on any regression\n    sync_prompt_to_litellm.py  Fetches Langfuse prompt → ConfigMap YAML → GPG gitops commit\n  docs/screenshots/            Live proof images (chat, traces, prompts, dataset)\n  .github/workflows/\n    prompt-eval.yml            CI: Tailscale OAuth → CA trust → eval run → git tag on clean main",
+        "atsKeywords": [
+          "PromptOps",
+          "LiteLLM CustomLogger",
+          "Langfuse Prompt Management",
+          "Runtime prompt injection",
+          "LLMOps",
+          "Eval-driven development",
+          "Groq",
+          "Python",
+          "Kubernetes",
+          "Presidio PII/DLP",
+          "GitOps",
+          "GitHub Actions"
+        ],
+        "scope": [
+          "Phase 1 — XML prompt architecture (Modelfile): designed 5-section XML system prompt with explicit off-topic taxonomy (medical/culinary/gambling/sports with named sub-items) and 5 jailbreak defense patterns; baked into Ollama Modelfile as hardcoded fallback",
+          "Phase 2 — LangfusePromptHandler: built LiteLLM CustomLogger (async_pre_call_hook); 5-min in-process cache; three-layer fail-open (live Langfuse → stale cache → ConfigMap env var); strips user-supplied system messages to prevent guardrail bypass",
+          "Phase 3 — 25-case eval suite (eval.py): financial knowledge (10 cases), off-topic refusal (4), prompt injection resistance (6), edge/mixed-domain (5); keyword-based scoring — deterministic, no LLM-as-judge; CI exits 1 on any regression",
+          "Phase 4 — CI pipeline (prompt-eval.yml): Tailscale OAuth, minicloud CA trust, LiteLLM health check, eval run, auto git-tag on clean main; weekly schedule for baseline drift detection",
+          "Phase 5 — Groq routing (minicloud-litellm-custom): groq/llama-3.1-8b-instant as primary (weight 10); Ollama phi4-mini ×3 as fallback (weight 1); eval runtime 30 min → 7 min; chat response 60-90s → sub-1s"
+        ],
+        "testPlan": [
+          "Eval CI: 25/25 PASS confirmed on Groq backend (run #48, v2.2.4) — T1–T25 all green including T18 (healthcare stocks as investment topic, keyword 'compan' + 'invest')",
+          "Jailbreak resistance: T9 (system override), T10 (prompt extraction), T19 (roleplay), T20 (IT admin social engineering), T21 (credential phishing), T22 (translation bypass) — all REFUSE confirmed",
+          "Off-topic taxonomy: T6 (recipe), T7 (diabetes), T16 (sports betting odds), T17 (blackjack strategy) — all REFUSE confirmed",
+          "PII masking: Presidio masks IBAN, SSN, email, IP_ADDRESS in Langfuse traces; DATE_TIME and LOCATION pass through unchanged (financial context allow-list)",
+          "Fail-open chain: Langfuse pod killed mid-eval — stale cache served prompts for 5 min; after TTL, ConfigMap env var fallback activated; LiteLLM never went down",
+          "Cloudflare WAF: User-Agent minicloud-eval/1.0 passes; openai SDK default UA (AsyncOpenAI/Python*) gets HTTP 403 — documented in Troubleshooting"
+        ],
+        "interviewTalkingPoints": [
+          "Goal: run the 25-case eval suite from GitHub Actions without hitting the internal cluster IP. CI runners join the tailnet via Tailscale OAuth, but the tag:ci ACL does not grant access to 10.0.0.200:443. Every eval call returned a TCP timeout. Problem: LITELLM_BASE_URL was set to litellm.10.0.0.200.nip.io — a private IP unreachable from the CI node's network segment even with Tailscale active. Solution: switched LITELLM_BASE_URL to the Cloudflare Tunnel public URL (litellm.devandre.sbs). Requests route CI → Cloudflare → tunnel → controller → cluster, bypassing the ACL restriction entirely.",
+          "Goal: fix a second CI failure after switching to the Cloudflare URL. Every eval call returned HTTP 403 PermissionDeniedError, indistinguishable from an invalid API key. Problem: Cloudflare managed WAF blocks the User-Agent set by the openai Python SDK — 'AsyncOpenAI/Python/1.x.x'. The 403 came from Cloudflare before LiteLLM. Solution: default_headers={'User-Agent': 'minicloud-eval/1.0'} in the OpenAI() constructor. Applies to any Python openai SDK usage against any Cloudflare-fronted endpoint.",
+          "Goal: T18 was failing CI despite the model answering correctly. Required keyword was 'pharmaceut' but the model answered using 'healthcare companies', 'biotech stocks' — all correct, none containing 'pharmaceut'. Problem: keyword-based eval is deterministic — a correct answer using synonyms fails (false negative). Solution: changed required_keywords to ['compan', 'invest'] — stem fragments present in any correct answer. Bumped to PROMPT_VERSION 2.2.4. Lesson: prefer short stem fragments over full domain-specific terms.",
+          "Goal: make the eval suite resilient to LiteLLM restarts. ArgoCD Recreate strategy caused ~90s of downtime during any sync — if overlapping a CI run, cases failed with ConnectionError. Solution: three-tier exponential backoff in eval.py — 10s / 30s / 60s on 5xx or connection errors. Also switched LiteLLM to RollingUpdate strategy to prevent future Recreate downtime."
+        ],
+        "screenshots": [
+          {
+            "title": "Live-Chat — Antwort unter 1s via Groq",
+            "caption": "Open WebUI Chat mit phi3-financial-Modell beantwortet 'What is a P/E ratio?' — unter 1s via Groq llama-3.1-8b-instant. Modell domänenbeschränkt: Finanzfragen werden beantwortet, Off-Topic-Anfragen abgelehnt.",
+            "src": "https://raw.githubusercontent.com/andrelair-platform/phi3-financial/main/docs/screenshots/screenshot-chat.png",
+            "link": "https://chat.devandre.sbs"
+          },
+          {
+            "title": "Langfuse Prompt Management — v2.2.4",
+            "caption": "Langfuse Prompt Management zeigt phi3-financial-system v2.2.4 mit dem vollständigen 5-Abschnitt-XML-System-Prompt. Das 'production'-Label steuert, welche Version LangfusePromptHandler zur Laufzeit abruft. Rollback = Label auf ältere Version setzen.",
+            "src": "https://raw.githubusercontent.com/andrelair-platform/phi3-financial/main/docs/screenshots/screenshot-langfuse-prompts.png",
+            "link": "https://langfuse.devandre.sbs"
+          },
+          {
+            "title": "Langfuse Eval-Traces — 25 Fälle",
+            "caption": "Langfuse Tracing-Seite mit allen 25 Eval-Traces (T1–T25) eines CI-Runs. Jeder Trace mit 'prompt-eval' getaggt und Git-Release gepinnt. Korrektheitsscore pro Trace (1.0 = PASS, 0.0 = FAIL) in der Scores-Spalte.",
+            "src": "https://raw.githubusercontent.com/andrelair-platform/phi3-financial/main/docs/screenshots/screenshot-langfuse-traces.png",
+            "link": "https://langfuse.devandre.sbs"
+          },
+          {
+            "title": "Langfuse Eval-Dataset — phi3-financial-evals",
+            "caption": "Langfuse Dataset-Ansicht für phi3-financial-evals — 25 Testfälle mit Eingabeanfragen, erwartetem Verhalten (ANSWER/REFUSE) und Metadaten (Test-ID). Dataset steuert das CI-Eval-Gate und Langfuse-Experiment-Tracking.",
+            "src": "https://raw.githubusercontent.com/andrelair-platform/phi3-financial/main/docs/screenshots/screenshot-langfuse-dataset.png",
+            "link": "https://langfuse.devandre.sbs"
+          }
+        ],
+        "liveEndpoints": [
+          {
+            "label": "LiteLLM API — phi3-financial virtuelles Modell",
+            "command": "curl -s -X POST https://litellm.devandre.sbs/v1/chat/completions -H \"Authorization: Bearer sk-portfolio-demo\" -H \"Content-Type: application/json\" -d '{\"model\": \"phi3-financial\", \"messages\": [{\"role\": \"user\", \"content\": \"What is a P/E ratio?\"}], \"max_tokens\": 80}'",
+            "url": "https://litellm.devandre.sbs/v1/models"
+          },
+          {
+            "label": "Langfuse — phi3-financial Prompt-Versionierung + Eval-Traces",
+            "command": "https://langfuse.devandre.sbs",
+            "url": "https://langfuse.devandre.sbs"
+          }
+        ]
       },
       {
         "title": "Enterprise RAG Pipeline",
@@ -918,7 +1007,7 @@
         "date": "Sep 2024 - Heute",
         "title": "IT Operations & Automation Engineer (Werkstudent)",
         "subtitle": "HDI Global SE France, Paris",
-        "description": "<ul><li><strong>Automatisierungstechnik:</strong> Entwicklung fortschrittlicher Batch-Skripting-Workflows für die Erzeugung von XML-Datenimporten, wodurch manuelle Eingabefehler beseitigt und die Verarbeitungszeit um 70 % reduziert wurden.</li><li><strong>IAM & Workflow-Digitalisierung:</strong> Architektur und Digitalisierung von Identity & Access Management (IAM)-Workflows mit SharePoint und Power Automate zur Optimierung von IT-Zugriffsanfragen für über 200 Mitarbeiter.</li><li><strong>Release- & Patch-Management:</strong> Management von Produktionsumgebungen und Durchführung von Regressionstests (ALM Octane) während der monatlichen Patch-Zyklen zur Gewährleistung reibungsloser Geschäftsabläufe.</li><li><strong>IT Service Management (ITSM):</strong> N1/N2-Infrastruktur- und Anwendungs-Support via ServiceNow und GLPI. Koordination der kompletten Erneuerung der IT-Ausstattung für Mitarbeiter (~200 Arbeitsplätze) unter Einhaltung strenger SLAs.</li><li><strong>Sicherheitsgovernance & RBAC:</strong> Umstrukturierung der Role-Based Access Control (RBAC)-Modelle über verschiedene Unternehmensanwendungen hinweg zur Standardisierung von Sicherheitsberechtigungen.</li></ul>"
+        "description": "<ul><li><strong>Automatisierungstechnik:</strong> Entwicklung fortschrittlicher Batch-Skripting-Workflows für den XML-Import von Schadenfaktura in das Fachsystem, wodurch manuelle Eingabefehler beseitigt und die Verarbeitungszeit um 70 % reduziert wurden.</li><li><strong>IAM & Workflow-Digitalisierung:</strong> Architektur und Digitalisierung von Identity & Access Management (IAM)-Workflows mit SharePoint und Power Automate zur Optimierung von IT-Zugriffsanfragen für über 200 Mitarbeiter.</li><li><strong>Release- & Patch-Management:</strong> Management von Produktionsumgebungen und Durchführung von Regressionstests (ALM Octane) während der monatlichen Patch-Zyklen zur Gewährleistung reibungsloser Geschäftsabläufe.</li><li><strong>IT Service Management (ITSM):</strong> N1/N2-Infrastruktur- und Anwendungs-Support via ServiceNow und GLPI. Koordination der kompletten Erneuerung der IT-Ausstattung für Mitarbeiter (~200 Arbeitsplätze) unter Einhaltung strenger SLAs.</li><li><strong>Sicherheitsgovernance & RBAC:</strong> Umstrukturierung der Role-Based Access Control (RBAC)-Modelle über verschiedene Unternehmensanwendungen hinweg zur Standardisierung von Sicherheitsberechtigungen.</li></ul>"
       },
       {
         "date": "Jul 2024 – Aug 2024",
