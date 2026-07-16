@@ -928,16 +928,19 @@
       },
       {
         "title": "Backstage Internal Developer Portal",
-        "purpose": "Production-hardened Internal Developer Portal built on Backstage 1.52, deployed on the minicloud Kubernetes platform with full GitOps delivery, Authentik OIDC SSO, and a custom Tech Radar.",
-        "role": "Platform Engineer — designed and implemented the custom frontend system, OIDC integration, Tech Radar module, CI/CD pipeline, and GitOps delivery via ArgoCD.",
-        "impact": "Single pane of glass for 18+ platform services. Full Swagger UI per API. Live Kubernetes pod status per component. Tech Radar with 39 entries across 4 quadrants. Fully automated GitOps — zero manual steps after git push.",
+        "purpose": "Production-hardened Internal Developer Portal built on Backstage 1.52, deployed on a self-hosted Kubernetes cluster with GitOps delivery, Authentik OIDC SSO, Software Templates, TechDocs, and a custom Plane Issues plugin.",
+        "role": "Platform Engineer — designed and implemented the custom frontend system, OIDC integration, Tech Radar module, Software Templates scaffolder, Plane Issues plugin, TechDocs integration, CI/CD pipeline, and GitOps delivery via ArgoCD.",
+        "impact": "Single pane of glass for 19 platform services. Full Swagger UI per API. Live Kubernetes pod status per component. Tech Radar with 39 entries. Golden-path Software Template generates repo + CI + GitOps manifest + ArgoCD app in one click. In-portal TechDocs per service. Live Plane Issues tab per catalog entity. Fully automated GitOps — zero manual steps after git push.",
         "features": [
-          "Software Catalog — 18 components, APIs, and tools tracked with owner, system, lifecycle, and tag metadata",
+          "Software Catalog — 19 components, APIs, and tools tracked with owner, system, lifecycle, and tag metadata",
           "API Docs — inline Swagger/OpenAPI UI rendered for every registered API entity (e.g. rag-ingest-api: GET /health, POST /ingest)",
           "Kubernetes live view — real-time pod count and error status per component pulled from the live k3s cluster",
           "Custom Tech Radar — 4-quadrant radar (Platforms, AI & ML, Security, Languages) with 39 technology entries, fetched live from minicloud-gitops with no rebuild required",
+          "Software Templates — golden-path go-service scaffolder; generates GitHub repo, CI pipeline, GitOps manifests, and ArgoCD app in one click",
+          "TechDocs — in-portal documentation rendered from mkdocs.yml per service; mkdocs-techdocs-core baked into the Backstage image",
+          "Plane Issues tab — custom @internal/plugin-minicloud-plane plugin showing live Plane CE project issues per catalog entity",
           "Authentik OIDC SSO — single sign-on via Authentik; no separate Backstage user accounts; TOTP enforced",
-          "GitOps CI/CD — Trivy CVE scan + Cosign keyless signing on every image; GPG-signed gitops bump; ArgoCD Recreate rollout"
+          "GitOps CI/CD — Trivy CVE scan + Cosign keyless signing + syft CycloneDX SBOM on every image; GPG-signed gitops bump; ArgoCD Recreate rollout"
         ],
         "stack": [
           "Backstage 1.52",
@@ -949,79 +952,147 @@
           "Harbor",
           "Cosign (keyless)",
           "Trivy",
+          "syft (SBOM)",
           "PostgreSQL",
           "k3s",
-          "Tailscale"
+          "Tailscale",
+          "mkdocs-techdocs-core",
+          "Plane CE"
         ],
         "link": "https://backstage.devandre.sbs",
         "repoUrl": "https://github.com/andrelair-platform/minicloud-backstage",
-        "oneLinePitch": "A production IDP on Kubernetes — single pane of glass for 18 services, live API docs, Kubernetes status, and a custom Tech Radar, all delivered via GitOps.",
-        "whyItMatters": "As platform complexity grows, engineers spend more time discovering where things live than building. Backstage centralises service ownership, API contracts, and live cluster state into one authenticated portal — reducing cognitive overhead and making the platform self-documenting.",
+        "oneLinePitch": "A production IDP on Kubernetes — single pane of glass for 19 services, live API docs, Kubernetes status, Software Templates, TechDocs, Plane Issues, and a custom Tech Radar, all delivered via GitOps.",
+        "whyItMatters": "As platform complexity grows, engineers spend more time discovering where things live than building. Backstage centralises service ownership, API contracts, live cluster state, task tracking, and documentation into one authenticated portal — making the platform self-documenting and giving every new service a golden path from day one.",
         "differentiators": [
-          "Custom Tech Radar module — the npm plugin silently dropped at runtime due to a nested frontend-plugin-api version conflict; rebuilt as a workspace-local createFrontendPlugin using the correct API version",
-          "Live Kubernetes tab — every component shows real pod health from the k3s cluster without leaving Backstage",
-          "OIDC via Authentik — all 16 platform department users get SSO access with TOTP; no separate Backstage accounts",
-          "Supply chain hardened — every image is Trivy-scanned, Cosign-signed (keyless via GitHub OIDC → Sigstore Fulcio), and the gitops bump commit is GPG-signed"
+          "Custom Tech Radar module — the npm plugin silently dropped at runtime due to a nested frontend-plugin-api version conflict; rebuilt as a workspace-local createFrontendPlugin; content fetched live from minicloud-gitops with zero image rebuilds",
+          "Plane Issues custom plugin — @internal/plugin-minicloud-plane; connects catalog entities to live Plane CE project issues via a proxy endpoint; zero external SaaS dependency",
+          "Software Templates golden path — scaffolder generates GitHub repo + CI skeleton + GitOps manifests + ArgoCD Application in one click; new service goes from zero to deployed in under 10 minutes",
+          "TechDocs integrated — mkdocs-techdocs-core baked into the Backstage image; documentation rendered in-portal from mkdocs.yml per service; no separate docs site",
+          "Supply chain hardened — every image is Trivy-scanned, Cosign-signed (keyless via GitHub OIDC → Sigstore Fulcio), and syft CycloneDX SBOM attached as OCI referrer"
         ],
         "architecture": [
-          "Frontend: createApp() from @backstage/frontend-defaults — plugins registered as typed FrontendFeature objects",
-          "Auth: SignInPageBlueprint.make() with Authentik OIDC; session secret injected via Kubernetes ConfigMap",
-          "Tech Radar: custom createFrontendPlugin at /tech-radar; fetches tech-radar.json from minicloud-gitops live",
+          "Frontend: createApp() from @backstage/frontend-defaults — plugins registered as typed FrontendFeature objects; custom plugins as workspace-local createFrontendPlugin",
+          "Auth: SignInPageBlueprint.make() with Authentik OIDC; metadataUrl aligned to auth.devandre.sbs (not nip.io) to match cookie domain and prevent silent session expiry loop",
+          "Tech Radar: custom createFrontendPlugin at /tech-radar; fetches tech-radar.json from minicloud-gitops live; zero image rebuild to update content",
+          "Plane Issues: @internal/plugin-minicloud-plane workspace plugin; EntityPlaneIssuesContent tab; proxy /minicloud-plane → minicloud-plane.minicloud-plane-dev.svc.cluster.local:8080 in backstage-values.yaml",
+          "TechDocs: mkdocs-techdocs-core installed in Backstage image; local builder config in backstage-values.yaml; mkdocs.yml + docs/ per service repo",
+          "Software Templates: go-service template in minicloud-backstage/templates/; steps: fetch:template → publish:github → branch:create (dev, staging) → PR to minicloud-gitops → catalog:register",
           "Backend: Node 24 (trixie-slim); PostgreSQL via Bitnami subchart on Longhorn PVC",
-          "CI: yarn build:backend → Docker → Harbor (via Tailscale) → Trivy → cosign sign → GPG gitops bump",
+          "CI: yarn build:backend → Docker → Harbor (Tailscale) → Trivy → cosign sign → syft SBOM → GPG gitops bump",
           "GitOps: ArgoCD Recreate strategy (avoids rolling-update quota deadlock in single-replica + ResourceQuota setup)"
+        ],
+        "repoBlueprint": "GitHub Actions CI\n  yarn build → Docker → Harbor\n  → Trivy scan → cosign sign\n  → syft SBOM (OCI referrer)\n  → GPG gitops bump commit\n         |\n         v (ArgoCD webhook)\n  +----------------------------------------------+\n  |  Backstage Pod (k3s, backstage namespace)    |\n  |                                              |\n  |  Frontend (React / createApp)                |\n  |  +-- Software Catalog (19 entities)          |\n  |  +-- API Docs (Swagger UI per API entity)    |\n  |  +-- Kubernetes tab (live k3s pod status)    |\n  |  +-- Tech Radar (custom plugin, live JSON)   |\n  |  +-- TechDocs (mkdocs-techdocs-core)         |\n  |  +-- Software Templates (go-service)         |\n  |  +-- Plane Issues (@internal plugin)         |\n  |                                              |\n  |  Backend (Node 24)                           |\n  |  +-- catalog / auth / search / kubernetes    |\n  |  +-- proxy /minicloud-plane                  |\n  |  +-- techdocs local builder                 |\n  |                                              |\n  |  PostgreSQL (Bitnami subchart, Longhorn PVC) |\n  +----------------------------------------------+\n         |\n  Authentik OIDC (auth.devandre.sbs)\n  minicloud-plane API (minicloud-plane-dev ns)\n  minicloud k3s cluster (Kubernetes tab)\n  minicloud-gitops (tech-radar.json live)\n  Plane CE (plane.devandre.sbs)",
+        "atsKeywords": [
+          "Internal Developer Portal",
+          "IDP",
+          "Backstage",
+          "Platform Engineering",
+          "TypeScript",
+          "React",
+          "Node.js",
+          "Software Catalog",
+          "TechDocs",
+          "Software Templates",
+          "Tech Radar",
+          "GitOps",
+          "ArgoCD",
+          "Authentik OIDC",
+          "Kubernetes",
+          "Cosign",
+          "Trivy",
+          "Harbor",
+          "SBOM",
+          "Plane CE"
+        ],
+        "scope": [
+          "Phase 1 — Bootstrap: bare Backstage 1.52 deployed via ArgoCD Helm chart; PostgreSQL subchart on Longhorn PVC; app-config injected via Helm ConfigMap",
+          "Phase 2 — OIDC SSO: Authentik provider configured (grant_types, HS256 signing key, property_mappings); SignInPageBlueprint wired; metadataUrl aligned to devandre.sbs to fix silent session expiry",
+          "Phase 3 — Catalog population: 14 → 19 Components, 1 System, 10 Locations; catalog rules updated; root route mapped explicitly to catalog",
+          "Phase 4 — Kubernetes plugin: ServiceAccount token + CA cert injected via ESO-managed secret; live pod status per component",
+          "Phase 5 — API Docs: OpenAPI entities registered; full Swagger UI rendered inline per API entity",
+          "Phase 6 — Custom Tech Radar: @backstage/plugin-tech-radar dropped (nested frontend-plugin-api@0.6.7 vs workspace 0.17.2 causes silent drop); rebuilt as workspace-local createFrontendPlugin; 39 entries across 4 quadrants",
+          "Phase 7 — Supply chain hardening: Trivy CRITICAL scan; keyless Cosign; syft CycloneDX SBOM; GPG gitops bump; Recreate strategy",
+          "Phase 8 — Plane Issues plugin: @internal/plugin-minicloud-plane workspace plugin; EntityPlaneIssuesContent tab; proxy configured in backstage-values.yaml",
+          "Phase 9 — TechDocs: mkdocs-techdocs-core installed in Backstage image; local builder configured in backstage-values.yaml; mkdocs.yml + docs/ per service",
+          "Phase 10 — Software Templates: go-service golden-path scaffolder; backstage-github-secret wired from Vault ci-secrets; template generates repo + CI + GitOps + ArgoCD app in one click"
+        ],
+        "testPlan": [
+          "OIDC login smoke test: navigate to backstage.devandre.sbs → Sign In → Authentik → redirects to catalog as authenticated user (tested across 3 Authentik department personas)",
+          "Catalog entity count: confirmed 19 components; entity count visible in Software Catalog header",
+          "API Docs render test: catalog → rag-ingest-api → DEFINITION tab → Swagger UI loads GET /health, GET /ready, POST /ingest with request/response schemas",
+          "Kubernetes live tab: catalog → rag-ingest → KUBERNETES tab → shows 1 pod Running, 0 errors against live cluster",
+          "Tech Radar render test: /tech-radar → 4 quadrants render; modified tech-radar.json in minicloud-gitops → radar updated without image rebuild",
+          "TechDocs: catalog → minicloud-backstage → DOCS tab → mkdocs documentation renders in-portal",
+          "Software Templates: /create → go-service → fill form → scaffolder creates GitHub repo + dev/staging branches + GitOps PR → catalog registers entity",
+          "Plane Issues tab: catalog → platform-demo → PLANE ISSUES tab → shows live issues from Plane CE project PT",
+          "CI gate: push to main → GitHub Actions build + Trivy scan → Harbor → cosign sign → syft SBOM → ArgoCD Recreate → backstage pod 1/1 Ready"
+        ],
+        "interviewTalkingPoints": [
+          "Goal: give platform engineers a self-hosted Tech Radar without relying on an external SaaS. We installed @backstage/plugin-tech-radar from npm, wired it into createApp(), deployed, and saw nothing. No error, no crash — a blank sidebar slot. Challenge: @backstage/plugin-tech-radar ships a nested frontend-plugin-api@0.6.7 while the workspace uses 0.17.2. The $type symbol check in the plugin registry fails silently — plugin loads without error but is never registered. Solution: stripped the npm package, rebuilt Tech Radar as a workspace-local createFrontendPlugin using the workspace version. The radar now fetches tech-radar.json live from minicloud-gitops — updating content requires zero image rebuilds.",
+          "Goal: surface live Plane CE project issues in Backstage per catalog entity — single pane of glass across code, infrastructure, and task tracking. We wrote @internal/plugin-minicloud-plane as a workspace-local Backstage plugin, rendering an EntityPlaneIssuesContent tab. Challenge: minicloud-plane repo was private — Backstage catalog discovery fetches raw.githubusercontent.com URLs, which return 404 for private repos. Solution: made the repo public. This also unblocked the catalog registration URL used in the scaffolder template.",
+          "Goal: stand up Software Templates so new services have a golden path from zero to deployed without manual steps. The scaffolder generates a GitHub repo with CI skeleton, GitOps manifests, and an ArgoCD Application via a 6-step template. Challenge: Nunjucks template syntax conflicts with GitHub Actions ${{ }} expression syntax. Solution: wrap CI skeleton content in {% raw %}...{% endraw %} blocks; use github.event.repository.name instead of the GHA expression inside the skeleton.",
+          "Goal: deploy Backstage reliably with ArgoCD in a namespace with a tight ResourceQuota (2 CPU / 2 Gi, single replica). On the first few deploys everything worked, but adding config changes caused new pods to get stuck Pending. Challenge: RollingUpdate briefly runs two pods simultaneously — second pod always blocked until first is evicted, which never happens (Kubernetes waits for new pod to be Ready first). Circular dependency with no timeout. Solution: strategy.type: Recreate. Peak usage stays at 1× the quota at all times.",
+          "Goal: secure Backstage behind Authentik OIDC. Login worked but after ~10 minutes of idle the session silently expired and the page went blank with a redirect loop. Challenge: Authentik binds the session cookie to devandre.sbs. The backend metadataUrl was set to auth.10.0.0.200.nip.io — a different origin from the cookie domain. The browser's prompt=none silent refresh is rejected by Authentik. The error only surfaces after the initial token TTL expires. Solution: aligned metadataUrl to auth.devandre.sbs to match the cookie domain exactly."
         ],
         "screenshots": [
           {
-            "title": "Software Catalog",
-            "caption": "18 owned components — services, tools, and APIs — with tags, lifecycle, owner, and system metadata visible at a glance.",
-            "src": "/screenshots/screenshot-catalog.png",
+            "title": "Software Catalog — 19 Components",
+            "caption": "19 owned components — services, tools, and APIs — with tags, lifecycle, owner, and system metadata. backstage.io/kubernetes-id annotation wires each entity to the live K8s tab.",
+            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-backstage/main/docs/screenshots/screenshot-catalog.png",
             "link": "https://backstage.devandre.sbs"
           },
           {
-            "title": "Tech Radar",
+            "title": "Tech Radar — 39 Entries",
             "caption": "Custom 4-quadrant radar: Platforms, AI & ML, Security & Identity, Languages & Frameworks. 39 technology entries with ADOPT / TRIAL / ASSESS / HOLD rings. Data fetched live from minicloud-gitops — no rebuild needed.",
-            "src": "/screenshots/screenshot-tech-radar.png",
+            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-backstage/main/docs/screenshots/screenshot-tech-radar.png",
             "link": "https://backstage.devandre.sbs/tech-radar"
           },
           {
-            "title": "API Docs — rag-ingest-api",
+            "title": "API Docs — Swagger UI",
             "caption": "Inline Swagger UI for the rag-ingest service OpenAPI spec: GET /health, GET /ready, POST /ingest. Rendered directly from the API entity registered in the catalog.",
-            "src": "/screenshots/screenshot-api-docs.png",
+            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-backstage/main/docs/screenshots/screenshot-api-docs.png",
             "link": "https://backstage.devandre.sbs/catalog/default/api/rag-ingest-api"
           },
           {
             "title": "Kubernetes Live View",
-            "caption": "Live Kubernetes tab for the rag-ingest component — 1 pod running, no errors, sourced from the minicloud k3s cluster in real time.",
-            "src": "/screenshots/screenshot-kubernetes-tab.png",
+            "caption": "Live Kubernetes tab — 1 pod running, no errors, sourced from the minicloud k3s cluster in real time via the backstage.io/kubernetes-id annotation.",
+            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-backstage/main/docs/screenshots/screenshot-kubernetes-tab.png",
             "link": "https://backstage.devandre.sbs/catalog/default/component/rag-ingest/kubernetes"
+          },
+          {
+            "title": "Software Templates — Golden Path",
+            "caption": "go-service scaffolder: fill in service name and owner → Backstage creates GitHub repo, CI pipeline skeleton, GitOps manifests, and ArgoCD Application automatically.",
+            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-backstage/main/docs/screenshots/screenshot-templates.png",
+            "link": "https://backstage.devandre.sbs/create"
+          },
+          {
+            "title": "TechDocs — In-Portal Docs",
+            "caption": "mkdocs-techdocs-core renders service documentation in-portal. No external doc site — docs live alongside the code, rendered from mkdocs.yml in each service repo.",
+            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-backstage/main/docs/screenshots/screenshot-techdocs.png",
+            "link": "https://backstage.devandre.sbs"
           }
         ],
-        "scope": [
-          "Phase 1 — Bootstrap: bare Backstage 1.52 deployed via ArgoCD Helm chart; PostgreSQL subchart on Longhorn PVC; app-config injected via Helm ConfigMap",
-          "Phase 2 — OIDC SSO: Authentik provider configured (grant_types, HS256 signing key, property_mappings); SignInPageBlueprint wired; 6 OIDC gotchas diagnosed and fixed (trailing slash in issuer, empty grant_types, no org membership blocking login)",
-          "Phase 3 — Catalog population: 14 Components, 1 System, 10 Locations, 1 Group, 1 User registered; catalog rules updated to include User + Group kinds; root route / mapped explicitly to catalog",
-          "Phase 4 — Kubernetes plugin: ServiceAccount token + CA cert injected via ESO-managed secret; live pod status visible per component against the minicloud k3s cluster",
-          "Phase 5 — API Docs: rag-ingest-api and markitdown-proxy-api OpenAPI entities registered; full Swagger UI rendered inline per API entity",
-          "Phase 6 — Custom Tech Radar: @backstage/plugin-tech-radar dropped (nested frontend-plugin-api@0.6.7 vs workspace 0.17.2 causes silent plugin drop); rebuilt as workspace-local createFrontendPlugin; 39 entries across 4 quadrants; data fetched live from minicloud-gitops tech-radar.json",
-          "Phase 7 — Supply chain hardening: Trivy CRITICAL scan on every image; keyless Cosign signing (GitHub OIDC → Sigstore Fulcio); GPG-signed gitops bump commit; ArgoCD Recreate strategy to avoid rolling-update quota deadlock"
-        ],
-        "testPlan": [
-          "OIDC login smoke test: navigate to backstage.devandre.sbs → Sign In → Authentik → redirects to catalog as authenticated user (tested across 3 Authentik department personas)",
-          "Catalog entity count: kubectl exec into backstage pod → confirmed 36 entities in bn_backstage DB; UI shows 18 Components + 1 System + 10 Locations",
-          "API Docs render test: catalog → rag-ingest-api → DEFINITION tab → Swagger UI loads GET /health, GET /ready, POST /ingest with request/response schemas",
-          "Kubernetes live tab: catalog → rag-ingest → KUBERNETES tab → shows 1 pod Running, 0 errors against live cluster; validated pod count matches kubectl get pods -n ai",
-          "Tech Radar render test: /tech-radar → 4 quadrants render with correct ring positions; modified tech-radar.json in minicloud-gitops → radar updated without image rebuild",
-          "CI gate: push to main → GitHub Actions build + Trivy scan passes → Harbor image tagged with SHA → ArgoCD webhook fires → Recreate rollout completes → backstage pod 1/1 Ready",
-          "Regression: SidebarSearchModal NotImplementedError — verified searchPlugin in features array; no apiRef errors in browser console after fix"
-        ],
-        "interviewTalkingPoints": [
-          "Goal: give platform engineers a self-hosted Tech Radar — a living map of which technologies are adopted, experimental, or being phased out — without relying on an external SaaS. We installed @backstage/plugin-tech-radar from npm, wired it into createApp(), deployed, and saw nothing. No error, no crash, just a blank sidebar slot. Challenge: @backstage/plugin-tech-radar ships a nested frontend-plugin-api@0.6.7 while the workspace uses 0.17.2. The $type symbol check in the plugin registry fails silently — the plugin loads without error but is never registered. Solution: stripped the npm package entirely and rebuilt Tech Radar as a workspace-local createFrontendPlugin using the workspace version of the API. The radar now fetches tech-radar.json live from minicloud-gitops — updating the content requires zero image rebuilds.",
-          "Goal: surface the Tech Radar in the sidebar so users could navigate to it from any page. We registered the custom plugin and assumed nav.rest() would pick it up automatically like the built-in catalog and scaffolder pages. It didn't appear. Challenge: nav.rest() only auto-discovers plugins that ship a NavItemBlueprint from the official @backstage/* packages. A custom createFrontendPlugin doesn't register a nav item through that mechanism, so no sidebar entry is generated regardless of how the plugin is wired up. Solution: added an explicit <SidebarItem icon={TrackChangesIcon} to='/tech-radar' text='Tech Radar' /> in Sidebar.tsx. This is the required pattern for any custom route in the new Backstage frontend system.",
-          "Goal: give users a search bar in the header — standard Backstage UX that engineers expect. We installed @backstage/plugin-search, added SidebarSearchModal to the layout, and deployed. Every single page threw NotImplementedError in the browser regardless of whether the user had touched search. Challenge: SidebarSearchModal calls useApi(searchQueryServiceApiRef) at render time for every page render — not lazily on user interaction. @backstage/plugin-search was installed as an npm package but @backstage/plugin-search/alpha (the FrontendFeature export required by createApp) was never added to the features array. The API reference existed in the DOM tree but had no registered implementation. Solution: added searchPlugin from @backstage/plugin-search/alpha to the features array. The distinction between the package and its /alpha entry point is not obvious from the Backstage docs.",
-          "Goal: secure Backstage behind Authentik OIDC so platform users log in with their existing department SSO account — no separate Backstage passwords. We configured the OIDC provider, deployed, and login worked. But after ~10 minutes of idle, the session silently expired and the page went blank with a redirect loop. Challenge: Authentik binds the session cookie to devandre.sbs. The backend metadataUrl was set to auth.10.0.0.200.nip.io (the internal nip.io hostname). The browser's prompt=none silent token refresh sends the request to the nip.io domain, which is a different origin from the cookie's domain — Authentik rejects it. The error only surfaces after the initial token TTL expires, making it easy to miss in short smoke tests. Solution: aligned metadataUrl to auth.devandre.sbs to match the cookie domain exactly.",
-          "Goal: deploy Backstage reliably with ArgoCD in a resource-constrained namespace that has a ResourceQuota. The namespace is sized for one replica (2 CPU / 2 Gi) to stay within the cluster's headroom. On the first few deployments everything worked, but after adding more config changes, new pods would get stuck in Pending with FailedCreate quota errors. Challenge: the default Deployment strategy is RollingUpdate, which briefly runs two pods simultaneously — the outgoing pod and the incoming pod. In a quota-constrained namespace sized for exactly one replica, the second pod is always blocked until the first is evicted, which never happens because Kubernetes waits for the new pod to be Ready first. A circular dependency with no timeout. Solution: strategy.type: Recreate — the old pod is terminated before the new one starts. Peak usage stays at 1× the quota at all times.",
-          "Goal: stand up Backstage's backend plugin system (catalog, auth, Kubernetes, search — 13 plugins total) and connect it to a PostgreSQL database provisioned by the Helm chart's subchart. In development this was instant; in the cluster the pod occasionally came up at 503. Challenge: the new Backstage backend system initialises all 13 plugins sequentially at startup and does not retry if any of them fail. If the pod starts before backstage-postgresql-0 is Ready (which happens during initial cluster deploys or after node restarts), every plugin fails with ECONNREFUSED and the pod locks into a state of liveness 200 / readiness 503 with no recovery path. kubectl rollout restart stalls because the old pod never becomes Ready and Kubernetes won't terminate it. Solution: kubectl delete pod --force --grace-period=0 so the StatefulSet recreates a fresh pod after PostgreSQL is already running. This pattern is now documented in the platform runbook."
+        "liveEndpoints": [
+          {
+            "label": "Backstage Software Catalog — live 19-component catalog",
+            "command": "https://backstage.devandre.sbs",
+            "url": "https://backstage.devandre.sbs"
+          },
+          {
+            "label": "Tech Radar — 39 entries across 4 quadrants",
+            "command": "https://backstage.devandre.sbs/tech-radar",
+            "url": "https://backstage.devandre.sbs/tech-radar"
+          },
+          {
+            "label": "API Docs — rag-ingest-api Swagger UI",
+            "command": "https://backstage.devandre.sbs/catalog/default/api/rag-ingest-api",
+            "url": "https://backstage.devandre.sbs/catalog/default/api/rag-ingest-api"
+          },
+          {
+            "label": "Software Templates — go-service golden path",
+            "command": "https://backstage.devandre.sbs/create",
+            "url": "https://backstage.devandre.sbs/create"
+          }
         ]
       }
     ],
