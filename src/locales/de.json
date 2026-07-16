@@ -674,6 +674,12 @@
             "link": "http://100.88.123.8:5240/MAAS"
           },
           {
+            "title": "ArgoCD — Alle Plattform-Anwendungen",
+            "caption": "ArgoCD App-Kacheln zeigen die vollständige Plattform: Authentik, Backstage, Vault, Grafana, Harbor, Longhorn, Plane CE und alle KI/ML-Workloads — alle Synced und Healthy. Das Health-Status-Panel (links) zeigt alle gesunden Apps im Cluster.",
+            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/screenshot-argocd.png",
+            "link": "https://argocd.devandre.sbs"
+          },
+          {
             "title": "set-hog — k3s Control Plane (ThinkPad T71)",
             "caption": "MAAS-Maschinendetail für set-hog (10.0.0.2): Lenovo ThinkPad T71 Gen 1, 4 Kerne @ 1,8 GHz, 15,9 GB RAM, 512 GB NVMe. Betreibt die k3s Control Plane — API-Server, Scheduler, Controller-Manager und etcd.",
             "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/set-hog-detail.png",
