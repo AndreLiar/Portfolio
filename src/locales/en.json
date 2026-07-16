@@ -688,6 +688,32 @@
             "command": "https://andrelair-platform.github.io/minicloud-platform-docs/",
             "url": "https://andrelair-platform.github.io/minicloud-platform-docs/"
           }
+        ],
+        "screenshots": [
+          {
+            "title": "MAAS — Bare-Metal Node Provisioning",
+            "caption": "MAAS UI showing ThinkPad cluster nodes enrolled, commissioned, and deployed with Ubuntu 24.04 LTS via PXE boot. Each machine is managed as infrastructure-as-code via OpenTofu. Screenshot shows the initial 3-node setup — cluster later expanded to 5 nodes (star-kitten + swift-mac).",
+            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/maas-machines-overview.png",
+            "link": "http://100.88.123.8:5240/MAAS"
+          },
+          {
+            "title": "set-hog — k3s Control Plane (ThinkPad T71)",
+            "caption": "MAAS machine detail for set-hog (10.0.0.2): Lenovo ThinkPad T71 Gen 1, 4 cores @ 1.8 GHz, 15.9 GB RAM, 512 GB NVMe. Runs the k3s control plane — API server, scheduler, controller-manager, and etcd.",
+            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/set-hog-detail.png",
+            "link": "http://100.88.123.8:5240/MAAS"
+          },
+          {
+            "title": "fast-skunk — k3s Worker (ThinkPad T590)",
+            "caption": "MAAS machine detail for fast-skunk (10.0.0.4): Lenovo ThinkPad T590, 8 cores, 15.9 GB RAM, 512 GB NVMe. Runs AI/ML workloads (LiteLLM, Ollama, RAG services) and platform services.",
+            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/fast-skunk-detail.png",
+            "link": "http://100.88.123.8:5240/MAAS"
+          },
+          {
+            "title": "fast-heron — k3s Worker (ThinkPad T590)",
+            "caption": "MAAS machine detail for fast-heron (10.0.0.7): Lenovo ThinkPad T590, 8 cores, 15.9 GB RAM, 512 GB NVMe. k3s worker node running observability stack (Prometheus, Grafana, Loki) and collaboration services.",
+            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/fast-heron-detail.png",
+            "link": "http://100.88.123.8:5240/MAAS"
+          }
         ]
       },
       {

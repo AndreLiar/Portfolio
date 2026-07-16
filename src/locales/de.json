@@ -665,6 +665,32 @@
             "command": "https://andrelair-platform.github.io/minicloud-platform-docs/",
             "url": "https://andrelair-platform.github.io/minicloud-platform-docs/"
           }
+        ],
+        "screenshots": [
+          {
+            "title": "MAAS — Bare-Metal-Node-Provisioning",
+            "caption": "MAAS-UI zeigt ThinkPad-Cluster-Knoten, die via PXE-Boot mit Ubuntu 24.04 LTS eingeschrieben, beauftragt und deployed wurden. Jede Maschine wird als Infrastructure-as-Code via OpenTofu verwaltet. Screenshot zeigt das initiale 3-Knoten-Setup — Cluster später auf 5 Knoten erweitert (star-kitten + swift-mac).",
+            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/maas-machines-overview.png",
+            "link": "http://100.88.123.8:5240/MAAS"
+          },
+          {
+            "title": "set-hog — k3s Control Plane (ThinkPad T71)",
+            "caption": "MAAS-Maschinendetail für set-hog (10.0.0.2): Lenovo ThinkPad T71 Gen 1, 4 Kerne @ 1,8 GHz, 15,9 GB RAM, 512 GB NVMe. Betreibt die k3s Control Plane — API-Server, Scheduler, Controller-Manager und etcd.",
+            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/set-hog-detail.png",
+            "link": "http://100.88.123.8:5240/MAAS"
+          },
+          {
+            "title": "fast-skunk — k3s Worker (ThinkPad T590)",
+            "caption": "MAAS-Maschinendetail für fast-skunk (10.0.0.4): Lenovo ThinkPad T590, 8 Kerne, 15,9 GB RAM, 512 GB NVMe. Betreibt KI/ML-Workloads (LiteLLM, Ollama, RAG-Services) und Plattform-Services.",
+            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/fast-skunk-detail.png",
+            "link": "http://100.88.123.8:5240/MAAS"
+          },
+          {
+            "title": "fast-heron — k3s Worker (ThinkPad T590)",
+            "caption": "MAAS-Maschinendetail für fast-heron (10.0.0.7): Lenovo ThinkPad T590, 8 Kerne, 15,9 GB RAM, 512 GB NVMe. k3s Worker-Knoten mit Observability-Stack (Prometheus, Grafana, Loki) und Collaboration-Services.",
+            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/fast-heron-detail.png",
+            "link": "http://100.88.123.8:5240/MAAS"
+          }
         ]
       },
       {

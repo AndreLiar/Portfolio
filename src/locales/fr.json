@@ -665,6 +665,32 @@
             "command": "https://andrelair-platform.github.io/minicloud-platform-docs/",
             "url": "https://andrelair-platform.github.io/minicloud-platform-docs/"
           }
+        ],
+        "screenshots": [
+          {
+            "title": "MAAS — Provisionnement Bare-Metal des Nœuds",
+            "caption": "Interface MAAS montrant les nœuds ThinkPad du cluster enrollés, commissionnés et déployés avec Ubuntu 24.04 LTS via PXE boot. Chaque machine est gérée en infrastructure-as-code via OpenTofu. Capture de l'installation initiale à 3 nœuds — cluster étendu ensuite à 5 nœuds (star-kitten + swift-mac).",
+            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/maas-machines-overview.png",
+            "link": "http://100.88.123.8:5240/MAAS"
+          },
+          {
+            "title": "set-hog — Plan de Contrôle k3s (ThinkPad T71)",
+            "caption": "Détail machine MAAS pour set-hog (10.0.0.2) : Lenovo ThinkPad T71 Gen 1, 4 cœurs @ 1,8 GHz, 15,9 Go RAM, 512 Go NVMe. Exécute le plan de contrôle k3s — serveur API, scheduleur, controller-manager et etcd.",
+            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/set-hog-detail.png",
+            "link": "http://100.88.123.8:5240/MAAS"
+          },
+          {
+            "title": "fast-skunk — Nœud Worker k3s (ThinkPad T590)",
+            "caption": "Détail machine MAAS pour fast-skunk (10.0.0.4) : Lenovo ThinkPad T590, 8 cœurs, 15,9 Go RAM, 512 Go NVMe. Exécute les workloads IA/ML (LiteLLM, Ollama, services RAG) et les services de plateforme.",
+            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/fast-skunk-detail.png",
+            "link": "http://100.88.123.8:5240/MAAS"
+          },
+          {
+            "title": "fast-heron — Nœud Worker k3s (ThinkPad T590)",
+            "caption": "Détail machine MAAS pour fast-heron (10.0.0.7) : Lenovo ThinkPad T590, 8 cœurs, 15,9 Go RAM, 512 Go NVMe. Nœud worker k3s exécutant la stack d'observabilité (Prometheus, Grafana, Loki) et les services de collaboration.",
+            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/fast-heron-detail.png",
+            "link": "http://100.88.123.8:5240/MAAS"
+          }
         ]
       },
       {
