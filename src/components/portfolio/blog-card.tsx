@@ -3,7 +3,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowUpRight, Calendar, Clock } from "lucide-react";
+import { ArrowUpRight, Calendar, Clock, Container, GitBranch, Cpu, Brain, Cloud, Terminal } from "lucide-react";
 import Image from "next/image";
 
 const TAG_ACCENTS: Record<string, string> = {
@@ -18,11 +18,14 @@ const TAG_ACCENTS: Record<string, string> = {
   reloader: "#10b981",
 };
 
-const CARD_GRADIENTS = [
-  "from-blue-500/20 via-blue-400/10 to-transparent",
-  "from-emerald-500/20 via-emerald-400/10 to-transparent",
-  "from-violet-500/20 via-violet-400/10 to-transparent",
-  "from-orange-500/20 via-orange-400/10 to-transparent",
+// Each fallback thumbnail: background gradient stops + a Lucide icon
+const FALLBACK_DESIGNS = [
+  { from: "#1e3a5f", to: "#0ea5e9", Icon: Container },
+  { from: "#14532d", to: "#10b981", Icon: GitBranch },
+  { from: "#3b0764", to: "#8b5cf6", Icon: Cpu },
+  { from: "#431407", to: "#f97316", Icon: Terminal },
+  { from: "#0c4a6e", to: "#38bdf8", Icon: Cloud },
+  { from: "#1a1a2e", to: "#e040fb", Icon: Brain },
 ];
 
 interface BlogCardProps {
@@ -53,7 +56,8 @@ export function BlogCard({
   index = 0,
   t,
 }: BlogCardProps) {
-  const gradient = CARD_GRADIENTS[index % CARD_GRADIENTS.length];
+  const fallback = FALLBACK_DESIGNS[index % FALLBACK_DESIGNS.length];
+  const FallbackIcon = fallback.Icon;
   const primaryTagColor = TAG_ACCENTS[tags[0]] ?? "#3b82f6";
 
   const formattedDate = new Date(date).toLocaleDateString("en-US", {
@@ -75,7 +79,23 @@ export function BlogCard({
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         ) : (
-          <div className={`absolute inset-0 bg-gradient-to-br ${gradient}`} />
+          /* Designed fallback: dark gradient + subtle dot grid + centered icon */
+          <div
+            className="absolute inset-0 flex items-center justify-center"
+            style={{ background: `linear-gradient(135deg, ${fallback.from} 0%, ${fallback.to} 100%)` }}
+          >
+            {/* Dot grid pattern */}
+            <svg className="absolute inset-0 w-full h-full opacity-10" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <pattern id={`dots-${index}`} x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                  <circle cx="2" cy="2" r="1.5" fill="white" />
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill={`url(#dots-${index})`} />
+            </svg>
+            {/* Centered icon */}
+            <FallbackIcon className="w-14 h-14 text-white/30 group-hover:text-white/50 transition-colors duration-300 relative z-10" strokeWidth={1.5} />
+          </div>
         )}
         {/* Overlay gradient at bottom for text legibility */}
         <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-transparent to-transparent" />

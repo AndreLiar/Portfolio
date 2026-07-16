@@ -1292,8 +1292,7 @@
         "platform-engineering"
       ],
       "readTime": 8,
-      "url": "https://andrelair-platform.github.io/minicloud-platform-docs/blog/kubernetes-configmap-auto-reload-stakater-reloader",
-      "image": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/screenshot-homer.png"
+      "url": "https://andrelair-platform.github.io/minicloud-platform-docs/blog/kubernetes-configmap-auto-reload-stakater-reloader"
     },
     {
       "slug": "platform-engineering-bare-metal-kubernetes",
@@ -1308,8 +1307,7 @@
         "bare-metal"
       ],
       "readTime": 12,
-      "url": "https://andrelair-platform.github.io/minicloud-platform-docs/blog/platform-engineering-bare-metal-kubernetes",
-      "image": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/maas-machines-overview.png"
+      "url": "https://andrelair-platform.github.io/minicloud-platform-docs/blog/platform-engineering-bare-metal-kubernetes"
     }
   ]
 }
