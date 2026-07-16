@@ -680,6 +680,12 @@
             "link": "https://argocd.devandre.sbs"
           },
           {
+            "title": "Grafana — Kubernetes Cluster Dashboards",
+            "caption": "Grafana Dashboard-Liste auf grafana.devandre.sbs — Kubernetes All-in-one Cluster Monitoring, Compute Resources pro Namespace/Pod/Workload, CoreDNS, Alertmanager und cert-manager. Alle über den kube-prometheus-stack Helm-Chart vorab bereitgestellt.",
+            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/screenshot-grafana.png",
+            "link": "https://grafana.devandre.sbs/dashboards"
+          },
+          {
             "title": "set-hog — k3s Control Plane (ThinkPad T71)",
             "caption": "MAAS-Maschinendetail für set-hog (10.0.0.2): Lenovo ThinkPad T71 Gen 1, 4 Kerne @ 1,8 GHz, 15,9 GB RAM, 512 GB NVMe. Betreibt die k3s Control Plane — API-Server, Scheduler, Controller-Manager und etcd.",
             "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/set-hog-detail.png",
