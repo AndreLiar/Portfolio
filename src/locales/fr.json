@@ -702,6 +702,11 @@
             "caption": "Détail machine MAAS pour fast-heron (10.0.0.7) : Lenovo ThinkPad T590, 8 cœurs, 15,9 Go RAM, 512 Go NVMe. Nœud worker k3s exécutant la stack d'observabilité (Prometheus, Grafana, Loki) et les services de collaboration.",
             "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/fast-heron-detail.png",
             "link": "http://100.88.123.8:5240/MAAS"
+          },
+          {
+            "url": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/screenshot-homer.png",
+            "alt": "Homer — Tableau de bord des services de la plateforme",
+            "caption": "Tableau de bord Homer — 6 sections professionnelles : Infrastructure, Observabilité, Identité & Secrets, Plateforme & DevOps, IA / ML, Collaboration & Showcase"
           }
         ]
       },
