@@ -1304,6 +1304,21 @@
   },
   "blogPosts": [
     {
+      "slug": "k3s-why-lightweight-kubernetes-bare-metal",
+      "title": "Why k3s? Installing Kubernetes on 5 Laptops with a Single curl Command",
+      "description": "How k3s was installed on a 5-node bare-metal cluster — one curl command per machine — and why k3s beat kubeadm, microk8s, RKE2, and k0s for this specific hardware.",
+      "date": "2026-07-16",
+      "tags": [
+        "kubernetes",
+        "k3s",
+        "bare-metal",
+        "platform-engineering",
+        "devops"
+      ],
+      "readTime": 7,
+      "url": "https://andrelair-platform.github.io/minicloud-platform-docs/blog/k3s-why-lightweight-kubernetes-bare-metal"
+    },
+    {
       "slug": "kubernetes-configmap-auto-reload-stakater-reloader",
       "title": "Automating ConfigMap Reloads: Why We Added Stakater Reloader",
       "description": "Kubernetes does not automatically restart pods when a ConfigMap mounted with subPath changes. We added Stakater Reloader to eliminate manual kubectl rollout restart calls across Homer, LiteLLM, SearXNG, and Backstage — plus a bonus ArgoCD OOMKill investigation we uncovered along the way.",

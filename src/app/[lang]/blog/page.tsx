@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft, Rss } from "lucide-react";
 import { getDictionary } from "@/lib/dictionaries";
+import { getBlogPosts } from "@/lib/blog";
 import { BlogCard } from "@/components/portfolio/blog-card";
 import { Button } from "@/components/ui/button";
 
@@ -12,7 +13,7 @@ export default async function BlogPage({
   const { lang } = await params;
   const dict = await getDictionary(lang);
   const t = dict.BlogPage;
-  const posts: any[] = dict.blogPosts ?? [];
+  const posts = await getBlogPosts(dict.blogPosts ?? []);
 
   const sorted = [...posts].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
