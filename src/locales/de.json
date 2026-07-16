@@ -1281,6 +1281,24 @@
   },
   "blogPosts": [
     {
+      "slug": "llm-slm-quantization-inference-serving",
+      "title": "LLMs auf Bare Metal: Quantisierung, SLMs und Ersatz von phi4-mini durch Qwen 2.5 7B",
+      "description": "Wie wir über Modellgröße, Quantisierungsformate (GGUF Q4_K_M) und Inferenz-Tuning für einen CPU-only k3s-Cluster nachdenken — und warum wir phi4-mini durch Qwen 2.5 7B ersetzt haben.",
+      "date": "2026-07-16",
+      "tags": [
+        "ai",
+        "llm",
+        "ollama",
+        "litellm",
+        "kubernetes",
+        "inference",
+        "quantization",
+        "mlops"
+      ],
+      "readTime": 9,
+      "url": "https://andrelair-platform.github.io/minicloud-platform-docs/blog/llm-slm-quantization-inference-serving"
+    },
+    {
       "slug": "k3s-why-lightweight-kubernetes-bare-metal",
       "title": "Why k3s? Installing Kubernetes on 5 Laptops with a Single curl Command",
       "description": "How k3s was installed on a 5-node bare-metal cluster — one curl command per machine — and why k3s beat kubeadm, microk8s, RKE2, and k0s for this specific hardware.",
