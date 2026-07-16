@@ -1291,5 +1291,48 @@
       "Travel",
       "Tech Trend"
     ]
-  }
+  },
+  "BlogPage": {
+    "title": "Blog",
+    "subtitle": "Technical deep-dives from building the minicloud platform — GitOps, Kubernetes, AI, and bare-metal engineering.",
+    "readPost": "Read post",
+    "minRead": "min read",
+    "backToPortfolio": "Back to Portfolio",
+    "allPosts": "All posts",
+    "noPostsFound": "No posts found.",
+    "postedOn": "Posted on"
+  },
+  "blogPosts": [
+    {
+      "slug": "kubernetes-configmap-auto-reload-stakater-reloader",
+      "title": "Automating ConfigMap Reloads: Why We Added Stakater Reloader",
+      "description": "Kubernetes does not automatically restart pods when a ConfigMap mounted with subPath changes. We added Stakater Reloader to eliminate manual kubectl rollout restart calls across Homer, LiteLLM, SearXNG, and Backstage — plus a bonus ArgoCD OOMKill investigation we uncovered along the way.",
+      "date": "2026-07-16",
+      "tags": [
+        "kubernetes",
+        "gitops",
+        "argocd",
+        "platform-engineering"
+      ],
+      "readTime": 8,
+      "url": "https://andrelair-platform.github.io/minicloud-platform-docs/blog/kubernetes-configmap-auto-reload-stakater-reloader",
+      "image": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/screenshot-homer.png"
+    },
+    {
+      "slug": "platform-engineering-bare-metal-kubernetes",
+      "title": "Platform Engineering on a Budget: Running Production Kubernetes on 5 ThinkPads",
+      "description": "How I built a production-grade Kubernetes platform on five bare-metal ThinkPad laptops — with MAAS provisioning, GitOps, SSO, observability, and AI services — and what I learned about real platform engineering along the way.",
+      "date": "2026-07-13",
+      "tags": [
+        "kubernetes",
+        "platform-engineering",
+        "devops",
+        "k3s",
+        "bare-metal"
+      ],
+      "readTime": 12,
+      "url": "https://andrelair-platform.github.io/minicloud-platform-docs/blog/platform-engineering-bare-metal-kubernetes",
+      "image": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/maas-machines-overview.png"
+    }
+  ]
 }

@@ -66,7 +66,7 @@ export function Header({ headerData, name }: { headerData: any, name: string }) 
     { href: "#experience", label: headerData.experience },
     { href: `/${pathname.split('/')[1]}/resume`, label: "Resume", external: true },
     { href: "#contact", label: headerData.contact },
-    { href: "https://andrelair-platform.github.io/minicloud-platform-docs/blog", label: headerData.nav?.blog ?? "Blog", newTab: true },
+    { href: `/${pathname.split('/')[1]}/blog`, label: headerData.nav?.blog ?? "Blog", external: true },
   ];
 
   const LanguageSwitcher = () => (
