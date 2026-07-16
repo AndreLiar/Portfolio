@@ -529,16 +529,16 @@
     "projects": [
       {
         "title": "Minicloud Platform",
-        "purpose": "Produktionsreife Enterprise-Kubernetes-Plattform auf 4 Bare-Metal-ThinkPad-Laptops, um den vollständigen Private-Cloud-Engineering-Lifecycle zu demonstrieren. 54+ Workloads via ArgoCD GitOps bereitgestellt: Vault Secrets-Management, Authentik SSO/OIDC, Harbor Private Registry, Falco Runtime Security, Prometheus/Grafana/Loki Observability-Stack und ein Enterprise AI Gateway (LiteLLM + Ollama) mit Multi-Provider-Routing, PII/DLP-Guardrails und einer vollständigen RAG-Pipeline. Gehärtet mit Zero-Trust NetworkPolicy über alle 23 Namespaces und Supply-Chain-Security (cosign, SBOM, GPG-signierte Commits).",
-        "role": "Platform Engineer & Solutions Architekt. Entwurf der Enterprise-GitOps-Repository-Struktur (App-of-Apps-Pattern, Kustomize Combo 1 Base+Overlays, 3-Branch-CI-Promotions-Flow, AppProject mit gesperrten sourceRepos und expliziter clusterResourceWhitelist). Aufbau der Zero-Trust-Netzwerktopologie, des AI Gateways mit 8 Cloud/lokalen Providern und Presidio PII-Guardrails, der RAG-Pipeline (bge-m3 + pgvector HNSW + hybrides BM25 + Cross-Encoder Re-Ranking + Docling OCR) und Automatisierung von 62 Regressionstests.",
-        "impact": "62 automatisierte Regressionstests dauerhaft grün. 9/9 OPA Gatekeeper Admission-Policies im Deny-Modus mit 0 Verstößen. Zero-Trust NetworkPolicy auf allen 23 Namespaces. Vault Auto-Unseal via AWS KMS. Enterprise RAG mit unter 400ms Embedding-Latenz und unter 1ms HNSW-Vektorscan. AI Gateway mit 8 Providern, Circuit-Breaker, abteilungsweiser Schlüsselverwaltung und Langfuse LLMOps-Tracing.",
+        "purpose": "Produktionsreife Enterprise-Kubernetes-Plattform auf 4 Bare-Metal-ThinkPad-Laptops als Demonstration des vollständigen Private-Cloud-Engineering-Lebenszyklus. GitOps-gelieferte Workloads über KI/ML, Observability, Secrets-Management, SSO/Identität, private Registry, Laufzeitsicherheit, Collaboration-Tools und Plattform-Services — alles via ArgoCD App-of-Apps. Gehärtet mit Zero-Trust NetworkPolicy, OPA Gatekeeper Admission Policies im Deny-Modus und Supply-Chain-Sicherheit (Cosign, SBOM, GPG-signierte Commits).",
+        "role": "Platform Engineer & Solutions Architect. Entwurf der Enterprise-GitOps-Repository-Struktur (App-of-Apps-Pattern, Kustomize Combo 1 Base+Overlays, 3-Branch CI-Promotion-Flow, AppProject mit gesperrten sourceRepos und clusterResourceWhitelist). Aufbau der Zero-Trust-Netzwerktopologie, des KI-Gateways mit Cloud- und lokalen LLM-Providern (Groq, OpenAI, Anthropic, Mistral, Gemini, Ollama) und Presidio PII-Guardrails, der RAG-Pipeline (bge-m3 + pgvector HNSW + BM25-Hybrid + Cross-Encoder-Reranking + Docling OCR) und der vollständigen Regressionssuite für die gesamte Plattform.",
+        "impact": "Vollständige automatisierte Regressionssuite dauerhaft grün. Alle OPA Gatekeeper Admission Policies im Deny-Modus, null Verletzungen. Zero-Trust NetworkPolicy für alle Plattform-Namespaces durchgesetzt. Vault Auto-Unseal via AWS KMS — Pods starten ohne Operator-Eingriff neu. Enterprise RAG mit unter 400ms Embedding-Latenz und unter 1ms HNSW-Vektorscan. KI-Gateway routet Cloud- und lokale LLM-Provider mit Circuit-Breaker, abteilungsweiser Schlüssel-Governance und Langfuse LLMOps-Tracing.",
         "features": [
-          "Enterprise GitOps: App-of-Apps ArgoCD-Pattern, Kustomize Base+Overlays (dev/staging/prod), CI-Promotion via kustomize edit set image nur nach dev — staging und prod per PR, AppProject mit gesperrten sourceRepos",
-          "9/9 OPA Gatekeeper Admission-Policies — Deny-Modus, 0 Verstöße",
-          "Zero-Trust NetworkPolicy über 23 Kubernetes-Namespaces",
-          "AI Gateway: 8 Provider, PII/DLP-Guardrails, Cloud-Fallback-Kette, Valkey-Cache",
-          "Enterprise RAG: bge-m3 + pgvector HNSW + hybride BM25-Suche + Docling OCR",
-          "Vollständige Supply Chain: cosign-Signierung, SBOM, GPG-Commits, Branch-Protection, Dependabot"
+          "Enterprise GitOps: ArgoCD App-of-Apps-Pattern, Kustomize Base+Overlays (dev/staging/prod), CI promotiert via kustomize edit set image nur nach dev — PR-gesichertes Staging und Prod, AppProject mit gesperrten sourceRepos und expliziter Namespace/Ressourcen-Whitelist",
+          "Alle OPA Gatekeeper Admission Policies im Deny-Modus — null Verletzungen — abdeckend NET_RAW, Capabilities, Seccomp, Privilege Escalation und Host-Namespace-Zugriff",
+          "Zero-Trust NetworkPolicy für alle Plattform-Namespaces — Services erreichen nur deklarierte Upstreams",
+          "KI-Gateway: Cloud- und lokale LLM-Provider (Groq, OpenAI, Anthropic, Mistral, Gemini, Ollama), PII/DLP-Guardrails, Cloud-Fallback-Kette, Valkey-Cache",
+          "Enterprise RAG: bge-m3 + pgvector HNSW + BM25-Hybridsuche + Cross-Encoder-Reranking + Docling OCR",
+          "Vollständige Supply Chain: Cosign keyless Signing, syft CycloneDX SBOM, Trivy CVE-Scan, GPG-Commits, Branch-Schutz, Dependabot"
         ],
         "stack": [
           "k3s (Kubernetes)",
@@ -549,7 +549,7 @@
           "OPA Gatekeeper",
           "Falco",
           "Prometheus / Grafana / Loki",
-          "LiteLLM (AI Gateway)",
+          "LiteLLM (KI-Gateway)",
           "Ollama",
           "pgvector (RAG)",
           "Langfuse (LLMOps)",
@@ -559,10 +559,113 @@
           "Velero",
           "NATS / KEDA",
           "External Secrets Operator",
-          "Ansible / OpenTofu"
+          "Ansible / OpenTofu",
+          "MAAS",
+          "Tailscale",
+          "Cloudflare Tunnel"
         ],
         "link": "https://andrelair-platform.github.io/minicloud-platform-docs/",
-        "repoUrl": "https://github.com/andrelair-platform/minicloud-gitops"
+        "repoUrl": "https://github.com/andrelair-platform/minicloud-gitops",
+        "oneLinePitch": "Eine produktionsreife Private-Cloud-Plattform auf 4 Bare-Metal-ThinkPads — GitOps-geliefert, Zero-Trust-gehärtet, mit KI/ML-Workloads, Enterprise RAG, vollständiger Observability und Supply-Chain-Sicherheit vom Bare Metal bis zum laufenden Container.",
+        "whyItMatters": "Die meisten Kubernetes-Demos laufen auf Managed Cloud mit Kreditkarte. Diese Plattform läuft auf aufbereiteten ThinkPad-Laptops — MAAS Bare-Metal-Provisioning, k3s Cluster-Bootstrap, GitOps-Delivery, Secrets-Management, SSO, Observability, Laufzeitsicherheit, KI/ML-Workloads und Collaboration-Tools, alles aufgebaut und betrieben von einem Ingenieur. Jede Design-Entscheidung ist ein echter Trade-off: Vault Auto-Unseal via AWS KMS weil Operator-Unseal nicht skaliert; Recreate-Rollout-Strategie weil ResourceQuota keinen Rolling-Puffer erlaubt; Restart=always bei cloudflared weil der Tunnel bei Netzwerkausfall sauber beendet und systemd es nicht bemerkt.",
+        "differentiators": [
+          "App-of-Apps GitOps mit strikten AppProject-Kontrollen — jede Cluster-Ressource stammt aus minicloud-gitops; null manuelles kubectl in Produktion; namespaced Applications mit gesperrten sourceRepos und clusterResourceWhitelist",
+          "Vault Auto-Unseal via AWS KMS — Vault-Pods starten ohne Operator-Aktion neu; statische Admin-Passwörter fehlen in jeder Workload-Konfiguration",
+          "OPA Gatekeeper im Deny-Modus mit null Verletzungen — kein Advisory-Modus; NET_RAW-, Capabilities-, Seccomp- und Host-Namespace-Policies cluster-weit durchgesetzt; Workloads müssen konform sein bevor sie Running erreichen",
+          "Enterprise RAG-Pipeline — bge-m3 Embeddings + pgvector HNSW-Index + BM25-Hybridabruf + Cross-Encoder-Reranking + Docling OCR für PDF/Bild-Ingestion; End-to-End unter 400ms",
+          "Vollständige Supply Chain auf jedem Custom-Image — Trivy CRITICAL Exit-Code-1, Cosign keyless (GitHub OIDC → Sigstore Fulcio), syft CycloneDX SBOM als OCI-Referrer, GPG-signierter GitOps-Bump-Commit"
+        ],
+        "architecture": [
+          "MAAS + OpenTofu → Bare-Metal-Provisioning; 4 ThinkPad-Knoten in MAAS eingeschrieben; OpenTofu verwaltet den Maschinen-Lebenszyklus als Infrastructure-as-Code",
+          "Ansible → k3s-Bootstrap, CIS Kubelet-Härtung (config.yaml pro Knoten), kube-bench k3s-cis-1.7-Validierung; Tailscale auf allen Knoten für VPN-Mesh",
+          "ArgoCD App-of-Apps → minicloud-gitops ist die einzige Quelle der Wahrheit; apps/ definiert namespaced Applications; helm-values/ enthält alle Helm-Overrides; services/ enthält Kustomize Base+Overlays für CI/CD-Services",
+          "Vault + ESO → Secrets in Vault gespeichert; External Secrets Operator synchronisiert sie zur Laufzeit als Kubernetes Secrets; AWS KMS Auto-Unseal; keine statischen Credentials in git",
+          "Authentik → OIDC-Provider für alle Plattform-Services; TOTP erzwungen; Abteilungs-Personas; Cloudflare Tunnel + originServerName-Fix für TLS SNI auf IP-basierten Service-URLs",
+          "Longhorn → verteilter Block-Storage auf allen Knoten; swift-mac (MacBook Pro 2012, Ubuntu 22.04) als primärer Storage-Knoten; tägliches Velero-Backup zu MinIO auf dem Controller",
+          "LiteLLM KI-Gateway → Routing zu Groq, OpenAI, Anthropic, Mistral, Gemini und Ollama (phi4-mini ×3); Presidio PII-Maskierung; Valkey-Cache; Langfuse LLMOps-Tracing pro Anfrage",
+          "RAG-Pipeline → rag-ingest Service: Docling OCR → bge-m3 Embeddings → pgvector HNSW Insert; markitdown-proxy für Office/PDF-Konvertierung; BM25-Hybridabruf + Cross-Encoder-Reranking bei Abfrage",
+          "Observability → kube-prometheus-stack (Prometheus + Grafana + Loki); PrometheusRules für Disk/Backup-Alerting; node_exporter auf Controller (Docker + systemd); ControllerDisk-Alerts bei 85%/90%",
+          "Cloudflare Tunnel → öffentliche *.devandre.sbs ohne Cluster-Ingress-Exposition; Tailscale für internen Zugriff und CI (OAuth tag:ci)"
+        ],
+        "repoBlueprint": "MacBook Air (Entwicklung)      MAAS Controller (ThinkPad X390)\ngit push → GitHub             MAAS + OpenTofu (Bare Metal)\n     |                        Ansible → k3s-Bootstrap\n     | Webhook                Tailscale-Endpunkt + NAT\n     v\nminicloud-gitops (ArgoCD App-of-Apps)\n+-- apps/           ArgoCD Applications pro Service\n+-- helm-values/    alle Helm-Overrides\n+-- services/       Kustomize Base+Overlays (dev/staging/prod)\n+-- manifests/      Cluster-Ressourcen (CRDs, RBAC, Policies)\n     |\n     v (ArgoCD reconciles alle 3 Min)\n+--------------------------------------------------+\n|  k3s Cluster — 5 Knoten                         |\n|  set-hog (Control Plane)                        |\n|  fast-skunk, fast-heron, star-kitten, swift-mac  |\n|                                                  |\n|  Secrets:   Vault (AWS KMS Auto-Unseal) + ESO   |\n|  Identität: Authentik OIDC + TOTP               |\n|  Ingress:   nginx-ingress + cert-manager         |\n|  Storage:   Longhorn (verteilt)                 |\n|  Sicherheit:Gatekeeper + Falco + NetworkPolicy  |\n|  Observ:    Prometheus + Grafana + Loki          |\n|  KI/ML:     LiteLLM → Groq/OpenAI/Ollama        |\n|             RAG: rag-ingest + pgvector + bge-m3  |\n|  Plattform: Backstage IDP + Plane CE + Harbor   |\n|  Collab:    Nextcloud + OnlyOffice + Vaultwarden |\n+--------------------------------------------------+\n     |\n  Tailscale Mesh (intern — 100.x.x.x)\n  Cloudflare Tunnel (öffentlich *.devandre.sbs)",
+        "atsKeywords": [
+          "Kubernetes",
+          "k3s",
+          "Platform Engineering",
+          "GitOps",
+          "ArgoCD",
+          "Helm",
+          "Kustomize",
+          "HashiCorp Vault",
+          "OPA Gatekeeper",
+          "Falco",
+          "Prometheus",
+          "Grafana",
+          "Loki",
+          "LiteLLM",
+          "Ollama",
+          "pgvector",
+          "RAG",
+          "Cosign",
+          "Trivy",
+          "SBOM",
+          "Ansible",
+          "OpenTofu",
+          "MAAS",
+          "Longhorn",
+          "Authentik OIDC",
+          "Tailscale",
+          "Cloudflare",
+          "Bare Metal",
+          "Private Cloud",
+          "Zero Trust"
+        ],
+        "scope": [
+          "Phase 0–5 — Fundament: MAAS Bare-Metal-Provisioning von 4 ThinkPad-Knoten; k3s Cluster-Bootstrap via Ansible; ArgoCD App-of-Apps-Struktur in minicloud-gitops",
+          "Phase 6–15 — Core-Plattform: Vault + ESO Secrets-Management (AWS KMS Auto-Unseal); Authentik SSO/OIDC mit TOTP; Harbor private Registry; Longhorn verteilter Storage; TLS cert-manager + nip.io",
+          "Phase 16–25 — Observability + Sicherheit: kube-prometheus-stack (Prometheus + Grafana + Loki); OPA Gatekeeper Admission Policies im Deny-Modus; Falco Laufzeitsicherheit; CIS kube-bench k3s-1.7-Härtung",
+          "Phase 26–35 — KI/ML-Schicht: LiteLLM KI-Gateway mit Cloud- und lokalen LLM-Providern; Presidio PII/DLP-Guardrails; RAG-Pipeline (bge-m3 + pgvector HNSW + BM25 + Cross-Encoder + Docling OCR); Backstage IDP",
+          "Phase 36–45 — Betrieb: tägliches Velero-Backup zu MinIO (ClickHouse PV itemOperationTimeout-Fix); Plane CE Projektmanagement; minicloud-plane Go-Service Level 4-Integration; Backstage-Katalog + Plugins",
+          "Phase 46–70+ — Reife: VPA Auto-Scaling; system-upgrade-controller (Zero-Downtime k3s-Upgrades); Argo Rollouts Canary (platform-demo); Backstage Software Templates Golden Path; TechDocs; Supply-Chain-Härtung aller Repos"
+        ],
+        "testPlan": [
+          "Regressionssuite: vollständige automatisierte Checks — OIDC-Login, Katalog-Entity-Anzahl, KI-Gateway-Health, RAG-Ingest-Pipeline, Gatekeeper-Verletzungsanzahl, Velero-Backup-Status, Cloudflare-Tunnel-Erreichbarkeit",
+          "kube-bench k3s-cis-1.7: 16/16 PASS auf allen Worker-Knoten; kubelet config.yaml via Ansible CIS-Härtungs-Playbook deployed",
+          "Gatekeeper: alle Admission Policies im Deny-Modus, null Verletzungen; validiert via kubectl get constraint -A und Prüfung von .status.totalViolations",
+          "Velero-Backup: täglicher Schedule aktiv; ClickHouse PV innerhalb 8h itemOperationTimeout gesichert; Wiederherstellung auf Nicht-Produktions-Namespace getestet",
+          "OIDC-Rauchtest: alle öffentlichen *.devandre.sbs Services leiten zur Authentik-Anmeldeseite weiter, akzeptieren TOTP, und geben authentifizierte Session zurück",
+          "Supply Chain: alle Custom-Images haben verifizierbare Cosign-Signatur und syft SBOM; GPG-Signatur auf jedem GitOps-Bump-Commit",
+          "Cloudflare Tunnel: alle öffentlichen URLs ohne Tailscale erreichbar; cloudflared systemd-Service mit Restart=always erholt sich innerhalb von 5s nach Netzwerkausfall"
+        ],
+        "interviewTalkingPoints": [
+          "Ziel: Vault automatisch nach einem Knotenstart unsiegeln — in einem Bare-Metal-Home-Lab ohne Operator um 3 Uhr morgens. Wir konfigurierten Vault mit einem einzigen Unseal-Schlüssel. Nach dem ersten ungeplanten Stromausfall blieb jeder Vault-abhängige Workload stundenlang kaputt. Herausforderung: Operator-Unseal skaliert nicht und widerspricht dem Zweck eines selbstheilenden Clusters. Lösung: AWS KMS Auto-Unseal. Der Vault-Pod ruft KMS beim Start auf, der Unseal-Schlüssel berührt nie die Festplatte, und das gesamte Cluster erholt sich von einem Stromausfall in unter 2 Minuten ohne menschlichen Eingriff.",
+          "Ziel: ArgoCD daran hindern, bei Harbor bei jedem Sync-Zyklus einen Rolling Restart auszulösen. Nach Hinzufügen von ignoreDifferences für Harbors selbst-signierte Zertifikatsfelder dauerte die Schleife an. Herausforderung: Harbors Helm-Templates verwenden genSelfSignedCert und randAlphaNum — diese generieren bei jedem Render einen neuen Wert. Mit ServerSideApply=true in ArgoCD-syncOptions werden ignoreDifferences-Einträge NICHT aus dem Apply-Payload entfernt. Lösung: ServerSideApply=true aus der Harbor ArgoCD Application entfernen.",
+          "Ziel: ein Pod-Label (backstage.io/kubernetes-id) zu einem bestehenden Deployment hinzufügen. Wir haben die Label-Änderung committed, ArgoCD synchronisiert, und das Rollout blockierte sofort — neue RS-Pods in FailedCreate mit 'admission webhook denied: NET_RAW'. Das alte Pod lief weiter. Herausforderung: das Deployment ist älter als die K8sBlockNetRaw Gatekeeper-Constraint. Lösung: immer capabilities.drop: [NET_RAW] im selben Commit hinzufügen wie jede andere Deployment-Änderung bei Pre-Constraint-Workloads.",
+          "Ziel: den Cloudflare Tunnel dauerhaft am Laufen halten. Der Tunnel war als systemd-Service mit Restart=on-failure konfiguriert. Nach einem 1,5-tägigen Ausfall fanden wir cloudflared im Journal als 'exited with code 0' — alle 4 Tunnelverbindungen waren gleichzeitig bei einem kurzen Netzwerkausfall abgebrochen. Systemd interpretierte Exit-Code 0 als sauberes Herunterfahren und startete den Prozess nie neu. Lösung: Restart=always + StartLimitIntervalSec=0.",
+          "Ziel: alle 5 k3s-Knoten ohne Downtime und ohne manuelles SSH aktualisieren. Wir verwendeten system-upgrade-controller mit zwei Plans (k3s-server und k3s-agent). Herausforderung: Veleros upgradeCRDs Helm-Hook-Job terminierte mit Exit 0, aber k3s v1.36 befüllte status.succeeded nie — uncountedTerminatedPods blieb leer und blockierte jeden ArgoCD-Sync unbegrenzt. Lösung: upgradeCRDs: false in velero-values.yaml und skipCrds: true in der ArgoCD Application."
+        ],
+        "liveEndpoints": [
+          {
+            "label": "Homer — Plattform-Dashboard mit allen Service-Links",
+            "command": "https://homer.devandre.sbs",
+            "url": "https://homer.devandre.sbs"
+          },
+          {
+            "label": "ArgoCD — GitOps-Reconciliation-Status aller Anwendungen",
+            "command": "https://argocd.devandre.sbs",
+            "url": "https://argocd.devandre.sbs"
+          },
+          {
+            "label": "Grafana — Plattform-Observability-Dashboards",
+            "command": "https://grafana.devandre.sbs",
+            "url": "https://grafana.devandre.sbs"
+          },
+          {
+            "label": "Plattform-Docs — Docusaurus Phasen-Runbooks",
+            "command": "https://andrelair-platform.github.io/minicloud-platform-docs/",
+            "url": "https://andrelair-platform.github.io/minicloud-platform-docs/"
+          }
+        ]
       },
       {
         "title": "phi3-financial — Enterprise PromptOps Pipeline",

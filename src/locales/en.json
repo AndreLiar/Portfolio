@@ -552,16 +552,16 @@
     "projects": [
       {
         "title": "Minicloud Platform",
-        "purpose": "Production-grade enterprise Kubernetes platform built on 4 bare-metal ThinkPad laptops to demonstrate the full private-cloud engineering lifecycle. Deployed 54+ workloads via ArgoCD GitOps: Vault secrets management, Authentik SSO/OIDC, Harbor private registry, Falco runtime security, Prometheus/Grafana/Loki observability stack, and an enterprise AI Gateway (LiteLLM + Ollama) with multi-provider routing, PII/DLP guardrails, and a full RAG pipeline. Hardened with zero-trust NetworkPolicy across all 23 namespaces and supply-chain security (cosign, SBOM, GPG-signed commits).",
-        "role": "Platform Engineer & Solutions Architect. Designed the enterprise GitOps repository structure (app-of-apps pattern, Kustomize Combo 1 base+overlays, 3-branch CI promotion flow, AppProject with locked sourceRepos and clusterResourceWhitelist). Built the zero-trust network topology, the AI Gateway with 8 cloud/local providers and Presidio PII guardrails, the RAG pipeline (bge-m3 + pgvector HNSW + hybrid BM25 + cross-encoder re-ranking + Docling OCR), and automated 62 regression checks covering the full platform.",
-        "impact": "62 automated regression checks continuously green. 9/9 OPA Gatekeeper admission policies in deny mode with 0 violations. Zero-trust NetworkPolicy enforced across all 23 namespaces. Vault auto-unseal via AWS KMS. Enterprise RAG with sub-400ms embedding latency and <1ms HNSW vector scan. AI Gateway routing 7 providers with circuit-breaker, per-department key governance, and Langfuse LLMOps tracing.",
+        "purpose": "Production-grade enterprise Kubernetes platform built on 4 bare-metal ThinkPad laptops to demonstrate the full private-cloud engineering lifecycle. GitOps-delivered workloads spanning AI/ML, observability, secrets management, SSO/identity, private registry, runtime security, collaboration tools, and platform services — all via ArgoCD app-of-apps. Hardened with zero-trust NetworkPolicy, OPA Gatekeeper admission control in deny mode, and supply-chain security (Cosign, SBOM, GPG-signed commits).",
+        "role": "Platform Engineer & Solutions Architect. Designed the enterprise GitOps repository structure (app-of-apps pattern, Kustomize Combo 1 base+overlays, 3-branch CI promotion flow, AppProject with locked sourceRepos and clusterResourceWhitelist). Built the zero-trust network topology, the AI Gateway with cloud and local LLM providers (Groq, OpenAI, Anthropic, Mistral, Gemini, Ollama) and Presidio PII guardrails, the RAG pipeline (bge-m3 + pgvector HNSW + hybrid BM25 + cross-encoder re-ranking + Docling OCR), and the full regression suite covering the entire platform.",
+        "impact": "Full automated regression suite continuously green. All OPA Gatekeeper admission policies enforce deny mode with zero violations. Zero-trust NetworkPolicy enforced across all platform namespaces. Vault auto-unseal via AWS KMS — pods restart without operator intervention. Enterprise RAG with sub-400ms embedding latency and sub-1ms HNSW vector scan. AI Gateway routing cloud and local LLM providers with circuit-breaker, per-department key governance, and Langfuse LLMOps tracing.",
         "features": [
           "Enterprise GitOps: app-of-apps ArgoCD pattern, Kustomize base+overlays (dev/staging/prod), CI promotes via kustomize edit set image to dev only — PR-gated staging and prod, AppProject with locked sourceRepos and explicit namespace/resource whitelist",
-          "9/9 OPA Gatekeeper admission policies — deny mode, 0 violations",
-          "Zero-trust NetworkPolicy across 23 Kubernetes namespaces",
-          "AI Gateway: 8 providers, PII/DLP guardrails, cloud fallback chain, Valkey cache",
-          "Enterprise RAG: bge-m3 + pgvector HNSW + BM25 hybrid search + Docling OCR",
-          "Full supply chain: cosign signing, SBOM, GPG commits, branch protection, Dependabot"
+          "All OPA Gatekeeper admission policies in deny mode — zero violations — covering NET_RAW, capabilities, seccomp, privilege escalation, and host namespace access",
+          "Zero-trust NetworkPolicy enforced across all platform namespaces — services may only reach declared upstreams",
+          "AI Gateway: cloud and local LLM providers (Groq, OpenAI, Anthropic, Mistral, Gemini, Ollama), PII/DLP guardrails, cloud fallback chain, Valkey cache",
+          "Enterprise RAG: bge-m3 + pgvector HNSW + BM25 hybrid search + cross-encoder re-ranking + Docling OCR",
+          "Full supply chain: Cosign keyless signing, syft CycloneDX SBOM, Trivy CVE scan, GPG commits, branch protection, Dependabot"
         ],
         "stack": [
           "k3s (Kubernetes)",
@@ -582,10 +582,113 @@
           "Velero",
           "NATS / KEDA",
           "External Secrets Operator",
-          "Ansible / OpenTofu"
+          "Ansible / OpenTofu",
+          "MAAS",
+          "Tailscale",
+          "Cloudflare Tunnel"
         ],
         "link": "https://andrelair-platform.github.io/minicloud-platform-docs/",
-        "repoUrl": "https://github.com/andrelair-platform/minicloud-gitops"
+        "repoUrl": "https://github.com/andrelair-platform/minicloud-gitops",
+        "oneLinePitch": "A production private-cloud platform on 4 bare-metal ThinkPads — GitOps-delivered, zero-trust hardened, with AI/ML workloads, enterprise RAG, full observability, and supply-chain security from bare metal to running container.",
+        "whyItMatters": "Most Kubernetes demos run on managed cloud with a credit card. This platform runs on repurposed ThinkPad laptops in a home lab — MAAS bare-metal provisioning, k3s cluster bootstrap, GitOps delivery, secrets management, SSO, observability, runtime security, AI/ML workloads, and collaboration tools all built and operated by one engineer. Every design decision is a real trade-off: Vault auto-unseal via AWS KMS because operator-on-call unseal doesn't scale; Recreate rollout strategy because ResourceQuota doesn't allow a rolling buffer; Restart=always on cloudflared because the tunnel exits clean on a network blip and systemd never notices.",
+        "differentiators": [
+          "App-of-apps GitOps with strict AppProject controls — every cluster resource originates from minicloud-gitops; zero manual kubectl in production; namespaced Applications with locked sourceRepos and clusterResourceWhitelist",
+          "Vault auto-unseal via AWS KMS — Vault pods restart without any operator action; static admin passwords absent from every workload's config",
+          "OPA Gatekeeper in deny mode with zero violations — not advisory mode; NET_RAW, capabilities, seccomp, and host namespace policies enforced cluster-wide; workloads must comply before reaching Running state",
+          "Enterprise RAG pipeline — bge-m3 embeddings + pgvector HNSW index + BM25 hybrid retrieval + cross-encoder re-ranking + Docling OCR for PDF/image ingestion; sub-400ms end-to-end",
+          "Full supply chain on every custom image — Trivy CRITICAL exit-code-1, Cosign keyless (GitHub OIDC → Sigstore Fulcio), syft CycloneDX SBOM as OCI referrer, GPG-signed gitops bump commit"
+        ],
+        "architecture": [
+          "MAAS + OpenTofu → bare metal provisioning; 4 ThinkPad nodes enrolled in MAAS; OpenTofu manages machine lifecycle as infrastructure-as-code",
+          "Ansible → k3s bootstrap, CIS kubelet hardening (config.yaml per node), kube-bench k3s-cis-1.7 validation; Tailscale installed on all nodes for VPN mesh",
+          "ArgoCD app-of-apps → minicloud-gitops is the single source of truth; apps/ defines namespaced Applications; helm-values/ holds all Helm overrides; services/ holds Kustomize base+overlays for CI/CD services",
+          "Vault + ESO → secrets stored in Vault; External Secrets Operator syncs them to Kubernetes Secrets at runtime; AWS KMS auto-unseal; no static credentials in git",
+          "Authentik → OIDC provider for all platform services; TOTP enforced; department personas; Cloudflare Tunnel + originServerName fix for TLS SNI on IP-based service URLs",
+          "Longhorn → distributed block storage across all nodes; swift-mac (MacBook Pro 2012, Ubuntu 22.04) as primary storage node; Velero daily backup to MinIO on controller",
+          "LiteLLM AI Gateway → virtual model routing to Groq, OpenAI, Anthropic, Mistral, Gemini, and Ollama (phi4-mini ×3); Presidio PII masking; Valkey cache; Langfuse LLMOps tracing per request",
+          "RAG pipeline → rag-ingest service: Docling OCR → bge-m3 embeddings → pgvector HNSW insert; markitdown-proxy for Office/PDF conversion; BM25 hybrid retrieval + cross-encoder re-ranking at query time",
+          "Observability → kube-prometheus-stack (Prometheus + Grafana + Loki); PrometheusRules for disk/backup alerting; node_exporter on controller (Docker + systemd); ControllerDisk alerts at 85%/90%",
+          "Cloudflare Tunnel → public *.devandre.sbs without exposing cluster ingress to the internet; Tailscale for internal access and CI (tag:ci OAuth)"
+        ],
+        "repoBlueprint": "MacBook Air (dev)              MAAS Controller (ThinkPad X390)\ngit push → GitHub             MAAS + OpenTofu (bare metal)\n     |                        Ansible → k3s bootstrap\n     | webhook                Tailscale endpoint + NAT\n     v\nminicloud-gitops (ArgoCD app-of-apps)\n+-- apps/           ArgoCD Applications per service\n+-- helm-values/    all Helm overrides (no manual kubectl)\n+-- services/       Kustomize base+overlays (dev/staging/prod)\n+-- manifests/      cluster-wide resources (CRDs, RBAC, policies)\n     |\n     v (ArgoCD reconciles every 3 min)\n+--------------------------------------------------+\n|  k3s cluster — 5 nodes                          |\n|  set-hog (control plane)                        |\n|  fast-skunk, fast-heron, star-kitten, swift-mac  |\n|                                                  |\n|  Secrets:   Vault (AWS KMS auto-unseal) + ESO   |\n|  Identity:  Authentik OIDC + TOTP               |\n|  Ingress:   nginx-ingress + cert-manager         |\n|  Storage:   Longhorn (distributed)              |\n|  Security:  Gatekeeper + Falco + NetworkPolicy  |\n|  Observ:    Prometheus + Grafana + Loki          |\n|  AI/ML:     LiteLLM → Groq/OpenAI/Ollama        |\n|             RAG: rag-ingest + pgvector + bge-m3  |\n|  Platform:  Backstage IDP + Plane CE + Harbor   |\n|  Collab:    Nextcloud + OnlyOffice + Vaultwarden |\n+--------------------------------------------------+\n     |\n  Tailscale mesh (internal — 100.x.x.x)\n  Cloudflare Tunnel (public *.devandre.sbs)",
+        "atsKeywords": [
+          "Kubernetes",
+          "k3s",
+          "Platform Engineering",
+          "GitOps",
+          "ArgoCD",
+          "Helm",
+          "Kustomize",
+          "HashiCorp Vault",
+          "OPA Gatekeeper",
+          "Falco",
+          "Prometheus",
+          "Grafana",
+          "Loki",
+          "LiteLLM",
+          "Ollama",
+          "pgvector",
+          "RAG",
+          "Cosign",
+          "Trivy",
+          "SBOM",
+          "Ansible",
+          "OpenTofu",
+          "MAAS",
+          "Longhorn",
+          "Authentik OIDC",
+          "Tailscale",
+          "Cloudflare",
+          "Bare Metal",
+          "Private Cloud",
+          "Zero Trust"
+        ],
+        "scope": [
+          "Phase 0–5 — Foundation: MAAS bare-metal provisioning of 4 ThinkPad nodes; k3s cluster bootstrap via Ansible; ArgoCD app-of-apps structure in minicloud-gitops; Helm chart deployment pipeline",
+          "Phase 6–15 — Core platform: Vault + ESO secrets management (AWS KMS auto-unseal); Authentik SSO/OIDC with TOTP; Harbor private registry; Longhorn distributed storage; cert-manager + nip.io TLS",
+          "Phase 16–25 — Observability + security: kube-prometheus-stack (Prometheus + Grafana + Loki); OPA Gatekeeper admission policies in deny mode; Falco runtime security; kube-bench CIS k3s-1.7 hardening",
+          "Phase 26–35 — AI/ML layer: LiteLLM AI Gateway with cloud and local LLM providers; Presidio PII/DLP guardrails; RAG pipeline (bge-m3 + pgvector HNSW + BM25 + cross-encoder + Docling OCR); Backstage IDP",
+          "Phase 36–45 — Operations: Velero daily backup to MinIO (ClickHouse PV itemOperationTimeout fix); Plane CE project management; minicloud-plane Go service Level 4 integration; Backstage catalog + plugins",
+          "Phase 46–70+ — Maturity: VPA auto-scaling; system-upgrade-controller (zero-downtime k3s upgrades); Argo Rollouts canary (platform-demo); Backstage Software Templates golden path; TechDocs; supply-chain hardening across all repos"
+        ],
+        "testPlan": [
+          "Regression suite: full automated regression checks — OIDC login, catalog entity count, AI Gateway health, RAG ingest pipeline, Gatekeeper violation count, Velero backup status, Cloudflare Tunnel reachability",
+          "kube-bench k3s-cis-1.7: 16/16 PASS on all worker nodes; kubelet config.yaml deployed via Ansible CIS hardening playbook",
+          "Gatekeeper: all admission policies in deny mode, zero violations; validated by kubectl get constraint -A and checking .status.totalViolations",
+          "Velero backup: daily schedule running; ClickHouse PV backed up within 8h itemOperationTimeout; restore tested on non-production namespace",
+          "OIDC smoke test: all public *.devandre.sbs services redirect to Authentik login, accept TOTP, and return authenticated session",
+          "Supply chain: all custom images have Cosign signature and syft SBOM verifiable via cosign verify and oras referrers; GPG signature on every gitops bump commit",
+          "Cloudflare Tunnel: all public URLs reachable without Tailscale; cloudflared systemd service with Restart=always recovers within 5s of network blip"
+        ],
+        "interviewTalkingPoints": [
+          "Goal: unseal Vault automatically after a node restart — on a bare-metal home lab with no operator on call at 3am. We configured Vault with a single unseal key and sealed it at rest. After the first unplanned power failure, every Vault-dependent workload stayed broken for hours because the pod restarted but the unseal endpoint needed a human. Challenge: operator-on-call unseal doesn't scale and defeats the point of a self-healing cluster. Solution: AWS KMS auto-unseal. The Vault pod calls KMS on startup, the unseal key never touches disk, and the entire cluster recovers from a power failure in under 2 minutes without any human intervention.",
+          "Goal: get ArgoCD to stop triggering a rolling restart on Harbor every sync cycle. After adding ignoreDifferences for Harbor's self-signed cert fields, the loop continued. Challenge: Harbor's Helm templates use genSelfSignedCert and randAlphaNum — these generate a new value on every render. With ServerSideApply=true in ArgoCD's syncOptions, ignoreDifferences entries are NOT stripped from the apply payload — ArgoCD sees a diff, self-heals, generates a new RS, triggers a PVC Multi-Attach conflict on RWO volumes, and the loop continues. Solution: remove ServerSideApply=true from the Harbor ArgoCD Application. Client-side 3-way merge correctly strips ignoreDifferences fields, breaking the loop.",
+          "Goal: add a pod label (backstage.io/kubernetes-id) to a pre-existing deployment so the Backstage Kubernetes tab could discover it. We committed the label change, ArgoCD synced, and the rollout immediately stalled — new RS pods stuck in FailedCreate with 'admission webhook denied: must not use or retain the NET_RAW capability'. The old pod kept running, the new RS could not create. Challenge: the deployment predates the K8sBlockNetRaw Gatekeeper constraint. The old pod passed admission because it was created before the policy existed. Any new pod (including rollout pods) must comply. Adding the label alone triggered the rollout without adding the required securityContext. Solution: always add capabilities.drop: [NET_RAW] to the container spec in the same commit as any other deployment change on pre-constraint workloads.",
+          "Goal: keep the Cloudflare Tunnel running continuously so public *.devandre.sbs URLs stay reachable. The tunnel was configured as a systemd service with Restart=on-failure. After a 1.5-day outage we found cloudflared in the journal as 'exited with code 0' — all 4 tunnel connections had dropped simultaneously on a brief network blip. Systemd interpreted exit code 0 as a clean shutdown and never restarted the process. Challenge: on-failure only restarts when the exit code is non-zero; cloudflared exits cleanly on connection loss. Solution: Restart=always + StartLimitIntervalSec=0. The service now recovers within 5 seconds of any network event regardless of exit code.",
+          "Goal: upgrade all 5 k3s nodes from v1.33 to v1.36 with zero downtime and no manual SSH. We used system-upgrade-controller: two Plans (k3s-server and k3s-agent) targeting the new version. The server plan ran first with concurrency 1 and cordon; the agent plan waited for the server plan to complete via a prepare job. Challenge: Velero's upgradeCRDs Helm hook created a Job whose pod completed with exit 0, but k3s v1.36 never populated status.succeeded — the uncountedTerminatedPods field stayed empty, blocking every ArgoCD sync indefinitely. Solution: set upgradeCRDs: false in velero-values.yaml (CRDs were already current) and skipCrds: true in the ArgoCD Application. Re-enable upgradeCRDs on the next actual chart version bump."
+        ],
+        "liveEndpoints": [
+          {
+            "label": "Homer — platform dashboard with all service links",
+            "command": "https://homer.devandre.sbs",
+            "url": "https://homer.devandre.sbs"
+          },
+          {
+            "label": "ArgoCD — GitOps reconciliation state for all applications",
+            "command": "https://argocd.devandre.sbs",
+            "url": "https://argocd.devandre.sbs"
+          },
+          {
+            "label": "Grafana — platform observability dashboards",
+            "command": "https://grafana.devandre.sbs",
+            "url": "https://grafana.devandre.sbs"
+          },
+          {
+            "label": "Platform Docs — Docusaurus phase runbooks",
+            "command": "https://andrelair-platform.github.io/minicloud-platform-docs/",
+            "url": "https://andrelair-platform.github.io/minicloud-platform-docs/"
+          }
+        ]
       },
       {
         "title": "phi3-financial — Enterprise PromptOps Pipeline",
