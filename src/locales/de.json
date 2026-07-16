@@ -907,9 +907,9 @@
         "title": "Backstage Internal Developer Portal",
         "purpose": "Produktionsreifes internes Entwicklerportal auf Basis von Backstage 1.52, bereitgestellt auf einem selbst gehosteten Kubernetes-Cluster mit GitOps-Delivery, Authentik OIDC SSO, Software Templates, TechDocs und einem benutzerdefinierten Plane Issues Plugin.",
         "role": "Platform Engineer — Entwurf und Implementierung des benutzerdefinierten Frontend-Systems, OIDC-Integration, Tech-Radar-Modul, Software-Templates-Scaffolder, Plane-Issues-Plugin, TechDocs-Integration, CI/CD-Pipeline und GitOps-Delivery via ArgoCD.",
-        "impact": "Zentrale Übersicht für 19 Plattform-Services. Vollständige Swagger-UI pro API. Live-Kubernetes-Pod-Status pro Komponente. Tech Radar mit 39 Einträgen. Golden-Path Software Template erstellt Repo + CI + GitOps-Manifest + ArgoCD-App in einem Klick. Integrierte TechDocs pro Service. Live Plane-Issues-Tab pro Katalog-Entity. Vollständig automatisiertes GitOps — keine manuellen Schritte nach git push.",
+        "impact": "Zentrale Übersicht für alle Cluster-Services — KI/ML-Workloads (RAG-Pipeline, KI-Gateway, phi3-financial, Open WebUI), Plattform-Tools (IDP, Projekt-Tracker, Passwort-Manager), CI/CD-Services, Infrastruktur (Nextcloud, OnlyOffice) und APIs. Vollständige Swagger-UI pro API. Live-Kubernetes-Pod-Status pro Komponente. Tech Radar mit 39 Einträgen. Golden-Path Software Template erstellt Repo + CI + GitOps-Manifest + ArgoCD-App in einem Klick. Integrierte TechDocs. Live Plane-Issues-Tab. Vollständig automatisiertes GitOps.",
         "features": [
-          "Software Catalog — 19 Komponenten, APIs und Tools mit Owner, System, Lebenszyklus und Tag-Metadaten",
+          "Software Catalog — alle Cluster-Workloads verfolgt: KI/ML-Services (RAG-Pipeline, KI-Gateway, Open WebUI, phi3-financial), Plattform-Tools (IDP, Projekt-Tracker, Passwort-Manager), CI/CD-Services (platform-demo, ktayl-solution-web), Infrastruktur (Nextcloud, OnlyOffice) und APIs — mit Owner, System, Lebenszyklus und Tag-Metadaten",
           "API Docs — Inline Swagger/OpenAPI-UI für jede registrierte API-Entity",
           "Kubernetes Live-Ansicht — Echtzeit-Pod-Anzahl und Fehlerstatus pro Komponente aus dem k3s-Cluster",
           "Benutzerdefinierter Tech Radar — 4-Quadranten-Radar (Plattformen, KI & ML, Sicherheit, Sprachen) mit 39 Einträgen, live aus minicloud-gitops ohne Rebuild",
@@ -938,7 +938,7 @@
         ],
         "link": "https://backstage.devandre.sbs",
         "repoUrl": "https://github.com/andrelair-platform/minicloud-backstage",
-        "oneLinePitch": "Ein produktionsreifes IDP auf Kubernetes — zentrale Übersicht für 19 Services, Live-API-Docs, Kubernetes-Status, Software Templates, TechDocs, Plane Issues und ein benutzerdefinierter Tech Radar, alles via GitOps bereitgestellt.",
+        "oneLinePitch": "Ein produktionsreifes IDP auf Kubernetes — zentrale Übersicht für alle Cluster-Services, Live-API-Docs, Kubernetes-Status, Software Templates, TechDocs, Plane Issues und ein benutzerdefinierter Tech Radar, alles via GitOps bereitgestellt.",
         "whyItMatters": "Mit wachsender Plattformkomplexität verbringen Entwickler mehr Zeit damit, Dinge zu finden als zu bauen. Backstage zentralisiert Service-Ownership, API-Verträge, Live-Cluster-Status, Aufgaben-Tracking und Dokumentation in einem authentifizierten Portal — macht die Plattform selbst-dokumentierend und gibt jedem neuen Service vom ersten Tag an einen Golden Path.",
         "differentiators": [
           "Benutzerdefiniertes Tech-Radar-Modul — npm-Plugin wurde zur Laufzeit durch einen verschachtelten frontend-plugin-api Versionskonflikt lautlos verworfen; als workspace-lokales createFrontendPlugin neu aufgebaut; Inhalt live aus minicloud-gitops ohne Rebuild",
@@ -958,7 +958,7 @@
           "CI: yarn build:backend → Docker → Harbor (Tailscale) → Trivy → cosign sign → syft SBOM → GPG GitOps Bump",
           "GitOps: ArgoCD Recreate-Strategie (vermeidet Rolling-Update + ResourceQuota-Deadlock mit Einzelreplikat)"
         ],
-        "repoBlueprint": "GitHub Actions CI\n  yarn build → Docker → Harbor\n  → Trivy scan → cosign sign\n  → syft SBOM (OCI referrer)\n  → GPG gitops bump commit\n         |\n         v (ArgoCD webhook)\n  +----------------------------------------------+\n  |  Backstage Pod (k3s, backstage namespace)    |\n  |                                              |\n  |  Frontend (React / createApp)                |\n  |  +-- Software Catalog (19 entities)          |\n  |  +-- API Docs (Swagger UI per API entity)    |\n  |  +-- Kubernetes tab (live k3s pod status)    |\n  |  +-- Tech Radar (custom plugin, live JSON)   |\n  |  +-- TechDocs (mkdocs-techdocs-core)         |\n  |  +-- Software Templates (go-service)         |\n  |  +-- Plane Issues (@internal plugin)         |\n  |                                              |\n  |  Backend (Node 24)                           |\n  |  +-- catalog / auth / search / kubernetes    |\n  |  +-- proxy /minicloud-plane                  |\n  |  +-- techdocs local builder                 |\n  |                                              |\n  |  PostgreSQL (Bitnami subchart, Longhorn PVC) |\n  +----------------------------------------------+\n         |\n  Authentik OIDC (auth.devandre.sbs)\n  minicloud-plane API (minicloud-plane-dev ns)\n  minicloud k3s cluster (Kubernetes tab)\n  minicloud-gitops (tech-radar.json live)\n  Plane CE (plane.devandre.sbs)",
+        "repoBlueprint": "GitHub Actions CI\n  yarn build → Docker → Harbor\n  → Trivy scan → cosign sign\n  → syft SBOM (OCI referrer)\n  → GPG gitops bump commit\n         |\n         v (ArgoCD webhook)\n  +----------------------------------------------+\n  |  Backstage Pod (k3s, backstage namespace)    |\n  |                                              |\n  |  Frontend (React / createApp)                |\n  |  +-- Software Catalog (all cluster services)          |\n  |  +-- API Docs (Swagger UI per API entity)    |\n  |  +-- Kubernetes tab (live k3s pod status)    |\n  |  +-- Tech Radar (custom plugin, live JSON)   |\n  |  +-- TechDocs (mkdocs-techdocs-core)         |\n  |  +-- Software Templates (go-service)         |\n  |  +-- Plane Issues (@internal plugin)         |\n  |                                              |\n  |  Backend (Node 24)                           |\n  |  +-- catalog / auth / search / kubernetes    |\n  |  +-- proxy /minicloud-plane                  |\n  |  +-- techdocs local builder                 |\n  |                                              |\n  |  PostgreSQL (Bitnami subchart, Longhorn PVC) |\n  +----------------------------------------------+\n         |\n  Authentik OIDC (auth.devandre.sbs)\n  minicloud-plane API (minicloud-plane-dev ns)\n  minicloud k3s cluster (Kubernetes tab)\n  minicloud-gitops (tech-radar.json live)\n  Plane CE (plane.devandre.sbs)",
         "atsKeywords": [
           "Internes Entwicklerportal",
           "IDP",
@@ -995,7 +995,7 @@
         ],
         "testPlan": [
           "OIDC-Login-Rauchtest: Navigation zu backstage.devandre.sbs → Sign In → Authentik → leitet als authentifizierter Benutzer zum Katalog weiter",
-          "Entity-Anzahl: 19 Komponenten bestätigt; Anzahl im Software-Catalog-Header sichtbar",
+          "Entity-Anzahl: Anzahl im Software-Catalog-Header sichtbar; gegen bn_backstage DB-Anzahl im Backstage-Pod validiert",
           "API Docs Render-Test: Katalog → rag-ingest-api → DEFINITION Tab → Swagger UI lädt GET /health, GET /ready, POST /ingest",
           "Kubernetes Live-Tab: Katalog → rag-ingest → KUBERNETES Tab → 1 Pod Running, 0 Fehler vom Live-Cluster",
           "Tech-Radar-Render-Test: /tech-radar → 4 Quadranten rendern; tech-radar.json in minicloud-gitops geändert → Radar ohne Image-Rebuild aktualisiert",
@@ -1013,8 +1013,8 @@
         ],
         "screenshots": [
           {
-            "title": "Software Catalog — 19 Komponenten",
-            "caption": "19 eigene Komponenten — Services, Tools und APIs — mit Tags, Lebenszyklus, Owner und System-Metadaten. Die backstage.io/kubernetes-id Annotation verbindet jede Entity mit dem Live-K8s-Tab.",
+            "title": "Software Catalog — Alle Cluster-Services",
+            "caption": "Alle Cluster-Workloads in einer Ansicht — KI/ML-Services, Plattform-Tools, CI/CD-Services, Infrastruktur und APIs — mit Tags, Lebenszyklus, Owner und System-Metadaten. Die backstage.io/kubernetes-id Annotation verbindet jede Entity mit dem Live-K8s-Tab.",
             "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-backstage/main/docs/screenshots/screenshot-catalog.png",
             "link": "https://backstage.devandre.sbs"
           },
@@ -1051,7 +1051,7 @@
         ],
         "liveEndpoints": [
           {
-            "label": "Backstage Software Catalog — Live 19-Komponenten-Katalog",
+            "label": "Backstage Software Catalog — Live Cluster-Katalog",
             "command": "https://backstage.devandre.sbs",
             "url": "https://backstage.devandre.sbs"
           },
