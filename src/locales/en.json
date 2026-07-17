@@ -1304,6 +1304,15 @@
   },
   "blogPosts": [
     {
+      "slug": "llm-quantization-demystified",
+      "title": "LLM Quantization Demystified: Running a 7B Model on a ThinkPad",
+      "description": "A 7B model at FP32 is 28 GB of RAM. On my ThinkPad cluster, impossible. Quantization brought it down to 4.7 GB without losing the quality that matters.",
+      "date": "2026-07-17",
+      "tags": ["ai", "llm", "quantization", "ollama", "inference", "mlops", "bare-metal"],
+      "readTime": 8,
+      "url": "https://andrelair-platform.github.io/minicloud-platform-docs/blog/llm-quantization-demystified"
+    },
+    {
       "slug": "llm-slm-quantization-inference-serving",
       "title": "LLMs on Bare Metal: Quantization, SLMs, and Replacing phi4-mini with Qwen 2.5 7B",
       "description": "How to think about model size, quantization formats (GGUF Q4_K_M), and inference tuning for a CPU-only k3s cluster — and why we replaced phi4-mini with Qwen 2.5 7B.",
