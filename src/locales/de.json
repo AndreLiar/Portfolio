@@ -1281,6 +1281,15 @@
   },
   "blogPosts": [
     {
+      "slug": "llm-model-lifecycle-quantization",
+      "title": "Ein Modell verlässt das Training mit 28 GB. Du lädst es mit 4,7 GB herunter. Wer hat komprimiert?",
+      "description": "Der Zweck der Quantisierung, der vollständige Lebenszyklus eines Open-Source-LLMs und warum Fine-tuned + Quantized der Produktionsstandard ist.",
+      "date": "2026-07-17",
+      "tags": ["ai", "llm", "quantization", "ollama", "fine-tuning", "mlops", "open-source"],
+      "readTime": 8,
+      "url": "https://andrelair-platform.github.io/minicloud-platform-docs/blog/llm-model-lifecycle-quantization"
+    },
+    {
       "slug": "llm-quantization-demystified",
       "title": "LLM-Quantisierung entmystifiziert: Ein 7B-Modell auf einem ThinkPad betreiben",
       "description": "Ein 7B-Modell in FP32 benötigt 28 GB RAM. Auf meinem ThinkPad-Cluster unmöglich. Quantisierung hat es auf 4,7 GB reduziert, ohne die wichtige Qualität zu opfern.",

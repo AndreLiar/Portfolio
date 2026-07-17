@@ -1207,6 +1207,15 @@
   },
   "blogPosts": [
     {
+      "slug": "llm-model-lifecycle-quantization",
+      "title": "Un modèle sort de l'entraînement à 28 Go. Tu le télécharges à 4.7 Go. Qui a fait la compression ?",
+      "description": "Le but de la quantization, le cycle de vie complet d'un LLM open-source (labo → communauté → Ollama → cluster), et pourquoi fine-tuned + quantisé est le standard de production.",
+      "date": "2026-07-17",
+      "tags": ["ai", "llm", "quantization", "ollama", "fine-tuning", "mlops", "open-source"],
+      "readTime": 8,
+      "url": "https://andrelair-platform.github.io/minicloud-platform-docs/blog/llm-model-lifecycle-quantization"
+    },
+    {
       "slug": "llm-quantization-demystified",
       "title": "La quantization LLM démystifiée : faire tourner un 7B sur un ThinkPad",
       "description": "Un 7B en FP32 c'est 28 Go. Sur mon cluster ThinkPad, impossible. La quantization m'a permis de descendre à 4.7 Go sans perdre la qualité qui compte.",
