@@ -1207,6 +1207,15 @@
   },
   "blogPosts": [
     {
+      "slug": "llm-quantization-demystified",
+      "title": "La quantization LLM démystifiée : faire tourner un 7B sur un ThinkPad",
+      "description": "Un 7B en FP32 c'est 28 Go. Sur mon cluster ThinkPad, impossible. La quantization m'a permis de descendre à 4.7 Go sans perdre la qualité qui compte.",
+      "date": "2026-07-17",
+      "tags": ["ai", "llm", "quantization", "ollama", "inference", "mlops", "bare-metal"],
+      "readTime": 8,
+      "url": "https://andrelair-platform.github.io/minicloud-platform-docs/blog/llm-quantization-demystified"
+    },
+    {
       "slug": "llm-slm-quantization-inference-serving",
       "title": "LLMs sur bare metal : quantization, SLMs et remplacement de phi4-mini par Qwen 2.5 7B",
       "description": "Comment raisonner sur la taille des modèles, les formats de quantization (GGUF Q4_K_M) et le tuning d'inférence pour un cluster k3s CPU-only — et pourquoi on a remplacé phi4-mini par Qwen 2.5 7B.",
