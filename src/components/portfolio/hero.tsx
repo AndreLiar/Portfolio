@@ -52,17 +52,15 @@ export function Hero({ heroData, lang = "en" }: { heroData: any; lang?: string }
           </span>
         </h1>
 
-        {/* Title */}
-        <motion.h2
-          className="text-2xl md:text-3xl lg:text-4xl font-bold text-muted-foreground mb-8 leading-relaxed"
-          variants={itemVariants}
-        >
+        {/* Title — static (large above-the-fold text; paints at FCP, not after
+            Framer Motion hydration) */}
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-muted-foreground mb-8 leading-relaxed">
           {heroData.title}{" "}
           <span className="text-primary relative inline-block">
             {heroData.titleHighlight}
             <span className="absolute bottom-1 left-0 w-full h-3 bg-primary/10 -z-10 transform -rotate-1" />
           </span>
-        </motion.h2>
+        </h2>
 
         {/* Location */}
         <motion.div variants={itemVariants} className="flex justify-center items-center gap-2 text-muted-foreground mb-10">
@@ -72,15 +70,17 @@ export function Hero({ heroData, lang = "en" }: { heroData: any; lang?: string }
           <span className="text-base font-medium">{heroData.location}</span>
         </motion.div>
 
-        {/* Main Description */}
-        <motion.div variants={itemVariants} className="max-w-2xl mx-auto mb-12">
+        {/* Main Description — static. This paragraph is the Largest Contentful
+            Paint element; animating it (opacity 0→1 via Framer Motion) delayed
+            LCP until after hydration. Rendered plainly so it paints at FCP. */}
+        <div className="max-w-2xl mx-auto mb-12">
           <p className="text-lg md:text-xl text-foreground leading-relaxed mb-4 font-light">
             {heroData.description1}
           </p>
           <p className="text-base text-muted-foreground leading-relaxed max-w-xl mx-auto">
             {heroData.description2}
           </p>
-        </motion.div>
+        </div>
 
         {/* Metrics band */}
         <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-stretch justify-center max-w-lg mx-auto mb-10 rounded-xl border border-border/50 bg-card/40 backdrop-blur-sm overflow-hidden">
