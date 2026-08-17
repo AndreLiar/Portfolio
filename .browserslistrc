@@ -1,0 +1,12 @@
+# Modern targets — avoids transpiling/polyfilling ES2020+ features
+# (Array.prototype.at/flat/flatMap, Object.fromEntries, String.trimStart, etc.)
+# that all supported browsers already implement natively.
+# Lighthouse: "Reduce legacy JavaScript" (~14 KiB saved).
+> 0.5%
+last 2 versions
+not dead
+not op_mini all
+Chrome >= 91
+Firefox >= 90
+Safari >= 15
+Edge >= 91

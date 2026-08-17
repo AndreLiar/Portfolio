@@ -3,13 +3,13 @@
 ## Performance Optimizations Implemented
 
 ### 1. **Font Optimization**
-- ✅ Consolidated Google Fonts into single request (Inter + Playfair Display)
-- ✅ Added `display=swap` parameter for zero layout shift
-- ✅ Added preload directives to critical fonts
-- ✅ Added DNS prefetch for fonts.googleapis.com
-- ✅ Removed duplicate font loads
+- ✅ Self-hosted via `next/font/google` (Inter + Playfair Display) — no render-blocking request
+- ✅ `display: swap` for zero layout shift (FOIT avoided)
+- ✅ Critical `@font-face` CSS inlined; woff2 served from `/_next/static/media`
+- ✅ Removed the third-party round trip to `fonts.gstatic.com` (~86 KB off critical path)
+- ✅ CSS variables wired into Tailwind (`font-body`, `font-headline`)
 
-**Impact:** Reduces First Contentful Paint (FCP) by ~200-300ms
+**Impact:** Eliminates ~1,980 ms of render-blocking (Lighthouse `render-blocking-insight`); directly improves FCP and LCP
 
 ### 2. **Next.js Configuration Optimizations**
 - ✅ Enabled SWC minification (built-in, faster than Terser)

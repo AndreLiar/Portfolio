@@ -563,12 +563,12 @@ html.dark .admin-layout {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
     color: black !important;
-    font-family: 'Inter', 'Segoe UI', Arial, sans-serif !important;
+    font-family: var(--font-inter), 'Segoe UI', Arial, sans-serif !important;
   }
 
   /* Ensure all text inside resume uses the same font during print */
   #resume-content * {
-    font-family: 'Inter', 'Segoe UI', Arial, sans-serif !important;
+    font-family: var(--font-inter), 'Segoe UI', Arial, sans-serif !important;
   }
 
   /* Remove browser-injected header/footer (date, title, URL) */

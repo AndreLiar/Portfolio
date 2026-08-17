@@ -20,5 +20,10 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)'],
+  // Exclude Next.js internals, static assets, and metadata routes
+  // (manifest.webmanifest, robots.txt, sitemap.xml) so they are not
+  // redirected into the /[lang] prefix and returned as 404.
+  matcher: [
+    '/((?!_next/static|_next/image|favicon.ico|manifest.webmanifest|robots.txt|sitemap.xml|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|txt|xml|webmanifest)$).*)',
+  ],
 }
