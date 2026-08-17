@@ -13,43 +13,18 @@ export default function manifest(): MetadataRoute.Manifest {
     categories: ["business", "productivity", "portfolio"],
     lang: "en",
     dir: "ltr",
+    // Only reference assets that actually exist in /public. Pointing at missing
+    // PNG icons caused a 404 that Lighthouse logs as a console error (Best
+    // Practices → errors-in-console).
     icons: [
       {
-        src: "/icons/icon-192x192.png",
-        sizes: "192x192",
-        type: "image/png",
-        purpose: "any"
-      },
-      {
-        src: "/icons/icon-512x512.png",
-        sizes: "512x512",
-        type: "image/png",
-        purpose: "maskable"
-      },
-      {
         src: "/favicon.ico",
-        sizes: "16x16 32x32",
+        sizes: "16x16 32x32 48x48",
         type: "image/x-icon"
       }
     ],
     related_applications: [],
     prefer_related_applications: false,
-    scope: "/",
-    screenshots: [
-      {
-        src: "/images/screenshot-wide.png",
-        sizes: "1280x720",
-        type: "image/png",
-        form_factor: "wide",
-        label: "Portfolio homepage featuring projects and skills"
-      },
-      {
-        src: "/images/screenshot-narrow.png",
-        sizes: "640x1136",
-        type: "image/png",
-        form_factor: "narrow",
-        label: "Mobile view of the portfolio"
-      }
-    ]
+    scope: "/"
   }
 }

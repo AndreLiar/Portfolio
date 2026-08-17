@@ -5,13 +5,29 @@ import { MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { InteractiveBackground } from "./interactive-background";
 
+// The section stays painted (opacity 1) on first render — it only orchestrates
+// the stagger for its children. Fading the whole section would hide the LCP
+// element (the hero heading) until hydration and tank Largest Contentful Paint.
 const containerVariants = {
-  hidden: { opacity: 0 },
+  hidden: { opacity: 1 },
   visible: {
     opacity: 1,
     transition: {
       staggerChildren: 0.15,
       delayChildren: 0.2,
+    },
+  },
+};
+
+// LCP element (the name/heading): transform-only entrance, no opacity fade, so
+// the largest text is painted on the first frame and LCP fires immediately.
+const nameVariants = {
+  hidden: { y: 20 },
+  visible: {
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
     },
   },
 };
@@ -39,9 +55,9 @@ export function Hero({ heroData, lang = "en" }: { heroData: any; lang?: string }
     >
       <InteractiveBackground />
       <div className="relative z-10 container mx-auto px-4 text-center">
-        {/* Name */}
+        {/* Name (LCP element — painted immediately, transform-only entrance) */}
         <motion.h1
-          variants={itemVariants}
+          variants={nameVariants}
           className="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-6 tracking-tight"
         >
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
