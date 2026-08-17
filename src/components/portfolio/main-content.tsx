@@ -1,7 +1,6 @@
 // src/components/portfolio/main-content.tsx
 'use client';
 
-import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
 import {
@@ -28,7 +27,6 @@ import { TimelineItem } from '@/components/portfolio/timeline-item';
 import { Contact } from '@/components/portfolio/contact';
 import { Footer } from '@/components/portfolio/footer';
 import { Badge } from '@/components/ui/badge';
-import { PageLoader } from '@/components/portfolio/page-loader';
 import { ScrollToTop } from '@/components/portfolio/scroll-to-top';
 import { ICON_VARIANTS } from '@/lib/icon-constants';
 
@@ -100,9 +98,6 @@ const itemVariants = {
 };
 
 export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTags = {} }: MainContentProps) {
-  const [isLoading, setIsLoading] = useState(true);
-  const [showContent, setShowContent] = useState(false);
-
   const { data, Page, Header: headerData, Hero: heroData, ProjectList: projectListData, ProjectCard: projectCardData, ContactForm: contactFormData, Footer: footerData, Testimonials: testimonialsData, LookingFor: lookingForData, AvailableCTA: availableCTAData } = messages;
 
   // Separate technical skills (with subcategories) from soft skills
@@ -124,33 +119,12 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
   const languages = data.languages;
   const interests = data.interests;
 
-  const handleLoadingComplete = () => {
-    setIsLoading(false);
-    setTimeout(() => setShowContent(true), 100);
-  };
-
-  // Get initials for loader
-  const getInitials = (fullName: string) =>
-    fullName
-      .split(' ')
-      .map((word) => word[0])
-      .join('')
-      .toUpperCase()
-      .slice(0, 2);
-
-  if (isLoading) {
-    return (
-      <PageLoader onComplete={handleLoadingComplete} name={getInitials(data.fullName)} />
-    );
-  }
-
+  // The page renders its real content immediately (server-side) so the hero
+  // heading is the Largest Contentful Paint at first paint. The previous
+  // client-only <PageLoader> splash + opacity:0 fade meant nothing was
+  // server-rendered and LCP waited ~2.9s for hydration — tanking Performance.
   return (
-    <motion.div
-      className="flex flex-col min-h-screen bg-background"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: showContent ? 1 : 0, y: showContent ? 0 : 20 }}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
-    >
+    <div className="flex flex-col min-h-screen bg-background">
       {/* Skip to main content link for accessibility */}
       <a href="#main-content" className="skip-to-main" tabIndex={0}>
         Skip to main content
@@ -416,6 +390,6 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
 
       <Footer footerData={footerData} data={data} />
       <ScrollToTop />
-    </motion.div>
+    </div>
   );
 }

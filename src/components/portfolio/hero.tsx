@@ -19,19 +19,6 @@ const containerVariants = {
   },
 };
 
-// LCP element (the name/heading): transform-only entrance, no opacity fade, so
-// the largest text is painted on the first frame and LCP fires immediately.
-const nameVariants = {
-  hidden: { y: 20 },
-  visible: {
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut",
-    },
-  },
-};
-
 const itemVariants = {
   hidden: { y: 20, opacity: 0 },
   visible: {
@@ -55,15 +42,15 @@ export function Hero({ heroData, lang = "en" }: { heroData: any; lang?: string }
     >
       <InteractiveBackground />
       <div className="relative z-10 container mx-auto px-4 text-center">
-        {/* Name (LCP element — painted immediately, transform-only entrance) */}
-        <motion.h1
-          variants={nameVariants}
-          className="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-6 tracking-tight"
-        >
+        {/* Name — LCP element. Rendered as a plain (non-motion) <h1> so it paints
+            at first paint (SSR/FCP) instead of waiting for Framer Motion to
+            hydrate and settle its entrance animation. Animating this element
+            pushed LCP to ~4.5s (2.9s render delay); static, LCP ≈ FCP. */}
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-6 tracking-tight">
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
             {heroData.name}
           </span>
-        </motion.h1>
+        </h1>
 
         {/* Title */}
         <motion.h2
