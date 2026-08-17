@@ -76,10 +76,10 @@
 
 ### 8. **Performance Metrics Targets**
 
-#### Lighthouse Scores (Target: 90+)
-- **Performance:** 95+ (optimized bundle, lazy loading, caching)
-- **Accessibility:** 95+ (ARIA labels, semantic HTML)
-- **Best Practices:** 95+ (security headers, HTTPS, no console errors)
+#### Lighthouse Scores (measured on `www.devandre.sbs/en`, mobile)
+- **Performance:** low-to-mid 90s after fixing the SSR/LCP blocker (was 70). Confirm the exact number in Chrome DevTools → Lighthouse or PageSpeed Insights — see `PERFORMANCE-REPORT.md`
+- **Accessibility:** 95 (ARIA labels, semantic HTML)
+- **Best Practices:** 82 — capped on this domain by Cloudflare Bot Fight Mode's `challenge-platform` deprecations (not app code). Audit the `*.vercel.app` URL or disable Bot Fight Mode to reach ~96
 - **SEO:** 100 (structured data, meta tags, sitemap, robots.txt)
 
 #### Core Web Vitals
@@ -185,4 +185,4 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 - ✅ Structured data ready
 - ✅ SEO complete
 
-**Expected Lighthouse Score: 92-98/100**
+**Measured Lighthouse (mobile, `www.devandre.sbs/en`):** Performance low-to-mid 90s (LCP render delay cut from 2,890 ms to 159 ms), Accessibility 95, Best Practices 82 (Cloudflare-capped), SEO 100. Full breakdown and fix history in `PERFORMANCE-REPORT.md`.

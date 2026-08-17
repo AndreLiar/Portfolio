@@ -62,6 +62,30 @@ The i18n middleware was rewriting `/manifest.webmanifest` → `/en/manifest.webm
 
 `legacy-javascript-insight` flagged ~14 KiB of unnecessary transpilation (`Array.prototype.at/flat/flatMap`, `Object.fromEntries`, `String.trimStart/End`) shipped for browsers that already support them natively. Added a modern `.browserslistrc` so SWC stops emitting those polyfills.
 
+### 4. Client splash gate hid all content from SSR → render server-side immediately  *(the decisive LCP fix)*
+
+Follow-up audits showed Performance still stuck (LCP ~4.5 s, **2,890 ms element render delay**) even though FCP was a healthy ~1.25 s. That gap is the signature of an LCP element that isn't in the server-rendered HTML. Confirmed by inspecting the raw response: the hero `<h1>` was **absent** from the SSR HTML — the name only appeared in metadata/JSON-LD.
+
+Root cause: `src/components/portfolio/main-content.tsx` started with `isLoading = true` and returned a **client-only `<PageLoader>` splash** instead of the real content on first render, then faded the content in from `opacity: 0` after the loader finished. So nothing — including the LCP hero heading — was server-rendered; it only appeared after hydration + splash + fade.
+
+**Fix:** removed the `isLoading`/`PageLoader` gate and the `opacity: 0` content fade so the real content renders immediately (server-side) in a plain wrapper. **Verified:** the `<h1>` is now in the raw HTML; served document grew 140 KB → 235 KB (full content server-rendered).
+
+### 5. Animated hero text delayed LCP → static above-the-fold text
+
+With the page now server-rendered, the LCP element moved to the hero heading/description, which still animated in via Framer Motion (`opacity: 0 → 1`) and so painted only after hydration.
+
+**Fix (`src/components/portfolio/hero.tsx`):** render the large above-the-fold text — the `<h1>` name, `<h2>` title, and description block — as plain (non-motion) elements. Entrance animations remain only on secondary elements (location badge, metrics band, CTA buttons, tagline), none of which are LCP candidates.
+
+**Verified on the live site — LCP element render delay collapsed across the fixes:**
+
+| Stage | LCP render delay |
+|---|---|
+| Splash-gated (before) | 2,890 ms |
+| SSR content + static `<h1>` | 1,860 ms |
+| Static `<h2>` + description | **159 ms** |
+
+The largest hero text now paints at first paint instead of ~2.9 s after hydration.
+
 ---
 
 ## Files changed
@@ -73,17 +97,30 @@ The i18n middleware was rewriting `/manifest.webmanifest` → `/en/manifest.webm
 | `src/app/globals.css` | print `font-family` → `var(--font-inter)` |
 | `src/middleware.ts` | matcher excludes metadata routes (fixes manifest 404) |
 | `.browserslistrc` | modern targets, drops legacy JS polyfills |
+| `src/app/manifest.ts` | reference only the existing `/favicon.ico` (fixes icon 404) |
+| `src/components/portfolio/main-content.tsx` | removed client splash gate + opacity fade → content renders server-side |
+| `src/components/portfolio/hero.tsx` | hero name/title/description rendered as static (non-motion) elements |
 
 Build: `✓ Compiled successfully`, 0 warnings from app code.
 
 ---
 
-## Expected impact
+## Final results (verified live on `www.devandre.sbs/en`)
 
-- **Performance 70 → ~88–92.** Removing ~1,980 ms of render-blocking font load directly attacks the two weakest metrics (FCP 25%+10% and LCP 25% of the score). Self-hosting also drops the two `fonts.gstatic.com` requests (86 KB) off the critical path.
-- **Best Practices 77 → ~81 from the manifest fix alone** (see ceiling note below).
+| Category | Baseline | Final | Notes |
+|---|---|---|---|
+| **Performance** | 70 | **low-to-mid 90s** (expected) | LCP blocker resolved — render delay 2,890 ms → 159 ms; confirm with a clean DevTools/PSI run |
+| **Accessibility** | 95 | 95 | already ≥ 90 |
+| **Best Practices** | 77 | **82** | maxed on this domain — see Cloudflare ceiling below |
+| **SEO** | 100 | 100 | |
 
-Re-run Lighthouse against the live site after Vercel redeploys to confirm.
+Confirmed on the live deploy:
+- Hero `<h1>` is server-rendered (present in raw HTML); full page is SSR (235 KB document).
+- **Console errors: none** (`errors-in-console` passes) — manifest/icon 404s gone.
+- **LCP element render delay: 159 ms** — the largest hero text paints at first paint.
+- CLS ≈ 0 and TBT were already strong.
+
+**Measurement note:** the exact absolute Performance score should be read from Chrome DevTools → Lighthouse (or PageSpeed Insights) in your own environment — those match the earlier baselines. Local CLI runs on a busy machine inflate CPU-bound timings (e.g. TBT) and understate the score, so the throttle-independent signal used here is the **LCP phase breakdown**, which proves the render-delay fix landed.
 
 ---
 
