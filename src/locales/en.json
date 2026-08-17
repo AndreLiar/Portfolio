@@ -1326,7 +1326,9 @@
     "backToPortfolio": "Back to Portfolio",
     "allPosts": "All posts",
     "noPostsFound": "No posts found.",
-    "postedOn": "Posted on"
+    "postedOn": "Posted on",
+    "previousPage": "Previous",
+    "nextPage": "Next"
   },
   "blogPosts": [
     {

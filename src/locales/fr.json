@@ -1229,7 +1229,9 @@
     "backToPortfolio": "Retour au portfolio",
     "allPosts": "Tous les articles",
     "noPostsFound": "Aucun article trouvé.",
-    "postedOn": "Publié le"
+    "postedOn": "Publié le",
+    "previousPage": "Précédent",
+    "nextPage": "Suivant"
   },
   "blogPosts": [
     {

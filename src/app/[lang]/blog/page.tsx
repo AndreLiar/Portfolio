@@ -3,14 +3,21 @@ import { ArrowLeft, Rss } from "lucide-react";
 import { getDictionary } from "@/lib/dictionaries";
 import { getBlogPosts } from "@/lib/blog";
 import { BlogCard } from "@/components/portfolio/blog-card";
+import { BlogPagination } from "@/components/portfolio/blog-pagination";
 import { Button } from "@/components/ui/button";
+
+const POSTS_PER_PAGE = 9;
 
 export default async function BlogPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ lang: string }>;
+  searchParams: Promise<{ page?: string }>;
 }) {
   const { lang } = await params;
+  const { page: pageParam } = await searchParams;
+
   const dict = await getDictionary(lang);
   const t = dict.BlogPage;
   const posts = await getBlogPosts(dict.blogPosts ?? []);
@@ -18,6 +25,14 @@ export default async function BlogPage({
   const sorted = [...posts].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
+
+  const totalPages = Math.max(1, Math.ceil(sorted.length / POSTS_PER_PAGE));
+  const currentPage = Math.min(
+    Math.max(1, parseInt(pageParam ?? "1", 10) || 1),
+    totalPages
+  );
+  const start = (currentPage - 1) * POSTS_PER_PAGE;
+  const paginated = sorted.slice(start, start + POSTS_PER_PAGE);
 
   return (
     <div className="min-h-screen bg-background">
@@ -70,16 +85,25 @@ export default async function BlogPage({
         {sorted.length === 0 ? (
           <p className="text-center text-muted-foreground py-24">{t.noPostsFound}</p>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {sorted.map((post, i) => (
-              <BlogCard
-                key={post.slug}
-                {...post}
-                index={i}
-                t={{ readPost: t.readPost, minRead: t.minRead, postedOn: t.postedOn }}
-              />
-            ))}
-          </div>
+          <>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {paginated.map((post, i) => (
+                <BlogCard
+                  key={post.slug}
+                  {...post}
+                  index={start + i}
+                  t={{ readPost: t.readPost, minRead: t.minRead, postedOn: t.postedOn }}
+                />
+              ))}
+            </div>
+
+            <BlogPagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              lang={lang}
+              t={{ previousPage: t.previousPage, nextPage: t.nextPage }}
+            />
+          </>
         )}
       </div>
     </div>
