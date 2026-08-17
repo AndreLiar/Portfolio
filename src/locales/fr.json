@@ -1174,9 +1174,9 @@
     "workExperience": [
       {
         "date": "Sep 2024 - Présent",
-        "title": "Ingénieur Opérations IT & Automatisation (Alternant)",
+        "title": "Ingénieur IT Automation & Applications (Alternant)",
         "subtitle": "HDI Global SE France, Paris",
-        "description": "<ul><li><strong>Ingénierie d'Automatisation :</strong> Développement de flux d'automatisation (scripts Batch) pour l'import XML de factures sinistres vers l'outil métier, réduisant le temps de traitement de 70 % et éliminant les erreurs manuelles.</li><li><strong>Digitalisation & Flux IAM :</strong> Architecture et digitalisation des workflows de demande d'accès IT (SharePoint & Power Automate), optimisant la gestion des identités pour plus de 200 collaborateurs.</li><li><strong>Patch Management & Déploiements :</strong> Exécution des tests de non-régression (ALM Octane) en environnement de production lors des cycles mensuels de Patch Management, garantissant une continuité de service métier sans interruption.</li><li><strong>IT Service Management (ITSM) :</strong> Support infrastructure et applicatif N1/N2 (ServiceNow, GLPI). Coordination du renouvellement complet du parc informatique collaborateurs (~200 postes) tout en assurant le respect des accords de niveau de service (SLA).</li><li><strong>Gouvernance de Sécurité :</strong> Restructuration des modèles de contrôle d'accès basé sur les rôles (RBAC) sur plusieurs applications internes, standardisant les permissions et renforçant la conformité de sécurité.</li></ul>"
+        "description": "<ul><li><strong>Automatisation :</strong> Pipelines Python automatisant l'import XML de factures sinistres vers GERAS (outil sinistres groupe) — réduction de 70 % du temps de traitement batch ; rapports de contrôle qualité automatisés pour les équipes Finance.</li><li><strong>Applications métier :</strong> Administration et support de 8+ applications d'entreprise critiques (GERAS, one.Flow, Microsoft Dynamics CRM, TALIAS, Power BI, Trade Base Framework, Learning Space, GLPI) pour les équipes Sinistres, Finance et Underwriting.</li><li><strong>ITSM &amp; Innovation IA :</strong> Administration de la plateforme GLPI (catalogue de services, incidents, CMDB) pour 200+ utilisateurs ; cadrage d'une stratégie d'intégration IA dans GLPI pour améliorer la gestion des connaissances et la qualité du support (phase prototype, non déployé en production).</li><li><strong>IAM :</strong> Gestion des habilitations et rôles métier via TALIAS pour plusieurs centaines d'utilisateurs (onboarding, offboarding, modifications de droits) ; coordination avec les RH et les équipes centrales HDI Group (Berlin/Hanovre).</li><li><strong>Cloud &amp; Modern Workplace :</strong> Participation aux phases de tests et de validation du programme de migration Windows 365 / Global Cloud Desktop ; support Microsoft Intune (MDM) en environnement hybride Azure.</li><li><strong>Projets &amp; Coordination internationale :</strong> Interface technique entre les équipes France et les équipes centrales allemandes sur les projets de modernisation applicative ; création de procédures utilisateurs et de documentation technique.</li></ul>"
       },
       {
         "date": "Juil 2024 – Août 2024",
@@ -1237,7 +1237,15 @@
       "title": "Un modèle sort de l'entraînement à 28 Go. Tu le télécharges à 4.7 Go. Qui a fait la compression ?",
       "description": "Le but de la quantization, le cycle de vie complet d'un LLM open-source (labo → communauté → Ollama → cluster), et pourquoi fine-tuned + quantisé est le standard de production.",
       "date": "2026-07-17",
-      "tags": ["ai", "llm", "quantization", "ollama", "fine-tuning", "mlops", "open-source"],
+      "tags": [
+        "ai",
+        "llm",
+        "quantization",
+        "ollama",
+        "fine-tuning",
+        "mlops",
+        "open-source"
+      ],
       "readTime": 8,
       "url": "https://andrelair-platform.github.io/minicloud-platform-docs/blog/llm-model-lifecycle-quantization"
     },
@@ -1246,7 +1254,15 @@
       "title": "La quantization LLM démystifiée : faire tourner un 7B sur un ThinkPad",
       "description": "Un 7B en FP32 c'est 28 Go. Sur mon cluster ThinkPad, impossible. La quantization m'a permis de descendre à 4.7 Go sans perdre la qualité qui compte.",
       "date": "2026-07-17",
-      "tags": ["ai", "llm", "quantization", "ollama", "inference", "mlops", "bare-metal"],
+      "tags": [
+        "ai",
+        "llm",
+        "quantization",
+        "ollama",
+        "inference",
+        "mlops",
+        "bare-metal"
+      ],
       "readTime": 8,
       "url": "https://andrelair-platform.github.io/minicloud-platform-docs/blog/llm-quantization-demystified"
     },
