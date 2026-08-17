@@ -1,4 +1,5 @@
 import 'server-only';
+import { JSDOM } from 'jsdom';
 
 export interface BlogPost {
   slug: string;
@@ -12,7 +13,7 @@ export interface BlogPost {
 }
 
 const FEED_URL =
-  'https://andrelair-platform.github.io/minicloud-platform-docs/blog/feed.json';
+  'https://andrelair-platform.github.io/minicloud-platform-docs/blog/rss.xml';
 
 function estimateReadTime(html: string): number {
   const text = html.replace(/<[^>]+>/g, ' ');
@@ -20,26 +21,44 @@ function estimateReadTime(html: string): number {
   return Math.max(1, Math.ceil(words / 200));
 }
 
+function parseRssDate(raw: string): string {
+  try {
+    return new Date(raw).toISOString().slice(0, 10);
+  } catch {
+    return raw.slice(0, 10);
+  }
+}
+
 export async function getBlogPosts(fallback: BlogPost[] = []): Promise<BlogPost[]> {
   try {
     const res = await fetch(FEED_URL, { next: { revalidate: 3600 } });
     if (!res.ok) throw new Error(`Feed returned ${res.status}`);
 
-    const feed = await res.json();
-    const items: any[] = feed.items ?? [];
+    const xml = await res.text();
+    const dom = new JSDOM(xml, { contentType: 'text/xml' });
+    const doc = dom.window.document;
+    const items = Array.from(doc.querySelectorAll('item'));
 
     return items.map((item) => {
-      const url: string = item.url ?? item.id ?? '';
+      const url = item.querySelector('link')?.textContent?.trim() ?? '';
       const slug = url.split('/').filter(Boolean).pop() ?? '';
-      const html: string = item.content_html ?? item.content_text ?? item.summary ?? '';
+      const title = item.querySelector('title')?.textContent ?? '';
+      const description = item.querySelector('description')?.textContent ?? '';
+      const pubDate = item.querySelector('pubDate')?.textContent ?? '';
+      const tags = Array.from(item.querySelectorAll('category')).map(
+        (c) => c.textContent ?? ''
+      );
+      const contentEncoded =
+        item.getElementsByTagNameNS('http://purl.org/rss/1.0/modules/content/', 'encoded')[0]
+          ?.textContent ?? description;
 
       return {
         slug,
-        title: item.title ?? '',
-        description: item.summary ?? '',
-        date: (item.date_published ?? '').slice(0, 10),
-        tags: Array.isArray(item.tags) ? item.tags : [],
-        readTime: estimateReadTime(html),
+        title,
+        description,
+        date: parseRssDate(pubDate),
+        tags,
+        readTime: estimateReadTime(contentEncoded),
         url,
       };
     });
