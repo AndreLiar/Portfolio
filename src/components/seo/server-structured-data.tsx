@@ -82,7 +82,7 @@ export function ServerStructuredData({ data, locale, baseUrl }: ServerStructured
     "@context": "https://schema.org",
     "@type": "Person",
     name: data.fullName,
-    jobTitle: "Fullstack Software Engineer",
+    jobTitle: "Software Engineer",
     description: data.summary.replace(/\*\*/g, '').replace(/\*/g, '').replace(/•/g, '-').replace(/🚀|🤖|☁️|💡|⚡/g, ''),
     url: `${baseUrl}/${locale}`,
     image: `${baseUrl}/images/profile-photo.jpg`,

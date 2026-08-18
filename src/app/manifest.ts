@@ -2,9 +2,9 @@ import { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Andre Kanmegne - Fullstack Software Engineer Portfolio",
+    name: "Andre Kanmegne - Software Engineer Portfolio",
     short_name: "Andre Portfolio",
-    description: "Portfolio of Andre Kanmegne, Fullstack Software Engineer specializing in TypeScript, React, Next.js, and AI integration.",
+    description: "Portfolio of Andre Kanmegne, Software Engineer specializing in AI & Platform Engineering — Kubernetes, GitOps, LLM/RAG, and automation.",
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",

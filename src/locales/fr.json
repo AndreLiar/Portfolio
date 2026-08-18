@@ -1,7 +1,7 @@
 {
   "Metadata": {
     "title": "La Scène Numérique d'Andre",
-    "description": "Portfolio d'Andre, Ingénieur Logiciel Fullstack."
+    "description": "Portfolio d'Andre — Software Engineer, AI & Platform Engineering."
   },
   "Header": {
     "projects": "Projets",
@@ -19,8 +19,8 @@
     "github": "GitHub",
     "linkedin": "LinkedIn",
     "name": "Andre Kanmegne",
-    "title": "Platform & AI Engineer —",
-    "titleHighlight": "Kubernetes · GitOps · Gouvernance IA",
+    "title": "Software Engineer —",
+    "titleHighlight": "AI & Platform Engineering",
     "location": "Paris, France",
     "description1": "Je conçois et opère une plateforme Kubernetes de niveau production simulant le SI complet d'un assureur B2B — de la livraison GitOps à la gouvernance IA, la conformité ACPR et les métriques DORA. 90+ phases, 54+ workloads actifs.",
     "description2": "La plateforme couvre les trois couches : infrastructure (k3s, ArgoCD, Vault, Longhorn), AI engineering (LiteLLM, vLLM, Qdrant RAG, Langfuse, minicloud-crew-agent) et SI assurance (ERPNext PCG 2025, Temporal, n8n, Stalwart mail, Matrix, Jitsi).",
@@ -157,7 +157,7 @@
   "data": {
     "name": "Andre",
     "fullName": "Andre Kanmegne",
-    "title": "Platform & AI Engineer — Kubernetes · GitOps · Gouvernance IA",
+    "title": "Software Engineer · AI & Platform Engineering — LLM · RAG · Kubernetes · GitOps · Automation",
     "location": "Paris, France",
     "contact": {
       "email": "kanmegneandre@gmail.com",
@@ -165,7 +165,7 @@
       "github": "https://github.com/AndreLiar",
       "linkedin": "https://www.linkedin.com/in/laurel-kanmegne-2a861425a/"
     },
-    "summary": "Platform & AI Engineer, Bac+5 RNCP Niveau 7 — je conçois et opère des systèmes de production sécurisés, observables, natifs IA et conformes aux exigences réglementaires. Auteur de la plateforme minicloud : un projet Kubernetes 90 phases simulant le SI complet d'un assureur B2B — 54+ workloads actifs, zero-trust OPA Gatekeeper, gouvernance IA complète (LiteLLM + vLLM + Qdrant RAG + Langfuse + minicloud-crew-agent), ERPNext PCG 2025 + TSCA + Factur-X, et une architecture agent factory inspirée de ToyotaGPT. Actuellement Ingénieur IT Automation en alternance chez HDI Global SE France.",
+    "summary": "Software Engineer (AI & Platform Engineering), Bac+5 RNCP Niveau 7 — je conçois et opère des systèmes de production sécurisés, observables, natifs IA et conformes aux exigences réglementaires. Auteur de la plateforme minicloud : un projet Kubernetes 90 phases simulant le SI complet d'un assureur B2B — 54+ workloads actifs, zero-trust OPA Gatekeeper, gouvernance IA complète (LiteLLM + vLLM + Qdrant RAG + Langfuse + minicloud-crew-agent), ERPNext PCG 2025 + TSCA + Factur-X, et une architecture agent factory inspirée de ToyotaGPT. Actuellement Ingénieur IT Automation en alternance chez HDI Global SE France.",
     "resumeSkills": [
       {
         "title": "Cloud & DevOps",

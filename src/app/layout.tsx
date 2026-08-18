@@ -24,7 +24,7 @@ const playfair = Playfair_Display({
 // Static metadata for the root. Dynamic metadata will be added by child layouts.
 export const metadata: Metadata = {
   title: "Andre Kanmegne Portfolio",
-  description: "Portfolio of Andre Kanmegne, Fullstack Software Engineer.",
+  description: "Portfolio of Andre Kanmegne, Software Engineer — AI & Platform Engineering.",
 };
 
 export const viewport: Viewport = {
