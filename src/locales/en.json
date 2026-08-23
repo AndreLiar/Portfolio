@@ -554,7 +554,7 @@
         "title": "Minicloud Platform — Insurance IS",
         "purpose": "Production-grade enterprise Kubernetes platform on a self-hosted cluster simulating the complete information system of a B2B French insurance company (ktayl solution). 90+ delivery phases, 54+ active workloads across 15 IS domains: policy management, claims, underwriting, ERP/finance, AI governance, communication, document management, compliance (ACPR/DORA), and workplace AI (minicloud Copilot). GitOps-delivered via ArgoCD app-of-apps, hardened with zero-trust NetworkPolicy, OPA Gatekeeper deny-mode admission control, and full supply-chain security.",
         "role": "Platform Engineer, Solutions Architect & IS Designer. Designed the enterprise GitOps repository structure (app-of-apps, Kustomize base+overlays, 3-branch CI, AppProject with locked sourceRepos). Built the zero-trust network topology, AI Gateway (LiteLLM + vLLM), enterprise RAG pipeline (bge-m3 + Qdrant + BM25 hybrid + cross-encoder + markitdown-proxy), ERPNext insurance configuration (French PCG 2025, 845 accounts, TSCA tax templates, Factur-X Minimum), ToyotaGPT-inspired agent factory (minicloud-crew-agent + Langfuse + LangGraph), minicloud Copilot (M365 equivalent on self-hosted stack), and full regression suite.",
-        "impact": "90 phases complete. 5/5 nodes Ready. 54+ workloads Healthy+Synced. OPA Gatekeeper zero-trust in deny mode — zero violations. Vault auto-unseal via AWS KMS. ERPNext configured for French insurance IS: 845 PCG accounts, TSCA 9/13/33%, Factur-X Minimum PoC (5 assertions pass). ToyotaGPT architecture: 80% live (LiteLLM + crew-agent + Langfuse + Qdrant RAG + markitdown-proxy), 5 issues from a complete enterprise agent factory. minicloud Copilot: M365 Copilot equivalent on self-hosted stack, 5 connectors wiring Stalwart + Nextcloud + Jitsi + Matrix into the AI layer.",
+        "impact": "90 phases complete. 6/6 nodes Ready. 54+ workloads Healthy+Synced. OPA Gatekeeper zero-trust in deny mode — zero violations. Vault auto-unseal via AWS KMS. ERPNext configured for French insurance IS: 845 PCG accounts, TSCA 9/13/33%, Factur-X Minimum PoC (5 assertions pass). ToyotaGPT architecture: 80% live (LiteLLM + crew-agent + Langfuse + Qdrant RAG + markitdown-proxy), 5 issues from a complete enterprise agent factory. minicloud Copilot: M365 Copilot equivalent on self-hosted stack, 5 connectors wiring Stalwart + Nextcloud + Jitsi + Matrix into the AI layer.",
         "features": [
           "Enterprise GitOps: ArgoCD app-of-apps, Kustomize base+overlays (dev/staging/prod), CI promote dev-only, PR-gated staging+prod, AppProject with locked sourceRepos and clusterResourceWhitelist",
           "OPA Gatekeeper deny-mode — zero violations — NET_RAW, capabilities, seccomp, privilege escalation, host namespace; Falco runtime security",
@@ -564,10 +564,11 @@
           "Insurance IS: ERPNext HR + French PCG 2025 (845 accounts) + TSCA tax templates + Factur-X Minimum + LOB hierarchy (IARD + Vie & Prévoyance); Stalwart mail + Matrix + Jitsi + Nextcloud + OnlyOffice",
           "minicloud Copilot (M365 equivalent): Email AI (Stalwart→LiteLLM triage), Meeting notes (Jitsi→Whisper→LiteLLM), Document grounding (Nextcloud→RAG→Qdrant), Chat AI (Matrix bot), Enterprise Search (Open WebUI+Qdrant)",
           "ToyotaGPT agent factory architecture: standardised AI gateway + LangGraph agents + Langfuse observability + RAG + markitdown-proxy — 6 months→4 days agent delivery model",
-          "Full supply chain: Cosign keyless signing, syft CycloneDX SBOM, Trivy CVE scan, GPG commits, branch protection, Dependabot"
+          "Full supply chain: Cosign keyless signing, syft CycloneDX SBOM, Trivy CVE scan, GPG commits, branch protection, Dependabot",
+          "Reliability & SRE: bare-metal node provisioning via MAAS PXE (enlist→commission→deploy→join, webhook/Wake-on-LAN power); incident response with root-cause analysis of cascading multi-failure outages; self-healing systemd guards (DNS, NAT, node wake) + graceful shutdown/startup runbooks; Velero + Longhorn backups to MinIO with off-site Cloudflare R2 and integrity-checked control-plane snapshots"
         ],
         "stack": [
-          "k3s (Kubernetes, 5 nodes)",
+          "k3s (Kubernetes, 6 nodes)",
           "ArgoCD (app-of-apps)",
           "Helm / Kustomize",
           "HashiCorp Vault + ESO",
