@@ -1,10 +1,10 @@
 {
   "Metadata": {
-    "title": "La Scène Numérique d'Andre",
-    "description": "Portfolio d'Andre — Software Engineer, AI & Platform Engineering."
+    "title": "Andre Kanmegne | Ingénieur IA & Plateforme",
+    "description": "Andre Kanmegne — Ingénieur IA & Plateforme. Je conçois, construis et exploite des systèmes d'entreprise : une plateforme Kubernetes d'assurance en production, une infrastructure IA/LLM et de l'automatisation métier."
   },
   "Header": {
-    "projects": "Projets",
+    "projects": "Réalisations",
     "skills": "Compétences",
     "softSkills": "Savoir-être",
     "experience": "Expérience",
@@ -22,8 +22,8 @@
     "title": "Software Engineer —",
     "titleHighlight": "AI & Platform Engineering",
     "location": "Paris, France",
-    "description1": "Je conçois et opère une plateforme Kubernetes de niveau production simulant le SI complet d'un assureur B2B — de la livraison GitOps à la gouvernance IA, la conformité ACPR et les métriques DORA. 90+ phases, 54+ workloads actifs.",
-    "description2": "La plateforme couvre les trois couches : infrastructure (k3s, ArgoCD, Vault, Longhorn), AI engineering (LiteLLM, vLLM, Qdrant RAG, Langfuse, minicloud-crew-agent) et SI assurance (ERPNext PCG 2025, Temporal, n8n, Stalwart mail, Matrix, Jitsi).",
+    "description1": "Je conçois, construis et exploite des systèmes d'entreprise — je transforme des besoins complexes de plateforme, d'IA et métier en logiciels fiables en production.",
+    "description2": "Mon projet phare : une plateforme Kubernetes en production simulant tout le système d'information d'un assureur B2B — infrastructure, applications métier et couche IA. Découvrez les études de cas ci-dessous.",
     "whatIBuildTitle": "Expertise & Réalisations :",
     "tagline": "Architecte par état d'esprit, ingénieur par métier — J'allie sécurité, automatisation et intelligence artificielle.",
     "skills": {
@@ -69,7 +69,8 @@
   },
   "Page": {
     "projects": {
-      "title": "Expérience de projet"
+      "title": "Travaux d'ingénierie sélectionnés",
+      "subtitle": "Des systèmes que j'ai conçus, construits et exploités en platform engineering, IA et logiciel d'entreprise."
     },
     "skills": {
       "title": "Compétences techniques de base"
@@ -92,7 +93,9 @@
     }
   },
   "ProjectList": {
-    "loadMore": "Charger plus"
+    "loadMore": "Charger plus",
+    "seeMore": "Voir plus de projets",
+    "seeLess": "Voir moins"
   },
   "ProjectCard": {
     "role": "Rôle",
@@ -528,172 +531,54 @@
     ],
     "projects": [
       {
-        "title": "Minicloud Platform — SI Assurance",
-        "purpose": "Plateforme Kubernetes d'entreprise de niveau production sur un cluster auto-hébergé simulant le SI complet d'un assureur B2B français (ktayl solution). 90+ phases de livraison, 54+ workloads actifs couvrant 15 domaines SI : gestion des polices, sinistres, souscription, ERP/finance, gouvernance IA, communication, gestion documentaire, conformité (ACPR/DORA) et IA workplace (minicloud Copilot). Livraison GitOps via ArgoCD app-of-apps, zéro-confiance OPA Gatekeeper, sécurité supply chain complète.",
-        "role": "Platform Engineer, Architecte Solutions & Concepteur SI. Conception de la structure GitOps d'entreprise (app-of-apps, Kustomize base+overlays, CI 3 branches, AppProject verrouillé). Construction de la topologie zéro-confiance, de la passerelle IA (LiteLLM + vLLM), du pipeline RAG entreprise (bge-m3 + Qdrant + BM25 hybride + cross-encoder + markitdown-proxy), de la configuration ERPNext assurance française (PCG 2025, 845 comptes, templates TSCA, Factur-X Minimum), de l'architecture agent factory ToyotaGPT (minicloud-crew-agent + Langfuse + LangGraph), du minicloud Copilot (équivalent M365 sur stack self-hosted) et de la suite de régression complète.",
-        "impact": "90 phases complètes. 6/6 nœuds Ready. 54+ workloads Healthy+Synced. OPA Gatekeeper zéro-confiance mode deny — zéro violation. Vault auto-descellement AWS KMS. ERPNext configuré pour le SI assurance français : 845 comptes PCG, TSCA 9/13/33%, Factur-X Minimum (5 assertions validées). Architecture ToyotaGPT : 80% opérationnel (LiteLLM + crew-agent + Langfuse + Qdrant RAG + markitdown-proxy), 5 issues du modèle agent factory complet. minicloud Copilot : équivalent M365 Copilot sur stack self-hosted, 5 connecteurs reliant Stalwart + Nextcloud + Jitsi + Matrix à la couche IA.",
+        "title": "Cluster Kubernetes — k3s bare-metal",
+        "oneLinePitch": "Un cluster Kubernetes bare-metal de 6 nœuds construit de zéro — provisioning MAAS, k3s, réseau eBPF Cilium, stockage Longhorn et mises à jour sans interruption.",
+        "purpose": "La fondation de calcul de la plateforme : un cluster k3s auto-hébergé de 6 nœuds sur des ThinkPad recyclés et un MacBook Pro, provisionné en infrastructure-as-code et durci selon les benchmarks CIS. C'est la couche d'infrastructure sur laquelle tout le reste s'exécute.",
+        "role": "Ingénieur Plateforme / Infrastructure. Provisioning bare-metal avec MAAS + OpenTofu, bootstrap k3s avec Ansible (durcissement CIS du kubelet) ; responsable du réseau, du stockage et du cycle de vie du cluster.",
+        "impact": "6/6 nœuds Ready · k3s mis à jour v1.33→v1.36 sans interruption (aucun SSH manuel) · kube-bench k3s-CIS-1.7 16/16 PASS sur tous les workers.",
         "features": [
-          "GitOps entreprise : ArgoCD app-of-apps, Kustomize base+overlays (dev/staging/prod), CI promote dev uniquement, PR-gated staging+prod, AppProject verrouillé",
-          "OPA Gatekeeper mode deny — zéro violation — NET_RAW, capabilities, seccomp, escalade de privilèges, namespace hôte ; Falco sécurité runtime",
-          "Zéro-confiance NetworkPolicy sur tous les namespaces ; Cilium eBPF CNI + Hubble ; Authentik OIDC SSO + TOTP pour 54+ services",
-          "AI Gateway multi-cloud gouverné : LiteLLM unifiant vLLM on-cluster + AWS Bedrock (EU) + Azure OpenAI (EU) + APIs directes — provisionné en OpenTofu (state S3+DynamoDB, IAM scopé + SP Azure, budgets par provider), coût = tokens uniquement",
-          "Gouvernance AI-Act/DORA : matrice de gouvernance par modèle (juridiction/résidence/classe de données) + routing par sensibilité (RBAC par tier — la donnée confidentielle ne peut jamais atteindre un provider non-fiable/CN) + masquage PII Presidio + audit DORA (Langfuse, rétention 12 mois)",
-          "LLMOps 8/8 couches : Langfuse (dashboards obs/coût/résidence) + éval Ragas en CI + red-team gate (suite adversariale, garde-fous vérifiés 8/8) + annotation human-in-the-loop ; onboarding golden-path (monté une fois, les projets s'y branchent)",
-          "RAG entreprise : embeddings mistral-embed (EU) + Qdrant HNSW + recherche hybride BM25 (tokenizer français) + re-ranking cross-encoder ; minicloud-crew-agent (LangGraph multi-agents) + minicloud-agent (ReAct)",
-          "SI Assurance : ERPNext HR + PCG 2025 français (845 comptes) + templates TSCA (9/13/33%) + Factur-X Minimum + hiérarchie LOB (IARD + Vie & Prévoyance) ; Stalwart mail + Matrix + Jitsi + Nextcloud + OnlyOffice",
-          "minicloud Copilot (équivalent M365) : Email IA (Stalwart→LiteLLM triage), Notes de réunion (Jitsi→Whisper→LiteLLM), Ancrage documentaire (Nextcloud→RAG→Qdrant), Assistant chat (bot Matrix), Recherche d'entreprise (Open WebUI+Qdrant)",
-          "Architecture ToyotaGPT : gateway standardisée + agents LangGraph + observabilité Langfuse + RAG + markitdown-proxy — modèle de livraison agent 6 mois→4 jours",
-          "Supply chain complète : Cosign sans clé, SBOM CycloneDX syft, scan Trivy CVE, commits GPG, protection de branche, Dependabot",
-          "Fiabilité & SRE : provisionnement de nœuds bare-metal via MAAS PXE (enlist→commission→déploiement→jonction, alimentation webhook/Wake-on-LAN) ; gestion d'incidents avec analyse de cause racine de pannes en cascade multi-composants ; gardes systemd auto-réparatrices (DNS, NAT, réveil de nœud) + runbooks d'arrêt/démarrage propres ; sauvegardes Velero + Longhorn vers MinIO avec réplication hors-site Cloudflare R2 et snapshots du plan de contrôle vérifiés"
+          "Provisioning bare-metal en code : MAAS enrôle et commissionne les nœuds ThinkPad ; OpenTofu gère le cycle de vie des machines ; Ansible bootstrappe k3s.",
+          "CNI eBPF Cilium + observabilité réseau Hubble (migration depuis flannel) ; MetalLB fournit des IP de load-balancer sur bare-metal.",
+          "Stockage bloc distribué Longhorn sur les nœuds, avec sauvegardes Velero quotidiennes vers MinIO sur le contrôleur ; NFS pour les volumes partagés.",
+          "Kubelet durci CIS, chiffrement des secrets au repos (AES-CBC-256), journaux d'audit k3s, UFW default-deny + durcissement SSH sur chaque nœud.",
+          "Cycle de vie sans interruption : system-upgrade-controller déploie les mises à jour k3s sur tous les nœuds via des Plans — cordon uniquement (compatible Longhorn), sans SSH manuel."
         ],
         "stack": [
-          "k3s (Kubernetes, 6 nœuds)",
-          "ArgoCD (app-of-apps)",
-          "Helm / Kustomize",
-          "HashiCorp Vault + ESO",
-          "Authentik (OIDC/SSO)",
-          "OPA Gatekeeper + Falco",
-          "Cilium eBPF + Hubble",
-          "Prometheus / Grafana / Loki / Tempo",
-          "LiteLLM (Passerelle IA)",
-          "vLLM (inférence on-cluster)",
-          "Qdrant (vector DB)",
-          "minicloud-crew-agent (LangGraph)",
-          "minicloud-agent (ReAct)",
-          "Flowise + MLflow",
-          "Langfuse (LLMOps)",
-          "ERPNext (PCG 2025 français + TSCA + Factur-X)",
-          "Temporal (orchestration de workflows)",
-          "n8n (automatisation métier)",
-          "Stalwart mail + Matrix + Jitsi",
-          "Nextcloud + OnlyOffice",
-          "Backstage (IDP)",
-          "Harbor",
-          "Longhorn + Velero + MinIO",
-          "NATS JetStream / KEDA",
-          "Ansible / OpenTofu / MAAS",
-          "Tailscale + Cloudflare Tunnel"
+          "k3s (Kubernetes)",
+          "MAAS",
+          "OpenTofu",
+          "Ansible",
+          "Cilium eBPF",
+          "Hubble",
+          "MetalLB",
+          "Longhorn",
+          "Velero + MinIO",
+          "Tailscale",
+          "kube-bench (CIS)"
+        ],
+        "whyItMatters": "La plupart des démos Kubernetes tournent sur du cloud managé avec une carte bancaire. Ce cluster est construit depuis le bare-metal — provisioning, réseau, stockage, durcissement et mises à jour de version, le tout conçu et exploité par un seul ingénieur, comme une équipe plateforme exploite une infrastructure on-prem.",
+        "differentiators": [
+          "Infrastructure-as-code depuis le bare-metal : MAAS + OpenTofu + Ansible, pas une console cloud en click-ops.",
+          "Mises à jour k3s sans interruption via les Plans de system-upgrade-controller (cordon uniquement, compatible finalizers Longhorn).",
+          "Conforme au benchmark CIS (kube-bench 16/16), chiffrement au repos et pare-feu au niveau hôte."
         ],
         "link": "https://andrelair-platform.github.io/minicloud-platform-docs/",
-        "repoUrl": "https://github.com/andrelair-platform/minicloud-gitops",
-        "oneLinePitch": "Une plateforme Kubernetes cloud privé de niveau production — GitOps, zéro-confiance, avec workloads IA/ML, RAG entreprise, observabilité complète et sécurité de la supply chain de bout en bout.",
-        "whyItMatters": "La plupart des démos Kubernetes tournent sur du cloud managé avec une carte bleue. Cette plateforme fonctionne sur des ThinkPads reconditionnés — provisionnement MAAS bare-metal, bootstrap k3s, livraison GitOps, gestion des secrets, SSO, observabilité, sécurité à l'exécution, workloads IA/ML et outils de collaboration, tous construits et opérés par un seul ingénieur. Chaque décision de conception est un vrai compromis : Vault auto-descellement via AWS KMS parce que le descellement par opérateur ne passe pas à l'échelle ; stratégie Recreate parce que le ResourceQuota ne permet pas de buffer rolling ; Restart=always sur cloudflared parce que le tunnel quitte proprement sur une perte réseau et systemd ne le remarque pas.",
-        "differentiators": [
-          "GitOps app-of-apps avec contrôles AppProject stricts — chaque ressource cluster provient de minicloud-gitops ; zéro kubectl manuel en production ; Applications namespaced avec sourceRepos verrouillés et clusterResourceWhitelist",
-          "Vault auto-descellement via AWS KMS — les pods Vault redémarrent sans aucune action opérateur ; mots de passe admin statiques absents de chaque config de workload",
-          "OPA Gatekeeper en mode deny avec zéro violation — pas en mode conseil ; politiques NET_RAW, capabilities, seccomp et namespace hôte appliquées cluster-wide ; les workloads doivent être conformes avant d'atteindre l'état Running",
-          "Pipeline RAG entreprise — embeddings bge-m3 + index pgvector HNSW + récupération hybride BM25 + re-ranking cross-encoder + OCR Docling pour ingestion PDF/images ; bout en bout inférieur à 400ms",
-          "Supply chain complète sur chaque image personnalisée — Trivy CRITICAL exit-code-1, Cosign sans clé (GitHub OIDC → Sigstore Fulcio), SBOM CycloneDX syft comme référent OCI, bump gitops signé GPG"
-        ],
-        "architecture": [
-          "MAAS + OpenTofu → provisionnement bare-metal ; 4 nœuds ThinkPad enrollés dans MAAS ; OpenTofu gère le cycle de vie des machines en infrastructure-as-code",
-          "Ansible → bootstrap k3s, durcissement kubelet CIS (config.yaml par nœud), validation kube-bench k3s-cis-1.7 ; Tailscale installé sur tous les nœuds pour le mesh VPN",
-          "ArgoCD app-of-apps → minicloud-gitops est la source unique de vérité ; apps/ définit les Applications namespaced ; helm-values/ contient tous les overrides Helm ; services/ contient Kustomize base+overlays pour les services CI/CD",
-          "Vault + ESO → secrets stockés dans Vault ; External Secrets Operator les synchronise en Kubernetes Secrets à l'exécution ; auto-descellement AWS KMS ; pas de credentials statiques dans git",
-          "Authentik → fournisseur OIDC pour tous les services de plateforme ; TOTP obligatoire ; personas département ; Cloudflare Tunnel + fix originServerName pour TLS SNI sur URLs IP",
-          "Longhorn → stockage bloc distribué sur tous les nœuds ; swift-mac (MacBook Pro 2012, Ubuntu 22.04) comme nœud de stockage principal ; sauvegarde Velero quotidienne vers MinIO sur le contrôleur",
-          "Passerelle IA LiteLLM → routage vers Groq, OpenAI, Anthropic, Mistral, Gemini et Ollama (phi4-mini ×3) ; masquage PII Presidio ; cache Valkey ; traçage LLMOps Langfuse par requête",
-          "Pipeline RAG → service rag-ingest : OCR markitdown-proxy → embeddings bge-m3 → insertion Qdrant HNSW ; récupération hybride BM25 (tokenizer français) + re-ranking cross-encoder à l'interrogation ; pipeline d'auto-ingestion webhook Nextcloud (minicloud Copilot #263)",
-          "SI Assurance → ERPNext : PCG 2025 français (845 comptes), taxe assurance TSCA (9/13/33%), PoC Factur-X Minimum (XML CII, 5 assertions), hiérarchie LOB (IARD + Vie & Prévoyance) ; Stalwart mail + SES bidirectionnel ; stack collaboration Matrix + Jitsi + Nextcloud",
-          "IA d'entreprise → architecture ToyotaGPT : minicloud-crew-agent (pipeline LangGraph CrewAI 3 agents) + minicloud-agent (recherche ReAct) + Flowise 2.2.7 + MLflow v2.16.0 + vLLM v0.6.6 — tous dans le namespace ai sous l'app ArgoCD LiteLLM ; orchestration de workflows Temporal v1.31.2 ; automatisation métier n8n 2.32.7",
-          "Observabilité → kube-prometheus-stack (Prometheus + Grafana + Loki) ; PrometheusRules pour alertes disque/sauvegarde ; node_exporter sur le contrôleur (Docker + systemd) ; alertes ControllerDisk à 85%/90%",
-          "Cloudflare Tunnel → *.devandre.sbs public sans exposer l'ingress cluster à internet ; Tailscale pour accès interne et CI (OAuth tag:ci)"
-        ],
-        "repoBlueprint": "MacBook Air (dev)              Contrôleur MAAS (ThinkPad X390)\ngit push → GitHub             MAAS + OpenTofu (bare metal)\n     |                        Ansible → bootstrap k3s\n     | webhook                Endpoint Tailscale + NAT\n     v\nminicloud-gitops (ArgoCD app-of-apps)\n+-- apps/           Applications ArgoCD par service\n+-- helm-values/    tous les overrides Helm\n+-- services/       Kustomize base+overlays (dev/staging/prod)\n+-- manifests/      ressources cluster (CRDs, RBAC, politiques)\n     |\n     v (ArgoCD réconcilie toutes les 3 min)\n+--------------------------------------------------+\n|  Cluster k3s — 5 nœuds                          |\n|  set-hog (plan de contrôle)                     |\n|  fast-skunk, fast-heron, star-kitten, swift-mac  |\n|                                                  |\n|  Secrets :   Vault (AWS KMS auto-unseal) + ESO  |\n|  Identité :  Authentik OIDC + TOTP              |\n|  Ingress :   nginx-ingress + cert-manager        |\n|  Stockage :  Longhorn (distribué)               |\n|  Sécurité :  Gatekeeper + Falco + NetworkPolicy |\n|  Observ :    Prometheus + Grafana + Loki         |\n|  IA/ML :     LiteLLM → Groq/OpenAI/Ollama       |\n|              RAG : rag-ingest + pgvector + bge-m3|\n|  Plateforme: Backstage IDP + Plane CE + Harbor  |\n|  Collab :    Nextcloud + OnlyOffice + Vaultwarden|\n+--------------------------------------------------+\n     |\n  Tailscale mesh (interne — 100.x.x.x)\n  Cloudflare Tunnel (public *.devandre.sbs)",
+        "repoUrl": "https://github.com/andrelair-platform/minicloud-ansible",
         "atsKeywords": [
           "Kubernetes",
           "k3s",
-          "Ingénierie Plateforme",
-          "GitOps",
-          "ArgoCD",
-          "Helm",
-          "Kustomize",
-          "HashiCorp Vault",
-          "OPA Gatekeeper",
-          "Falco",
-          "Cilium",
-          "Prometheus",
-          "Grafana",
-          "Loki",
-          "Tempo",
-          "LiteLLM",
-          "vLLM",
-          "Qdrant",
-          "RAG",
-          "LangGraph",
-          "CrewAI",
-          "Langfuse",
-          "LLMOps",
-          "ERPNext",
-          "Temporal",
-          "n8n",
-          "Factur-X",
-          "ACPR",
-          "DORA",
-          "Cosign",
-          "Trivy",
-          "SBOM",
-          "Ansible",
-          "OpenTofu",
+          "Bare-metal",
           "MAAS",
+          "OpenTofu",
+          "Terraform",
+          "Ansible",
+          "Cilium",
+          "eBPF",
           "Longhorn",
-          "Authentik OIDC",
-          "Tailscale",
-          "Cloudflare",
-          "Bare Metal",
-          "Cloud Privé",
-          "Zéro Confiance",
-          "Gouvernance IA",
-          "MLOps",
-          "SI Assurance",
-          "minicloud agent factory architecture"
-        ],
-        "scope": [
-          "Phase 0–5 — Fondation : provisionnement MAAS bare-metal de 4 nœuds ThinkPad ; bootstrap cluster k3s via Ansible ; structure ArgoCD app-of-apps dans minicloud-gitops ; pipeline de déploiement Helm",
-          "Phase 6–15 — Plateforme core : gestion des secrets Vault + ESO (auto-descellement AWS KMS) ; Authentik SSO/OIDC avec TOTP ; registre privé Harbor ; stockage distribué Longhorn ; cert-manager + nip.io TLS",
-          "Phase 16–25 — Observabilité + sécurité : kube-prometheus-stack (Prometheus + Grafana + Loki + Tempo) ; OPA Gatekeeper mode deny ; sécurité à l'exécution Falco ; Cilium eBPF CNI + Hubble ; kube-bench CIS k3s-1.7",
-          "Phase 26–45 — IA/ML + Opérations : passerelle IA LiteLLM ; inférence vLLM on-cluster ; Qdrant vector DB ; pipeline RAG (bge-m3 + Qdrant HNSW + BM25 + cross-encoder + OCR markitdown-proxy) ; Backstage IDP + Velero + Plane CE",
-          "Phase 46–70 — Maturité : VPA auto-scaling ; Argo Rollouts canary ; golden path Software Templates Backstage ; durcissement supply chain ; minicloud-crew-agent (CrewAI LangGraph) ; minicloud-agent (ReAct) ; Flowise + MLflow",
-          "Phase 71–84 — SI Assurance : ERPNext HR + PCG 2025 français (845 comptes) + templates TSCA + Factur-X Minimum ; Stalwart mail + SES ; Matrix + Element ; Jitsi Meet + TURN ; Nextcloud ; n8n ; Temporal v1.31.2 ; sauvegardes Longhorn MinIO ; Velero Cloudflare R2 off-site",
-          "Phase 85–90 — IA d'entreprise : minicloud Copilot (équivalent M365 — 5 connecteurs) ; architecture agent factory ToyotaGPT ; pipeline déclaration sociale numérique (DSN) ; posture conformité ACPR/COREP ; backlog structuré 161 items — 9 domaines plateforme + 53 domaines SI"
-        ],
-        "testPlan": [
-          "Suite de régression : vérifications automatisées complètes — connexion OIDC, comptage entités catalog, santé passerelle IA, pipeline RAG ingest, comptage violations Gatekeeper, statut sauvegarde Velero, accessibilité Cloudflare Tunnel",
-          "kube-bench k3s-cis-1.7 : 16/16 PASS sur tous les nœuds workers ; config.yaml kubelet déployé via playbook Ansible de durcissement CIS",
-          "Gatekeeper : toutes les politiques d'admission en mode deny, zéro violation ; validé par kubectl get constraint -A et vérification de .status.totalViolations",
-          "Sauvegarde Velero : programme quotidien actif ; PV ClickHouse sauvegardé dans la limite itemOperationTimeout 8h ; restauration testée sur namespace non-production",
-          "Test de connexion OIDC : tous les services *.devandre.sbs publics redirigent vers la page de connexion Authentik, acceptent le TOTP, et retournent une session authentifiée",
-          "Supply chain : toutes les images personnalisées ont une signature Cosign et un SBOM syft vérifiables ; signature GPG sur chaque commit de bump gitops",
-          "Cloudflare Tunnel : toutes les URLs publiques accessibles sans Tailscale ; service systemd cloudflared avec Restart=always récupère en 5s après une perte réseau"
-        ],
-        "interviewTalkingPoints": [
-          "Objectif : desceller Vault automatiquement après un redémarrage de nœud — sur un home lab bare-metal sans opérateur disponible à 3h du matin. Nous avons configuré Vault avec une clé de descellement unique et l'avons scellé au repos. Après la première panne de courant inattendue, chaque workload dépendant de Vault est resté en panne pendant des heures car le pod avait redémarré mais l'endpoint de descellement nécessitait une intervention humaine. Défi : le descellement par opérateur ne passe pas à l'échelle et annule l'intérêt d'un cluster auto-guérissant. Solution : auto-descellement AWS KMS. Le pod Vault appelle KMS au démarrage, la clé de descellement ne touche jamais le disque, et l'ensemble du cluster récupère d'une panne de courant en moins de 2 minutes sans aucune intervention humaine.",
-          "Objectif : empêcher ArgoCD de déclencher un rolling restart sur Harbor à chaque cycle de synchronisation. Après avoir ajouté ignoreDifferences pour les champs de certificat auto-signé de Harbor, la boucle continuait. Défi : les templates Helm de Harbor utilisent genSelfSignedCert et randAlphaNum — ces fonctions génèrent une nouvelle valeur à chaque rendu. Avec ServerSideApply=true dans les syncOptions ArgoCD, les entrées ignoreDifferences ne sont PAS retirées du payload apply. Solution : supprimer ServerSideApply=true de l'Application ArgoCD Harbor. La fusion 3-way côté client retire correctement les champs ignoreDifferences, brisant la boucle.",
-          "Objectif : ajouter un label de pod (backstage.io/kubernetes-id) à un déploiement existant. Nous avons commité le changement de label, ArgoCD a synchronisé, et le rollout a immédiatement bloqué — nouveaux pods RS bloqués en FailedCreate avec 'admission webhook denied: must not use or retain the NET_RAW capability'. Défi : le déploiement est antérieur à la contrainte Gatekeeper K8sBlockNetRaw. L'ancien pod a passé l'admission car il existait avant la politique. Tout nouveau pod doit être conforme. Solution : toujours ajouter capabilities.drop: [NET_RAW] à la spec du conteneur dans le même commit que tout autre changement de déploiement sur les workloads pré-contrainte.",
-          "Objectif : maintenir le Cloudflare Tunnel actif en permanence. Le tunnel était configuré comme service systemd avec Restart=on-failure. Après une panne de 1,5 jour nous avons trouvé cloudflared dans le journal avec 'exited with code 0' — les 4 connexions tunnel étaient tombées simultanément lors d'une brève perte réseau. Systemd a interprété le code de sortie 0 comme un arrêt propre et n'a jamais redémarré le processus. Solution : Restart=always + StartLimitIntervalSec=0. Le service récupère maintenant en 5 secondes quelle que soit la cause de l'arrêt.",
-          "Objectif : mettre à jour les 5 nœuds k3s sans downtime ni SSH manuel. Nous avons utilisé system-upgrade-controller : deux Plans (k3s-server et k3s-agent) ciblant la nouvelle version. Défi : le Job Helm hook upgradeCRDs de Velero créait un pod qui se terminait avec exit 0, mais k3s v1.36 ne renseignait jamais status.succeeded — uncountedTerminatedPods restait vide, bloquant chaque synchronisation ArgoCD indéfiniment. Solution : upgradeCRDs: false dans velero-values.yaml et skipCrds: true dans l'Application ArgoCD."
-        ],
-        "liveEndpoints": [
-          {
-            "label": "Homer — tableau de bord plateforme avec tous les liens de services",
-            "command": "https://homer.devandre.sbs",
-            "url": "https://homer.devandre.sbs"
-          },
-          {
-            "label": "ArgoCD — état de réconciliation GitOps de toutes les applications",
-            "command": "https://argocd.devandre.sbs",
-            "url": "https://argocd.devandre.sbs"
-          },
-          {
-            "label": "Grafana — tableaux de bord d'observabilité de la plateforme",
-            "command": "https://grafana.devandre.sbs",
-            "url": "https://grafana.devandre.sbs"
-          },
-          {
-            "label": "Docs Plateforme — runbooks de phases Docusaurus",
-            "command": "https://andrelair-platform.github.io/minicloud-platform-docs/",
-            "url": "https://andrelair-platform.github.io/minicloud-platform-docs/"
-          }
+          "MetalLB",
+          "Durcissement CIS",
+          "Infrastructure as Code",
+          "Platform Engineering"
         ],
         "screenshots": [
           {
@@ -701,12 +586,6 @@
             "caption": "Interface MAAS montrant les nœuds ThinkPad du cluster enrollés, commissionnés et déployés avec Ubuntu 24.04 LTS via PXE boot. Chaque machine est gérée en infrastructure-as-code via OpenTofu. Capture de l'installation initiale à 3 nœuds — cluster étendu ensuite à 5 nœuds (star-kitten + swift-mac).",
             "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/maas-machines-overview.png",
             "link": "http://100.88.123.8:5240/MAAS"
-          },
-          {
-            "title": "ArgoCD — Toutes les Applications de la Plateforme",
-            "caption": "Tuiles ArgoCD montrant la plateforme complète : Authentik, Backstage, Vault, Grafana, Harbor, Longhorn, Plane CE et tous les workloads IA/ML — tous Synced et Healthy. Le panneau de statut de santé (gauche) affiche toutes les apps saines sur le cluster.",
-            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/screenshot-argocd.png",
-            "link": "https://argocd.devandre.sbs"
           },
           {
             "title": "Grafana — Tableaux de Bord Cluster Kubernetes",
@@ -731,127 +610,328 @@
             "caption": "Détail machine MAAS pour fast-heron (10.0.0.7) : Lenovo ThinkPad T590, 8 cœurs, 15,9 Go RAM, 512 Go NVMe. Nœud worker k3s exécutant la stack d'observabilité (Prometheus, Grafana, Loki) et les services de collaboration.",
             "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/fast-heron-detail.png",
             "link": "http://100.88.123.8:5240/MAAS"
-          },
-          {
-            "url": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/screenshot-homer.png",
-            "alt": "Homer — Tableau de bord des services de la plateforme",
-            "caption": "Tableau de bord Homer — 6 sections professionnelles : Infrastructure, Observabilité, Identité & Secrets, Plateforme & DevOps, IA / ML, Collaboration & Showcase"
           }
+        ],
+        "scope": [
+          "Fondation bare-metal : MAAS enrôle et commissionne les nœuds ThinkPad + MacBook ; OpenTofu gère le cycle de vie des machines en IaC.",
+          "Bootstrap k3s via Ansible avec durcissement CIS du kubelet (config.yaml par nœud) ; mesh Tailscale sur tous les nœuds.",
+          "Réseau : migration du CNI de flannel vers Cilium eBPF + Hubble ; MetalLB pour les IP de load-balancer bare-metal.",
+          "Stockage : bloc distribué Longhorn sur les nœuds porteurs de répliques + NFS ; sauvegardes Velero quotidiennes vers MinIO sur le contrôleur.",
+          "Cycle de vie : les Plans de system-upgrade-controller déploient k3s v1.33→v1.36 sans interruption (cordon uniquement, compatible finalizers Longhorn)."
+        ],
+        "architecture": [
+          "MAAS + OpenTofu → provisioning bare-metal ; nœuds enrôlés dans MAAS, cycle de vie géré en infrastructure-as-code.",
+          "Ansible → bootstrap k3s + durcissement CIS du kubelet, validé avec kube-bench (k3s-CIS-1.7).",
+          "CNI eBPF Cilium + observabilité Hubble ; MetalLB annonce l'IP LB 10.0.0.200 sur le LAN.",
+          "Longhorn réplique les volumes sur les nœuds de stockage (fast-heron / loving-gannet / swift-mac) ; Velero → MinIO sur le contrôleur.",
+          "Control plane sur set-hog (Kine/SQLite) + 5 workers ; Tailscale fournit le mesh sécurisé et l'accès distant."
+        ],
+        "testPlan": [
+          "kube-bench k3s-CIS-1.7 : 16/16 PASS sur tous les workers (config kubelet déployée via le playbook Ansible CIS).",
+          "Mise à jour sans interruption validée : system-upgrade-controller a déployé k3s v1.33→v1.36 sans SSH manuel ni interruption des workloads.",
+          "Sauvegarde/restauration : planning Velero quotidien actif ; restauration testée sur un namespace hors production.",
+          "Tests de résilience : réattachement/salvage des volumes Longhorn validé ; les redémarrages de nœud récupèrent proprement."
         ]
       },
       {
-        "title": "phi3-financial — Pipeline PromptOps d'entreprise",
-        "purpose": "Assistant IA financier à domaine restreint avec une architecture PromptOps en production. Construction d'un CustomLogger LiteLLM (LangfusePromptHandler) qui récupère le prompt de production actif depuis Langfuse à chaque requête avec un cache en mémoire de 5 minutes et une chaîne de fallback en trois niveaux — permettant des rollbacks de prompt instantanés sans redéploiement ni rebuild d'image. Inclut une suite d'évaluation CI de 25 cas imposant un taux de passage de 100% comme porte de déploiement.",
-        "role": "Ingénieur IA & Architecte de Prompts. Conception de l'architecture XML en 5 sections (system_intent, domain_knowledge_constraints, safety_and_guardrails, jailbreak_defenses, output_format) avec taxonomie hors-domaine explicite (médical/culinaire/jeux/sport, chacun avec des sous-items nommés) et 5 patterns de défense anti-jailbreak couvrant l'injection par roleplay, la commande système, le phishing de credentials, le contournement par traduction et l'extraction de prompt. Construction de l'infrastructure PromptOps trois niveaux (service Ollama → routage LiteLLM + injection de prompt à l'exécution → LLMOps Langfuse), implémentation du CustomLogger async_pre_call_hook, et rédaction de la suite d'évaluation comportementale de 25 cas avec versionnage sémantique et tagging git automatique.",
-        "impact": "25/25 cas d'évaluation passants (100% — déploiement bloqué sur toute régression). Temps de rollback de prompt : moins de 5 minutes via changement de label Langfuse — sans push git, sans redémarrage de pod. Diagnostic d'une panne CI de 90 secondes (redémarrage ArgoCD Recreate chevauchant les runs d'évaluation) et correction en deux couches : stratégie RollingUpdate + logique de retry exponentielle.",
+        "title": "Plateforme GitOps — ArgoCD + Kargo",
+        "oneLinePitch": "Une plateforme de livraison continue GitOps — ArgoCD app-of-apps comme source unique de vérité, promotion multi-étapes Kargo et une chaîne d'approvisionnement complète.",
+        "purpose": "La couche de livraison : chaque ressource du cluster est déclarée dans Git et réconciliée par ArgoCD (app-of-apps). Kargo promeut un artefact immuable dev→prod derrière un contrôle CODEOWNERS, et ArgoCD le déploie — aucun kubectl manuel en production.",
+        "role": "Ingénieur Plateforme / Release. Conception de l'architecture du dépôt GitOps (app-of-apps, wrapper charts Helm, overlays 2 environnements), du pipeline prod protégé par CODEOWNERS, et de la promotion Kargo + contrôles de chaîne d'approvisionnement.",
+        "impact": "~95 applications ArgoCD réconciliées depuis Git · aucun kubectl manuel en prod · 6 services custom promus dev→prod via Kargo derrière un contrôle CODEOWNERS.",
         "features": [
-          "Modelfile structuré XML : 5 sections comportementales (system_intent, domain_constraints, safety_guardrails, jailbreak_defenses, output_format) — architecture de prompt explicite, pas un bloc d'instruction unique",
-          "5 patterns de défense anti-jailbreak : FIXED RUNTIME, UNTRUSTED INPUT, INJECTION RESPONSE, PROMPT ISOLATION, PERSISTENCE — couvre roleplay, commande système, phishing credentials, contournement par traduction",
-          "LangfusePromptHandler : injection de prompt à l'exécution via LiteLLM CustomLogger (async_pre_call_hook) — rollback instantané, zéro redéploiement",
-          "Suite d'évaluation de 25 cas sur 5 catégories comportementales — taux de réussite 100% comme porte de déploiement, run de référence hebdomadaire planifié",
-          "Versionnage sémantique (MAJOR/MINOR/PATCH) + tagging git CI automatique + chaîne fail-open : Langfuse → cache obsolète → variable d'environnement"
+          "ArgoCD app-of-apps : minicloud-gitops est la source unique de vérité (apps/ Applications, helm-values/ overrides, services/ manifests) ; AppProject avec sourceRepos verrouillés.",
+          "Standard à deux environnements (dev + prod) avec auto-sync contrôlé par Git ; la prod n'avance que via une PR revue par CODEOWNERS et signée GPG.",
+          "Promotion multi-étapes Kargo : la CI build et prouve une image immuable, Kargo ouvre la PR de promotion dev→prod, ArgoCD la déploie — la CI ne touche jamais le cluster.",
+          "Helm golden path : chaque service est un wrapper chart dépendant d'une library chart partagée — un seul rendu Helm, une seule source ArgoCD.",
+          "Chaîne d'approvisionnement sur chaque image custom : Trivy CRITICAL exit-1, signature keyless Cosign (GitHub OIDC → Sigstore Fulcio), SBOM CycloneDX syft en OCI referrers, commits de bump signés GPG."
         ],
         "stack": [
-          "Groq llama-3.1-8b-instant (principal)",
-          "Ollama phi4-mini ×3 (fallback)",
-          "LiteLLM (routage + CustomLogger)",
-          "Langfuse (Gestion de prompts + Tracing)",
-          "Python",
-          "GitHub Actions (Eval CI)",
-          "Kubernetes (k3s)",
-          "Presidio (guardrail PII/DLP)",
-          "Valkey (cache de prompts)"
+          "ArgoCD (app-of-apps)",
+          "Kargo",
+          "Helm",
+          "Kustomize",
+          "GitHub Actions",
+          "Cosign",
+          "syft (SBOM)",
+          "Trivy",
+          "OPA Gatekeeper",
+          "AppProject RBAC"
         ],
-        "link": "https://langfuse.devandre.sbs",
-        "repoUrl": "https://github.com/andrelair-platform/phi3-financial",
-        "oneLinePitch": "Un pipeline PromptOps en production pour un assistant IA financier à domaine restreint — injection de prompt runtime via LiteLLM CustomLogger, rollback instantané Langfuse, et gate CI de 25 cas imposant un taux de réussite de 100%.",
-        "whyItMatters": "La plupart des déploiements LLM traitent le prompt système comme du code — intégré dans une ConfigMap ou une image, nécessitant un redéploiement complet pour le modifier. Ce pipeline sépare la gouvernance des prompts de l'infrastructure : le prompt de production actif vit dans Langfuse, est injecté à l'heure de la requête par un LiteLLM CustomLogger, et peut être rollback en moins de 5 minutes en changeant un label — sans git push, sans redémarrage de pod. La suite d'évaluation CI de 25 cas impose la correction comportementale à chaque commit, traitant les régressions de prompt comme des tests unitaires en échec.",
+        "whyItMatters": "Le GitOps est facile à démontrer et difficile à exploiter. Cette plateforme applique la vraie discipline : un dépôt source verrouillé, un chemin de prod validé par un humain, des artefacts immuables promus par Kargo, et une chaîne d'approvisionnement qui fait échouer le build sur une CVE CRITICAL ou une signature manquante.",
         "differentiators": [
-          "Runtime prompt injection via LiteLLM CustomLogger (async_pre_call_hook) — prompt fetched from Langfuse at request time, not baked into the image; rollback is a single label flip in the Langfuse UI",
-          "Three-layer fail-open chain: live Langfuse → stale in-process cache → ConfigMap env var — LiteLLM never fails because Langfuse is temporarily unreachable",
-          "Deterministic 25-case eval suite — no LLM-as-judge, no probabilistic scoring; keyword presence/absence per case; CI blocks on any regression below 100%",
-          "Explicit off-topic taxonomy in XML system prompt (medical, culinary, gambling, sports — each with named sub-items), making every domain boundary independently testable"
+          "Kargo promeut un artefact immuable à travers les étapes — la CI prouve, Kargo promeut, ArgoCD déploie (pas de CI qui pilote les déploiements en sync-over-async).",
+          "La prod est contrôlée par Git (CODEOWNERS + signatures GPG), pas un humain qui clique sur Sync ; selfHeal + prune gardent le cluster aligné sur Git.",
+          "Chaîne d'approvisionnement de bout en bout : Trivy + Cosign keyless + SBOM syft en OCI referrers sur chaque image custom."
         ],
-        "architecture": [
-          "LangfusePromptHandler (langfuse_prompt_handler.py) — LiteLLM CustomLogger; async_pre_call_hook fetches production-labelled prompt, strips user-supplied system messages (anti-injection), injects authoritative prompt as sole system message; 5-min in-process cache per worker pod",
-          "Groq llama-3.1-8b-instant (weight 10) + Ollama phi4-mini ×3 (weight 1 each) — weighted load balancing behind a single LiteLLM virtual model 'phi3-financial'; Groq primary for sub-1s latency, Ollama fallback activates on quota exceeded or API down",
-          "Langfuse prompt management — phi3-financial-system versioned with semantic versioning (MAJOR.MINOR.PATCH); 'production' label controls which version LangfusePromptHandler fetches at runtime; full audit trail and one-click rollback",
-          "sync_prompt_to_litellm.py — fetches production-labelled prompt, renders into a Kubernetes ConfigMap YAML, GPG-signed commit + push to minicloud-gitops; ArgoCD deploys in ~3 min",
-          "Presidio PII/DLP guardrail — PERSON, PHONE, EMAIL, IP_ADDRESS masked before Langfuse trace logging; DATE_TIME and LOCATION pass through unchanged (financial context entities)"
-        ],
-        "repoBlueprint": "User / Open WebUI\n       |\n       v\n+--------------------------------------------------+\n|  LiteLLM  (virtual model: phi3-financial)        |\n|                                                  |\n|  +--------------------------------------------+ |\n|  |  LangfusePromptHandler (async_pre_call_hook)|<-----Langfuse Prompt Mgmt\n|  |  1. fetch 'production' prompt               | |\n|  |     (Valkey 5-min in-process cache)         | |\n|  |  2. strip user-supplied system messages     | |\n|  |  3. inject as sole system message           | |\n|  +--------------------------------------------+ |\n|  Presidio PII/DLP  -->  mask PERSON/PHONE/EMAIL  |\n|  Circuit Breaker   -->  cooldown 60s / 3 fails   |\n+-----------------------+--------------------------+\n                        | weighted routing\n           +------------+------------+\n           |                         |\n           v weight: 10              v weight: 1 (x3)\n  +------------------+   +--------------------------+\n  |  Groq            |   |  Ollama (k3s, ai ns)    |\n  |  llama-3.1-8b-   |   |  phi4-mini              |\n  |  instant         |   |  primary / secondary /  |\n  |  sub-1s latency  |   |  tertiary pods          |\n  +------------------+   +--------------------------+\n           |                         |\n           +------------+------------+\n                        | response + trace metadata\n                        v\n             +----------------------+\n             |  Langfuse (LLMOps)  |\n             |  trace + score      |\n             |  per request        |\n             +----------------------+\n\nCI Gate -- prompt-eval.yml (GitHub Actions)\n  Tailscale OAuth --> minicloud CA --> LiteLLM /health\n  --> eval.py (25 cases, keyword scoring, no LLM judge)\n  --> git tag vX.Y.Z on clean main push\n  Blocks merge on any result below 25/25 PASS",
+        "link": "https://andrelair-platform.github.io/minicloud-platform-docs/",
+        "repoUrl": "https://github.com/andrelair-platform/minicloud-gitops",
         "atsKeywords": [
-          "PromptOps",
-          "LiteLLM CustomLogger",
-          "Langfuse Prompt Management",
-          "Runtime prompt injection",
-          "LLMOps",
-          "Eval-driven development",
-          "Groq",
-          "Python",
-          "Kubernetes",
-          "Presidio PII/DLP",
           "GitOps",
-          "GitHub Actions"
-        ],
-        "scope": [
-          "Phase 1 — XML prompt architecture (Modelfile): designed 5-section XML system prompt with explicit off-topic taxonomy (medical/culinary/gambling/sports with named sub-items) and 5 jailbreak defense patterns; baked into Ollama Modelfile as hardcoded fallback",
-          "Phase 2 — LangfusePromptHandler: built LiteLLM CustomLogger (async_pre_call_hook); 5-min in-process cache; three-layer fail-open (live Langfuse → stale cache → ConfigMap env var); strips user-supplied system messages to prevent guardrail bypass",
-          "Phase 3 — 25-case eval suite (eval.py): financial knowledge (10 cases), off-topic refusal (4), prompt injection resistance (6), edge/mixed-domain (5); keyword-based scoring — deterministic, no LLM-as-judge; CI exits 1 on any regression",
-          "Phase 4 — CI pipeline (prompt-eval.yml): Tailscale OAuth, minicloud CA trust, LiteLLM health check, eval run, auto git-tag on clean main; weekly schedule for baseline drift detection",
-          "Phase 5 — Groq routing (minicloud-litellm-custom): groq/llama-3.1-8b-instant as primary (weight 10); Ollama phi4-mini ×3 as fallback (weight 1); eval runtime 30 min → 7 min; chat response 60-90s → sub-1s"
-        ],
-        "testPlan": [
-          "Eval CI: 25/25 PASS confirmed on Groq backend (run #48, v2.2.4) — T1–T25 all green including T18 (healthcare stocks as investment topic, keyword 'compan' + 'invest')",
-          "Jailbreak resistance: T9 (system override), T10 (prompt extraction), T19 (roleplay), T20 (IT admin social engineering), T21 (credential phishing), T22 (translation bypass) — all REFUSE confirmed",
-          "Off-topic taxonomy: T6 (recipe), T7 (diabetes), T16 (sports betting odds), T17 (blackjack strategy) — all REFUSE confirmed",
-          "PII masking: Presidio masks IBAN, SSN, email, IP_ADDRESS in Langfuse traces; DATE_TIME and LOCATION pass through unchanged (financial context allow-list)",
-          "Fail-open chain: Langfuse pod killed mid-eval — stale cache served prompts for 5 min; after TTL, ConfigMap env var fallback activated; LiteLLM never went down",
-          "Cloudflare WAF: User-Agent minicloud-eval/1.0 passes; openai SDK default UA (AsyncOpenAI/Python*) gets HTTP 403 — documented in Troubleshooting"
-        ],
-        "interviewTalkingPoints": [
-          "Goal: run the 25-case eval suite from GitHub Actions without hitting the internal cluster IP. CI runners join the tailnet via Tailscale OAuth, but the tag:ci ACL does not grant access to 10.0.0.200:443. Every eval call returned a TCP timeout. Problem: LITELLM_BASE_URL was set to litellm.10.0.0.200.nip.io — a private IP unreachable from the CI node's network segment even with Tailscale active. Solution: switched LITELLM_BASE_URL to the Cloudflare Tunnel public URL (litellm.devandre.sbs). Requests route CI → Cloudflare → tunnel → controller → cluster, bypassing the ACL restriction entirely.",
-          "Goal: fix a second CI failure after switching to the Cloudflare URL. Every eval call returned HTTP 403 PermissionDeniedError, indistinguishable from an invalid API key. Problem: Cloudflare managed WAF blocks the User-Agent set by the openai Python SDK — 'AsyncOpenAI/Python/1.x.x'. The 403 came from Cloudflare before LiteLLM. Solution: default_headers={'User-Agent': 'minicloud-eval/1.0'} in the OpenAI() constructor. Applies to any Python openai SDK usage against any Cloudflare-fronted endpoint.",
-          "Goal: T18 was failing CI despite the model answering correctly. Required keyword was 'pharmaceut' but the model answered using 'healthcare companies', 'biotech stocks' — all correct, none containing 'pharmaceut'. Problem: keyword-based eval is deterministic — a correct answer using synonyms fails (false negative). Solution: changed required_keywords to ['compan', 'invest'] — stem fragments present in any correct answer. Bumped to PROMPT_VERSION 2.2.4. Lesson: prefer short stem fragments over full domain-specific terms.",
-          "Goal: make the eval suite resilient to LiteLLM restarts. ArgoCD Recreate strategy caused ~90s of downtime during any sync — if overlapping a CI run, cases failed with ConnectionError. Solution: three-tier exponential backoff in eval.py — 10s / 30s / 60s on 5xx or connection errors. Also switched LiteLLM to RollingUpdate strategy to prevent future Recreate downtime."
+          "ArgoCD",
+          "Kargo",
+          "Livraison continue",
+          "Helm",
+          "Kustomize",
+          "CI/CD",
+          "GitHub Actions",
+          "Cosign",
+          "SBOM",
+          "Sécurité chaîne d'approvisionnement",
+          "Trivy",
+          "RBAC",
+          "Déploiement progressif"
         ],
         "screenshots": [
           {
-            "title": "Chat en direct — Réponse sub-1s via Groq",
-            "caption": "Chat Open WebUI avec le modèle phi3-financial répondant à 'What is a P/E ratio?' — réponse sub-1s via Groq llama-3.1-8b-instant. Le modèle est restreint au domaine financier : questions finance répondues, requêtes hors-domaine refusées.",
-            "src": "https://raw.githubusercontent.com/andrelair-platform/phi3-financial/main/docs/screenshots/screenshot-chat.png",
-            "link": "https://chat.devandre.sbs"
-          },
-          {
-            "title": "Langfuse Gestion des Prompts — v2.2.4",
-            "caption": "Langfuse Prompt Management montrant phi3-financial-system v2.2.4 avec le prompt XML complet en 5 sections. Le label 'production' contrôle quelle version LangfusePromptHandler récupère à l'exécution. Rollback = changer le label sur une ancienne version.",
-            "src": "https://raw.githubusercontent.com/andrelair-platform/phi3-financial/main/docs/screenshots/screenshot-langfuse-prompts.png",
-            "link": "https://langfuse.devandre.sbs"
-          },
-          {
-            "title": "Langfuse Traces d'évaluation — 25 cas",
-            "caption": "Page Tracing Langfuse montrant les 25 traces d'évaluation (T1–T25) d'un run CI. Chaque trace taguée 'prompt-eval' avec la release git. Score de correction par trace (1.0 = PASS, 0.0 = FAIL) visible dans la colonne scores.",
-            "src": "https://raw.githubusercontent.com/andrelair-platform/phi3-financial/main/docs/screenshots/screenshot-langfuse-traces.png",
-            "link": "https://langfuse.devandre.sbs"
-          },
-          {
-            "title": "Dataset d'évaluation Langfuse — phi3-financial-evals",
-            "caption": "Vue Dataset Langfuse pour phi3-financial-evals — 25 cas de test avec requêtes d'entrée, comportement attendu (ANSWER/REFUSE) et métadonnées (ID de test). Le dataset pilote la gate CI et le suivi des expériences Langfuse.",
-            "src": "https://raw.githubusercontent.com/andrelair-platform/phi3-financial/main/docs/screenshots/screenshot-langfuse-dataset.png",
-            "link": "https://langfuse.devandre.sbs"
+            "title": "ArgoCD — Toutes les Applications de la Plateforme",
+            "caption": "Tuiles ArgoCD montrant la plateforme complète : Authentik, Backstage, Vault, Grafana, Harbor, Longhorn, Plane CE et tous les workloads IA/ML — tous Synced et Healthy. Le panneau de statut de santé (gauche) affiche toutes les apps saines sur le cluster.",
+            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/screenshot-argocd.png",
+            "link": "https://argocd.devandre.sbs"
           }
+        ],
+        "scope": [
+          "Architecture du dépôt : app-of-apps — apps/ Applications, helm-values/ overrides, services/ manifests ; AppProject avec sourceRepos verrouillés.",
+          "Deux environnements (dev + prod) avec auto-sync contrôlé par Git ; prod protégée par CODEOWNERS + PR signées GPG.",
+          "Kargo promeut une image immuable dev→prod : la CI prouve l'artefact, Kargo ouvre la PR, ArgoCD déploie.",
+          "Helm golden path : les services sont des wrapper charts fins sur une library chart partagée (un rendu Helm, une source ArgoCD)."
+        ],
+        "architecture": [
+          "ArgoCD app-of-apps réconcilie ~95 Applications depuis Git (root app recurse:true).",
+          "Par service : Kargo Project + Warehouse + Stages dev/prod ; la PR de promotion est fusionnée en squash signé.",
+          "La CI pousse les images vers Harbor (dev) + ghcr.io (prod, taguées SHA) avec Cosign + SBOM syft.",
+          "Argo Rollouts canary/BlueGreen avec AnalysisTemplates Prometheus comme frein d'exécution."
+        ],
+        "testPlan": [
+          "Chaque image prod : Trivy CRITICAL exit-1, signature Cosign + SBOM syft vérifiés en OCI referrers.",
+          "Les changements prod exigent une revue CODEOWNERS + une signature GPG vérifiée avant l'auto-sync.",
+          "Kargo ne promeut que du Freight vérifié en dev ; les AnalysisRuns de Rollouts gardent le canary sur métriques live.",
+          "selfHeal + prune d'ArgoCD maintiennent le cluster aligné sur Git ; la dérive est corrigée automatiquement."
+        ]
+      },
+      {
+        "title": "SI Assurance d'entreprise — Digital Workplace",
+        "oneLinePitch": "Le système d'information simulé d'un assureur commercial tournant sur la plateforme — ERP & finance, un digital workplace complet, et une gouvernance alignée DORA/ACPR.",
+        "purpose": "La couche métier : une alternative auto-hébergée à M365 / Google Workspace pour un assureur B2B français (« ktayl solution ») — ERP & finance, un digital workplace complet (mail, chat, visio, fichiers, signature) et des outils de conformité, le tout sur la plateforme Kubernetes + GitOps et protégé par SSO.",
+        "role": "Architecte Solutions & Concepteur SI. Modélisation du SI de l'assureur sur 15 domaines métier, configuration d'ERPNext pour le plan comptable assurance français, et assemblage de la suite digital workplace protégée par SSO.",
+        "impact": "54+ workloads sur 15 domaines SI · ERPNext : 845 comptes PCG 2025, TSCA 9/13/33%, PoC Factur-X Minimum (5 assertions OK) · chaque app derrière Authentik SSO + MFA.",
+        "features": [
+          "ERPNext configuré pour un assureur français : plan comptable PCG 2025 à 845 comptes, modèles de taxe TSCA, PoC de facturation Factur-X ; les RH comme source de vérité.",
+          "Digital workplace (équivalent M365) : mail Stalwart + Amazon SES, chat Matrix/Element, visio Jitsi, fichiers Nextcloud + OnlyOffice, signature Docuseal.",
+          "Identité d'entreprise : SSO OIDC Authentik + TOTP pour les 54+ services ; personas par département ; accès BYOD browser-first via Tailscale / Cloudflare.",
+          "Automatisation & workflow : n8n et Temporal orchestrent les processus métier à travers les domaines du SI.",
+          "Conformité by design : gouvernance alignée ACPR/DORA, network policies default-deny, et garde-fous PII/DLP sur la couche IA."
+        ],
+        "stack": [
+          "ERPNext / Frappe",
+          "Authentik (OIDC/SSO)",
+          "Stalwart Mail + SES",
+          "Matrix / Element",
+          "Jitsi Meet",
+          "Nextcloud / OnlyOffice",
+          "Docuseal",
+          "n8n",
+          "Temporal",
+          "PostgreSQL / MariaDB"
+        ],
+        "whyItMatters": "Cela transforme un home-lab en système d'information d'une vraie entreprise : pas seulement « j'ai fait tourner Kubernetes », mais « j'ai conçu et exploité l'épine dorsale numérique d'un assureur réglementé » — ERP, finance, digital workplace complet, identité et conformité, le tout auto-hébergé.",
+        "differentiators": [
+          "Une alternative M365 complète et auto-hébergée pour un assureur réglementé — pas une seule app, tout un SI.",
+          "Une vraie modélisation métier : PCG 2025, TSCA, Factur-X, ACPR/DORA — spécifique à l'assurance, pas du SaaS générique.",
+          "L'identité comme périmètre : SSO + MFA + accès BYOD / zero-trust à chaque service métier."
+        ],
+        "link": "https://andrelair-platform.github.io/minicloud-platform-docs/",
+        "repoUrl": "https://github.com/andrelair-platform/minicloud-gitops",
+        "atsKeywords": [
+          "Assurance",
+          "Architecture d'entreprise",
+          "ERPNext",
+          "Frappe",
+          "Digital Workplace",
+          "Alternative M365",
+          "IAM",
+          "SSO",
+          "Authentik",
+          "DORA",
+          "ACPR",
+          "Conformité",
+          "Automatisation métier",
+          "ITSM"
         ],
         "liveEndpoints": [
           {
-            "label": "API LiteLLM — modèle virtuel phi3-financial",
-            "command": "curl -s -X POST https://litellm.devandre.sbs/v1/chat/completions -H \"Authorization: Bearer sk-portfolio-demo\" -H \"Content-Type: application/json\" -d '{\"model\": \"phi3-financial\", \"messages\": [{\"role\": \"user\", \"content\": \"What is a P/E ratio?\"}], \"max_tokens\": 80}'",
-            "url": "https://litellm.devandre.sbs/v1/models"
+            "label": "Homer — tableau de bord plateforme avec tous les liens de services",
+            "command": "https://homer.devandre.sbs",
+            "url": "https://homer.devandre.sbs"
           },
           {
-            "label": "Langfuse — versionnage de prompts phi3-financial + traces eval",
-            "command": "https://langfuse.devandre.sbs",
-            "url": "https://langfuse.devandre.sbs"
+            "label": "ArgoCD — état de réconciliation GitOps de toutes les applications",
+            "command": "https://argocd.devandre.sbs",
+            "url": "https://argocd.devandre.sbs"
+          },
+          {
+            "label": "Grafana — tableaux de bord d'observabilité de la plateforme",
+            "command": "https://grafana.devandre.sbs",
+            "url": "https://grafana.devandre.sbs"
+          },
+          {
+            "label": "Docs Plateforme — runbooks de phases Docusaurus",
+            "command": "https://andrelair-platform.github.io/minicloud-platform-docs/",
+            "url": "https://andrelair-platform.github.io/minicloud-platform-docs/"
           }
+        ],
+        "scope": [
+          "15 domaines SI modélisés : police, sinistres, souscription, ERP/finance, RH, conformité, GED, communication, IA workplace.",
+          "ERPNext pour un assureur français : plan comptable PCG 2025 (845 comptes), modèles TSCA, PoC Factur-X Minimum.",
+          "Digital workplace : mail Stalwart + SES, Matrix/Element, Jitsi, Nextcloud + OnlyOffice, signature Docuseal.",
+          "Identité : SSO OIDC Authentik + TOTP sur les 54+ services ; n8n + Temporal automatisent les processus inter-domaines."
+        ],
+        "architecture": [
+          "ERPNext/Frappe sur MariaDB est la source de vérité ERP + RH (paie DSN/SEPA personnalisée).",
+          "Authentik OIDC protège chaque application métier derrière Tailscale / Cloudflare Tunnel.",
+          "Le mail Stalwart relaie l'outbound via Amazon SES ; l'inbound via SES→S3→SQS→bridge.",
+          "Chaque service dans son namespace avec NetworkPolicies default-deny ; PII/DLP (Presidio) sur la couche IA."
+        ],
+        "testPlan": [
+          "Config ERPNext validée : 845 comptes PCG, TSCA 9/13/33%, Factur-X Minimum (5 assertions OK).",
+          "Smoke SSO : les services publics redirigent vers Authentik, acceptent le TOTP et renvoient une session authentifiée.",
+          "Mail vérifié de bout en bout : outbound via SES (SPF/DKIM/DMARC alignés) + livraison inbound.",
+          "Paie ERPNext personnalisée (DSN + SEPA) testée unitairement (108 tests, ~76% de couverture)."
+        ]
+      },
+      {
+        "title": "Retrieva — Plateforme de conformité DORA",
+        "oneLinePitch": "Une plateforme de conformité DORA en production pour les entités financières — évaluations du risque ICT tiers, questionnaires fournisseurs notés par LLM, copilote IA et export en un clic du Registre d'information EBA.",
+        "purpose": "Mon produit de certification RNCP39583 (un produit distinct qui tourne sur la plateforme, séparé du SI assurance) : Retrieva automatise la conformité DORA (UE 2022/2554) au risque ICT tiers pour les entités financières — analyse d'écart de la documentation fournisseur, questionnaires notés par LLM, copilote de conformité, alertes de surveillance 24h et export du Registre d'information (article 28(3) EBA).",
+        "role": "Ingénieur Full-Stack / IA & Product Owner. Conception et développement du SaaS multi-tenant de bout en bout — backend Express, frontend Next.js, pipeline RAG + évaluation, et livraison GitOps/Kargo sur la plateforme.",
+        "impact": "4 phases de livraison en production · export en un clic du Registre d'information EBA (RT.01.01→RT.04.01) · RBAC multi-tenant · analyse d'écart DORA par article (couvert / partiel / manquant).",
+        "features": [
+          "Analyse d'écart DORA : upload de documents fournisseur (PDF/DOCX/XLSX) → chunking sémantique → Qdrant → un LLM classe la couverture par article DORA (couvert / partiel / manquant).",
+          "Copilote de conformité IA : RAG à classification d'intention sur votre documentation + les articles DORA, avec reranking, compression de contexte et validation des réponses.",
+          "Questionnaires fournisseurs auto-générés et notés par LLM ; alertes de surveillance BullMQ 24h (expiration de certification, renouvellement de contrat, revues annuelles en retard).",
+          "Export en un clic du Registre d'information EBA — un classeur XLSX de 4 feuilles (article 28(3) DORA, RT.01.01 → RT.04.01).",
+          "SaaS multi-tenant : isolation des workspaces, JWT + refresh tokens, RBAC (owner/admin/member/viewer) et garde-fous sur les sorties LLM."
+        ],
+        "stack": [
+          "Next.js 16 / React 19",
+          "Express 5 / Node 20",
+          "LangChain",
+          "Passerelle LiteLLM",
+          "Qdrant",
+          "PostgreSQL",
+          "Redis / BullMQ",
+          "Socket.io",
+          "Kargo (2 images)",
+          "Docker / Kubernetes"
+        ],
+        "whyItMatters": "DORA est une vraie douleur de marché non résolue : lors du dry-run ESA 2024, seules ~6,5% des entités financières ont passé les 116 contrôles du Registre d'information — les tableurs ne peuvent pas contenir le graphe entité→contrat→fonction→sous-traitant. Retrieva modélise ce graphe et automatise l'évaluation + l'export. C'est mon livrable de certification RNCP39583 et un vrai produit.",
+        "differentiators": [
+          "Un vrai produit réglementaire (DORA / UE 2022/2554) conforme à la spécification du Registre d'information EBA — pas une démo.",
+          "RAG à classification d'intention avec reranking, compression de contexte et validation des réponses — du LLMOps, pas un chatbot naïf.",
+          "Tourne sur ma propre plateforme : livré en GitOps et promu dev→prod par Kargo (git-warehouse, 2 images), avec sa propre collection Qdrant + datastore PostgreSQL."
+        ],
+        "link": "https://retrieva.online",
+        "repoUrl": "https://github.com/andrelair-platform/retrieva",
+        "atsKeywords": [
+          "DORA",
+          "Conformité réglementaire",
+          "RegTech",
+          "Risque tiers",
+          "Risque ICT",
+          "Registre d'information",
+          "EBA",
+          "RAG",
+          "LangChain",
+          "LiteLLM",
+          "Qdrant",
+          "SaaS multi-tenant",
+          "Next.js",
+          "Express"
+        ],
+        "liveEndpoints": [
+          {
+            "label": "Retrieva — application en ligne",
+            "command": "https://retrieva.online",
+            "url": "https://retrieva.online"
+          },
+          {
+            "label": "Retrieva — docs produit & architecture",
+            "command": "https://andrelair-platform.github.io/retrieva/",
+            "url": "https://andrelair-platform.github.io/retrieva/"
+          }
+        ],
+        "scope": [
+          "4 phases en production : copilote DORA → évaluation de docs fournisseurs → questionnaires → monitoring + export du Registre.",
+          "SaaS multi-tenant avec isolation des workspaces + RBAC (owner/admin/member/viewer).",
+          "RAG : classification d'intention → récupération → reranking → compression de contexte → génération → validation des réponses.",
+          "Worker d'écart DORA : parsing (PDF/DOCX/XLSX) → chunking sémantique → Qdrant → classification de couverture par article."
+        ],
+        "architecture": [
+          "Frontend Next.js 16 + API Express 5 ; LangChain orchestre les chaînes RAG + évaluation.",
+          "Passerelle LiteLLM devant les modèles ; Qdrant stocke les vecteurs ; PostgreSQL est le datastore principal (RTV-49).",
+          "Redis + BullMQ exécutent les workers ; un job répétable 24h émet les alertes de monitoring DORA.",
+          "Livré en GitOps, promu dev→prod par Kargo (git-Warehouse, 2 images) avec sa propre collection Qdrant."
+        ],
+        "testPlan": [
+          "Analyse d'écart DORA validée par article (couvert / partiel / manquant) sur la documentation ICT fournisseur.",
+          "L'export du Registre d'information produit un classeur conforme (article 28(3) EBA, RT.01.01→RT.04.01).",
+          "Isolation multi-tenant + RBAC appliqués au niveau workspace et base ; garde-fous sur les sorties LLM.",
+          "Images env-agnostiques identiques dev↔prod ; le git-Warehouse Kargo indexe le Freight sur le commit."
+        ]
+      },
+      {
+        "title": "Passerelle IA d'entreprise",
+        "purpose": "Plateforme de routage multi-fournisseurs LLM et de gouvernance d'entreprise construite sur LiteLLM sous Kubernetes. Unification de 8 fournisseurs cloud et locaux (Groq, OpenAI, Gemini, DeepSeek, Mistral, Anthropic Claude, HuggingFace featherless-ai via router.huggingface.co, et Ollama local) derrière un seul endpoint API avec un routage intelligent (Ollama→Groq→DeepSeek), filtrage PII/DLP Presidio, détection de credentials detect_secrets, gouvernance des clés par département à 3 niveaux avec plafonds budgétaires, disjoncteur, cache sémantique Valkey, et traçage LLMOps complet via Langfuse. Visibilité des coûts via un tableau de bord Grafana lisant les tables d'usage PostgreSQL de LiteLLM. Inclut Langfuse v3.201.1 avec ClickHouse, Authentik OIDC, et un palier NVIDIA NIM (nemotron-70b, llama-8b, deepseek-r1).",
+        "role": "Ingénieur Plateforme IA. Conception de la topologie de routage 8 fournisseurs et de la chaîne de fallback en 3 étapes, implémentation de Presidio PII et detect_secrets comme couches de hooks LiteLLM, construction du modèle de gouvernance des clés à 3 niveaux avec plafonds budgétaires et listes d'autorisation de modèles par département, configuration du disjoncteur (cooldown_time=60s, allowed_fails=3), déploiement de Langfuse v3.201.1 avec ClickHouse+Valkey et intégration OIDC Authentik, et création du tableau de bord Grafana avec requêtes SQL sur les tables d'usage PostgreSQL de LiteLLM.",
+        "impact": "8 fournisseurs LLM unifiés derrière un seul endpoint — cloud ou local, de façon transparente. deepseek-r1:7b en priorité cloud réduit la latence d'inférence de 40+s (CPU local) à 5-8s (API DeepSeek). Basculement automatique : les applications survivent à une panne fournisseur sans modification de code. Les plafonds budgétaires par département imposent des limites FinOps au niveau de la couche API. Chaque requête tracée dans Langfuse avec coût, latence et métadonnées du modèle pour un audit complet.",
+        "features": [
+          "Routage 8 fournisseurs : Groq, OpenAI, Gemini, DeepSeek, Mistral, Anthropic Claude, HuggingFace featherless-ai, Ollama — endpoint LiteLLM unique",
+          "Chaîne de fallback intelligente : Ollama → Groq → DeepSeek — basculement automatique en cas d'indisponibilité",
+          "Guardrails Presidio PII/DLP + detect_secrets — protection de la vie privée et des credentials sur chaque requête",
+          "Gouvernance des clés à 3 niveaux : plafonds budgétaires, listes de modèles autorisés et quotas d'usage par département",
+          "Disjoncteur (cooldown=60s, allowed_fails=3) + cache sémantique Valkey — résilience et optimisation des coûts",
+          "LLMOps Langfuse (v3.201.1 + ClickHouse + Valkey + Authentik OIDC) + tableau de bord Grafana via SQL PostgreSQL"
+        ],
+        "stack": [
+          "LiteLLM (Passerelle IA)",
+          "Presidio (PII/DLP)",
+          "detect_secrets",
+          "Valkey (cache sémantique)",
+          "Langfuse v3.201.1 (LLMOps)",
+          "ClickHouse (analytique Langfuse)",
+          "Grafana (tableau de bord des coûts)",
+          "PostgreSQL (données d'usage)",
+          "Ollama (inférence locale)",
+          "Python",
+          "Kubernetes (k3s)",
+          "Authentik (OIDC/SSO)",
+          "GitHub Actions"
+        ],
+        "link": "https://grafana.devandre.sbs",
+        "repoUrl": "https://github.com/andrelair-platform/minicloud-gitops",
+        "scope": [
+          "Phase 1 — Passerelle de base : LiteLLM avec Ollama local ; clés virtuelles par département avec allowlists de modèles et plafonds de budget par clé.",
+          "Phase 2 — Expansion cloud : ajout de Groq, OpenAI, Gemini, DeepSeek, Mistral, Anthropic Claude, HuggingFace featherless-ai ; chaîne de fallback à 3 niveaux Ollama→Groq→DeepSeek configurée.",
+          "Phase 3 — PII/DLP : Presidio intégré comme pre_call_hook LiteLLM ; allow-list de contexte financier ajustée pour éviter le masquage des années (DATE_TIME) et des noms de pays (LOCATION) dans les requêtes financières.",
+          "Phase 4 — Résilience : circuit breaker (cooldown=60s, allowed_fails=3) + cache de prompts exact-match Valkey (TTL 600s) ajoutés ; deepseek-r1:7b basculé en routage cloud-first (5–8s vs 40+s sur CPU local).",
+          "Phase 5 — LLMOps : Langfuse v3.201.1 déployé avec backend analytique ClickHouse + cache de traces Valkey ; SSO OIDC Authentik câblé ; chaque requête LiteLLM tracée avec coût, latence, modèle et tag de département.",
+          "Phase 6 — Visibilité des coûts : dashboard Grafana avec 6 panneaux SQL sur LiteLLM_SpendLogs ; datasource PostgreSQL provisionnée via ESO + injection ConfigMap par le sidecar Grafana.",
+          "Phase 7 — Palier NVIDIA NIM : nemotron-70b, llama-8b, deepseek-r1 ajoutés comme palier de modèles premium ; clé API synchronisée depuis Vault via ESO ExternalSecret."
+        ],
+        "architecture": [
+          "Couche d'aliasing de modèles : des noms conviviaux (ex. « gpt-4o », « claude-sonnet ») mappent vers des IDs de modèles spécifiques aux fournisseurs dans la config LiteLLM — les appelants utilisent des alias stables quel que soit le fournisseur qui sert réellement la requête.",
+          "Application du budget au niveau de la clé API, pas de l'application : la VirtualKey LiteLLM stocke max_budget + allowed_models par département ; la passerelle rejette les requêtes en dépassement ou hors allowlist avant d'atteindre un fournisseur.",
+          "pre_call_hook Presidio : les entités DATE_TIME et LOCATION explicitement exclues de l'analyseur Presidio — nécessaire pour les requêtes financières où « 2024 » et « France » sont des données utiles, pas des PII à masquer.",
+          "ClickHouse comme backend analytique de Langfuse plutôt que PostgreSQL : les écritures de traces à forte cardinalité (coût, latence, tokens par requête) saturent le débit d'écriture PostgreSQL à l'échelle du pipeline d'éval ; l'OLAP ClickHouse gère la même charge sans contention de schéma.",
+          "Dashboard Grafana provisionné déclarativement : le JSON du dashboard de coûts est stocké en git comme ConfigMap labellisée grafana_dashboard: '1' — le sidecar Grafana détecte le label et l'injecte sans interaction UI ; mot de passe de la datasource PostgreSQL injecté via envValueFrom depuis un secret géré par ESO."
+        ],
+        "testPlan": [
+          "Application des clés par département : 16 clés virtuelles (dept-it, dept-cyber, dept-data…) — chacune vérifiée pour rejeter les modèles hors allowlist et bloquer les appels une fois le budget épuisé.",
+          "Test de la chaîne de fallback : pod Ollama tué en pleine requête → bascule automatique vers Groq confirmée dans la fenêtre de cooldown du circuit breaker ; aucun changement côté application requis.",
+          "Vérification du garde-fou PII : prompts de test avec IBAN, numéro de sécurité sociale, adresses e-mail — masquage confirmé ; années (2024, 2025) et noms de pays (France, Belgique) vérifiés comme passant l'allow-list financière sans modification.",
+          "Test des requêtes du dashboard Grafana : SQL exécuté depuis Grafana Explore sur LiteLLM_SpendLogs — nombre de lignes conforme au volume de requêtes attendu ; rawQuery:true confirmé nécessaire pour le plugin PostgreSQL de Grafana.",
+          "Audit des traces Langfuse : contrôle ponctuel de 10 requêtes LiteLLM — chacune vérifiée comme une trace Langfuse avec attribution correcte du coût, nom du modèle et tag de département.",
+          "Intégration de régression : LiteLLM /health, tracing Langfuse actif, datasource Grafana joignable et routage des clés de département tous inclus dans la suite de régression automatisée à 62 contrôles (contrôles #17–#26 — 62 PASS / 0 FAIL)."
         ]
       },
       {
@@ -946,231 +1026,61 @@
         ]
       },
       {
-        "title": "Passerelle IA d'entreprise",
-        "purpose": "Plateforme de routage multi-fournisseurs LLM et de gouvernance d'entreprise construite sur LiteLLM sous Kubernetes. Unification de 8 fournisseurs cloud et locaux (Groq, OpenAI, Gemini, DeepSeek, Mistral, Anthropic Claude, HuggingFace featherless-ai via router.huggingface.co, et Ollama local) derrière un seul endpoint API avec un routage intelligent (Ollama→Groq→DeepSeek), filtrage PII/DLP Presidio, détection de credentials detect_secrets, gouvernance des clés par département à 3 niveaux avec plafonds budgétaires, disjoncteur, cache sémantique Valkey, et traçage LLMOps complet via Langfuse. Visibilité des coûts via un tableau de bord Grafana lisant les tables d'usage PostgreSQL de LiteLLM. Inclut Langfuse v3.201.1 avec ClickHouse, Authentik OIDC, et un palier NVIDIA NIM (nemotron-70b, llama-8b, deepseek-r1).",
-        "role": "Ingénieur Plateforme IA. Conception de la topologie de routage 8 fournisseurs et de la chaîne de fallback en 3 étapes, implémentation de Presidio PII et detect_secrets comme couches de hooks LiteLLM, construction du modèle de gouvernance des clés à 3 niveaux avec plafonds budgétaires et listes d'autorisation de modèles par département, configuration du disjoncteur (cooldown_time=60s, allowed_fails=3), déploiement de Langfuse v3.201.1 avec ClickHouse+Valkey et intégration OIDC Authentik, et création du tableau de bord Grafana avec requêtes SQL sur les tables d'usage PostgreSQL de LiteLLM.",
-        "impact": "8 fournisseurs LLM unifiés derrière un seul endpoint — cloud ou local, de façon transparente. deepseek-r1:7b en priorité cloud réduit la latence d'inférence de 40+s (CPU local) à 5-8s (API DeepSeek). Basculement automatique : les applications survivent à une panne fournisseur sans modification de code. Les plafonds budgétaires par département imposent des limites FinOps au niveau de la couche API. Chaque requête tracée dans Langfuse avec coût, latence et métadonnées du modèle pour un audit complet.",
+        "title": "Automatisation des factures de sinistres — HDI Global",
+        "oneLinePitch": "Une automatisation Python qui a rendu un traitement manuel des factures de sinistres ~70% plus rapide, avec des tableaux de bord de contrôle qualité automatisés pour la Finance.",
+        "purpose": "Une automatisation en production construite pendant mon alternance chez HDI Global (assurance industrielle et commerciale) : elle a remplacé un traitement manuel et source d'erreurs des factures de sinistres par un pipeline Python, et a ajouté des rapports et tableaux de bord de contrôle qualité automatisés pour l'équipe Finance.",
+        "role": "Ingénieur Automatisation (alternance)",
+        "impact": "Cycle des factures de sinistres ~70% plus rapide · contrôles manuels récurrents supprimés · meilleure qualité des données pour la Finance.",
         "features": [
-          "Routage 8 fournisseurs : Groq, OpenAI, Gemini, DeepSeek, Mistral, Anthropic Claude, HuggingFace featherless-ai, Ollama — endpoint LiteLLM unique",
-          "Chaîne de fallback intelligente : Ollama → Groq → DeepSeek — basculement automatique en cas d'indisponibilité",
-          "Guardrails Presidio PII/DLP + detect_secrets — protection de la vie privée et des credentials sur chaque requête",
-          "Gouvernance des clés à 3 niveaux : plafonds budgétaires, listes de modèles autorisés et quotas d'usage par département",
-          "Disjoncteur (cooldown=60s, allowed_fails=3) + cache sémantique Valkey — résilience et optimisation des coûts",
-          "LLMOps Langfuse (v3.201.1 + ClickHouse + Valkey + Authentik OIDC) + tableau de bord Grafana via SQL PostgreSQL"
+          "Pipeline Python qui ingère, valide et traite les lots de factures de sinistres — en remplaçant le traitement manuel et en réduisant le temps de cycle de ~70%.",
+          "Rapports et tableaux de bord de contrôle qualité automatisés qui ont supprimé des vérifications manuelles récurrentes pour l'équipe Finance.",
+          "Règles de qualité des données qui détectent les incohérences en amont, avant les systèmes financiers aval."
         ],
         "stack": [
-          "LiteLLM (Passerelle IA)",
-          "Presidio (PII/DLP)",
-          "detect_secrets",
-          "Valkey (cache sémantique)",
-          "Langfuse v3.201.1 (LLMOps)",
-          "ClickHouse (analytique Langfuse)",
-          "Grafana (tableau de bord des coûts)",
-          "PostgreSQL (données d'usage)",
-          "Ollama (inférence locale)",
           "Python",
-          "Kubernetes (k3s)",
-          "Authentik (OIDC/SSO)",
-          "GitHub Actions"
+          "pandas",
+          "SQL",
+          "ETL / traitements par lots",
+          "Excel / CSV",
+          "Tableaux de bord automatisés"
         ],
-        "link": "https://grafana.devandre.sbs",
-        "repoUrl": "https://github.com/andrelair-platform/minicloud-gitops"
-      },
-      {
-        "title": "Plateforme IA Chat d'entreprise",
-        "purpose": "Déploiement d'Open WebUI comme interface de chat IA d'entreprise en production, accessible à 16 départements métier via SSO Authentik OIDC. Connecte l'ensemble du backend IA — Passerelle LiteLLM (8 fournisseurs), pipeline RAG (base documentaire assurance française) et recherche web temps réel SearXNG — dans un produit unique accessible aux utilisateurs métier non techniques. phi3-financial est le modèle par défaut pour les analystes financiers, avec restriction de domaine et gouvernance du prompt en temps réel via Langfuse. Historique des conversations et gestion des utilisateurs persistés en PostgreSQL.",
-        "role": "Ingénieur Plateforme & Produit IA. Intégration d'Authentik OIDC dans Open WebUI, avec résolution de l'échec de vérification SSL contre le CA auto-signé du cluster via un init container concaténant les CAs système et le CA minicloud en un bundle unique (SSL_CERT_FILE=/ca-bundle/bundle.crt). Déploiement de SearXNG avec deux gotchas non évidents : enableServiceLinks=false pour éviter que Kubernetes injecte une variable SEARXNG_PORT crashant granian, et BYPASS_WEB_SEARCH_WEB_LOADER=true pour la compatibilité avec les sites d'actualité. Migration du stockage de SQLite vers PostgreSQL et câblage de la Passerelle IA et du pipeline RAG comme backends.",
-        "impact": "16 départements métier avec accès IA contrôlé par SSO — chaque utilisateur ne voit que son propre historique. Les analystes financiers disposent de phi3-financial par défaut : restreint au domaine financier, rollback du prompt en moins de 5 minutes via Langfuse. Les utilisateurs interrogent une base documentaire d'assurance française directement dans le chat via le pipeline RAG. Recherche web temps réel via SearXNG auto-hébergé. Zéro perte de données de conversation au redémarrage du pod — stockage PostgreSQL.",
-        "features": [
-          "SSO Authentik OIDC — 16 groupes départementaux, modèles par défaut par département, isolation des conversations by design",
-          "phi3-financial par défaut pour la finance — restreint au domaine, injection de prompt runtime via Langfuse (rollback instantané, sans redéploiement)",
-          "RAG en chat — base documentaire assurance française interrogeable via bge-m3 + recherche hybride + re-ranking cross-encoder",
-          "Recherche web temps réel SearXNG — méta-recherche auto-hébergée, sans tracking, icône globe dans l'UI",
-          "Persistance des conversations PostgreSQL — production, migré de SQLite, zéro perte de données au redémarrage",
-          "Init container bundle CA SSL — résout l'échec de vérification SSL OIDC token/JWKS contre le CA auto-signé du cluster"
-        ],
-        "stack": [
-          "Open WebUI",
-          "Authentik (OIDC/SSO)",
-          "LiteLLM (Passerelle IA)",
-          "Ollama (inférence locale)",
-          "SearXNG (recherche web)",
-          "PostgreSQL (persistance)",
-          "pgvector + bge-m3 (RAG)",
-          "Langfuse (gestion des prompts)",
-          "Kubernetes (k3s)",
-          "Helm"
-        ],
-        "link": "https://chat.devandre.sbs",
-        "repoUrl": "https://github.com/andrelair-platform/minicloud-open-webui"
-      },
-      {
-        "title": "Backstage Internal Developer Portal",
-        "purpose": "Portail développeur interne durci en production, basé sur Backstage 1.52, déployé sur un cluster Kubernetes auto-hébergé avec livraison GitOps, SSO Authentik OIDC, Templates Logiciels, TechDocs et un plugin Plane Issues personnalisé.",
-        "role": "Ingénieur Plateforme — conception et implémentation du système frontend personnalisé, intégration OIDC, module Tech Radar, scaffolder Software Templates, plugin Plane Issues, intégration TechDocs, pipeline CI/CD et livraison GitOps via ArgoCD.",
-        "impact": "Tableau de bord unique pour tous les services du cluster — workloads IA/ML (pipeline RAG, passerelle IA, phi3-financial, Open WebUI), outils plateforme (IDP, gestionnaire de projet, gestionnaire de mots de passe), services CI/CD, infrastructure (Nextcloud, OnlyOffice) et APIs. Swagger UI complet par API. État des pods Kubernetes en temps réel. Tech Radar avec 39 entrées. Template golden-path génère dépôt + CI + GitOps + app ArgoCD en un clic. TechDocs intégré au portail. Onglet Plane Issues en direct. GitOps entièrement automatisé — zéro étape manuelle après git push.",
-        "features": [
-          "Catalog Logiciel — tous les workloads du cluster suivis : services IA/ML (pipeline RAG, passerelle IA, Open WebUI, phi3-financial), outils plateforme (IDP, gestionnaire de projet, gestionnaire de mots de passe), services CI/CD (platform-demo, ktayl-solution-web), infrastructure (Nextcloud, OnlyOffice) et APIs — avec métadonnées owner, système, cycle de vie et tags",
-          "API Docs — Swagger/OpenAPI UI intégré pour chaque entité API enregistrée",
-          "Vue Kubernetes en direct — nombre de pods et état d'erreur en temps réel depuis le cluster k3s",
-          "Tech Radar personnalisé — radar 4 quadrants (Plateformes, IA & ML, Sécurité, Langages) avec 39 entrées, récupérées en direct depuis minicloud-gitops sans rebuild",
-          "Software Templates — scaffolder golden-path go-service : génère dépôt GitHub, pipeline CI, manifestes GitOps et app ArgoCD en un clic",
-          "TechDocs — documentation rendue dans le portail depuis mkdocs.yml par service ; mkdocs-techdocs-core intégré à l'image Backstage",
-          "Onglet Plane Issues — plugin personnalisé @internal/plugin-minicloud-plane affichant les issues Plane CE en direct par entité du catalog",
-          "SSO Authentik OIDC — connexion unique via Authentik ; pas de comptes Backstage séparés ; TOTP obligatoire",
-          "CI/CD GitOps — scan Trivy CVE + signature Cosign sans clé + SBOM CycloneDX syft sur chaque image ; bump gitops signé GPG ; rollout ArgoCD Recreate"
-        ],
-        "stack": [
-          "Backstage 1.52",
-          "TypeScript",
-          "React",
-          "Node.js",
-          "ArgoCD",
-          "Authentik OIDC",
-          "Harbor",
-          "Cosign (sans clé)",
-          "Trivy",
-          "syft (SBOM)",
-          "PostgreSQL",
-          "k3s",
-          "Tailscale",
-          "mkdocs-techdocs-core",
-          "Plane CE"
-        ],
-        "link": "https://backstage.devandre.sbs",
-        "repoUrl": "https://github.com/andrelair-platform/minicloud-backstage",
-        "oneLinePitch": "Un IDP en production sur Kubernetes — tableau de bord unique pour tous les services du cluster, docs API en direct, état Kubernetes, Software Templates, TechDocs, Plane Issues et un Tech Radar personnalisé, le tout livré par GitOps.",
-        "whyItMatters": "À mesure que la complexité de la plateforme augmente, les ingénieurs passent plus de temps à chercher où les choses se trouvent qu'à construire. Backstage centralise la propriété des services, les contrats API, l'état du cluster en direct, le suivi des tâches et la documentation dans un portail authentifié — rendant la plateforme auto-documentée et offrant à chaque nouveau service un golden path dès le premier jour.",
+        "whyItMatters": "Un résultat de production concret et mesurable chez un assureur réglementé — pas un exercice de labo : un workflow financier manuel utilisé par de vraies équipes, automatisé de bout en bout avec une métrique à l'appui (~70% plus rapide). Le rôle complet chez HDI — applications d'entreprise, ITSM, IAM, cloud — figure dans l'Expérience ci-dessous.",
         "differentiators": [
-          "Module Tech Radar personnalisé — le plugin npm a été abandonné silencieusement à cause d'un conflit de version frontend-plugin-api ; reconstruit comme createFrontendPlugin workspace-local ; contenu récupéré depuis minicloud-gitops sans rebuild",
-          "Plugin Plane Issues personnalisé — @internal/plugin-minicloud-plane ; connecte les entités du catalog aux issues Plane CE en direct via un endpoint proxy ; aucune dépendance SaaS externe",
-          "Golden path Software Templates — le scaffolder génère dépôt GitHub + squelette CI + manifestes GitOps + Application ArgoCD en un clic ; nouveau service déployé en moins de 10 minutes",
-          "TechDocs intégré — mkdocs-techdocs-core dans l'image Backstage ; documentation rendue dans le portail depuis mkdocs.yml par service ; pas de site docs séparé",
-          "Supply chain durci — chaque image est scannée Trivy, signée Cosign (sans clé via GitHub OIDC → Sigstore Fulcio) et SBOM CycloneDX syft attaché comme référent OCI"
-        ],
-        "architecture": [
-          "Frontend : createApp() depuis @backstage/frontend-defaults — plugins enregistrés comme objets FrontendFeature typés ; plugins personnalisés comme createFrontendPlugin workspace-local",
-          "Auth : SignInPageBlueprint.make() avec Authentik OIDC ; metadataUrl aligné sur auth.devandre.sbs (pas nip.io) pour correspondre au domaine du cookie",
-          "Tech Radar : createFrontendPlugin personnalisé à /tech-radar ; récupère tech-radar.json depuis minicloud-gitops en direct",
-          "Plane Issues : plugin workspace @internal/plugin-minicloud-plane ; onglet EntityPlaneIssuesContent ; proxy /minicloud-plane → minicloud-plane.minicloud-plane-dev.svc.cluster.local:8080",
-          "TechDocs : mkdocs-techdocs-core installé dans l'image ; configuration local builder dans backstage-values.yaml ; mkdocs.yml + docs/ par dépôt service",
-          "Software Templates : template go-service dans minicloud-backstage/templates/ ; étapes : fetch:template → publish:github → branch:create (dev, staging) → PR vers minicloud-gitops → catalog:register",
-          "Backend : Node 24 (trixie-slim) ; PostgreSQL via sous-chart Bitnami sur Longhorn PVC",
-          "CI : yarn build:backend → Docker → Harbor (Tailscale) → Trivy → cosign sign → syft SBOM → bump gitops GPG",
-          "GitOps : stratégie ArgoCD Recreate (évite le blocage rolling-update + ResourceQuota avec un seul réplica)"
-        ],
-        "repoBlueprint": "GitHub Actions CI\n  yarn build → Docker → Harbor\n  → Trivy scan → cosign sign\n  → syft SBOM (OCI referrer)\n  → GPG gitops bump commit\n         |\n         v (ArgoCD webhook)\n  +----------------------------------------------+\n  |  Backstage Pod (k3s, backstage namespace)    |\n  |                                              |\n  |  Frontend (React / createApp)                |\n  |  +-- Software Catalog (all cluster services)          |\n  |  +-- API Docs (Swagger UI per API entity)    |\n  |  +-- Kubernetes tab (live k3s pod status)    |\n  |  +-- Tech Radar (custom plugin, live JSON)   |\n  |  +-- TechDocs (mkdocs-techdocs-core)         |\n  |  +-- Software Templates (go-service)         |\n  |  +-- Plane Issues (@internal plugin)         |\n  |                                              |\n  |  Backend (Node 24)                           |\n  |  +-- catalog / auth / search / kubernetes    |\n  |  +-- proxy /minicloud-plane                  |\n  |  +-- techdocs local builder                 |\n  |                                              |\n  |  PostgreSQL (Bitnami subchart, Longhorn PVC) |\n  +----------------------------------------------+\n         |\n  Authentik OIDC (auth.devandre.sbs)\n  minicloud-plane API (minicloud-plane-dev ns)\n  minicloud k3s cluster (Kubernetes tab)\n  minicloud-gitops (tech-radar.json live)\n  Plane CE (plane.devandre.sbs)",
-        "atsKeywords": [
-          "Portail Développeur Interne",
-          "IDP",
-          "Backstage",
-          "Ingénierie Plateforme",
-          "TypeScript",
-          "React",
-          "Node.js",
-          "Software Catalog",
-          "TechDocs",
-          "Software Templates",
-          "Tech Radar",
-          "GitOps",
-          "ArgoCD",
-          "Authentik OIDC",
-          "Kubernetes",
-          "Cosign",
-          "Trivy",
-          "Harbor",
-          "SBOM",
-          "Plane CE"
-        ],
-        "scope": [
-          "Phase 1 — Bootstrap : Backstage 1.52 nu déployé via chart Helm ArgoCD ; sous-chart PostgreSQL sur Longhorn PVC ; app-config injecté via ConfigMap Helm",
-          "Phase 2 — SSO OIDC : provider Authentik configuré ; SignInPageBlueprint câblé ; metadataUrl aligné sur devandre.sbs pour corriger l'expiration silencieuse de session",
-          "Phase 3 — Remplissage du Catalog : 14 → 19 Composants, 1 Système, 10 Localisations ; règles catalog mises à jour",
-          "Phase 4 — Plugin Kubernetes : token ServiceAccount + CA cert injectés via secret ESO ; état des pods en direct par composant",
-          "Phase 5 — API Docs : entités OpenAPI enregistrées ; Swagger UI complet rendu inline par entité API",
-          "Phase 6 — Tech Radar personnalisé : plugin npm abandonné (conflit frontend-plugin-api) ; reconstruit comme createFrontendPlugin workspace-local ; 39 entrées sur 4 quadrants",
-          "Phase 7 — Durcissement supply chain : scan Trivy CRITICAL ; Cosign sans clé ; SBOM CycloneDX syft ; bump gitops GPG ; stratégie Recreate",
-          "Phase 8 — Plugin Plane Issues : plugin workspace @internal/plugin-minicloud-plane ; onglet EntityPlaneIssuesContent ; proxy configuré dans backstage-values.yaml",
-          "Phase 9 — TechDocs : mkdocs-techdocs-core dans l'image Backstage ; builder local configuré dans backstage-values.yaml ; mkdocs.yml + docs/ par service",
-          "Phase 10 — Software Templates : scaffolder golden-path go-service ; backstage-github-secret câblé depuis Vault ci-secrets ; template génère dépôt + CI + GitOps + app ArgoCD en un clic"
-        ],
-        "testPlan": [
-          "Test de connexion OIDC : navigation vers backstage.devandre.sbs → Sign In → Authentik → redirige vers le catalog en tant qu'utilisateur authentifié (testé sur 3 personas département Authentik)",
-          "Comptage des entités : comptage visible dans l'en-tête du Software Catalog ; validé contre le comptage en base bn_backstage dans le pod backstage",
-          "Test de rendu API Docs : catalog → rag-ingest-api → onglet DEFINITION → Swagger UI charge GET /health, GET /ready, POST /ingest avec schémas requête/réponse",
-          "Onglet Kubernetes en direct : catalog → rag-ingest → onglet KUBERNETES → 1 pod Running, 0 erreurs depuis le cluster live",
-          "Test de rendu Tech Radar : /tech-radar → 4 quadrants s'affichent ; modification de tech-radar.json dans minicloud-gitops → radar mis à jour sans rebuild d'image",
-          "TechDocs : catalog → minicloud-backstage → onglet DOCS → documentation mkdocs rendue dans le portail",
-          "Software Templates : /create → go-service → formulaire rempli → scaffolder crée dépôt GitHub + branches dev/staging + PR GitOps → entité enregistrée dans le catalog",
-          "Onglet Plane Issues : catalog → platform-demo → onglet PLANE ISSUES → issues en direct du projet Plane CE PT",
-          "Porte CI : push vers main → GitHub Actions build + scan Trivy → Harbor → cosign sign → syft SBOM → ArgoCD Recreate → pod backstage 1/1 Ready"
+          "Résultat métier mesurable (~70% plus rapide sur le cycle des factures), maîtrisé de bout en bout.",
+          "Suppression du travail de contrôle qualité manuel récurrent pour la Finance — pas un script ponctuel.",
+          "Construit sur de vraies données d'entreprise dans un environnement d'assurance réglementé."
         ],
         "interviewTalkingPoints": [
-          "Objectif : offrir aux ingénieurs de plateforme un Tech Radar auto-hébergé sans dépendre d'un SaaS externe. Nous avons installé @backstage/plugin-tech-radar depuis npm, l'avons câblé dans createApp(), déployé, et n'avons rien vu. Pas d'erreur, pas de crash — juste un emplacement vide dans la barre latérale. Défi : @backstage/plugin-tech-radar embarque une version imbriquée frontend-plugin-api@0.6.7 alors que le workspace utilise 0.17.2. La vérification du symbole $type dans le registre de plugins échoue silencieusement. Solution : suppression du package npm, reconstruction du Tech Radar comme createFrontendPlugin workspace-local. Le radar récupère maintenant tech-radar.json en direct depuis minicloud-gitops — zéro rebuild pour mettre à jour le contenu.",
-          "Objectif : afficher les issues Plane CE en direct dans Backstage par entité du catalog. Nous avons écrit @internal/plugin-minicloud-plane comme plugin workspace-local Backstage. Défi : le dépôt minicloud-plane était privé — la découverte du catalog Backstage récupère les URL raw.githubusercontent.com, qui retournent 404 pour les dépôts privés. Solution : passage du dépôt en public.",
-          "Objectif : mettre en place des Software Templates pour que les nouveaux services aient un golden path sans étapes manuelles. Le scaffolder génère un dépôt GitHub avec squelette CI, manifestes GitOps et Application ArgoCD. Défi : la syntaxe de template Nunjucks entre en conflit avec la syntaxe d'expression GitHub Actions ${{ }}. Solution : encapsuler le squelette CI dans des blocs {% raw %}...{% endraw %}.",
-          "Objectif : déployer Backstage de manière fiable avec ArgoCD dans un namespace avec ResourceQuota serré (2 CPU / 2 Gi, un seul réplica). Défi : RollingUpdate fait tourner brièvement deux pods simultanément — le second pod est toujours bloqué jusqu'à l'expulsion du premier, qui n'arrive jamais car Kubernetes attend que le nouveau pod soit Ready. Dépendance circulaire sans timeout. Solution : strategy.type: Recreate.",
-          "Objectif : sécuriser Backstage derrière Authentik OIDC. La connexion fonctionnait mais après ~10 minutes d'inactivité la session expirait silencieusement et la page devenait blanche avec une boucle de redirection. Défi : Authentik lie le cookie de session à devandre.sbs. Le metadataUrl du backend était configuré sur auth.10.0.0.200.nip.io — une origine différente du domaine du cookie. Solution : alignement de metadataUrl sur auth.devandre.sbs."
+          "Comment j'ai analysé le workflow manuel des factures de sinistres et d'où vient réellement le gain de ~70%.",
+          "Les règles de qualité des données que j'ai ajoutées et comment elles ont évité des erreurs financières en aval."
         ],
-        "screenshots": [
-          {
-            "title": "Software Catalog — Tous les Services du Cluster",
-            "caption": "Tous les workloads du cluster en une vue — services IA/ML, outils plateforme, services CI/CD, infrastructure et APIs — avec tags, cycle de vie, propriétaire et métadonnées système. L'annotation backstage.io/kubernetes-id connecte chaque entité à l'onglet K8s en direct.",
-            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-backstage/main/docs/screenshots/screenshot-catalog.png",
-            "link": "https://backstage.devandre.sbs"
-          },
-          {
-            "title": "Tech Radar — 39 Entrées",
-            "caption": "Radar personnalisé 4 quadrants : Plateformes, IA & ML, Sécurité & Identité, Langages & Frameworks. 39 entrées avec les anneaux ADOPT / TRIAL / ASSESS / HOLD. Données récupérées en direct depuis minicloud-gitops.",
-            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-backstage/main/docs/screenshots/screenshot-tech-radar.png",
-            "link": "https://backstage.devandre.sbs/tech-radar"
-          },
-          {
-            "title": "API Docs — Swagger UI",
-            "caption": "Swagger UI intégré pour la spec OpenAPI du service rag-ingest : GET /health, GET /ready, POST /ingest. Rendu directement depuis l'entité API enregistrée dans le catalog.",
-            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-backstage/main/docs/screenshots/screenshot-api-docs.png",
-            "link": "https://backstage.devandre.sbs/catalog/default/api/rag-ingest-api"
-          },
-          {
-            "title": "Vue Kubernetes en Direct",
-            "caption": "Onglet Kubernetes en direct — 1 pod en cours d'exécution, 0 erreurs, issu du cluster k3s minicloud en temps réel via l'annotation backstage.io/kubernetes-id.",
-            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-backstage/main/docs/screenshots/screenshot-kubernetes-tab.png",
-            "link": "https://backstage.devandre.sbs/catalog/default/component/rag-ingest/kubernetes"
-          },
-          {
-            "title": "Software Templates — Golden Path",
-            "caption": "Scaffolder go-service : remplir le formulaire → Backstage crée le dépôt GitHub, le squelette CI, les manifestes GitOps et l'Application ArgoCD automatiquement.",
-            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-backstage/main/docs/screenshots/screenshot-templates.png",
-            "link": "https://backstage.devandre.sbs/create"
-          },
-          {
-            "title": "TechDocs — Docs dans le Portail",
-            "caption": "mkdocs-techdocs-core rend la documentation des services dans le portail. Pas de site docs séparé — la doc vit avec le code, rendue depuis mkdocs.yml dans chaque dépôt service.",
-            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-backstage/main/docs/screenshots/screenshot-techdocs.png",
-            "link": "https://backstage.devandre.sbs"
-          }
+        "atsKeywords": [
+          "Automatisation des processus métier",
+          "Python",
+          "pandas",
+          "ETL",
+          "Qualité des données",
+          "Reporting",
+          "Tableaux de bord",
+          "Sinistres",
+          "Assurance",
+          "Finance"
         ],
-        "liveEndpoints": [
-          {
-            "label": "Backstage Software Catalog — catalog live du cluster",
-            "command": "https://backstage.devandre.sbs",
-            "url": "https://backstage.devandre.sbs"
-          },
-          {
-            "label": "Tech Radar — 39 entrées sur 4 quadrants",
-            "command": "https://backstage.devandre.sbs/tech-radar",
-            "url": "https://backstage.devandre.sbs/tech-radar"
-          },
-          {
-            "label": "API Docs — Swagger UI rag-ingest-api",
-            "command": "https://backstage.devandre.sbs/catalog/default/api/rag-ingest-api",
-            "url": "https://backstage.devandre.sbs/catalog/default/api/rag-ingest-api"
-          },
-          {
-            "label": "Software Templates — golden path go-service",
-            "command": "https://backstage.devandre.sbs/create",
-            "url": "https://backstage.devandre.sbs/create"
-          }
+        "scope": [
+          "Analyse du workflow manuel des factures de sinistres pour identifier les goulets et les points de contrôle qualité.",
+          "Construction d'un pipeline Python pour ingérer, valider et traiter les lots de factures, avec des règles de qualité des données.",
+          "Automatisation des rapports et tableaux de bord de contrôle qualité que la Finance faisait à la main.",
+          "Intégration dans la routine de l'équipe, réduisant le temps de cycle de ~70%."
+        ],
+        "architecture": [
+          "Python ingère les lots de factures de sinistres (Excel/CSV), les valide et applique des règles de qualité des données.",
+          "Les résultats alimentent des rapports et tableaux de bord de contrôle qualité automatisés pour la Finance.",
+          "Exécution en job batch planifié, remplaçant le traitement manuel."
+        ],
+        "testPlan": [
+          "Sortie automatisée validée contre le processus manuel sur de vrais lots de factures avant la bascule.",
+          "Les règles de qualité des données détectent les incohérences tôt, évitant des erreurs financières en aval.",
+          "Les rapports QC automatisés recoupent les résultats que la Finance vérifiait auparavant à la main."
         ]
       }
     ],
@@ -1179,7 +1089,7 @@
         "date": "Sep 2024 - Présent",
         "title": "Ingénieur IT Automation & Applications (Alternant)",
         "subtitle": "HDI Global SE France, Paris",
-        "description": "<ul><li><strong>Automatisation &amp; Développement :</strong> Automatisations Python pour le traitement des sinistres et des workflows métier, réduisant le traitement manuel (&minus;70 % sur le cycle de facturation sinistres) et améliorant la qualité des données ; rapports de contrôle qualité et tableaux de bord supprimant des vérifications manuelles récurrentes pour l&rsquo;équipe Finance.</li><li><strong>Applications métier &amp; ITSM :</strong> Administration et support de 8+ applications d&rsquo;entreprise critiques utilisées par les équipes Sinistres, Underwriting, Finance et RH ; administration de la plateforme ITSM GLPI et contribution à ses évolutions fonctionnelles et techniques.</li><li><strong>Cloud &amp; Modern Workplace :</strong> Contribution au programme de cloudification du poste de travail (Windows 365 / Global Cloud Desktop, Microsoft Intune) via les phases de test, de validation et d&rsquo;accompagnement des utilisateurs ; support de la migration d&rsquo;applications on-premise vers Azure.</li><li><strong>IAM &amp; IT Operations :</strong> Gestion des rôles et accès métier pour plusieurs centaines d&rsquo;utilisateurs sur les applications d&rsquo;entreprise, onboarding/offboarding complet, et résolution d&rsquo;incidents N2/N3 en coordination avec les RH et les équipes centrales allemandes.</li><li><strong>Projets IT &amp; Transformation IA :</strong> Coordination des actions IT entre les équipes françaises et allemandes (HDI Group), production de procédures utilisateurs et de documentation technique, et cadrage d&rsquo;un prototype d&rsquo;intégration IA dans la plateforme ITSM pour améliorer le support et la gestion des connaissances.</li></ul>"
+        "description": "<ul><li><strong>Automatisation &amp; Développement :</strong> Automatisations Python pour le traitement des sinistres et des workflows métier, réduisant le traitement manuel (&minus;70 % sur le cycle de facturation sinistres) et améliorant la qualité des données ; rapports de contrôle qualité et tableaux de bord supprimant des vérifications manuelles récurrentes pour l&rsquo;équipe Finance.</li><li><strong>Autonomie de déploiement des développeurs :</strong> Le siège du groupe HDI exploite une plateforme centrale d&rsquo;hébergement et de déploiement des solutions internes, mais la France manquait d&rsquo;autonomie pour livrer rapidement ses propres solutions sans dépendre des ingénieurs du siège. J&rsquo;ai pris en charge la compréhension de la plateforme du siège et de son processus de déploiement d&rsquo;applications, puis mis en place cette capacité pour l&rsquo;équipe française &mdash; permettant aux développeurs français de développer et déployer leurs solutions avec une dépendance minimale vis-à-vis de l&rsquo;équipe d&rsquo;ingénierie centrale allemande.</li><li><strong>Applications métier &amp; ITSM :</strong> Administration et support de 8+ applications d&rsquo;entreprise critiques utilisées par les équipes Sinistres, Underwriting, Finance et RH ; exploitation de l&rsquo;outillage ITSM à deux niveaux &mdash; GLPI (support de premier niveau des utilisateurs français) et ServiceNow (escalade vers le home office du groupe HDI) &mdash; et contribution à leurs évolutions fonctionnelles et techniques.</li><li><strong>Cloud &amp; Modern Workplace :</strong> Contribution au programme de transformation du poste de travail moderne / cloud (Windows 365 / Global Cloud Desktop, Microsoft Intune) via les phases de test, de validation et d&rsquo;accompagnement des utilisateurs ; support de la migration lift-and-shift (rehost) de machines virtuelles on-premise vers des VM Azure IaaS (Azure Migrate), ainsi que de la migration d&rsquo;applications on-premise vers Azure.</li><li><strong>Support IT &amp; IAM :</strong> Support N1/N2 de plusieurs centaines d&rsquo;utilisateurs français &mdash; réception et résolution de leurs demandes dans GLPI &mdash; et escalade des interventions plus poussées (N3/N4) vers les ingénieurs du home office via ServiceNow. Gestion des rôles et accès métier (IAM) et onboarding/offboarding complet, en coordination avec les RH et les équipes centrales allemandes (groupe HDI).</li><li><strong>Projets IT &amp; Transformation IA :</strong> Coordination des actions IT entre les équipes françaises et allemandes (HDI Group) et production de procédures utilisateurs et de documentation technique. En tant qu&rsquo;architecte de solution d&rsquo;une solution sur mesure, conduite d&rsquo;un processus d&rsquo;évaluation logicielle/de solution (SEP &mdash; Software/Solution Evaluation Process) &mdash; évaluation build-vs-buy et comparaison des technologies/éditeurs selon des critères définis &mdash; et cadrage d&rsquo;un prototype d&rsquo;intégration IA dans la plateforme ITSM pour améliorer le support et la gestion des connaissances.</li></ul>"
       },
       {
         "date": "Juil 2024 – Août 2024",
@@ -1333,5 +1243,102 @@
       "readTime": 12,
       "url": "https://andrelair-platform.github.io/minicloud-platform-docs/blog/platform-engineering-bare-metal-kubernetes"
     }
-  ]
+  ],
+  "Capabilities": {
+    "title": "Compétences d'ingénierie",
+    "subtitle": "Six domaines que je couvre — la preuve, ce sont les projets ci-dessus, pas cette liste.",
+    "blocks": [
+      {
+        "icon": "Server",
+        "title": "Platform Engineering",
+        "description": "Construire et exploiter la fondation Kubernetes sur laquelle tournent les applications — du bare-metal au réseau et au stockage.",
+        "tech": [
+          "Kubernetes",
+          "k3s",
+          "Helm",
+          "Kustomize",
+          "Docker",
+          "Cilium eBPF",
+          "Longhorn",
+          "MetalLB"
+        ]
+      },
+      {
+        "icon": "GitBranch",
+        "title": "DevOps & GitOps",
+        "description": "Livraison automatisée pilotée par Git — tout déclaré dans Git, promu et réconcilié en continu.",
+        "tech": [
+          "ArgoCD",
+          "Kargo",
+          "GitHub Actions",
+          "Argo Rollouts",
+          "Terraform / OpenTofu",
+          "Ansible",
+          "MAAS",
+          "CI/CD"
+        ]
+      },
+      {
+        "icon": "BrainCircuit",
+        "title": "Ingénierie IA & LLMOps",
+        "description": "Faire passer les systèmes LLM du prototype à des applications observables et gouvernées.",
+        "tech": [
+          "RAG",
+          "Agents",
+          "LangChain",
+          "LangGraph",
+          "LiteLLM",
+          "vLLM",
+          "Qdrant",
+          "Langfuse"
+        ]
+      },
+      {
+        "icon": "Activity",
+        "title": "Observabilité & SRE",
+        "description": "Savoir ce que fait la production — métriques, logs, traces, alertes, SLI et SLO.",
+        "tech": [
+          "Prometheus",
+          "Grafana",
+          "Loki",
+          "Tempo",
+          "OpenTelemetry",
+          "Alertmanager",
+          "SLI",
+          "SLO",
+          "Chaos Mesh"
+        ]
+      },
+      {
+        "icon": "ShieldCheck",
+        "title": "Sécurité, IAM & Conformité",
+        "description": "Zero-trust, intégrité de la chaîne d'approvisionnement et contrôles d'environnement réglementé par défaut.",
+        "tech": [
+          "Vault",
+          "OPA / Gatekeeper",
+          "Falco",
+          "Cosign / SBOM",
+          "Trivy",
+          "IAM · OAuth / OIDC",
+          "NetworkPolicy",
+          "DORA · RGPD"
+        ]
+      },
+      {
+        "icon": "Code",
+        "title": "Logiciel, Intégration & Architecture",
+        "description": "Concevoir des services backend, des API et des intégrations autour des systèmes métier.",
+        "tech": [
+          "Python",
+          "TypeScript",
+          "C#",
+          "FastAPI",
+          "NestJS",
+          "ASP.NET Core",
+          "PostgreSQL",
+          "Événementiel (NATS / Kafka)"
+        ]
+      }
+    ]
+  }
 }

@@ -1,11 +1,11 @@
 {
   "Metadata": {
-    "title": "Andres Digitale Bühne",
-    "description": "Portfolio von Andre — Software Engineer, AI & Platform Engineering."
+    "title": "Andre Kanmegne | AI & Platform Engineer",
+    "description": "Andre Kanmegne — AI & Platform Engineer. Ich entwerfe, baue und betreibe unternehmenskritische Systeme: eine produktive Kubernetes-Versicherungsplattform, KI/LLM-Infrastruktur und Geschäftsautomatisierung."
   },
   "Header": {
     "projects": "Projekte",
-    "skills": "Fähigkeiten",
+    "skills": "Kompetenzen",
     "softSkills": "Soft Skills",
     "experience": "Erfahrung",
     "contact": "Kontakt",
@@ -22,8 +22,8 @@
     "title": "Software Engineer —",
     "titleHighlight": "AI & Platform Engineering",
     "location": "Paris, Frankreich",
-    "description1": "Ich entwerfe und betreibe eine produktionsreife Kubernetes-Plattform, die das vollständige IS eines B2B-Versicherungsunternehmens simuliert — von GitOps-Delivery bis KI-Governance, ACPR-Compliance und DORA-Metriken. 90+ Phasen, 54+ aktive Workloads.",
-    "description2": "Die Plattform umfasst alle drei Schichten: Infrastruktur (k3s, ArgoCD, Vault, Longhorn), KI-Engineering (LiteLLM, vLLM, Qdrant RAG, Langfuse, minicloud-crew-agent) und Versicherungs-IS (ERPNext PCG 2025, Temporal, n8n, Stalwart Mail, Matrix, Jitsi).",
+    "description1": "Ich entwerfe, baue und betreibe unternehmenskritische Systeme — komplexe Plattform-, KI- und Fachanforderungen werden zu Software, die zuverlässig in Produktion läuft.",
+    "description2": "Mein Vorzeigeprojekt: eine produktive Kubernetes-Plattform, die das komplette Informationssystem eines B2B-Versicherers abbildet — Infrastruktur, Geschäftsanwendungen und eine KI-Schicht. Sehen Sie sich die Fallstudien unten an.",
     "whatIBuildTitle": "Expertise & Leistungen:",
     "tagline": "Architekt in der Denkweise, Ingenieur im Handwerk — Ich vereine Sicherheit, Automatisierung und künstliche Intelligenz.",
     "skills": {
@@ -69,7 +69,8 @@
   },
   "Page": {
     "projects": {
-      "title": "Projekterfahrung"
+      "title": "Ausgewählte Engineering-Projekte",
+      "subtitle": "Systeme, die ich in Platform Engineering, KI und Unternehmenssoftware entworfen, gebaut und betrieben habe."
     },
     "skills": {
       "title": "Technische Kernkompetenzen"
@@ -92,7 +93,9 @@
     }
   },
   "ProjectList": {
-    "loadMore": "Mehr laden"
+    "loadMore": "Mehr laden",
+    "seeMore": "Mehr Projekte ansehen",
+    "seeLess": "Weniger anzeigen"
   },
   "ProjectCard": {
     "role": "Rolle",
@@ -528,172 +531,54 @@
     ],
     "projects": [
       {
-        "title": "Minicloud Platform — Versicherungs-IS",
-        "purpose": "Produktionsreife Enterprise-Kubernetes-Plattform auf einem selbst gehosteten Cluster, die das vollständige Informationssystem eines französischen B2B-Versicherungsunternehmens (ktayl solution) simuliert. 90+ Lieferphasen, 54+ aktive Workloads über 15 IS-Domänen: Policenverwaltung, Schadensregulierung, Underwriting, ERP/Finanzen, KI-Governance, Kommunikation, Dokumentenmanagement, Compliance (ACPR/DORA) und KI am Arbeitsplatz (minicloud Copilot). GitOps-geliefert via ArgoCD App-of-Apps, gehärtet mit Zero-Trust NetworkPolicy, OPA Gatekeeper Deny-Modus und vollständiger Supply-Chain-Sicherheit.",
-        "role": "Platform Engineer, Solutions Architect & IS-Designer. Entwurf der Enterprise-GitOps-Repository-Struktur (App-of-Apps, Kustomize Base+Overlays, 3-Branch CI, AppProject mit gesperrten sourceRepos). Aufbau der Zero-Trust-Netzwerktopologie, des KI-Gateways (LiteLLM + vLLM), der Enterprise-RAG-Pipeline (bge-m3 + Qdrant + BM25-Hybrid + Cross-Encoder + markitdown-proxy), der ERPNext-Versicherungskonfiguration (Französischer PCG 2025, 845 Konten, TSCA-Steuervorlagen, Factur-X Minimum), der minicloud agent factory architecture (minicloud-crew-agent + Langfuse + LangGraph), des minicloud Copilot (M365-Äquivalent auf Self-Hosted-Stack) und der vollständigen Regressionssuite.",
-        "impact": "90 Phasen abgeschlossen. 6/6 Knoten Ready. 54+ Workloads Healthy+Synced. OPA Gatekeeper Zero-Trust im Deny-Modus — null Verletzungen. Vault Auto-Unseal via AWS KMS. ERPNext konfiguriert für Französisches Versicherungs-IS: 845 PCG-Konten, TSCA 9/13/33%, Factur-X Minimum PoC (5 Assertions bestanden). minicloud agent factory architecture: 80% live (LiteLLM + crew-agent + Langfuse + Qdrant RAG + markitdown-proxy), 5 Issues von einer vollständigen Enterprise-Agent-Factory. minicloud Copilot: M365-Copilot-Äquivalent auf Self-Hosted-Stack, 5 Konnektoren verknüpfen Stalwart + Nextcloud + Jitsi + Matrix mit der KI-Schicht.",
+        "title": "Kubernetes-Cluster — Bare-Metal k3s",
+        "oneLinePitch": "Ein 6-Knoten-Bare-Metal-Kubernetes-Cluster von Grund auf gebaut — MAAS-Provisionierung, k3s, Cilium-eBPF-Netzwerk, Longhorn-Storage und unterbrechungsfreie Upgrades.",
+        "purpose": "Die Compute-Grundlage der Plattform: ein selbst gehosteter 6-Knoten-k3s-Cluster auf wiederverwendeten ThinkPad-Laptops plus einem MacBook Pro, als Infrastructure-as-Code provisioniert und nach CIS-Benchmarks gehärtet. Das ist die Infrastrukturschicht, auf der alles andere läuft.",
+        "role": "Platform-/Infrastructure-Engineer. Bare-Metal-Provisionierung mit MAAS + OpenTofu, k3s-Bootstrap mit Ansible (CIS-Kubelet-Härtung); verantwortlich für Netzwerk, Storage und Cluster-Lebenszyklus.",
+        "impact": "6/6 Knoten Ready · k3s v1.33→v1.36 ohne Ausfallzeit aktualisiert (kein manuelles SSH) · kube-bench k3s-CIS-1.7 16/16 PASS auf allen Workern.",
         "features": [
-          "Enterprise GitOps: ArgoCD App-of-Apps, Kustomize Base+Overlays (dev/staging/prod), CI promotiert nur nach dev, PR-gesichertes Staging+Prod, AppProject mit gesperrten sourceRepos und clusterResourceWhitelist",
-          "OPA Gatekeeper Deny-Modus — null Verletzungen — NET_RAW, Capabilities, Seccomp, Privilege Escalation, Host-Namespace; Falco Laufzeitsicherheit",
-          "Zero-Trust NetworkPolicy für alle Namespaces; Cilium eBPF CNI + Hubble Observability; Authentik OIDC SSO + TOTP für alle 54+ Services",
-          "Governiertes Multi-Cloud-KI-Gateway: LiteLLM vereint On-Cluster-vLLM + AWS Bedrock (EU) + Azure OpenAI (EU) + Direkt-APIs — bereitgestellt via OpenTofu (S3+DynamoDB-State, scoped IAM + Azure SP, Budgets pro Provider), Kosten = nur Tokens",
-          "AI-Act/DORA-Governance: Modell-Governance-Matrix (Jurisdiktion/Residenz/Datenklasse) + Sensitivitäts-Routing (Tier-RBAC — vertrauliche Daten erreichen nie einen nicht vertrauenswürdigen/CN-Provider) + Presidio-PII-Maskierung + DORA-Audit-Trail (Langfuse, 12 Monate Aufbewahrung)",
-          "LLMOps 8/8 Schichten: Langfuse (Obs/Kosten/Residenz-Dashboards) + Ragas-Eval-CI-Gate + Red-Team-Gate (adversariale Suite, Guardrails 8/8 verifiziert) + Human-in-the-Loop-Annotation; Golden-Path-Onboarding (einmal aufgebaut, Projekte klinken sich ein)",
-          "Enterprise RAG: mistral-embed (EU) Embeddings + Qdrant HNSW + BM25-Hybridsuche (Französischer Tokenizer) + Cross-Encoder-Reranking; minicloud-crew-agent (LangGraph Multi-Agent) + minicloud-agent (ReAct)",
-          "Versicherungs-IS: ERPNext HR + Französischer PCG 2025 (845 Konten) + TSCA-Steuervorlagen + Factur-X Minimum + LOB-Hierarchie (IARD + Vie & Prévoyance); Stalwart Mail + Matrix + Jitsi + Nextcloud + OnlyOffice",
-          "minicloud Copilot (M365-Äquivalent): E-Mail-KI (Stalwart→LiteLLM Triage), Besprechungsnotizen (Jitsi→Whisper→LiteLLM), Dokumenten-Grounding (Nextcloud→RAG→Qdrant), Chat-KI (Matrix-Bot), Enterprise Search (Open WebUI+Qdrant)",
-          "minicloud agent factory architecture: standardisiertes KI-Gateway + LangGraph-Agenten + Langfuse-Observability + RAG + markitdown-proxy — Agenten-Liefermodell 6 Monate→4 Tage",
-          "Vollständige Supply Chain: Cosign Keyless Signing, syft CycloneDX SBOM, Trivy CVE-Scan, GPG-Commits, Branch-Schutz, Dependabot",
-          "Zuverlässigkeit & SRE: Bare-Metal-Node-Provisioning via MAAS PXE (enlist→commission→deploy→join, Webhook/Wake-on-LAN); Incident-Response mit Root-Cause-Analyse kaskadierender Mehrfachausfälle; selbstheilende systemd-Guards (DNS, NAT, Node-Wake) + saubere Shutdown-/Startup-Runbooks; Velero- + Longhorn-Backups nach MinIO mit Off-Site Cloudflare R2 und integritätsgeprüften Control-Plane-Snapshots"
+          "Bare-Metal-Provisionierung als Code: MAAS erfasst & kommissioniert die ThinkPad-Knoten; OpenTofu verwaltet den Maschinen-Lebenszyklus; Ansible bootstrappt k3s.",
+          "Cilium-eBPF-CNI + Hubble-Netzwerkobservability (Migration von flannel); MetalLB liefert Load-Balancer-IPs auf Bare-Metal.",
+          "Verteilter Longhorn-Block-Storage über die Knoten, mit täglichen Velero-Backups nach MinIO auf dem Controller; NFS für geteilte Volumes.",
+          "CIS-gehärtetes Kubelet, Secrets-Verschlüsselung at rest (AES-CBC-256), k3s-Audit-Logging, UFW default-deny + SSH-Härtung auf jedem Knoten.",
+          "Unterbrechungsfreier Lebenszyklus: system-upgrade-controller rollt k3s-Upgrades über alle Knoten via Plans aus — nur Cordon (Longhorn-sicher), kein manuelles SSH."
         ],
         "stack": [
-          "k3s (Kubernetes, 6 Knoten)",
-          "ArgoCD (App-of-Apps)",
-          "Helm / Kustomize",
-          "HashiCorp Vault + ESO",
-          "Authentik (OIDC/SSO)",
-          "OPA Gatekeeper + Falco",
-          "Cilium eBPF + Hubble",
-          "Prometheus / Grafana / Loki / Tempo",
-          "LiteLLM (KI-Gateway)",
-          "vLLM (On-Cluster-Inferenz)",
-          "Qdrant (Vector DB)",
-          "minicloud-crew-agent (LangGraph)",
-          "minicloud-agent (ReAct)",
-          "Flowise + MLflow",
-          "Langfuse (LLMOps)",
-          "ERPNext (Französischer PCG 2025 + TSCA + Factur-X)",
-          "Temporal (Workflow-Orchestrierung)",
-          "n8n (Business-Automatisierung)",
-          "Stalwart Mail + Matrix + Jitsi",
-          "Nextcloud + OnlyOffice",
-          "Backstage (IDP)",
-          "Harbor",
-          "Longhorn + Velero + MinIO",
-          "NATS JetStream / KEDA",
-          "Ansible / OpenTofu / MAAS",
-          "Tailscale + Cloudflare Tunnel"
+          "k3s (Kubernetes)",
+          "MAAS",
+          "OpenTofu",
+          "Ansible",
+          "Cilium eBPF",
+          "Hubble",
+          "MetalLB",
+          "Longhorn",
+          "Velero + MinIO",
+          "Tailscale",
+          "kube-bench (CIS)"
+        ],
+        "whyItMatters": "Die meisten Kubernetes-Demos laufen auf Managed Cloud mit Kreditkarte. Dieser Cluster ist von Bare-Metal aufgebaut — Provisionierung, Netzwerk, Storage, Härtung und Versions-Upgrades, alles von einem Engineer entworfen und betrieben, so wie ein Platform-Team On-Prem-Infrastruktur betreibt.",
+        "differentiators": [
+          "Infrastructure-as-Code ab Bare-Metal: MAAS + OpenTofu + Ansible, keine Click-Ops-Cloud-Konsole.",
+          "Unterbrechungsfreie k3s-Upgrades via system-upgrade-controller-Plans (nur Cordon, Longhorn-Finalizer-sicher).",
+          "CIS-benchmarked (kube-bench 16/16) mit Verschlüsselung at rest und Host-Firewalling."
         ],
         "link": "https://andrelair-platform.github.io/minicloud-platform-docs/",
-        "repoUrl": "https://github.com/andrelair-platform/minicloud-gitops",
-        "oneLinePitch": "Eine produktionsreife Private-Cloud-Kubernetes-Plattform — GitOps-geliefert, Zero-Trust-gehärtet, mit KI/ML-Workloads, Enterprise RAG, vollständiger Observability und durchgängiger Supply-Chain-Sicherheit.",
-        "whyItMatters": "Die meisten Kubernetes-Demos laufen auf Managed Cloud mit Kreditkarte. Diese Plattform läuft auf aufbereiteten ThinkPad-Laptops — MAAS Bare-Metal-Provisioning, k3s Cluster-Bootstrap, GitOps-Delivery, Secrets-Management, SSO, Observability, Laufzeitsicherheit, KI/ML-Workloads und Collaboration-Tools, alles aufgebaut und betrieben von einem Ingenieur. Jede Design-Entscheidung ist ein echter Trade-off: Vault Auto-Unseal via AWS KMS weil Operator-Unseal nicht skaliert; Recreate-Rollout-Strategie weil ResourceQuota keinen Rolling-Puffer erlaubt; Restart=always bei cloudflared weil der Tunnel bei Netzwerkausfall sauber beendet und systemd es nicht bemerkt.",
-        "differentiators": [
-          "App-of-Apps GitOps mit strikten AppProject-Kontrollen — jede Cluster-Ressource stammt aus minicloud-gitops; null manuelles kubectl in Produktion; namespaced Applications mit gesperrten sourceRepos und clusterResourceWhitelist",
-          "Vault Auto-Unseal via AWS KMS — Vault-Pods starten ohne Operator-Aktion neu; statische Admin-Passwörter fehlen in jeder Workload-Konfiguration",
-          "OPA Gatekeeper im Deny-Modus mit null Verletzungen — kein Advisory-Modus; NET_RAW-, Capabilities-, Seccomp- und Host-Namespace-Policies cluster-weit durchgesetzt; Workloads müssen konform sein bevor sie Running erreichen",
-          "Enterprise RAG-Pipeline — bge-m3 Embeddings + pgvector HNSW-Index + BM25-Hybridabruf + Cross-Encoder-Reranking + Docling OCR für PDF/Bild-Ingestion; End-to-End unter 400ms",
-          "Vollständige Supply Chain auf jedem Custom-Image — Trivy CRITICAL Exit-Code-1, Cosign keyless (GitHub OIDC → Sigstore Fulcio), syft CycloneDX SBOM als OCI-Referrer, GPG-signierter GitOps-Bump-Commit"
-        ],
-        "architecture": [
-          "MAAS + OpenTofu → Bare-Metal-Provisioning; 4 ThinkPad-Knoten in MAAS eingeschrieben; OpenTofu verwaltet den Maschinen-Lebenszyklus als Infrastructure-as-Code",
-          "Ansible → k3s-Bootstrap, CIS Kubelet-Härtung (config.yaml pro Knoten), kube-bench k3s-cis-1.7-Validierung; Tailscale auf allen Knoten für VPN-Mesh",
-          "ArgoCD App-of-Apps → minicloud-gitops ist die einzige Quelle der Wahrheit; apps/ definiert namespaced Applications; helm-values/ enthält alle Helm-Overrides; services/ enthält Kustomize Base+Overlays für CI/CD-Services",
-          "Vault + ESO → Secrets in Vault gespeichert; External Secrets Operator synchronisiert sie zur Laufzeit als Kubernetes Secrets; AWS KMS Auto-Unseal; keine statischen Credentials in git",
-          "Authentik → OIDC-Provider für alle Plattform-Services; TOTP erzwungen; Abteilungs-Personas; Cloudflare Tunnel + originServerName-Fix für TLS SNI auf IP-basierten Service-URLs",
-          "Longhorn → verteilter Block-Storage auf allen Knoten; swift-mac (MacBook Pro 2012, Ubuntu 22.04) als primärer Storage-Knoten; tägliches Velero-Backup zu MinIO auf dem Controller",
-          "LiteLLM KI-Gateway → Routing zu Groq, OpenAI, Anthropic, Mistral, Gemini und Ollama (phi4-mini ×3); Presidio PII-Maskierung; Valkey-Cache; Langfuse LLMOps-Tracing pro Anfrage",
-          "RAG-Pipeline → rag-ingest Service: markitdown-proxy OCR → bge-m3 Embeddings → Qdrant HNSW Insert; BM25-Hybridabruf (Französischer Tokenizer) + Cross-Encoder-Reranking bei Abfrage; Nextcloud-Webhook-Auto-Ingest-Pipeline (minicloud Copilot #263)",
-          "Versicherungs-IS → ERPNext: Französischer PCG 2025 (845 Konten), TSCA-Versicherungssteuer (9/13/33%), Factur-X Minimum PoC (CII XML, 5 Assertions), LOB-Hierarchie (IARD + Vie & Prévoyance); Stalwart Mail + SES bidirektional; Matrix + Jitsi + Nextcloud Collaboration-Stack",
-          "Enterprise KI → minicloud agent factory architecture: minicloud-crew-agent (CrewAI 3-Agenten LangGraph-Pipeline) + minicloud-agent (ReAct-Recherche) + Flowise 2.2.7 + MLflow v2.16.0 + vLLM v0.6.6 — alle im ai-Namespace unter LiteLLM ArgoCD App; Temporal v1.31.2 Workflow-Orchestrierung; n8n 2.32.7 Business-Automatisierung",
-          "Observability → kube-prometheus-stack (Prometheus + Grafana + Loki); PrometheusRules für Disk/Backup-Alerting; node_exporter auf Controller (Docker + systemd); ControllerDisk-Alerts bei 85%/90%",
-          "Cloudflare Tunnel → öffentliche *.devandre.sbs ohne Cluster-Ingress-Exposition; Tailscale für internen Zugriff und CI (OAuth tag:ci)"
-        ],
-        "repoBlueprint": "MacBook Air (Entwicklung)      MAAS Controller (ThinkPad X390)\ngit push → GitHub             MAAS + OpenTofu (Bare Metal)\n     |                        Ansible → k3s-Bootstrap\n     | Webhook                Tailscale-Endpunkt + NAT\n     v\nminicloud-gitops (ArgoCD App-of-Apps)\n+-- apps/           ArgoCD Applications pro Service\n+-- helm-values/    alle Helm-Overrides\n+-- services/       Kustomize Base+Overlays (dev/staging/prod)\n+-- manifests/      Cluster-Ressourcen (CRDs, RBAC, Policies)\n     |\n     v (ArgoCD reconciles alle 3 Min)\n+--------------------------------------------------+\n|  k3s Cluster — 5 Knoten                         |\n|  set-hog (Control Plane)                        |\n|  fast-skunk, fast-heron, star-kitten, swift-mac  |\n|                                                  |\n|  Secrets:   Vault (AWS KMS Auto-Unseal) + ESO   |\n|  Identität: Authentik OIDC + TOTP               |\n|  Ingress:   nginx-ingress + cert-manager         |\n|  Storage:   Longhorn (verteilt)                 |\n|  Sicherheit:Gatekeeper + Falco + NetworkPolicy  |\n|  Observ:    Prometheus + Grafana + Loki          |\n|  KI/ML:     LiteLLM → Groq/OpenAI/Ollama        |\n|             RAG: rag-ingest + pgvector + bge-m3  |\n|  Plattform: Backstage IDP + Plane CE + Harbor   |\n|  Collab:    Nextcloud + OnlyOffice + Vaultwarden |\n+--------------------------------------------------+\n     |\n  Tailscale Mesh (intern — 100.x.x.x)\n  Cloudflare Tunnel (öffentlich *.devandre.sbs)",
+        "repoUrl": "https://github.com/andrelair-platform/minicloud-ansible",
         "atsKeywords": [
           "Kubernetes",
           "k3s",
-          "Platform Engineering",
-          "GitOps",
-          "ArgoCD",
-          "Helm",
-          "Kustomize",
-          "HashiCorp Vault",
-          "OPA Gatekeeper",
-          "Falco",
-          "Cilium",
-          "Prometheus",
-          "Grafana",
-          "Loki",
-          "Tempo",
-          "LiteLLM",
-          "vLLM",
-          "Qdrant",
-          "RAG",
-          "LangGraph",
-          "CrewAI",
-          "Langfuse",
-          "LLMOps",
-          "ERPNext",
-          "Temporal",
-          "n8n",
-          "Factur-X",
-          "ACPR",
-          "DORA",
-          "Cosign",
-          "Trivy",
-          "SBOM",
-          "Ansible",
-          "OpenTofu",
+          "Bare-metal",
           "MAAS",
+          "OpenTofu",
+          "Terraform",
+          "Ansible",
+          "Cilium",
+          "eBPF",
           "Longhorn",
-          "Authentik OIDC",
-          "Tailscale",
-          "Cloudflare",
-          "Bare Metal",
-          "Private Cloud",
-          "Zero Trust",
-          "KI-Governance",
-          "MLOps",
-          "Versicherungs-IS",
-          "minicloud agent factory architecture"
-        ],
-        "scope": [
-          "Phase 0–5 — Fundament: MAAS Bare-Metal-Provisioning von 4 ThinkPad-Knoten; k3s Cluster-Bootstrap via Ansible; ArgoCD App-of-Apps-Struktur in minicloud-gitops; Helm Chart Deployment Pipeline",
-          "Phase 6–15 — Core-Plattform: Vault + ESO Secrets-Management (AWS KMS Auto-Unseal); Authentik SSO/OIDC mit TOTP; Harbor private Registry; Longhorn verteilter Storage; cert-manager + nip.io TLS",
-          "Phase 16–25 — Observability + Sicherheit: kube-prometheus-stack (Prometheus + Grafana + Loki + Tempo); OPA Gatekeeper Deny-Modus; Falco Laufzeitsicherheit; Cilium eBPF CNI + Hubble; kube-bench CIS k3s-1.7",
-          "Phase 26–45 — KI/ML + Betrieb: LiteLLM KI-Gateway; vLLM On-Cluster-Inferenz; Qdrant Vector DB; RAG-Pipeline (bge-m3 + Qdrant HNSW + BM25 + Cross-Encoder + markitdown-proxy OCR); Backstage IDP + Velero + Plane CE",
-          "Phase 46–70 — Reife: VPA Auto-Scaling; Argo Rollouts Canary; Backstage Software Templates Golden Path; Supply-Chain-Härtung; minicloud-crew-agent (CrewAI LangGraph); minicloud-agent (ReAct); Flowise + MLflow",
-          "Phase 71–84 — Versicherungs-IS: ERPNext HR + Französischer PCG 2025 (845 Konten) + TSCA-Steuervorlagen + Factur-X Minimum; Stalwart Mail + SES; Matrix + Element; Jitsi Meet + TURN; Nextcloud; n8n; Temporal v1.31.2; Longhorn MinIO Backups; Velero Cloudflare R2 Off-Site",
-          "Phase 85–90 — Enterprise KI: minicloud Copilot (M365-Äquivalent — 5 Konnektoren); minicloud agent factory architecture; DSN Sozialversicherungsmeldungs-Pipeline; ACPR/COREP Compliance-Posture; strukturiertes Backlog 161 Items — 9 Plattform-Domänen + 53 IS-Domänen"
-        ],
-        "testPlan": [
-          "Regressionssuite: vollständige automatisierte Checks — OIDC-Login, Katalog-Entity-Anzahl, KI-Gateway-Health, RAG-Ingest-Pipeline, Gatekeeper-Verletzungsanzahl, Velero-Backup-Status, Cloudflare-Tunnel-Erreichbarkeit",
-          "kube-bench k3s-cis-1.7: 16/16 PASS auf allen Worker-Knoten; kubelet config.yaml via Ansible CIS-Härtungs-Playbook deployed",
-          "Gatekeeper: alle Admission Policies im Deny-Modus, null Verletzungen; validiert via kubectl get constraint -A und Prüfung von .status.totalViolations",
-          "Velero-Backup: täglicher Schedule aktiv; ClickHouse PV innerhalb 8h itemOperationTimeout gesichert; Wiederherstellung auf Nicht-Produktions-Namespace getestet",
-          "OIDC-Rauchtest: alle öffentlichen *.devandre.sbs Services leiten zur Authentik-Anmeldeseite weiter, akzeptieren TOTP, und geben authentifizierte Session zurück",
-          "Supply Chain: alle Custom-Images haben verifizierbare Cosign-Signatur und syft SBOM; GPG-Signatur auf jedem GitOps-Bump-Commit",
-          "Cloudflare Tunnel: alle öffentlichen URLs ohne Tailscale erreichbar; cloudflared systemd-Service mit Restart=always erholt sich innerhalb von 5s nach Netzwerkausfall"
-        ],
-        "interviewTalkingPoints": [
-          "Ziel: Vault automatisch nach einem Knotenstart unsiegeln — in einem Bare-Metal-Home-Lab ohne Operator um 3 Uhr morgens. Wir konfigurierten Vault mit einem einzigen Unseal-Schlüssel. Nach dem ersten ungeplanten Stromausfall blieb jeder Vault-abhängige Workload stundenlang kaputt. Herausforderung: Operator-Unseal skaliert nicht und widerspricht dem Zweck eines selbstheilenden Clusters. Lösung: AWS KMS Auto-Unseal. Der Vault-Pod ruft KMS beim Start auf, der Unseal-Schlüssel berührt nie die Festplatte, und das gesamte Cluster erholt sich von einem Stromausfall in unter 2 Minuten ohne menschlichen Eingriff.",
-          "Ziel: ArgoCD daran hindern, bei Harbor bei jedem Sync-Zyklus einen Rolling Restart auszulösen. Nach Hinzufügen von ignoreDifferences für Harbors selbst-signierte Zertifikatsfelder dauerte die Schleife an. Herausforderung: Harbors Helm-Templates verwenden genSelfSignedCert und randAlphaNum — diese generieren bei jedem Render einen neuen Wert. Mit ServerSideApply=true in ArgoCD-syncOptions werden ignoreDifferences-Einträge NICHT aus dem Apply-Payload entfernt. Lösung: ServerSideApply=true aus der Harbor ArgoCD Application entfernen.",
-          "Ziel: ein Pod-Label (backstage.io/kubernetes-id) zu einem bestehenden Deployment hinzufügen. Wir haben die Label-Änderung committed, ArgoCD synchronisiert, und das Rollout blockierte sofort — neue RS-Pods in FailedCreate mit 'admission webhook denied: NET_RAW'. Das alte Pod lief weiter. Herausforderung: das Deployment ist älter als die K8sBlockNetRaw Gatekeeper-Constraint. Lösung: immer capabilities.drop: [NET_RAW] im selben Commit hinzufügen wie jede andere Deployment-Änderung bei Pre-Constraint-Workloads.",
-          "Ziel: den Cloudflare Tunnel dauerhaft am Laufen halten. Der Tunnel war als systemd-Service mit Restart=on-failure konfiguriert. Nach einem 1,5-tägigen Ausfall fanden wir cloudflared im Journal als 'exited with code 0' — alle 4 Tunnelverbindungen waren gleichzeitig bei einem kurzen Netzwerkausfall abgebrochen. Systemd interpretierte Exit-Code 0 als sauberes Herunterfahren und startete den Prozess nie neu. Lösung: Restart=always + StartLimitIntervalSec=0.",
-          "Ziel: alle 5 k3s-Knoten ohne Downtime und ohne manuelles SSH aktualisieren. Wir verwendeten system-upgrade-controller mit zwei Plans (k3s-server und k3s-agent). Herausforderung: Veleros upgradeCRDs Helm-Hook-Job terminierte mit Exit 0, aber k3s v1.36 befüllte status.succeeded nie — uncountedTerminatedPods blieb leer und blockierte jeden ArgoCD-Sync unbegrenzt. Lösung: upgradeCRDs: false in velero-values.yaml und skipCrds: true in der ArgoCD Application."
-        ],
-        "liveEndpoints": [
-          {
-            "label": "Homer — Plattform-Dashboard mit allen Service-Links",
-            "command": "https://homer.devandre.sbs",
-            "url": "https://homer.devandre.sbs"
-          },
-          {
-            "label": "ArgoCD — GitOps-Reconciliation-Status aller Anwendungen",
-            "command": "https://argocd.devandre.sbs",
-            "url": "https://argocd.devandre.sbs"
-          },
-          {
-            "label": "Grafana — Plattform-Observability-Dashboards",
-            "command": "https://grafana.devandre.sbs",
-            "url": "https://grafana.devandre.sbs"
-          },
-          {
-            "label": "Plattform-Docs — Docusaurus Phasen-Runbooks",
-            "command": "https://andrelair-platform.github.io/minicloud-platform-docs/",
-            "url": "https://andrelair-platform.github.io/minicloud-platform-docs/"
-          }
+          "MetalLB",
+          "CIS-Härtung",
+          "Infrastructure as Code",
+          "Platform Engineering"
         ],
         "screenshots": [
           {
@@ -701,12 +586,6 @@
             "caption": "MAAS-UI zeigt ThinkPad-Cluster-Knoten, die via PXE-Boot mit Ubuntu 24.04 LTS eingeschrieben, beauftragt und deployed wurden. Jede Maschine wird als Infrastructure-as-Code via OpenTofu verwaltet. Screenshot zeigt das initiale 3-Knoten-Setup — Cluster später auf 5 Knoten erweitert (star-kitten + swift-mac).",
             "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/maas-machines-overview.png",
             "link": "http://100.88.123.8:5240/MAAS"
-          },
-          {
-            "title": "ArgoCD — Alle Plattform-Anwendungen",
-            "caption": "ArgoCD App-Kacheln zeigen die vollständige Plattform: Authentik, Backstage, Vault, Grafana, Harbor, Longhorn, Plane CE und alle KI/ML-Workloads — alle Synced und Healthy. Das Health-Status-Panel (links) zeigt alle gesunden Apps im Cluster.",
-            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/screenshot-argocd.png",
-            "link": "https://argocd.devandre.sbs"
           },
           {
             "title": "Grafana — Kubernetes Cluster Dashboards",
@@ -731,218 +610,273 @@
             "caption": "MAAS-Maschinendetail für fast-heron (10.0.0.7): Lenovo ThinkPad T590, 8 Kerne, 15,9 GB RAM, 512 GB NVMe. k3s Worker-Knoten mit Observability-Stack (Prometheus, Grafana, Loki) und Collaboration-Services.",
             "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/fast-heron-detail.png",
             "link": "http://100.88.123.8:5240/MAAS"
-          },
-          {
-            "url": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/screenshot-homer.png",
-            "alt": "Homer — Plattform-Service-Dashboard",
-            "caption": "Homer Dashboard — 6 professionelle Abschnitte: Infrastructure, Observability, Identity & Secrets, Platform & DevOps, AI / ML, Collaboration & Showcase"
           }
+        ],
+        "scope": [
+          "Bare-Metal-Grundlage: MAAS erfasst & kommissioniert die ThinkPad- + MacBook-Knoten; OpenTofu verwaltet den Maschinen-Lebenszyklus als IaC.",
+          "k3s-Bootstrap via Ansible mit CIS-Kubelet-Härtung (config.yaml pro Knoten); Tailscale-Mesh über alle Knoten.",
+          "Netzwerk: CNI von flannel zu Cilium eBPF + Hubble migriert; MetalLB für Bare-Metal-Load-Balancer-IPs.",
+          "Storage: verteilter Longhorn-Block-Storage auf den Replica-Knoten + NFS; tägliche Velero-Backups nach MinIO auf dem Controller.",
+          "Lebenszyklus: system-upgrade-controller-Plans rollen k3s v1.33→v1.36 ohne Ausfallzeit aus (nur Cordon, Longhorn-Finalizer-sicher)."
+        ],
+        "architecture": [
+          "MAAS + OpenTofu → Bare-Metal-Provisionierung; Knoten in MAAS erfasst, Lebenszyklus als Infrastructure-as-Code verwaltet.",
+          "Ansible → k3s-Bootstrap + CIS-Kubelet-Härtung, validiert mit kube-bench (k3s-CIS-1.7).",
+          "Cilium-eBPF-CNI + Hubble-Observability; MetalLB annonciert die LB-IP 10.0.0.200 im LAN.",
+          "Longhorn repliziert Volumes über die Storage-Knoten (fast-heron / loving-gannet / swift-mac); Velero → MinIO auf dem Controller.",
+          "Control Plane auf set-hog (Kine/SQLite) + 5 Worker; Tailscale liefert das sichere Mesh und den Remote-Zugriff."
+        ],
+        "testPlan": [
+          "kube-bench k3s-CIS-1.7: 16/16 PASS auf allen Workern (Kubelet-Config via CIS-Ansible-Playbook ausgerollt).",
+          "Unterbrechungsfreies Upgrade validiert: system-upgrade-controller rollte k3s v1.33→v1.36 ohne manuelles SSH und ohne Workload-Ausfall aus.",
+          "Backup/Restore: täglicher Velero-Zeitplan aktiv; Restore auf einem Nicht-Produktions-Namespace getestet.",
+          "Resilienz-Übungen: Longhorn-Volume-Reattach/Salvage validiert; Knoten-Neustarts erholen sich sauber."
         ]
       },
       {
-        "title": "phi3-financial — Enterprise PromptOps Pipeline",
-        "purpose": "Domain-beschränkter KI-Finanzassistent mit einer Production-PromptOps-Architektur. Entwicklung eines LiteLLM CustomLogger (LangfusePromptHandler), der den aktiven Produktions-Prompt zur Laufzeit aus Langfuse abruft — mit 5-minütigem In-Process-Cache und dreistufiger Fail-Open-Kette. Ermöglicht sofortige Prompt-Rollbacks ohne Code-Deployment oder Image-Rebuild. Enthält eine 25-Fall-CI-Eval-Suite, die eine 100%-Bestehensquote als Deployment-Gate erzwingt.",
-        "role": "KI-Ingenieur & Prompt-Architekt. Entwurf der 5-Abschnitt-XML-Prompt-Architektur (system_intent, domain_knowledge_constraints, safety_and_guardrails, jailbreak_defenses, output_format) mit expliziter Off-Topic-Taxonomie (Medizin/Kulinarik/Glücksspiel/Sport, jeweils mit benannten Unterpunkten) und 5 Jailbreak-Abwehrmustern für Roleplay-Injection, System-Override, Credential-Phishing, Übersetzungs-Bypass und Prompt-Extraktion. Aufbau der dreischichtigen PromptOps-Infrastruktur (Ollama Model Serving → LiteLLM Routing + Laufzeit-Prompt-Injektion → Langfuse LLMOps), Implementierung des async_pre_call_hook CustomLogger und Erstellung der 25-Fall-Verhaltens-Eval-Suite mit Semantic Versioning und automatischem Git-Tagging.",
-        "impact": "25/25 Eval-Fälle bestanden (100% — Deployment bei jeder Regression blockiert). Prompt-Rollback-Zeit: unter 5 Minuten via Langfuse-Label-Wechsel — kein Git-Push, kein Pod-Neustart erforderlich. Ursachenanalyse eines 90-Sekunden-CI-Ausfalls (ArgoCD Recreate-Neustart überlappend mit Eval-Runs) und Behebung auf zwei Ebenen: RollingUpdate-Strategie + exponentielle Retry-Logik.",
+        "title": "GitOps-Plattform — ArgoCD + Kargo",
+        "oneLinePitch": "Eine GitOps-Continuous-Delivery-Plattform — ArgoCD app-of-apps als Single Source of Truth, mehrstufige Kargo-Promotion und ein vollständiges Supply-Chain-Gate.",
+        "purpose": "Die Delivery-Schicht: jede Cluster-Ressource wird in Git deklariert und von ArgoCD (app-of-apps) rekonziliert. Kargo promotet ein unveränderliches Artefakt dev→prod hinter einem CODEOWNERS-Gate, und ArgoCD deployt es — kein manuelles kubectl in Produktion.",
+        "role": "Platform-/Release-Engineer. Entwurf der GitOps-Repo-Architektur (app-of-apps, Helm-Wrapper-Charts, 2-Umgebungs-Overlays), der CODEOWNERS-gegateten Prod-Pipeline und der Kargo-Promotion + Supply-Chain-Kontrollen.",
+        "impact": "~95 ArgoCD-Applications aus Git rekonziliert · kein manuelles kubectl in Prod · 6 Custom-Services dev→prod über Kargo hinter einem CODEOWNERS-Gate promotet.",
         "features": [
-          "XML-strukturiertes Modelfile: 5 Verhaltensabschnitte (system_intent, domain_constraints, safety_guardrails, jailbreak_defenses, output_format) — explizite Prompt-Architektur, kein einzelner Anweisungsblock",
-          "5 Jailbreak-Abwehrmuster: FIXED RUNTIME, UNTRUSTED INPUT, INJECTION RESPONSE, PROMPT ISOLATION, PERSISTENCE — deckt Roleplay, System-Override, Credential-Phishing, Übersetzungs-Bypass ab",
-          "LangfusePromptHandler: Laufzeit-Prompt-Injektion via LiteLLM CustomLogger (async_pre_call_hook) — sofortiger Rollback, kein Redeployment",
-          "25-Fall-Eval-Suite über 5 Verhaltenskategorien — 100% Bestehensquote als Deployment-Gate, wöchentlicher Baseline-Run",
-          "Semantic Versioning (MAJOR/MINOR/PATCH) + CI Auto-Git-Tagging + Fail-Open-Kette: Langfuse → veralteter Cache → Env-Var"
+          "ArgoCD app-of-apps: minicloud-gitops ist die Single Source of Truth (apps/ Applications, helm-values/ Overrides, services/ Manifeste); AppProject mit gesperrten sourceRepos.",
+          "Zwei-Umgebungs-Standard (dev + prod) mit Git-gegatetem Auto-Sync; Prod bewegt sich nur über eine CODEOWNERS-geprüfte, GPG-signierte PR.",
+          "Mehrstufige Kargo-Promotion: die CI baut & beweist ein unveränderliches Image, Kargo öffnet die dev→prod-Promotion-PR, ArgoCD deployt es — die CI berührt den Cluster nie.",
+          "Helm Golden Path: jeder Service ist ein dünner Wrapper-Chart, der von einem geteilten Library-Chart abhängt — ein Helm-Render, eine ArgoCD-Source.",
+          "Supply Chain auf jedem Custom-Image: Trivy CRITICAL exit-1, Cosign-Keyless-Signierung (GitHub OIDC → Sigstore Fulcio), syft-CycloneDX-SBOM als OCI-Referrers, GPG-signierte Bump-Commits."
         ],
         "stack": [
-          "Groq llama-3.1-8b-instant (primär)",
-          "Ollama phi4-mini ×3 (Fallback)",
-          "LiteLLM (Routing + CustomLogger)",
-          "Langfuse (Prompt Management + Tracing)",
-          "Python",
-          "GitHub Actions (Eval CI)",
-          "Kubernetes (k3s)",
-          "Presidio (PII/DLP-Guardrail)",
-          "Valkey (Prompt-Cache)"
+          "ArgoCD (app-of-apps)",
+          "Kargo",
+          "Helm",
+          "Kustomize",
+          "GitHub Actions",
+          "Cosign",
+          "syft (SBOM)",
+          "Trivy",
+          "OPA Gatekeeper",
+          "AppProject RBAC"
         ],
-        "link": "https://langfuse.devandre.sbs",
-        "repoUrl": "https://github.com/andrelair-platform/phi3-financial",
-        "oneLinePitch": "Eine Production-PromptOps-Pipeline für einen domänenbeschränkten Finanz-KI — Laufzeit-Prompt-Injektion via LiteLLM CustomLogger, sofortiges Langfuse-Rollback, und ein 25-Fall-CI-Gate mit 100% Bestehensquote.",
-        "whyItMatters": "Die meisten LLM-Deployments behandeln den System-Prompt als Code — in eine ConfigMap oder ein Image eingebaut, was ein vollständiges Redeployment für Änderungen erfordert. Diese Pipeline trennt Prompt-Governance von Infrastruktur: der aktive Produktions-Prompt lebt in Langfuse, wird zur Laufzeit von einem LiteLLM CustomLogger injiziert und kann in unter 5 Minuten durch einen Label-Wechsel zurückgerollt werden — ohne Git-Push, ohne Pod-Neustart. Die 25-Fall-CI-Eval-Suite erzwingt Verhaltenskorrektheit bei jedem Commit.",
+        "whyItMatters": "GitOps ist einfach zu demonstrieren und schwer zu betreiben. Diese Plattform lebt die echte Disziplin: ein gesperrtes Source-Repo, ein menschlich gegateter Prod-Pfad, unveränderliche von Kargo promotete Artefakte und eine Supply Chain, die den Build bei einer CRITICAL-CVE oder fehlenden Signatur scheitern lässt.",
         "differentiators": [
-          "Runtime prompt injection via LiteLLM CustomLogger (async_pre_call_hook) — prompt fetched from Langfuse at request time, not baked into the image; rollback is a single label flip in the Langfuse UI",
-          "Three-layer fail-open chain: live Langfuse → stale in-process cache → ConfigMap env var — LiteLLM never fails because Langfuse is temporarily unreachable",
-          "Deterministic 25-case eval suite — no LLM-as-judge, no probabilistic scoring; keyword presence/absence per case; CI blocks on any regression below 100%",
-          "Explicit off-topic taxonomy in XML system prompt (medical, culinary, gambling, sports — each with named sub-items), making every domain boundary independently testable"
+          "Kargo promotet ein unveränderliches Artefakt über die Stufen — die CI beweist, Kargo promotet, ArgoCD deployt (kein Sync-over-async, bei dem die CI Deployments treibt).",
+          "Prod ist Git-gegatet (CODEOWNERS + GPG-Signaturen), kein Mensch, der auf Sync klickt; selfHeal + prune halten den Cluster deckungsgleich mit Git.",
+          "End-to-End-Supply-Chain: Trivy + Cosign-Keyless + syft-SBOM als OCI-Referrers auf jedem Custom-Image."
         ],
-        "architecture": [
-          "LangfusePromptHandler (langfuse_prompt_handler.py) — LiteLLM CustomLogger; async_pre_call_hook fetches production-labelled prompt, strips user-supplied system messages (anti-injection), injects authoritative prompt as sole system message; 5-min in-process cache per worker pod",
-          "Groq llama-3.1-8b-instant (weight 10) + Ollama phi4-mini ×3 (weight 1 each) — weighted load balancing behind a single LiteLLM virtual model 'phi3-financial'; Groq primary for sub-1s latency, Ollama fallback activates on quota exceeded or API down",
-          "Langfuse prompt management — phi3-financial-system versioned with semantic versioning (MAJOR.MINOR.PATCH); 'production' label controls which version LangfusePromptHandler fetches at runtime; full audit trail and one-click rollback",
-          "sync_prompt_to_litellm.py — fetches production-labelled prompt, renders into a Kubernetes ConfigMap YAML, GPG-signed commit + push to minicloud-gitops; ArgoCD deploys in ~3 min",
-          "Presidio PII/DLP guardrail — PERSON, PHONE, EMAIL, IP_ADDRESS masked before Langfuse trace logging; DATE_TIME and LOCATION pass through unchanged (financial context entities)"
-        ],
-        "repoBlueprint": "User / Open WebUI\n       |\n       v\n+--------------------------------------------------+\n|  LiteLLM  (virtual model: phi3-financial)        |\n|                                                  |\n|  +--------------------------------------------+ |\n|  |  LangfusePromptHandler (async_pre_call_hook)|<-----Langfuse Prompt Mgmt\n|  |  1. fetch 'production' prompt               | |\n|  |     (Valkey 5-min in-process cache)         | |\n|  |  2. strip user-supplied system messages     | |\n|  |  3. inject as sole system message           | |\n|  +--------------------------------------------+ |\n|  Presidio PII/DLP  -->  mask PERSON/PHONE/EMAIL  |\n|  Circuit Breaker   -->  cooldown 60s / 3 fails   |\n+-----------------------+--------------------------+\n                        | weighted routing\n           +------------+------------+\n           |                         |\n           v weight: 10              v weight: 1 (x3)\n  +------------------+   +--------------------------+\n  |  Groq            |   |  Ollama (k3s, ai ns)    |\n  |  llama-3.1-8b-   |   |  phi4-mini              |\n  |  instant         |   |  primary / secondary /  |\n  |  sub-1s latency  |   |  tertiary pods          |\n  +------------------+   +--------------------------+\n           |                         |\n           +------------+------------+\n                        | response + trace metadata\n                        v\n             +----------------------+\n             |  Langfuse (LLMOps)  |\n             |  trace + score      |\n             |  per request        |\n             +----------------------+\n\nCI Gate -- prompt-eval.yml (GitHub Actions)\n  Tailscale OAuth --> minicloud CA --> LiteLLM /health\n  --> eval.py (25 cases, keyword scoring, no LLM judge)\n  --> git tag vX.Y.Z on clean main push\n  Blocks merge on any result below 25/25 PASS",
+        "link": "https://andrelair-platform.github.io/minicloud-platform-docs/",
+        "repoUrl": "https://github.com/andrelair-platform/minicloud-gitops",
         "atsKeywords": [
-          "PromptOps",
-          "LiteLLM CustomLogger",
-          "Langfuse Prompt Management",
-          "Runtime prompt injection",
-          "LLMOps",
-          "Eval-driven development",
-          "Groq",
-          "Python",
-          "Kubernetes",
-          "Presidio PII/DLP",
           "GitOps",
-          "GitHub Actions"
-        ],
-        "scope": [
-          "Phase 1 — XML prompt architecture (Modelfile): designed 5-section XML system prompt with explicit off-topic taxonomy (medical/culinary/gambling/sports with named sub-items) and 5 jailbreak defense patterns; baked into Ollama Modelfile as hardcoded fallback",
-          "Phase 2 — LangfusePromptHandler: built LiteLLM CustomLogger (async_pre_call_hook); 5-min in-process cache; three-layer fail-open (live Langfuse → stale cache → ConfigMap env var); strips user-supplied system messages to prevent guardrail bypass",
-          "Phase 3 — 25-case eval suite (eval.py): financial knowledge (10 cases), off-topic refusal (4), prompt injection resistance (6), edge/mixed-domain (5); keyword-based scoring — deterministic, no LLM-as-judge; CI exits 1 on any regression",
-          "Phase 4 — CI pipeline (prompt-eval.yml): Tailscale OAuth, minicloud CA trust, LiteLLM health check, eval run, auto git-tag on clean main; weekly schedule for baseline drift detection",
-          "Phase 5 — Groq routing (minicloud-litellm-custom): groq/llama-3.1-8b-instant as primary (weight 10); Ollama phi4-mini ×3 as fallback (weight 1); eval runtime 30 min → 7 min; chat response 60-90s → sub-1s"
-        ],
-        "testPlan": [
-          "Eval CI: 25/25 PASS confirmed on Groq backend (run #48, v2.2.4) — T1–T25 all green including T18 (healthcare stocks as investment topic, keyword 'compan' + 'invest')",
-          "Jailbreak resistance: T9 (system override), T10 (prompt extraction), T19 (roleplay), T20 (IT admin social engineering), T21 (credential phishing), T22 (translation bypass) — all REFUSE confirmed",
-          "Off-topic taxonomy: T6 (recipe), T7 (diabetes), T16 (sports betting odds), T17 (blackjack strategy) — all REFUSE confirmed",
-          "PII masking: Presidio masks IBAN, SSN, email, IP_ADDRESS in Langfuse traces; DATE_TIME and LOCATION pass through unchanged (financial context allow-list)",
-          "Fail-open chain: Langfuse pod killed mid-eval — stale cache served prompts for 5 min; after TTL, ConfigMap env var fallback activated; LiteLLM never went down",
-          "Cloudflare WAF: User-Agent minicloud-eval/1.0 passes; openai SDK default UA (AsyncOpenAI/Python*) gets HTTP 403 — documented in Troubleshooting"
-        ],
-        "interviewTalkingPoints": [
-          "Goal: run the 25-case eval suite from GitHub Actions without hitting the internal cluster IP. CI runners join the tailnet via Tailscale OAuth, but the tag:ci ACL does not grant access to 10.0.0.200:443. Every eval call returned a TCP timeout. Problem: LITELLM_BASE_URL was set to litellm.10.0.0.200.nip.io — a private IP unreachable from the CI node's network segment even with Tailscale active. Solution: switched LITELLM_BASE_URL to the Cloudflare Tunnel public URL (litellm.devandre.sbs). Requests route CI → Cloudflare → tunnel → controller → cluster, bypassing the ACL restriction entirely.",
-          "Goal: fix a second CI failure after switching to the Cloudflare URL. Every eval call returned HTTP 403 PermissionDeniedError, indistinguishable from an invalid API key. Problem: Cloudflare managed WAF blocks the User-Agent set by the openai Python SDK — 'AsyncOpenAI/Python/1.x.x'. The 403 came from Cloudflare before LiteLLM. Solution: default_headers={'User-Agent': 'minicloud-eval/1.0'} in the OpenAI() constructor. Applies to any Python openai SDK usage against any Cloudflare-fronted endpoint.",
-          "Goal: T18 was failing CI despite the model answering correctly. Required keyword was 'pharmaceut' but the model answered using 'healthcare companies', 'biotech stocks' — all correct, none containing 'pharmaceut'. Problem: keyword-based eval is deterministic — a correct answer using synonyms fails (false negative). Solution: changed required_keywords to ['compan', 'invest'] — stem fragments present in any correct answer. Bumped to PROMPT_VERSION 2.2.4. Lesson: prefer short stem fragments over full domain-specific terms.",
-          "Goal: make the eval suite resilient to LiteLLM restarts. ArgoCD Recreate strategy caused ~90s of downtime during any sync — if overlapping a CI run, cases failed with ConnectionError. Solution: three-tier exponential backoff in eval.py — 10s / 30s / 60s on 5xx or connection errors. Also switched LiteLLM to RollingUpdate strategy to prevent future Recreate downtime."
+          "ArgoCD",
+          "Kargo",
+          "Continuous Delivery",
+          "Helm",
+          "Kustomize",
+          "CI/CD",
+          "GitHub Actions",
+          "Cosign",
+          "SBOM",
+          "Supply-Chain-Sicherheit",
+          "Trivy",
+          "RBAC",
+          "Progressive Delivery"
         ],
         "screenshots": [
           {
-            "title": "Live-Chat — Antwort unter 1s via Groq",
-            "caption": "Open WebUI Chat mit phi3-financial-Modell beantwortet 'What is a P/E ratio?' — unter 1s via Groq llama-3.1-8b-instant. Modell domänenbeschränkt: Finanzfragen werden beantwortet, Off-Topic-Anfragen abgelehnt.",
-            "src": "https://raw.githubusercontent.com/andrelair-platform/phi3-financial/main/docs/screenshots/screenshot-chat.png",
-            "link": "https://chat.devandre.sbs"
-          },
-          {
-            "title": "Langfuse Prompt Management — v2.2.4",
-            "caption": "Langfuse Prompt Management zeigt phi3-financial-system v2.2.4 mit dem vollständigen 5-Abschnitt-XML-System-Prompt. Das 'production'-Label steuert, welche Version LangfusePromptHandler zur Laufzeit abruft. Rollback = Label auf ältere Version setzen.",
-            "src": "https://raw.githubusercontent.com/andrelair-platform/phi3-financial/main/docs/screenshots/screenshot-langfuse-prompts.png",
-            "link": "https://langfuse.devandre.sbs"
-          },
-          {
-            "title": "Langfuse Eval-Traces — 25 Fälle",
-            "caption": "Langfuse Tracing-Seite mit allen 25 Eval-Traces (T1–T25) eines CI-Runs. Jeder Trace mit 'prompt-eval' getaggt und Git-Release gepinnt. Korrektheitsscore pro Trace (1.0 = PASS, 0.0 = FAIL) in der Scores-Spalte.",
-            "src": "https://raw.githubusercontent.com/andrelair-platform/phi3-financial/main/docs/screenshots/screenshot-langfuse-traces.png",
-            "link": "https://langfuse.devandre.sbs"
-          },
-          {
-            "title": "Langfuse Eval-Dataset — phi3-financial-evals",
-            "caption": "Langfuse Dataset-Ansicht für phi3-financial-evals — 25 Testfälle mit Eingabeanfragen, erwartetem Verhalten (ANSWER/REFUSE) und Metadaten (Test-ID). Dataset steuert das CI-Eval-Gate und Langfuse-Experiment-Tracking.",
-            "src": "https://raw.githubusercontent.com/andrelair-platform/phi3-financial/main/docs/screenshots/screenshot-langfuse-dataset.png",
-            "link": "https://langfuse.devandre.sbs"
+            "title": "ArgoCD — Alle Plattform-Anwendungen",
+            "caption": "ArgoCD App-Kacheln zeigen die vollständige Plattform: Authentik, Backstage, Vault, Grafana, Harbor, Longhorn, Plane CE und alle KI/ML-Workloads — alle Synced und Healthy. Das Health-Status-Panel (links) zeigt alle gesunden Apps im Cluster.",
+            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/screenshot-argocd.png",
+            "link": "https://argocd.devandre.sbs"
           }
+        ],
+        "scope": [
+          "Repo-Architektur: app-of-apps — apps/ Applications, helm-values/ Overrides, services/ Manifeste; AppProject mit gesperrten sourceRepos.",
+          "Zwei Umgebungen (dev + prod) mit Git-gegatetem Auto-Sync; Prod über CODEOWNERS + GPG-signierte PRs gegatet.",
+          "Kargo promotet ein unveränderliches Image dev→prod: die CI beweist das Artefakt, Kargo öffnet die PR, ArgoCD deployt.",
+          "Helm Golden Path: Services sind dünne Wrapper-Charts auf einem geteilten Library-Chart (ein Helm-Render, eine ArgoCD-Source)."
+        ],
+        "architecture": [
+          "ArgoCD app-of-apps rekonziliert ~95 Applications aus Git (recurse:true Root-App).",
+          "Pro Service: Kargo Project + Warehouse + dev/prod-Stages; die Promotion-PR wird via signiertem Squash gemergt.",
+          "Die CI pusht Images nach Harbor (dev) + ghcr.io (prod, SHA-getaggt) mit Cosign + syft-SBOM.",
+          "Argo Rollouts Canary/BlueGreen mit Prometheus-AnalysisTemplates als Laufzeit-Bremse."
+        ],
+        "testPlan": [
+          "Jedes Prod-Image: Trivy CRITICAL exit-1, Cosign-Signatur + syft-SBOM als OCI-Referrers verifiziert.",
+          "Prod-Änderungen erfordern ein CODEOWNERS-Review + verifizierte GPG-Signatur vor dem Auto-Sync.",
+          "Kargo promotet nur dev-verifiziertes Freight; Rollouts-AnalysisRuns gaten den Canary anhand von Live-Metriken.",
+          "ArgoCD selfHeal + prune halten den Cluster deckungsgleich mit Git; Drift wird automatisch korrigiert."
+        ]
+      },
+      {
+        "title": "Versicherungs-IS — Digital Workplace",
+        "oneLinePitch": "Das simulierte Informationssystem eines Gewerbeversicherers auf der Plattform — ERP & Finance, ein vollständiger Digital Workplace und DORA/ACPR-orientierte Governance.",
+        "purpose": "Die Fachschicht: eine selbst gehostete M365-/Google-Workspace-Alternative für einen B2B-Versicherer in Frankreich („ktayl solution“) — ERP & Finance, ein vollständiger Digital Workplace (Mail, Chat, Video, Dateien, E-Signatur) und Compliance-Tools, alles auf der Kubernetes-+-GitOps-Plattform und per SSO abgesichert.",
+        "role": "Solutions Architect & IS-Designer. Modellierung des Versicherungs-IS über 15 Fachdomänen, ERPNext-Konfiguration für den französischen Versicherungs-Kontenrahmen und Aufbau der SSO-gegateten Digital-Workplace-Suite.",
+        "impact": "54+ Workloads über 15 IS-Domänen · ERPNext: 845 PCG-2025-Konten, TSCA 9/13/33%, Factur-X-Minimum-PoC (5 Assertions OK) · jede App hinter Authentik SSO + MFA.",
+        "features": [
+          "ERPNext für einen französischen Versicherer konfiguriert: PCG-2025-Kontenrahmen mit 845 Konten, TSCA-Steuervorlagen, Factur-X-E-Invoicing-PoC; HR als Source of Truth.",
+          "Digital Workplace (M365-Äquivalent): Stalwart-Mail + Amazon SES, Matrix/Element-Chat, Jitsi-Video, Nextcloud + OnlyOffice-Dateien, Docuseal-E-Signatur.",
+          "Enterprise-Identität: Authentik-OIDC-SSO + TOTP für alle 54+ Services; Abteilungs-Personas; browser-first BYOD-Zugriff über Tailscale / Cloudflare.",
+          "Automatisierung & Workflow: n8n und Temporal orchestrieren Geschäftsprozesse über die IS-Domänen.",
+          "Compliance by Design: ACPR/DORA-orientierte Governance, default-deny-Network-Policies und PII/DLP-Guardrails auf der KI-Schicht."
+        ],
+        "stack": [
+          "ERPNext / Frappe",
+          "Authentik (OIDC/SSO)",
+          "Stalwart Mail + SES",
+          "Matrix / Element",
+          "Jitsi Meet",
+          "Nextcloud / OnlyOffice",
+          "Docuseal",
+          "n8n",
+          "Temporal",
+          "PostgreSQL / MariaDB"
+        ],
+        "whyItMatters": "Es macht aus einem Home-Lab das Informationssystem eines echten Unternehmens: nicht nur „ich habe Kubernetes betrieben“, sondern „ich habe das digitale Rückgrat eines regulierten Versicherers entworfen und betrieben“ — ERP, Finance, vollständiger Digital Workplace, Identität und Compliance, alles selbst gehostet.",
+        "differentiators": [
+          "Eine vollständige, selbst gehostete M365-Alternative für einen regulierten Versicherer — keine einzelne App, ein ganzes IS.",
+          "Echte Fachmodellierung: PCG 2025, TSCA, Factur-X, ACPR/DORA — versicherungsspezifisch, kein generisches SaaS.",
+          "Identität als Perimeter: SSO + MFA + BYOD-/Zero-Trust-Zugriff auf jeden Fachservice."
+        ],
+        "link": "https://andrelair-platform.github.io/minicloud-platform-docs/",
+        "repoUrl": "https://github.com/andrelair-platform/minicloud-gitops",
+        "atsKeywords": [
+          "Versicherung",
+          "Unternehmensarchitektur",
+          "ERPNext",
+          "Frappe",
+          "Digital Workplace",
+          "M365-Alternative",
+          "IAM",
+          "SSO",
+          "Authentik",
+          "DORA",
+          "ACPR",
+          "Compliance",
+          "Geschäftsautomatisierung",
+          "ITSM"
         ],
         "liveEndpoints": [
           {
-            "label": "LiteLLM API — phi3-financial virtuelles Modell",
-            "command": "curl -s -X POST https://litellm.devandre.sbs/v1/chat/completions -H \"Authorization: Bearer sk-portfolio-demo\" -H \"Content-Type: application/json\" -d '{\"model\": \"phi3-financial\", \"messages\": [{\"role\": \"user\", \"content\": \"What is a P/E ratio?\"}], \"max_tokens\": 80}'",
-            "url": "https://litellm.devandre.sbs/v1/models"
+            "label": "Homer — Plattform-Dashboard mit allen Service-Links",
+            "command": "https://homer.devandre.sbs",
+            "url": "https://homer.devandre.sbs"
           },
           {
-            "label": "Langfuse — phi3-financial Prompt-Versionierung + Eval-Traces",
-            "command": "https://langfuse.devandre.sbs",
-            "url": "https://langfuse.devandre.sbs"
+            "label": "ArgoCD — GitOps-Reconciliation-Status aller Anwendungen",
+            "command": "https://argocd.devandre.sbs",
+            "url": "https://argocd.devandre.sbs"
+          },
+          {
+            "label": "Grafana — Plattform-Observability-Dashboards",
+            "command": "https://grafana.devandre.sbs",
+            "url": "https://grafana.devandre.sbs"
+          },
+          {
+            "label": "Plattform-Docs — Docusaurus Phasen-Runbooks",
+            "command": "https://andrelair-platform.github.io/minicloud-platform-docs/",
+            "url": "https://andrelair-platform.github.io/minicloud-platform-docs/"
           }
+        ],
+        "scope": [
+          "15 IS-Domänen modelliert: Police, Schaden, Underwriting, ERP/Finance, HR, Compliance, DMS, Kommunikation, Workplace-KI.",
+          "ERPNext für einen französischen Versicherer: PCG-2025-Kontenrahmen (845 Konten), TSCA-Steuervorlagen, Factur-X-Minimum-PoC.",
+          "Digital Workplace: Stalwart-Mail + SES, Matrix/Element, Jitsi, Nextcloud + OnlyOffice, Docuseal-E-Signatur.",
+          "Identität: Authentik-OIDC-SSO + TOTP über alle 54+ Services; n8n + Temporal automatisieren domänenübergreifende Prozesse."
+        ],
+        "architecture": [
+          "ERPNext/Frappe auf MariaDB ist die ERP- + HR-Source-of-Truth (custom DSN/SEPA-Payroll).",
+          "Authentik OIDC schützt jede Fachanwendung hinter Tailscale / Cloudflare Tunnel.",
+          "Stalwart-Mail leitet Outbound via Amazon SES weiter; Inbound via SES→S3→SQS→Bridge.",
+          "Jeder Service in eigenem Namespace mit default-deny-NetworkPolicies; PII/DLP (Presidio) auf der KI-Schicht."
+        ],
+        "testPlan": [
+          "ERPNext-Konfiguration validiert: 845 PCG-Konten, TSCA 9/13/33%, Factur-X Minimum (5 Assertions OK).",
+          "SSO-Smoke: öffentliche Services leiten zu Authentik um, akzeptieren TOTP und liefern eine authentifizierte Session.",
+          "Mail end-to-end verifiziert: Outbound via SES (SPF/DKIM/DMARC ausgerichtet) + Inbound-Zustellung.",
+          "Custom-ERPNext-Payroll (DSN + SEPA) unit-getestet (108 Tests, ~76% Coverage)."
         ]
       },
       {
-        "title": "Enterprise RAG Pipeline",
-        "purpose": "Aufbau einer vollständigen mehrsprachigen RAG-Pipeline für die Suche in französischen Versicherungsdokumenten über drei benutzerdefinierte Repos. minicloud-markitdown-proxy (FastAPI): leitet Dokumente nach Typ weiter — PDF/Bilder zu Docling OCR, Office/HTML zu MarkItDown im Pod — mit Docling-kompatibler API-Oberfläche. minicloud-rag-ingest (FastAPI): vollständige Ingestion-Pipeline in einem HTTP-Endpoint — Konvertierung → strukturiertes Heading-Chunking (französisches Versicherungs-Regex) → bge-m3 1024-dim Embedding → pgvector HNSW INSERT. minicloud-postgresql-noavx512: benutzerdefiniertes PostgreSQL-Image mit pgvector's vector.so neu gebaut ohne -mavx512f/bw/vl/dq — behebt SIGILL-Absturz auf i7-8565U/i7-10510U CPUs durch AVX-512 EVEX-Instruktionen in pgvector 0.8.4. Hybrid-Such-Schicht: BM25 mit französischem Snowball-Stemmer + NLTK-Stoppwörter via Init-Container in rank_bm25/utils.py gepatcht. Cross-Encoder-Re-Ranking (ms-marco-MiniLM-L-6-v2) filtert auf Top-3.",
-        "role": "Systems Engineer & ML Engineer. Diagnose der SIGILL-Grundursache (pgvector 0.8.4 HNSW-Code emittiert AVX-512 EVEX-Instruktionen, nicht unterstützt von i7-8565U/i7-10510U), Neukompilierung von vector.so ohne AVX-512 und Paketierung als benutzerdefiniertes Harbor-Image. Entwurf der Zwei-Microservice-Ingestion-Architektur, Entwicklung des französischen BM25-Preprocessors (NLTK-Snowball-Stemmer + Versicherungs-Stoppwörter via Init-Container subPath-Mount in rank_bm25/utils.py gepatcht) und Integration von Docling als PDF/OCR-Backend. Beide Microservices mit Dockerfile, GitHub Actions CI und cosign Keyless-Signierung ausgeliefert.",
-        "impact": "Alle HNSW-Index-Operationen auf CPUs ohne AVX-512 entsperrt — null SIGILL-Abstürze nach dem Fix. Gemessene Pipeline-Latenzen: HNSW-Vektorscan 0,31ms, BM25-GIN-FTS 2,71ms, INSERT + HNSW-Update 6,8ms/Zeile, bge-m3-Embedding 393ms. Französisches Stemming verifiziert: sinistres/sinistre → sinistr ✅, réassurance/réassurer → réassur ✅. Vollständig im Cluster end-to-end: PDF-Upload → Docling OCR → strukturierte Chunks → 1024-dim Vektoren → pgvector HNSW + BM25 Hybrid → Cross-Encoder Top-3. Keine externen API-Aufrufe.",
+        "title": "Retrieva — DORA-Compliance-Plattform",
+        "oneLinePitch": "Eine produktive DORA-Compliance-Plattform für Finanzunternehmen — Drittparteien-ICT-Risikobewertungen, LLM-bewertete Lieferanten-Fragebögen, ein KI-Copilot und Ein-Klick-Export des EBA-Informationsregisters.",
+        "purpose": "Mein RNCP39583-Zertifizierungsprodukt (ein eigenständiges Produkt, das auf der Plattform läuft, getrennt vom Versicherungs-IS): Retrieva automatisiert die DORA-Compliance (EU 2022/2554) für Drittparteien-ICT-Risiko bei Finanzunternehmen — Gap-Analyse der Lieferantendokumentation, LLM-bewertete Fragebögen, ein Compliance-Copilot, 24-Stunden-Monitoring-Alerts und Export des EBA-Informationsregisters (Artikel 28(3)).",
+        "role": "Full-Stack-/AI-Engineer & Product Owner. Entwurf und Umsetzung des mandantenfähigen SaaS end-to-end — Express-Backend, Next.js-Frontend, die RAG-+-Assessment-Pipeline und die GitOps-/Kargo-Delivery auf der Plattform.",
+        "impact": "4 Delivery-Phasen in Produktion · Ein-Klick-Export des EBA-Informationsregisters (RT.01.01→RT.04.01) · mandantenfähiges RBAC · DORA-Gap-Analyse pro Artikel (abgedeckt / teilweise / fehlend).",
         "features": [
-          "minicloud-markitdown-proxy: PDF/Bilder → Docling OCR, Office/HTML → MarkItDown im Pod (Docling-kompatible API)",
-          "minicloud-rag-ingest: einzelner HTTP-Endpoint — konvertieren → chunken → bge-m3 embedding → pgvector HNSW INSERT",
-          "minicloud-postgresql-noavx512: vector.so ohne AVX-512 neu gebaut — behebt SIGILL auf i7-8565U/i7-10510U (pgvector 0.8.4 SIMD-Bug)",
-          "Französischer BM25: NLTK-Snowball-Stemmer + Versicherungs-Stoppwörter via Kubernetes Init-Container in rank_bm25 gepatcht",
-          "Hybrid-Retrieval: bge-m3 1024-dim Vektor + BM25 + Cross-Encoder-Re-Ranking (ms-marco-MiniLM-L-6-v2, Top-3)",
-          "Supply Chain: Dockerfile + GitHub Actions CI + cosign Keyless-Signierung auf beiden Microservices",
-          "Generierungsschritt über Enterprise KI-Gateway (LiteLLM) geroutet — RAG-Retrieval + Cloud/Lokal-Modellauswahl in einer Pipeline"
+          "DORA-Gap-Analyse: Upload von Lieferantendokumenten (PDF/DOCX/XLSX) → semantisches Chunking → Qdrant → ein LLM klassifiziert die Abdeckung pro DORA-Artikel (abgedeckt / teilweise / fehlend).",
+          "Compliance-KI-Copilot: intent-klassifiziertes RAG über Ihre Dokumentation + DORA-Artikel, mit Reranking, Kontextkompression und Antwortvalidierung.",
+          "Lieferanten-Fragebögen automatisch generiert und LLM-bewertet; 24-Stunden-BullMQ-Monitoring-Alerts (Zertifikatsablauf, Vertragsverlängerung, überfällige Jahresprüfungen).",
+          "Ein-Klick-Export des EBA-Informationsregisters — eine 4-Blatt-XLSX-Arbeitsmappe (DORA Artikel 28(3), RT.01.01 → RT.04.01).",
+          "Mandantenfähiges SaaS: Workspace-Isolation, JWT + Refresh-Tokens, RBAC (owner/admin/member/viewer) und LLM-Output-Guardrails."
         ],
         "stack": [
-          "Python",
-          "FastAPI",
-          "PostgreSQL + pgvector (benutzerdefinierter noavx512-Build, C / Makefile)",
-          "bge-m3 (Ollama)",
-          "Docling (OCR/PDF)",
-          "MarkItDown",
-          "rank_bm25 + NLTK (französisches BM25)",
-          "ms-marco-MiniLM-L-6-v2 (Cross-Encoder)",
-          "Docker",
-          "GitHub Actions",
-          "cosign",
-          "Kubernetes Init-Container"
+          "Next.js 16 / React 19",
+          "Express 5 / Node 20",
+          "LangChain",
+          "LiteLLM-Gateway",
+          "Qdrant",
+          "PostgreSQL",
+          "Redis / BullMQ",
+          "Socket.io",
+          "Kargo (2 Images)",
+          "Docker / Kubernetes"
         ],
-        "link": "https://andrelair-platform.github.io/minicloud-platform-docs/",
-        "repoUrl": "https://github.com/andrelair-platform/minicloud-rag-ingest",
-        "oneLinePitch": "A three-repo multilingual RAG pipeline — French insurance document ingestion from PDF upload to pgvector HNSW in one HTTP call, with a custom PostgreSQL image to fix an AVX-512 SIGILL crash on cluster CPUs.",
-        "whyItMatters": "Off-the-shelf RAG tooling splits documents by character count and has no awareness of legal structure. French insurance contracts are organised around articles, clauses, and annexes — a chunk that straddles two articles loses the legal context of both. This pipeline splits at heading boundaries, tags every chunk with doc_type/section/article metadata, and stores it in a vector+BM25 hybrid index so retrieval is both semantically accurate and keyword-precise. The whole pipeline runs in-cluster with no external API calls during ingestion — a hard requirement for handling confidential insurance documents.",
+        "whyItMatters": "DORA ist ein echter, ungelöster Marktschmerz: im ESA-Dry-Run 2024 bestanden nur ~6,5% der Finanzunternehmen alle 116 Prüfungen des Informationsregisters — Tabellen können den Graphen Unternehmen→Vertrag→Funktion→Unterauftragnehmer nicht abbilden. Retrieva modelliert diesen Graphen und automatisiert Bewertung + Export. Es ist mein RNCP39583-Zertifizierungsergebnis und ein echtes Produkt.",
         "differentiators": [
-          "Structure-aware chunking — splits on French insurance heading patterns (Article, Chapitre, Titre, Annexe, Garantie) before falling back to paragraph boundaries; character-count splitters would cut across article boundaries",
-          "Custom PostgreSQL image (minicloud-postgresql-noavx512) — diagnosed a SIGILL crash caused by pgvector 0.8.4 emitting AVX-512 EVEX instructions; rebuilt vector.so from source with -mno-avx512f/bw/vl/dq; unblocked HNSW on all 4 cluster CPUs (i7-8565U / i7-10510U)",
-          "French BM25 via init container patching — rank_bm25 uses whitespace tokenisation by default; NLTK Snowball French stemmer + insurance stop-word set injected by patching rank_bm25/utils.py at pod start via a ConfigMap subPath mount — zero image rebuilds required",
-          "Docling-compatible proxy (minicloud-markitdown-proxy) — routes scanned images to the heavy Docling OCR pod and handles text-based PDFs/Office files with MarkItDown in-pod; both consumers (Open WebUI + rag-ingest) call the same endpoint without knowing which backend ran"
+          "Ein echtes regulatorisches Produkt (DORA / EU 2022/2554), gebaut nach der EBA-Informationsregister-Spezifikation — keine Demo.",
+          "Intent-klassifiziertes RAG mit Reranking, Kontextkompression und Antwortvalidierung — LLMOps, kein naiver Chatbot.",
+          "Läuft auf meiner eigenen Plattform: per GitOps ausgeliefert und von Kargo dev→prod promotet (Git-Warehouse, 2 Images), mit eigener Qdrant-Collection + PostgreSQL-Datastore."
+        ],
+        "link": "https://retrieva.online",
+        "repoUrl": "https://github.com/andrelair-platform/retrieva",
+        "atsKeywords": [
+          "DORA",
+          "Regulatorische Compliance",
+          "RegTech",
+          "Drittparteienrisiko",
+          "ICT-Risiko",
+          "Informationsregister",
+          "EBA",
+          "RAG",
+          "LangChain",
+          "LiteLLM",
+          "Qdrant",
+          "Mandantenfähiges SaaS",
+          "Next.js",
+          "Express"
+        ],
+        "liveEndpoints": [
+          {
+            "label": "Retrieva — Live-Anwendung",
+            "command": "https://retrieva.online",
+            "url": "https://retrieva.online"
+          },
+          {
+            "label": "Retrieva — Produkt- & Architektur-Doku",
+            "command": "https://andrelair-platform.github.io/retrieva/",
+            "url": "https://andrelair-platform.github.io/retrieva/"
+          }
+        ],
+        "scope": [
+          "4 Phasen in Produktion: DORA-Copilot → Lieferantendok-Assessment → Fragebögen → Monitoring + Register-Export.",
+          "Mandantenfähiges SaaS mit Workspace-Isolation + RBAC (owner/admin/member/viewer).",
+          "RAG: Intent-Klassifikation → Retrieval → Reranking → Kontextkompression → Generierung → Antwortvalidierung.",
+          "DORA-Gap-Worker: Parsing (PDF/DOCX/XLSX) → semantisches Chunking → Qdrant → Abdeckungsklassifikation pro Artikel."
         ],
         "architecture": [
-          "minicloud-markitdown-proxy (github.com/andrelair-platform/minicloud-markitdown-proxy) — FastAPI proxy; scanned images go to Docling OCR pod (ghcr.io/docling-project/docling-serve-cpu:v1.26.0, 4.4 GB, Helm-deployed); PDFs + Office files go to MarkItDown (PyMuPDF, in-pod); response format mimics Docling /v1/convert/file so Open WebUI DOCLING_SERVER_URL points here unchanged",
-          "minicloud-rag-ingest (github.com/andrelair-platform/minicloud-rag-ingest) — FastAPI ingestion service; POST /ingest: forward to markitdown-proxy → structure-aware heading chunker (French insurance regex) → batch embed via LiteLLM text-embedding-3-small (1536-dim, batch 64) → pgvector INSERT with vmetadata JSONB; fully in-cluster, no local tools required",
-          "minicloud-postgresql-noavx512 (github.com/andrelair-platform/minicloud-postgresql-noavx512) — custom Bitnami PostgreSQL 18.4.0 image; vector.so rebuilt from source with -mno-avx512f/bw/vl/dq to fix SIGILL on i7-8565U/i7-10510U; HNSW index on vector(1536) + GIN index with french dictionary",
-          "Hybrid retrieval — HNSW vector scan (0.31ms) + BM25 GIN FTS (2.71ms); BM25 uses rank_bm25 patched with NLTK Snowball French stemmer via init container; cross-encoder ms-marco-MiniLM-L-6-v2 re-ranks and filters to top-3",
-          "GitOps delivery — all three services deployed via ArgoCD; each has GitHub Actions CI: docker build → Harbor push via Tailscale → cosign keyless sign → GPG-signed gitops bump into minicloud-gitops"
-        ],
-        "repoBlueprint": "minicloud-markitdown-proxy/   github.com/andrelair-platform/minicloud-markitdown-proxy\n  main.py                      FastAPI proxy — routing by file extension\n  Dockerfile                   python:3.12-slim, UID 1000, port 8000\n  .github/workflows/ci.yml     build -> Harbor -> cosign -> gitops bump\n\nminicloud-rag-ingest/        github.com/andrelair-platform/minicloud-rag-ingest\n  main.py                      FastAPI service — convert -> chunk -> embed -> INSERT\n  Dockerfile                   python:3.12-slim, UID 1000, port 8001\n  .github/workflows/ci.yml     build -> Harbor -> cosign -> gitops bump\n\nminicloud-postgresql-noavx512/  github.com/andrelair-platform/minicloud-postgresql-noavx512\n  Dockerfile                   Bitnami 18.4.0 base + vector.so rebuilt -mno-avx512f\n  .github/workflows/ci.yml     build -> Harbor -> cosign",
-        "scope": [
-          "Phase 1 — Conversion layer (minicloud-markitdown-proxy): needed a single endpoint that both Open WebUI and rag-ingest could call without knowing which backend ran; built a Docling-compatible proxy routing by file extension",
-          "Phase 2 — SIGILL diagnosis and fix (minicloud-postgresql-noavx512): every HNSW INSERT crashed with SIGILL on all 4 cluster CPUs; traced to pgvector 0.8.4 emitting AVX-512 EVEX instructions; rebuilt vector.so without AVX-512 and packaged as a custom Harbor image",
-          "Phase 3 — Ingestion service (minicloud-rag-ingest): replaced the Mac-side Python script with an in-cluster FastAPI service; structure-aware chunker replaces character-count splitting; batch embedding via LiteLLM",
-          "Phase 4 — French BM25: rank_bm25 default tokeniser is whitespace-only — sinistres != sinistre; injected NLTK Snowball stemmer + insurance stop-words by patching rank_bm25/utils.py at pod start via init container + ConfigMap subPath",
-          "Phase 5 — Cross-encoder re-ranking: ms-marco-MiniLM-L-6-v2 runs in-process in the Open WebUI pod; re-ranks BM25+HNSW candidates and filters to top-3 before passing to the LLM",
-          "Phase 6 — Supply chain hardening: all three repos have GitHub Actions CI with Trivy scan, cosign keyless signing, and GPG-signed gitops bump; images stored in Harbor with cosign signatures"
+          "Next.js-16-Frontend + Express-5-API; LangChain orchestriert die RAG- + Assessment-Chains.",
+          "LiteLLM-Gateway vor den Modellen; Qdrant hält die Vektoren; PostgreSQL ist der primäre Datastore (RTV-49).",
+          "Redis + BullMQ betreiben die Worker; ein 24-Stunden-Job sendet DORA-Monitoring-Alerts.",
+          "Per GitOps ausgeliefert, von Kargo dev→prod promotet (Git-Warehouse, 2 Images) mit eigener Qdrant-Collection."
         ],
         "testPlan": [
-          "SIGILL regression: kubectl exec into postgresql-ai pod, CREATE INDEX USING hnsw, INSERT a vector row — confirmed no SIGILL across all 4 cluster nodes (i7-8565U x2, i7-10510U x2)",
-          "French BM25 stemming: exec into open-webui pod, call _french_bm25_preprocess('sinistres') — expected output 'sinistr'; also verified: sinistre->sinistr, reassurance->reassur",
-          "End-to-end ingestion: port-forward rag-ingest, POST a French insurance PDF — response shows chunks_stored > 0 and metadata_sample.article populated; verified row count in ragdb",
-          "Hybrid retrieval quality: Open WebUI query for BNP Paribas CET1 ratio — verified retrieved chunks contained numeric CET1 values (HNSW semantic match) and BNP Paribas keyword (BM25 match) in top results",
-          "markitdown-proxy routing: POST a scanned TIFF — logs show route to Docling; POST a .docx — logs show MarkItDown path; both return the Docling-compatible response format",
-          "Pipeline latency baseline: HNSW scan 0.31ms, GIN FTS 2.71ms, INSERT + HNSW update 6.8ms/row — all within SLA targets"
-        ],
-        "interviewTalkingPoints": [
-          "Goal: run HNSW vector indexing on a self-hosted Kubernetes cluster with consumer-grade Intel CPUs. Every HNSW INSERT was crashing the PostgreSQL pod with SIGILL — a hardware-level illegal instruction fault. Problem: pgvector 0.8.4 introduced SIMD-accelerated HNSW code that emits AVX-512 EVEX-encoded instructions. All 4 cluster CPUs (Intel i7-8565U and i7-10510U, Whiskey Lake) support AVX2 but not AVX-512. The fault appeared only on HNSW operations, not IVFFlat, which initially obscured the root cause. Solution: rebuilt vector.so from source with -mno-avx512f/bw/vl/dq, packaged as a custom Harbor image, validated with direct INSERT tests on all 4 nodes. Zero SIGILL crashes since deployment.",
-          "Goal: make BM25 keyword retrieval work for French legal text. Open WebUI hybrid search runs rank_bm25 alongside HNSW. rank_bm25 tokenises by whitespace only — sinistres, sinistre, and sinistres are three different tokens with zero overlap. For French insurance documents where queries and clauses use different inflections of the same term, this makes BM25 almost useless. Problem: we could not modify rank_bm25 (it runs inside the Open WebUI pod, not our image). Solution: init container that patches rank_bm25/utils.py at pod start — injects an NLTK Snowball French stemmer and a hardcoded insurance stop-word set — via a ConfigMap subPath volume that shadows the original file. The patch applies every restart with no image rebuild.",
-          "Goal: eliminate the Mac-side ingestion dependency. The original pipeline required a local Python script, local DB port-forward, and local credentials to ingest documents — creating a hard dependency on one developer's machine. Solution: minicloud-rag-ingest is a cluster-native FastAPI service accepting a single multipart POST. The full pipeline runs in-cluster: convert via markitdown-proxy, structure-aware chunk, embed via LiteLLM, INSERT into ragdb. Any pod in the ai namespace — or any developer with a port-forward — can ingest a document with one curl call.",
-          "Goal: build a conversion layer for both scanned documents (needing OCR) and machine-generated PDFs and Office files. Running everything through Docling would work but its CPU image is 4.4 GB and its layout analysis uses hundreds of MB per page — impractical for a CPU-only cluster handling mostly text-based files. Solution: minicloud-markitdown-proxy routes by file extension: scanned images go to Docling, everything else is handled in-pod with MarkItDown (PyMuPDF for PDFs). The API contract matches Docling /v1/convert/file, so both Open WebUI and rag-ingest call the same endpoint without knowing which backend ran."
-        ],
-        "screenshots": [
-          {
-            "title": "phi3-financial beantwortet eine französische CET1-Abfrage",
-            "caption": "Open WebUI mit dem spezialisierten phi3-financial-Modell, das eine Finanzfrage auf Französisch beantwortet. Das Modell ist mit einem SYSTEM-Prompt auf Finanzthemen beschränkt und über Hybrid-BM25+HNSW-Retrieval mit der pgvector-Wissensdatenbank verbunden.",
-            "src": "/screenshots/rag-openwebui-query.png"
-          },
-          {
-            "title": "Französische Versicherungs-Wissensdatenbank in Open WebUI",
-            "caption": "Open WebUI Workspace > Knowledge zeigt die Sammlung 'Finance D'entreprise, Réglementation Bancaire' — 911 Chunks über rag-ingest ingested, umfassend Basel III Regulierungskapital, BNP Paribas Fortis Jahresbericht 2024 und LVMH 2023, alle mit bge-m3 (1024-dim) vektorisiert.",
-            "src": "/screenshots/rag-knowledge-bases.png"
-          },
-          {
-            "title": "rag-ingest Komponente im Backstage IDP",
-            "caption": "Backstage-Katalogeintrag für den rag-ingest Service — Eigentümer (andrelair-platform), Lebenszyklus (production), System (minicloud-platform) und Beschreibung als cluster-nativer RAG-Ingestionspipeline. Links zu Source Repository und ArgoCD Application sichtbar.",
-            "src": "/screenshots/rag-ingest-component.png"
-          },
-          {
-            "title": "rag-ingest OpenAPI-Spec in Backstage",
-            "caption": "Backstage API-Tab zeigt die live gerenderte OpenAPI-3.1-Spezifikation der rag-ingest-api. Endpoints: GET /health (Liveness-Probe), GET /ready (Readiness-Probe), POST /ingest (Dokumenteningestion in pgvector). Interner Cluster-Service unter rag-ingest.ai.svc.cluster.local:8001.",
-            "src": "/screenshots/rag-ingest-api-overview.png"
-          }
+          "DORA-Gap-Analyse pro Artikel validiert (abgedeckt / teilweise / fehlend) auf Lieferanten-ICT-Dokumenten.",
+          "Der Register-Export erzeugt eine EBA-konforme Arbeitsmappe (Artikel 28(3), RT.01.01→RT.04.01).",
+          "Mandanten-Isolation + RBAC auf Workspace- und DB-Ebene erzwungen; LLM-Output-Guardrails bei der Generierung.",
+          "Env-agnostische Images laufen identisch dev↔prod; das Kargo-Git-Warehouse schlüsselt Freight auf den Commit."
         ]
       },
       {
@@ -1051,200 +985,152 @@
         ]
       },
       {
-        "title": "Enterprise KI-Chat-Plattform",
-        "purpose": "Deployment von Open WebUI als produktionsreife Enterprise-KI-Chat-Oberfläche für 16 Fachabteilungen via Authentik OIDC SSO. Verbindet den gesamten KI-Backend-Stack — LiteLLM KI-Gateway (8 Provider), RAG-Pipeline (französische Versicherungsdokumentenbasis) und SearXNG-Echtzeit-Websuche — zu einem einzigen Produkt für nicht-technische Business-Nutzer. phi3-financial dient als Standardmodell für Finanzanalysten, domänenbeschränkt und Prompt-gesteuert via Langfuse. Gesprächshistorie und Nutzerverwaltung in PostgreSQL für produktionsreife Persistenz.",
-        "role": "Platform & KI-Produktingenieur. Integration von Authentik OIDC in Open WebUI, Behebung des SSL-Verifikationsfehlers gegen das selbstsignierte Cluster-CA via Init-Container, der System-CAs und minicloud-CA zu einem Bundle zusammenfügt (SSL_CERT_FILE=/ca-bundle/bundle.crt). Deployment von SearXNG mit zwei nicht-offensichtlichen Gotchas: enableServiceLinks=false verhindert, dass Kubernetes eine SEARXNG_PORT-Env-Variable injiziert, die granian zum Absturz bringt; BYPASS_WEB_SEARCH_WEB_LOADER=true für Nachrichtenwebsite-Kompatibilität. Migration von SQLite auf PostgreSQL und Anbindung von KI-Gateway und RAG-Pipeline als Backends.",
-        "impact": "16 Fachabteilungen mit SSO-gesteuertem KI-Zugang — jeder Nutzer sieht nur seine eigene Gesprächshistorie. Finanzanalysten erhalten phi3-financial als Standard: domänenbeschränkt, Prompt-Rollback in unter 5 Minuten via Langfuse. Nutzer befragen eine französische Versicherungsdokumentenbasis direkt im Chat via RAG-Pipeline. Echtzeit-Websuche via selbst-gehostetem SearXNG. Null Datenverlust bei Pod-Neustart — PostgreSQL-gesichert.",
+        "title": "Enterprise RAG Pipeline",
+        "purpose": "Aufbau einer vollständigen mehrsprachigen RAG-Pipeline für die Suche in französischen Versicherungsdokumenten über drei benutzerdefinierte Repos. minicloud-markitdown-proxy (FastAPI): leitet Dokumente nach Typ weiter — PDF/Bilder zu Docling OCR, Office/HTML zu MarkItDown im Pod — mit Docling-kompatibler API-Oberfläche. minicloud-rag-ingest (FastAPI): vollständige Ingestion-Pipeline in einem HTTP-Endpoint — Konvertierung → strukturiertes Heading-Chunking (französisches Versicherungs-Regex) → bge-m3 1024-dim Embedding → pgvector HNSW INSERT. minicloud-postgresql-noavx512: benutzerdefiniertes PostgreSQL-Image mit pgvector's vector.so neu gebaut ohne -mavx512f/bw/vl/dq — behebt SIGILL-Absturz auf i7-8565U/i7-10510U CPUs durch AVX-512 EVEX-Instruktionen in pgvector 0.8.4. Hybrid-Such-Schicht: BM25 mit französischem Snowball-Stemmer + NLTK-Stoppwörter via Init-Container in rank_bm25/utils.py gepatcht. Cross-Encoder-Re-Ranking (ms-marco-MiniLM-L-6-v2) filtert auf Top-3.",
+        "role": "Systems Engineer & ML Engineer. Diagnose der SIGILL-Grundursache (pgvector 0.8.4 HNSW-Code emittiert AVX-512 EVEX-Instruktionen, nicht unterstützt von i7-8565U/i7-10510U), Neukompilierung von vector.so ohne AVX-512 und Paketierung als benutzerdefiniertes Harbor-Image. Entwurf der Zwei-Microservice-Ingestion-Architektur, Entwicklung des französischen BM25-Preprocessors (NLTK-Snowball-Stemmer + Versicherungs-Stoppwörter via Init-Container subPath-Mount in rank_bm25/utils.py gepatcht) und Integration von Docling als PDF/OCR-Backend. Beide Microservices mit Dockerfile, GitHub Actions CI und cosign Keyless-Signierung ausgeliefert.",
+        "impact": "Alle HNSW-Index-Operationen auf CPUs ohne AVX-512 entsperrt — null SIGILL-Abstürze nach dem Fix. Gemessene Pipeline-Latenzen: HNSW-Vektorscan 0,31ms, BM25-GIN-FTS 2,71ms, INSERT + HNSW-Update 6,8ms/Zeile, bge-m3-Embedding 393ms. Französisches Stemming verifiziert: sinistres/sinistre → sinistr ✅, réassurance/réassurer → réassur ✅. Vollständig im Cluster end-to-end: PDF-Upload → Docling OCR → strukturierte Chunks → 1024-dim Vektoren → pgvector HNSW + BM25 Hybrid → Cross-Encoder Top-3. Keine externen API-Aufrufe.",
         "features": [
-          "Authentik OIDC SSO — 16 Abteilungsgruppen, abteilungsspezifische Standardmodelle, Gesprächsisolierung by Design",
-          "phi3-financial Standard für Finance — domänenbeschränkt, Laufzeit-Prompt-Injektion via Langfuse (sofortiger Rollback, kein Redeployment)",
-          "Enterprise RAG im Chat — französische Versicherungsdokumentenbasis via bge-m3 Hybrid-Suche + Cross-Encoder Re-Ranking",
-          "SearXNG Echtzeit-Websuche — selbstgehostete Meta-Suche, kein Tracking, Globus-Icon in der Chat-UI",
-          "PostgreSQL Gesprächspersistenz — produktionsreif, von SQLite migriert, kein Datenverlust beim Neustart",
-          "SSL CA-Bundle Init-Container — löst OIDC Token/JWKS SSL-Verifikationsfehler gegen selbstsigniertes Cluster-CA"
+          "minicloud-markitdown-proxy: PDF/Bilder → Docling OCR, Office/HTML → MarkItDown im Pod (Docling-kompatible API)",
+          "minicloud-rag-ingest: einzelner HTTP-Endpoint — konvertieren → chunken → bge-m3 embedding → pgvector HNSW INSERT",
+          "minicloud-postgresql-noavx512: vector.so ohne AVX-512 neu gebaut — behebt SIGILL auf i7-8565U/i7-10510U (pgvector 0.8.4 SIMD-Bug)",
+          "Französischer BM25: NLTK-Snowball-Stemmer + Versicherungs-Stoppwörter via Kubernetes Init-Container in rank_bm25 gepatcht",
+          "Hybrid-Retrieval: bge-m3 1024-dim Vektor + BM25 + Cross-Encoder-Re-Ranking (ms-marco-MiniLM-L-6-v2, Top-3)",
+          "Supply Chain: Dockerfile + GitHub Actions CI + cosign Keyless-Signierung auf beiden Microservices",
+          "Generierungsschritt über Enterprise KI-Gateway (LiteLLM) geroutet — RAG-Retrieval + Cloud/Lokal-Modellauswahl in einer Pipeline"
         ],
         "stack": [
-          "Open WebUI",
-          "Authentik (OIDC/SSO)",
-          "LiteLLM (KI-Gateway)",
-          "Ollama (lokale Inferenz)",
-          "SearXNG (Websuche)",
-          "PostgreSQL (Persistenz)",
-          "pgvector + bge-m3 (RAG)",
-          "Langfuse (Prompt-Management)",
-          "Kubernetes (k3s)",
-          "Helm"
+          "Python",
+          "FastAPI",
+          "PostgreSQL + pgvector (benutzerdefinierter noavx512-Build, C / Makefile)",
+          "bge-m3 (Ollama)",
+          "Docling (OCR/PDF)",
+          "MarkItDown",
+          "rank_bm25 + NLTK (französisches BM25)",
+          "ms-marco-MiniLM-L-6-v2 (Cross-Encoder)",
+          "Docker",
+          "GitHub Actions",
+          "cosign",
+          "Kubernetes Init-Container"
         ],
-        "link": "https://chat.devandre.sbs",
-        "repoUrl": "https://github.com/andrelair-platform/minicloud-open-webui"
-      },
-      {
-        "title": "Backstage Internal Developer Portal",
-        "purpose": "Produktionsreifes internes Entwicklerportal auf Basis von Backstage 1.52, bereitgestellt auf einem selbst gehosteten Kubernetes-Cluster mit GitOps-Delivery, Authentik OIDC SSO, Software Templates, TechDocs und einem benutzerdefinierten Plane Issues Plugin.",
-        "role": "Platform Engineer — Entwurf und Implementierung des benutzerdefinierten Frontend-Systems, OIDC-Integration, Tech-Radar-Modul, Software-Templates-Scaffolder, Plane-Issues-Plugin, TechDocs-Integration, CI/CD-Pipeline und GitOps-Delivery via ArgoCD.",
-        "impact": "Zentrale Übersicht für alle Cluster-Services — KI/ML-Workloads (RAG-Pipeline, KI-Gateway, phi3-financial, Open WebUI), Plattform-Tools (IDP, Projekt-Tracker, Passwort-Manager), CI/CD-Services, Infrastruktur (Nextcloud, OnlyOffice) und APIs. Vollständige Swagger-UI pro API. Live-Kubernetes-Pod-Status pro Komponente. Tech Radar mit 39 Einträgen. Golden-Path Software Template erstellt Repo + CI + GitOps-Manifest + ArgoCD-App in einem Klick. Integrierte TechDocs. Live Plane-Issues-Tab. Vollständig automatisiertes GitOps.",
-        "features": [
-          "Software Catalog — alle Cluster-Workloads verfolgt: KI/ML-Services (RAG-Pipeline, KI-Gateway, Open WebUI, phi3-financial), Plattform-Tools (IDP, Projekt-Tracker, Passwort-Manager), CI/CD-Services (platform-demo, ktayl-solution-web), Infrastruktur (Nextcloud, OnlyOffice) und APIs — mit Owner, System, Lebenszyklus und Tag-Metadaten",
-          "API Docs — Inline Swagger/OpenAPI-UI für jede registrierte API-Entity",
-          "Kubernetes Live-Ansicht — Echtzeit-Pod-Anzahl und Fehlerstatus pro Komponente aus dem k3s-Cluster",
-          "Benutzerdefinierter Tech Radar — 4-Quadranten-Radar (Plattformen, KI & ML, Sicherheit, Sprachen) mit 39 Einträgen, live aus minicloud-gitops ohne Rebuild",
-          "Software Templates — Golden-Path go-service Scaffolder; erstellt GitHub-Repo, CI-Pipeline, GitOps-Manifeste und ArgoCD-App in einem Klick",
-          "TechDocs — Im-Portal-Dokumentation aus mkdocs.yml pro Service; mkdocs-techdocs-core im Backstage-Image integriert",
-          "Plane Issues Tab — Benutzerdefiniertes @internal/plugin-minicloud-plane Plugin zeigt live Plane CE Projektprobleme pro Katalog-Entity",
-          "Authentik OIDC SSO — Single Sign-On via Authentik; keine separaten Backstage-Accounts; TOTP erzwungen",
-          "GitOps CI/CD — Trivy CVE-Scan + Cosign Keyless Signing + syft CycloneDX SBOM pro Image; GPG-signierter GitOps-Bump; ArgoCD Recreate Rollout"
-        ],
-        "stack": [
-          "Backstage 1.52",
-          "TypeScript",
-          "React",
-          "Node.js",
-          "ArgoCD",
-          "Authentik OIDC",
-          "Harbor",
-          "Cosign (keyless)",
-          "Trivy",
-          "syft (SBOM)",
-          "PostgreSQL",
-          "k3s",
-          "Tailscale",
-          "mkdocs-techdocs-core",
-          "Plane CE"
-        ],
-        "link": "https://backstage.devandre.sbs",
-        "repoUrl": "https://github.com/andrelair-platform/minicloud-backstage",
-        "oneLinePitch": "Ein produktionsreifes IDP auf Kubernetes — zentrale Übersicht für alle Cluster-Services, Live-API-Docs, Kubernetes-Status, Software Templates, TechDocs, Plane Issues und ein benutzerdefinierter Tech Radar, alles via GitOps bereitgestellt.",
-        "whyItMatters": "Mit wachsender Plattformkomplexität verbringen Entwickler mehr Zeit damit, Dinge zu finden als zu bauen. Backstage zentralisiert Service-Ownership, API-Verträge, Live-Cluster-Status, Aufgaben-Tracking und Dokumentation in einem authentifizierten Portal — macht die Plattform selbst-dokumentierend und gibt jedem neuen Service vom ersten Tag an einen Golden Path.",
+        "link": "https://andrelair-platform.github.io/minicloud-platform-docs/",
+        "repoUrl": "https://github.com/andrelair-platform/minicloud-rag-ingest",
+        "oneLinePitch": "A three-repo multilingual RAG pipeline — French insurance document ingestion from PDF upload to pgvector HNSW in one HTTP call, with a custom PostgreSQL image to fix an AVX-512 SIGILL crash on cluster CPUs.",
+        "whyItMatters": "Off-the-shelf RAG tooling splits documents by character count and has no awareness of legal structure. French insurance contracts are organised around articles, clauses, and annexes — a chunk that straddles two articles loses the legal context of both. This pipeline splits at heading boundaries, tags every chunk with doc_type/section/article metadata, and stores it in a vector+BM25 hybrid index so retrieval is both semantically accurate and keyword-precise. The whole pipeline runs in-cluster with no external API calls during ingestion — a hard requirement for handling confidential insurance documents.",
         "differentiators": [
-          "Benutzerdefiniertes Tech-Radar-Modul — npm-Plugin wurde zur Laufzeit durch einen verschachtelten frontend-plugin-api Versionskonflikt lautlos verworfen; als workspace-lokales createFrontendPlugin neu aufgebaut; Inhalt live aus minicloud-gitops ohne Rebuild",
-          "Benutzerdefiniertes Plane-Issues-Plugin — @internal/plugin-minicloud-plane; verbindet Katalog-Entities mit Live-Plane-CE-Problemen über einen Proxy-Endpunkt; keine externe SaaS-Abhängigkeit",
-          "Software Templates Golden Path — Scaffolder erstellt GitHub-Repo + CI-Gerüst + GitOps-Manifeste + ArgoCD-Anwendung in einem Klick; neuer Service in unter 10 Minuten bereitgestellt",
-          "TechDocs integriert — mkdocs-techdocs-core im Backstage-Image; Dokumentation im Portal aus mkdocs.yml pro Service gerendert; keine separate Docs-Site",
-          "Supply Chain gehärtet — jedes Image wird Trivy-gescannt, Cosign-signiert (keyless via GitHub OIDC → Sigstore Fulcio) und syft CycloneDX SBOM als OCI-Referrer angehängt"
+          "Structure-aware chunking — splits on French insurance heading patterns (Article, Chapitre, Titre, Annexe, Garantie) before falling back to paragraph boundaries; character-count splitters would cut across article boundaries",
+          "Custom PostgreSQL image (minicloud-postgresql-noavx512) — diagnosed a SIGILL crash caused by pgvector 0.8.4 emitting AVX-512 EVEX instructions; rebuilt vector.so from source with -mno-avx512f/bw/vl/dq; unblocked HNSW on all 4 cluster CPUs (i7-8565U / i7-10510U)",
+          "French BM25 via init container patching — rank_bm25 uses whitespace tokenisation by default; NLTK Snowball French stemmer + insurance stop-word set injected by patching rank_bm25/utils.py at pod start via a ConfigMap subPath mount — zero image rebuilds required",
+          "Docling-compatible proxy (minicloud-markitdown-proxy) — routes scanned images to the heavy Docling OCR pod and handles text-based PDFs/Office files with MarkItDown in-pod; both consumers (Open WebUI + rag-ingest) call the same endpoint without knowing which backend ran"
         ],
         "architecture": [
-          "Frontend: createApp() aus @backstage/frontend-defaults — Plugins als typisierte FrontendFeature-Objekte registriert; benutzerdefinierte Plugins als workspace-lokales createFrontendPlugin",
-          "Auth: SignInPageBlueprint.make() mit Authentik OIDC; metadataUrl auf auth.devandre.sbs ausgerichtet (nicht nip.io) für Cookie-Domain-Übereinstimmung",
-          "Tech Radar: benutzerdefiniertes createFrontendPlugin bei /tech-radar; ruft tech-radar.json live aus minicloud-gitops ab",
-          "Plane Issues: @internal/plugin-minicloud-plane Workspace-Plugin; EntityPlaneIssuesContent Tab; Proxy /minicloud-plane → minicloud-plane.minicloud-plane-dev.svc.cluster.local:8080",
-          "TechDocs: mkdocs-techdocs-core im Backstage-Image; lokale Builder-Konfiguration in backstage-values.yaml; mkdocs.yml + docs/ pro Service-Repo",
-          "Software Templates: go-service Template in minicloud-backstage/templates/; Schritte: fetch:template → publish:github → branch:create (dev, staging) → PR zu minicloud-gitops → catalog:register",
-          "Backend: Node 24 (trixie-slim); PostgreSQL via Bitnami Subchart auf Longhorn PVC",
-          "CI: yarn build:backend → Docker → Harbor (Tailscale) → Trivy → cosign sign → syft SBOM → GPG GitOps Bump",
-          "GitOps: ArgoCD Recreate-Strategie (vermeidet Rolling-Update + ResourceQuota-Deadlock mit Einzelreplikat)"
+          "minicloud-markitdown-proxy (github.com/andrelair-platform/minicloud-markitdown-proxy) — FastAPI proxy; scanned images go to Docling OCR pod (ghcr.io/docling-project/docling-serve-cpu:v1.26.0, 4.4 GB, Helm-deployed); PDFs + Office files go to MarkItDown (PyMuPDF, in-pod); response format mimics Docling /v1/convert/file so Open WebUI DOCLING_SERVER_URL points here unchanged",
+          "minicloud-rag-ingest (github.com/andrelair-platform/minicloud-rag-ingest) — FastAPI ingestion service; POST /ingest: forward to markitdown-proxy → structure-aware heading chunker (French insurance regex) → batch embed via LiteLLM text-embedding-3-small (1536-dim, batch 64) → pgvector INSERT with vmetadata JSONB; fully in-cluster, no local tools required",
+          "minicloud-postgresql-noavx512 (github.com/andrelair-platform/minicloud-postgresql-noavx512) — custom Bitnami PostgreSQL 18.4.0 image; vector.so rebuilt from source with -mno-avx512f/bw/vl/dq to fix SIGILL on i7-8565U/i7-10510U; HNSW index on vector(1536) + GIN index with french dictionary",
+          "Hybrid retrieval — HNSW vector scan (0.31ms) + BM25 GIN FTS (2.71ms); BM25 uses rank_bm25 patched with NLTK Snowball French stemmer via init container; cross-encoder ms-marco-MiniLM-L-6-v2 re-ranks and filters to top-3",
+          "GitOps delivery — all three services deployed via ArgoCD; each has GitHub Actions CI: docker build → Harbor push via Tailscale → cosign keyless sign → GPG-signed gitops bump into minicloud-gitops"
         ],
-        "repoBlueprint": "GitHub Actions CI\n  yarn build → Docker → Harbor\n  → Trivy scan → cosign sign\n  → syft SBOM (OCI referrer)\n  → GPG gitops bump commit\n         |\n         v (ArgoCD webhook)\n  +----------------------------------------------+\n  |  Backstage Pod (k3s, backstage namespace)    |\n  |                                              |\n  |  Frontend (React / createApp)                |\n  |  +-- Software Catalog (all cluster services)          |\n  |  +-- API Docs (Swagger UI per API entity)    |\n  |  +-- Kubernetes tab (live k3s pod status)    |\n  |  +-- Tech Radar (custom plugin, live JSON)   |\n  |  +-- TechDocs (mkdocs-techdocs-core)         |\n  |  +-- Software Templates (go-service)         |\n  |  +-- Plane Issues (@internal plugin)         |\n  |                                              |\n  |  Backend (Node 24)                           |\n  |  +-- catalog / auth / search / kubernetes    |\n  |  +-- proxy /minicloud-plane                  |\n  |  +-- techdocs local builder                 |\n  |                                              |\n  |  PostgreSQL (Bitnami subchart, Longhorn PVC) |\n  +----------------------------------------------+\n         |\n  Authentik OIDC (auth.devandre.sbs)\n  minicloud-plane API (minicloud-plane-dev ns)\n  minicloud k3s cluster (Kubernetes tab)\n  minicloud-gitops (tech-radar.json live)\n  Plane CE (plane.devandre.sbs)",
-        "atsKeywords": [
-          "Internes Entwicklerportal",
-          "IDP",
-          "Backstage",
-          "Platform Engineering",
-          "TypeScript",
-          "React",
-          "Node.js",
-          "Software Catalog",
-          "TechDocs",
-          "Software Templates",
-          "Tech Radar",
-          "GitOps",
-          "ArgoCD",
-          "Authentik OIDC",
-          "Kubernetes",
-          "Cosign",
-          "Trivy",
-          "Harbor",
-          "SBOM",
-          "Plane CE"
-        ],
+        "repoBlueprint": "minicloud-markitdown-proxy/   github.com/andrelair-platform/minicloud-markitdown-proxy\n  main.py                      FastAPI proxy — routing by file extension\n  Dockerfile                   python:3.12-slim, UID 1000, port 8000\n  .github/workflows/ci.yml     build -> Harbor -> cosign -> gitops bump\n\nminicloud-rag-ingest/        github.com/andrelair-platform/minicloud-rag-ingest\n  main.py                      FastAPI service — convert -> chunk -> embed -> INSERT\n  Dockerfile                   python:3.12-slim, UID 1000, port 8001\n  .github/workflows/ci.yml     build -> Harbor -> cosign -> gitops bump\n\nminicloud-postgresql-noavx512/  github.com/andrelair-platform/minicloud-postgresql-noavx512\n  Dockerfile                   Bitnami 18.4.0 base + vector.so rebuilt -mno-avx512f\n  .github/workflows/ci.yml     build -> Harbor -> cosign",
         "scope": [
-          "Phase 1 — Bootstrap: nacktes Backstage 1.52 via ArgoCD Helm-Chart bereitgestellt; PostgreSQL Subchart auf Longhorn PVC; app-config via Helm ConfigMap injiziert",
-          "Phase 2 — OIDC SSO: Authentik-Provider konfiguriert; SignInPageBlueprint verdrahtet; metadataUrl auf devandre.sbs ausgerichtet um stille Session-Ablauf zu beheben",
-          "Phase 3 — Katalog-Befüllung: 14 → 19 Komponenten, 1 System, 10 Standorte; Katalogregeln aktualisiert",
-          "Phase 4 — Kubernetes-Plugin: ServiceAccount-Token + CA-Zertifikat via ESO-Secret injiziert; Live-Pod-Status pro Komponente",
-          "Phase 5 — API Docs: OpenAPI-Entities registriert; vollständige Swagger-UI inline pro API-Entity gerendert",
-          "Phase 6 — Benutzerdefinierter Tech Radar: npm-Plugin verworfen (frontend-plugin-api Konflikt); als workspace-lokales createFrontendPlugin neu aufgebaut; 39 Einträge über 4 Quadranten",
-          "Phase 7 — Supply-Chain-Härtung: Trivy CRITICAL Scan; Keyless Cosign; syft CycloneDX SBOM; GPG GitOps Bump; Recreate-Strategie",
-          "Phase 8 — Plane-Issues-Plugin: @internal/plugin-minicloud-plane Workspace-Plugin; EntityPlaneIssuesContent Tab; Proxy in backstage-values.yaml konfiguriert",
-          "Phase 9 — TechDocs: mkdocs-techdocs-core im Backstage-Image; lokaler Builder in backstage-values.yaml konfiguriert; mkdocs.yml + docs/ pro Service",
-          "Phase 10 — Software Templates: Golden-Path go-service Scaffolder; backstage-github-secret aus Vault ci-secrets verdrahtet; Template erstellt Repo + CI + GitOps + ArgoCD-App in einem Klick"
+          "Phase 1 — Conversion layer (minicloud-markitdown-proxy): needed a single endpoint that both Open WebUI and rag-ingest could call without knowing which backend ran; built a Docling-compatible proxy routing by file extension",
+          "Phase 2 — SIGILL diagnosis and fix (minicloud-postgresql-noavx512): every HNSW INSERT crashed with SIGILL on all 4 cluster CPUs; traced to pgvector 0.8.4 emitting AVX-512 EVEX instructions; rebuilt vector.so without AVX-512 and packaged as a custom Harbor image",
+          "Phase 3 — Ingestion service (minicloud-rag-ingest): replaced the Mac-side Python script with an in-cluster FastAPI service; structure-aware chunker replaces character-count splitting; batch embedding via LiteLLM",
+          "Phase 4 — French BM25: rank_bm25 default tokeniser is whitespace-only — sinistres != sinistre; injected NLTK Snowball stemmer + insurance stop-words by patching rank_bm25/utils.py at pod start via init container + ConfigMap subPath",
+          "Phase 5 — Cross-encoder re-ranking: ms-marco-MiniLM-L-6-v2 runs in-process in the Open WebUI pod; re-ranks BM25+HNSW candidates and filters to top-3 before passing to the LLM",
+          "Phase 6 — Supply chain hardening: all three repos have GitHub Actions CI with Trivy scan, cosign keyless signing, and GPG-signed gitops bump; images stored in Harbor with cosign signatures"
         ],
         "testPlan": [
-          "OIDC-Login-Rauchtest: Navigation zu backstage.devandre.sbs → Sign In → Authentik → leitet als authentifizierter Benutzer zum Katalog weiter",
-          "Entity-Anzahl: Anzahl im Software-Catalog-Header sichtbar; gegen bn_backstage DB-Anzahl im Backstage-Pod validiert",
-          "API Docs Render-Test: Katalog → rag-ingest-api → DEFINITION Tab → Swagger UI lädt GET /health, GET /ready, POST /ingest",
-          "Kubernetes Live-Tab: Katalog → rag-ingest → KUBERNETES Tab → 1 Pod Running, 0 Fehler vom Live-Cluster",
-          "Tech-Radar-Render-Test: /tech-radar → 4 Quadranten rendern; tech-radar.json in minicloud-gitops geändert → Radar ohne Image-Rebuild aktualisiert",
-          "TechDocs: Katalog → minicloud-backstage → DOCS Tab → mkdocs-Dokumentation im Portal gerendert",
-          "Software Templates: /create → go-service → Formular ausfüllen → Scaffolder erstellt GitHub-Repo + dev/staging Branches + GitOps PR → Entity im Katalog registriert",
-          "Plane-Issues-Tab: Katalog → platform-demo → PLANE ISSUES Tab → Live-Issues von Plane CE Projekt PT",
-          "CI-Tor: Push zu main → GitHub Actions Build + Trivy Scan → Harbor → cosign sign → syft SBOM → ArgoCD Recreate → backstage Pod 1/1 Ready"
+          "SIGILL regression: kubectl exec into postgresql-ai pod, CREATE INDEX USING hnsw, INSERT a vector row — confirmed no SIGILL across all 4 cluster nodes (i7-8565U x2, i7-10510U x2)",
+          "French BM25 stemming: exec into open-webui pod, call _french_bm25_preprocess('sinistres') — expected output 'sinistr'; also verified: sinistre->sinistr, reassurance->reassur",
+          "End-to-end ingestion: port-forward rag-ingest, POST a French insurance PDF — response shows chunks_stored > 0 and metadata_sample.article populated; verified row count in ragdb",
+          "Hybrid retrieval quality: Open WebUI query for BNP Paribas CET1 ratio — verified retrieved chunks contained numeric CET1 values (HNSW semantic match) and BNP Paribas keyword (BM25 match) in top results",
+          "markitdown-proxy routing: POST a scanned TIFF — logs show route to Docling; POST a .docx — logs show MarkItDown path; both return the Docling-compatible response format",
+          "Pipeline latency baseline: HNSW scan 0.31ms, GIN FTS 2.71ms, INSERT + HNSW update 6.8ms/row — all within SLA targets"
         ],
         "interviewTalkingPoints": [
-          "Ziel: Plattformingenieuren einen selbst gehosteten Tech Radar ohne externe SaaS-Abhängigkeit bereitstellen. Wir installierten @backstage/plugin-tech-radar aus npm, verdrahteten es in createApp(), deployt — und sahen nichts. Kein Fehler, kein Absturz — ein leerer Sidebar-Slot. Problem: @backstage/plugin-tech-radar enthält eine verschachtelte frontend-plugin-api@0.6.7, während der Workspace 0.17.2 verwendet. Die $type-Symbol-Prüfung schlägt lautlos fehl. Lösung: npm-Paket entfernt, Tech Radar als workspace-lokales createFrontendPlugin neu aufgebaut. Radar ruft tech-radar.json live aus minicloud-gitops ab — null Rebuilds für Content-Updates.",
-          "Ziel: Live Plane CE Projektprobleme in Backstage pro Katalog-Entity anzeigen. Wir schrieben @internal/plugin-minicloud-plane als workspace-lokales Backstage-Plugin. Problem: minicloud-plane Repo war privat — Backstage Katalog-Discovery ruft raw.githubusercontent.com URLs ab, die für private Repos 404 zurückgeben. Lösung: Repo öffentlich gemacht.",
-          "Ziel: Software Templates einrichten damit neue Services einen Golden Path ohne manuelle Schritte haben. Problem: Nunjucks Template-Syntax kollidiert mit GitHub Actions ${{ }} Ausdruckssyntax. Lösung: CI-Gerüst-Inhalt in {% raw %}...{% endraw %} Blöcke einwickeln.",
-          "Ziel: Backstage zuverlässig mit ArgoCD in einem Namespace mit engem ResourceQuota bereitstellen (2 CPU / 2 Gi, Einzelreplikat). Problem: RollingUpdate betreibt kurzzeitig zwei Pods gleichzeitig — zweiter Pod immer blockiert bis erster entfernt wird, was nie passiert. Kreisförmige Abhängigkeit ohne Timeout. Lösung: strategy.type: Recreate.",
-          "Ziel: Backstage hinter Authentik OIDC absichern. Login funktionierte, aber nach ~10 Minuten Inaktivität lief die Session still ab mit Redirect-Schleife. Problem: Authentik bindet das Session-Cookie an devandre.sbs. metadataUrl war auf auth.10.0.0.200.nip.io gesetzt — andere Herkunft als Cookie-Domain. Lösung: metadataUrl auf auth.devandre.sbs ausgerichtet."
+          "Goal: run HNSW vector indexing on a self-hosted Kubernetes cluster with consumer-grade Intel CPUs. Every HNSW INSERT was crashing the PostgreSQL pod with SIGILL — a hardware-level illegal instruction fault. Problem: pgvector 0.8.4 introduced SIMD-accelerated HNSW code that emits AVX-512 EVEX-encoded instructions. All 4 cluster CPUs (Intel i7-8565U and i7-10510U, Whiskey Lake) support AVX2 but not AVX-512. The fault appeared only on HNSW operations, not IVFFlat, which initially obscured the root cause. Solution: rebuilt vector.so from source with -mno-avx512f/bw/vl/dq, packaged as a custom Harbor image, validated with direct INSERT tests on all 4 nodes. Zero SIGILL crashes since deployment.",
+          "Goal: make BM25 keyword retrieval work for French legal text. Open WebUI hybrid search runs rank_bm25 alongside HNSW. rank_bm25 tokenises by whitespace only — sinistres, sinistre, and sinistres are three different tokens with zero overlap. For French insurance documents where queries and clauses use different inflections of the same term, this makes BM25 almost useless. Problem: we could not modify rank_bm25 (it runs inside the Open WebUI pod, not our image). Solution: init container that patches rank_bm25/utils.py at pod start — injects an NLTK Snowball French stemmer and a hardcoded insurance stop-word set — via a ConfigMap subPath volume that shadows the original file. The patch applies every restart with no image rebuild.",
+          "Goal: eliminate the Mac-side ingestion dependency. The original pipeline required a local Python script, local DB port-forward, and local credentials to ingest documents — creating a hard dependency on one developer's machine. Solution: minicloud-rag-ingest is a cluster-native FastAPI service accepting a single multipart POST. The full pipeline runs in-cluster: convert via markitdown-proxy, structure-aware chunk, embed via LiteLLM, INSERT into ragdb. Any pod in the ai namespace — or any developer with a port-forward — can ingest a document with one curl call.",
+          "Goal: build a conversion layer for both scanned documents (needing OCR) and machine-generated PDFs and Office files. Running everything through Docling would work but its CPU image is 4.4 GB and its layout analysis uses hundreds of MB per page — impractical for a CPU-only cluster handling mostly text-based files. Solution: minicloud-markitdown-proxy routes by file extension: scanned images go to Docling, everything else is handled in-pod with MarkItDown (PyMuPDF for PDFs). The API contract matches Docling /v1/convert/file, so both Open WebUI and rag-ingest call the same endpoint without knowing which backend ran."
         ],
         "screenshots": [
           {
-            "title": "Software Catalog — Alle Cluster-Services",
-            "caption": "Alle Cluster-Workloads in einer Ansicht — KI/ML-Services, Plattform-Tools, CI/CD-Services, Infrastruktur und APIs — mit Tags, Lebenszyklus, Owner und System-Metadaten. Die backstage.io/kubernetes-id Annotation verbindet jede Entity mit dem Live-K8s-Tab.",
-            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-backstage/main/docs/screenshots/screenshot-catalog.png",
-            "link": "https://backstage.devandre.sbs"
+            "title": "phi3-financial beantwortet eine französische CET1-Abfrage",
+            "caption": "Open WebUI mit dem spezialisierten phi3-financial-Modell, das eine Finanzfrage auf Französisch beantwortet. Das Modell ist mit einem SYSTEM-Prompt auf Finanzthemen beschränkt und über Hybrid-BM25+HNSW-Retrieval mit der pgvector-Wissensdatenbank verbunden.",
+            "src": "/screenshots/rag-openwebui-query.png"
           },
           {
-            "title": "Tech Radar — 39 Einträge",
-            "caption": "Benutzerdefinierter 4-Quadranten-Radar: Plattformen, KI & ML, Sicherheit & Identität, Sprachen & Frameworks. 39 Technologie-Einträge mit ADOPT / TRIAL / ASSESS / HOLD Ringen. Daten live aus minicloud-gitops.",
-            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-backstage/main/docs/screenshots/screenshot-tech-radar.png",
-            "link": "https://backstage.devandre.sbs/tech-radar"
+            "title": "Französische Versicherungs-Wissensdatenbank in Open WebUI",
+            "caption": "Open WebUI Workspace > Knowledge zeigt die Sammlung 'Finance D'entreprise, Réglementation Bancaire' — 911 Chunks über rag-ingest ingested, umfassend Basel III Regulierungskapital, BNP Paribas Fortis Jahresbericht 2024 und LVMH 2023, alle mit bge-m3 (1024-dim) vektorisiert.",
+            "src": "/screenshots/rag-knowledge-bases.png"
           },
           {
-            "title": "API Docs — Swagger UI",
-            "caption": "Inline Swagger UI für die rag-ingest Service OpenAPI-Spec: GET /health, GET /ready, POST /ingest. Direkt aus der im Katalog registrierten API-Entity gerendert.",
-            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-backstage/main/docs/screenshots/screenshot-api-docs.png",
-            "link": "https://backstage.devandre.sbs/catalog/default/api/rag-ingest-api"
+            "title": "rag-ingest Komponente im Backstage IDP",
+            "caption": "Backstage-Katalogeintrag für den rag-ingest Service — Eigentümer (andrelair-platform), Lebenszyklus (production), System (minicloud-platform) und Beschreibung als cluster-nativer RAG-Ingestionspipeline. Links zu Source Repository und ArgoCD Application sichtbar.",
+            "src": "/screenshots/rag-ingest-component.png"
           },
           {
-            "title": "Kubernetes Live-Ansicht",
-            "caption": "Live Kubernetes-Tab — 1 Pod läuft, 0 Fehler, aus dem minicloud k3s Cluster in Echtzeit via backstage.io/kubernetes-id Annotation.",
-            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-backstage/main/docs/screenshots/screenshot-kubernetes-tab.png",
-            "link": "https://backstage.devandre.sbs/catalog/default/component/rag-ingest/kubernetes"
-          },
-          {
-            "title": "Software Templates — Golden Path",
-            "caption": "go-service Scaffolder: Formular ausfüllen → Backstage erstellt GitHub-Repo, CI-Pipeline-Gerüst, GitOps-Manifeste und ArgoCD-Anwendung automatisch.",
-            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-backstage/main/docs/screenshots/screenshot-templates.png",
-            "link": "https://backstage.devandre.sbs/create"
-          },
-          {
-            "title": "TechDocs — Docs im Portal",
-            "caption": "mkdocs-techdocs-core rendert Service-Dokumentation im Portal. Keine separate Docs-Site — Docs leben neben dem Code, gerendert aus mkdocs.yml in jedem Service-Repo.",
-            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-backstage/main/docs/screenshots/screenshot-techdocs.png",
-            "link": "https://backstage.devandre.sbs"
+            "title": "rag-ingest OpenAPI-Spec in Backstage",
+            "caption": "Backstage API-Tab zeigt die live gerenderte OpenAPI-3.1-Spezifikation der rag-ingest-api. Endpoints: GET /health (Liveness-Probe), GET /ready (Readiness-Probe), POST /ingest (Dokumenteningestion in pgvector). Interner Cluster-Service unter rag-ingest.ai.svc.cluster.local:8001.",
+            "src": "/screenshots/rag-ingest-api-overview.png"
           }
+        ]
+      },
+      {
+        "title": "Schaden-Rechnungsautomatisierung — HDI Global",
+        "oneLinePitch": "Eine Python-Automatisierung, die einen manuellen Schaden-Rechnungsprozess ~70% schneller machte — mit automatisierten QC-Dashboards für das Finance-Team.",
+        "purpose": "Eine produktive Automatisierung, die ich während meines dualen Studiums bei HDI Global (Industrie- und Gewerbeversicherung) gebaut habe: sie ersetzte einen manuellen, fehleranfälligen Schaden-Rechnungs-Batch-Workflow durch eine Python-Pipeline und ergänzte automatisierte Qualitätskontroll-Berichte und Dashboards für das Finance-Team.",
+        "role": "Automation Engineer (duales Studium)",
+        "impact": "Schaden-Rechnungszyklus ~70% schneller · wiederkehrende manuelle QC-Prüfungen eliminiert · bessere Datenqualität für Finance.",
+        "features": [
+          "Python-Pipeline, die Schaden-Rechnungs-Batches einliest, validiert und verarbeitet — ersetzt manuelle Bearbeitung und senkt die Zykluszeit um ~70%.",
+          "Automatisierte Qualitätskontroll-Berichte und Dashboards, die wiederkehrende manuelle Prüfungen für das Finance-Team beseitigt haben.",
+          "Datenqualitätsregeln, die Inkonsistenzen früh erkennen, bevor sie nachgelagerte Finanzsysteme erreichen."
         ],
-        "liveEndpoints": [
-          {
-            "label": "Backstage Software Catalog — Live Cluster-Katalog",
-            "command": "https://backstage.devandre.sbs",
-            "url": "https://backstage.devandre.sbs"
-          },
-          {
-            "label": "Tech Radar — 39 Einträge über 4 Quadranten",
-            "command": "https://backstage.devandre.sbs/tech-radar",
-            "url": "https://backstage.devandre.sbs/tech-radar"
-          },
-          {
-            "label": "API Docs — rag-ingest-api Swagger UI",
-            "command": "https://backstage.devandre.sbs/catalog/default/api/rag-ingest-api",
-            "url": "https://backstage.devandre.sbs/catalog/default/api/rag-ingest-api"
-          },
-          {
-            "label": "Software Templates — go-service Golden Path",
-            "command": "https://backstage.devandre.sbs/create",
-            "url": "https://backstage.devandre.sbs/create"
-          }
+        "stack": [
+          "Python",
+          "pandas",
+          "SQL",
+          "ETL / Batch-Jobs",
+          "Excel / CSV",
+          "Automatisierte Dashboards"
+        ],
+        "whyItMatters": "Ein konkretes, messbares Produktionsergebnis bei einem regulierten Versicherer — keine Laborübung: ein manueller Finanz-Workflow, den echte Teams nutzen, end-to-end automatisiert, mit einer Kennzahl als Beleg (~70% schneller). Die vollständige HDI-Rolle — Unternehmensanwendungen, ITSM, IAM, Cloud — steht unten in der Erfahrung.",
+        "differentiators": [
+          "Messbares Geschäftsergebnis (~70% schnellerer Rechnungszyklus), end-to-end verantwortet.",
+          "Beseitigte wiederkehrende manuelle QC-Arbeit für Finance — kein Einmal-Skript.",
+          "Auf echten Unternehmensdaten in einer regulierten Versicherungsumgebung gebaut."
+        ],
+        "interviewTalkingPoints": [
+          "Wie ich den manuellen Schaden-Rechnungsworkflow analysiert habe und woher die ~70% Ersparnis wirklich kommen.",
+          "Die Datenqualitätsregeln, die ich hinzugefügt habe, und wie sie nachgelagerte Finanzfehler verhindert haben."
+        ],
+        "atsKeywords": [
+          "Geschäftsprozessautomatisierung",
+          "Python",
+          "pandas",
+          "ETL",
+          "Datenqualität",
+          "Reporting",
+          "Dashboards",
+          "Schaden",
+          "Versicherung",
+          "Finance"
+        ],
+        "scope": [
+          "Analyse des manuellen Schaden-Rechnungs-Batch-Workflows, um Engpässe und QC-Berührungspunkte zu finden.",
+          "Aufbau einer Python-Pipeline zum Einlesen, Validieren und Verarbeiten der Rechnungs-Batches, mit Datenqualitätsregeln.",
+          "Automatisierung der wiederkehrenden QC-Berichte und Dashboards, die das Finance-Team manuell erstellte.",
+          "Einführung in die Team-Routine, mit ~70% kürzerer Zykluszeit."
+        ],
+        "architecture": [
+          "Python liest die Schaden-Rechnungs-Batches (Excel/CSV) ein, validiert sie und wendet Datenqualitätsregeln an.",
+          "Die Ergebnisse speisen automatisierte QC-Berichte und Dashboards für das Finance-Team.",
+          "Läuft als geplanter Batch-Job und ersetzt die manuelle Bearbeitung."
+        ],
+        "testPlan": [
+          "Automatisierte Ausgabe vor der Umstellung gegen den manuellen Prozess auf echten Rechnungs-Batches validiert.",
+          "Datenqualitätsregeln erkennen Inkonsistenzen früh und verhindern nachgelagerte Finanzfehler.",
+          "Automatisierte QC-Berichte gleichen die Ergebnisse ab, die das Finance-Team zuvor manuell prüfte."
         ]
       }
     ],
@@ -1253,7 +1139,7 @@
         "date": "Sep 2024 - Heute",
         "title": "IT Automation & Applications Engineer (Werkstudent)",
         "subtitle": "HDI Global SE France, Paris",
-        "description": "<ul><li><strong>Automatisierung &amp; Entwicklung:</strong> Python-Automatisierungen für die Schadenbearbeitung und Fachprozesse, die manuelle Batch-Arbeit reduzierten (~70 % schnellerer Schaden-Rechnungszyklus) und die Datenqualität verbesserten; automatisierte QS-Berichte und Dashboards, die wiederkehrende manuelle Prüfungen des Finance-Teams überflüssig machten.</li><li><strong>Business-Anwendungen &amp; ITSM:</strong> Administration und Support von 8+ geschäftskritischen Unternehmensanwendungen der Teams Schaden, Underwriting, Finance und HR sowie Administration der ITSM-Plattform GLPI &mdash; mit Beitrag zu deren fachlicher und technischer Weiterentwicklung.</li><li><strong>Cloud &amp; Modern Workplace:</strong> Mitwirkung am Workplace-Cloudification-Programm der Gruppe (Windows 365 / Global Cloud Desktop, Microsoft Intune) in den Test-, Validierungs- und Anwender-Adoptionsphasen; Unterstützung der On-Premise&rarr;Azure-Anwendungsmigration.</li><li><strong>IAM &amp; IT-Betrieb:</strong> Verwaltung von Fachrollen und Zugriffen für mehrere Hundert Nutzer über Unternehmensanwendungen hinweg, vollständiges On-/Offboarding sowie Lösung von N2/N3-Incidents in Abstimmung mit HR und den zentralen deutschen Teams.</li><li><strong>IT-Projekte &amp; KI-Transformation:</strong> Koordination der IT-Maßnahmen zwischen den französischen und deutschen Teams (HDI Group), Erstellung von Benutzerprozeduren und technischer Dokumentation sowie Konzeption eines KI-Integrations-Prototyps für die ITSM-Plattform zur Verbesserung von Support und Wissensmanagement.</li></ul>"
+        "description": "<ul><li><strong>Automatisierung &amp; Entwicklung:</strong> Python-Automatisierungen für die Schadenbearbeitung und Fachprozesse, die manuelle Batch-Arbeit reduzierten (~70 % schnellerer Schaden-Rechnungszyklus) und die Datenqualität verbesserten; automatisierte QS-Berichte und Dashboards, die wiederkehrende manuelle Prüfungen des Finance-Teams überflüssig machten.</li><li><strong>Developer Enablement &amp; Deployment-Plattform:</strong> Die Zentrale der HDI Group betreibt eine zentrale Plattform zum Hosten und Deployen interner Lösungen, doch Frankreich fehlte die Autonomie, eigene Lösungen schnell auszuliefern, ohne von den Ingenieuren der Zentrale abhängig zu sein. Ich übernahm die Verantwortung, die Plattform der Zentrale und ihren Anwendungs-Deployment-Prozess zu verstehen, und etablierte diese Fähigkeit für das französische Team &mdash; sodass französische Entwickler ihre Lösungen mit minimaler Abhängigkeit vom zentralen deutschen Engineering-Team entwickeln und deployen können.</li><li><strong>Business-Anwendungen &amp; ITSM:</strong> Administration und Support von 8+ geschäftskritischen Unternehmensanwendungen der Teams Schaden, Underwriting, Finance und HR sowie Betrieb der zweistufigen ITSM-Tools &mdash; GLPI (First-Level-Support der französischen Nutzer) und ServiceNow (Eskalation an das Home Office der HDI Group) &mdash; mit Beitrag zu deren fachlicher und technischer Weiterentwicklung.</li><li><strong>Cloud &amp; Modern Workplace:</strong> Mitwirkung am Modern-Workplace-/Cloud-Transformationsprogramm der Gruppe (Windows 365 / Global Cloud Desktop, Microsoft Intune) in den Test-, Validierungs- und Anwender-Adoptionsphasen; Unterstützung der Lift-and-Shift-(Rehost-)Migration von On-Premises-VMs zu Azure-IaaS-VMs (Azure Migrate) sowie der On-Premise&rarr;Azure-Anwendungsmigration.</li><li><strong>IT-Support &amp; IAM:</strong> N1/N2-Support für mehrere Hundert französische Nutzer &mdash; Annahme und Lösung ihrer Anfragen in GLPI &mdash; sowie Eskalation tiefergehender N3/N4-Interventionen an die Home-Office-Ingenieure via ServiceNow. Verwaltung von Fachrollen und Zugriffen (IAM) und vollständiges On-/Offboarding, in Abstimmung mit HR und den zentralen deutschen Teams (HDI Group).</li><li><strong>IT-Projekte &amp; KI-Transformation:</strong> Koordination der IT-Maßnahmen zwischen den französischen und deutschen Teams (HDI Group) und Erstellung von Benutzerprozeduren und technischer Dokumentation. Als Solution Architect einer maßgeschneiderten Lösung Durchführung eines Software-/Solution-Evaluation-Process (SEP) &mdash; Build-vs-Buy- sowie Technologie-/Anbieterbewertung anhand definierter Kriterien &mdash; und Konzeption eines KI-Integrations-Prototyps für die ITSM-Plattform zur Verbesserung von Support und Wissensmanagement.</li></ul>"
       },
       {
         "date": "Jul 2024 – Aug 2024",
@@ -1407,5 +1293,102 @@
       "readTime": 12,
       "url": "https://andrelair-platform.github.io/minicloud-platform-docs/blog/platform-engineering-bare-metal-kubernetes"
     }
-  ]
+  ],
+  "Capabilities": {
+    "title": "Engineering-Kompetenzen",
+    "subtitle": "Sechs Domänen, in denen ich arbeite — der Beweis sind die Projekte oben, nicht diese Liste.",
+    "blocks": [
+      {
+        "icon": "Server",
+        "title": "Platform Engineering",
+        "description": "Die Kubernetes-Grundlage bauen und betreiben, auf der Anwendungen laufen — von Bare-Metal bis Netzwerk und Storage.",
+        "tech": [
+          "Kubernetes",
+          "k3s",
+          "Helm",
+          "Kustomize",
+          "Docker",
+          "Cilium eBPF",
+          "Longhorn",
+          "MetalLB"
+        ]
+      },
+      {
+        "icon": "GitBranch",
+        "title": "DevOps & GitOps",
+        "description": "Automatisierte, Git-getriebene Delivery — alles in Git deklariert, kontinuierlich promotet und rekonziliert.",
+        "tech": [
+          "ArgoCD",
+          "Kargo",
+          "GitHub Actions",
+          "Argo Rollouts",
+          "Terraform / OpenTofu",
+          "Ansible",
+          "MAAS",
+          "CI/CD"
+        ]
+      },
+      {
+        "icon": "BrainCircuit",
+        "title": "AI Engineering & LLMOps",
+        "description": "LLM-Systeme vom Prototyp zu beobachtbaren, gouvernierten Anwendungen führen.",
+        "tech": [
+          "RAG",
+          "Agents",
+          "LangChain",
+          "LangGraph",
+          "LiteLLM",
+          "vLLM",
+          "Qdrant",
+          "Langfuse"
+        ]
+      },
+      {
+        "icon": "Activity",
+        "title": "Observability & SRE",
+        "description": "Wissen, was Produktion tut — Metriken, Logs, Traces, Alerts, SLIs und SLOs.",
+        "tech": [
+          "Prometheus",
+          "Grafana",
+          "Loki",
+          "Tempo",
+          "OpenTelemetry",
+          "Alertmanager",
+          "SLIs",
+          "SLOs",
+          "Chaos Mesh"
+        ]
+      },
+      {
+        "icon": "ShieldCheck",
+        "title": "Security, IAM & Compliance",
+        "description": "Zero-Trust, Supply-Chain-Integrität und Kontrollen für regulierte Umgebungen von Haus aus.",
+        "tech": [
+          "Vault",
+          "OPA / Gatekeeper",
+          "Falco",
+          "Cosign / SBOM",
+          "Trivy",
+          "IAM · OAuth / OIDC",
+          "NetworkPolicy",
+          "DORA · DSGVO"
+        ]
+      },
+      {
+        "icon": "Code",
+        "title": "Software, Integration & Architektur",
+        "description": "Backend-Services, APIs und Integrationen rund um Geschäftssysteme entwerfen.",
+        "tech": [
+          "Python",
+          "TypeScript",
+          "C#",
+          "FastAPI",
+          "NestJS",
+          "ASP.NET Core",
+          "PostgreSQL",
+          "Event-Driven (NATS / Kafka)"
+        ]
+      }
+    ]
+  }
 }

@@ -17,12 +17,15 @@ import {
   Users,
   Quote,
   Target,
+  Server,
+  GitBranch,
+  ShieldCheck,
+  Activity,
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
 import { Header } from '@/components/portfolio/header';
 import { Hero } from '@/components/portfolio/hero';
-import { SkillCard } from '@/components/portfolio/skill-card';
 import { TimelineItem } from '@/components/portfolio/timeline-item';
 import { Contact } from '@/components/portfolio/contact';
 import { Footer } from '@/components/portfolio/footer';
@@ -67,6 +70,10 @@ const iconMap: { [key: string]: LucideIcon } = {
   BotMessageSquare,
   Type,
   Users,
+  Server,
+  GitBranch,
+  ShieldCheck,
+  Activity,
 };
 
 const sectionVariants = {
@@ -98,20 +105,7 @@ const itemVariants = {
 };
 
 export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTags = {} }: MainContentProps) {
-  const { data, Page, Header: headerData, Hero: heroData, ProjectList: projectListData, ProjectCard: projectCardData, ContactForm: contactFormData, Footer: footerData, Testimonials: testimonialsData, LookingFor: lookingForData, AvailableCTA: availableCTAData } = messages;
-
-  // Separate technical skills (with subcategories) from soft skills
-  const technicalSkills = data.skills.filter((skill: any) => skill.title !== 'Professional & Soft Skills');
-  const softSkillsCategory = data.skills.find((skill: any) => skill.title === 'Professional & Soft Skills');
-  // Use category from data.skills if present, otherwise use standalone data.softSkills (used in FR/DE locales)
-  const softSkills = (softSkillsCategory?.skills?.length ? softSkillsCategory.skills : data.softSkills) || [];
-
-  const SKILL_ACCENTS = ['#3b82f6', '#0ea5e9', '#8b5cf6', '#f59e0b', '#10b981', '#f43f5e'];
-  const skillsWithIcons = technicalSkills.map((skill: any, index: number) => ({
-    ...skill,
-    Icon: iconMap[skill.icon] || Code,
-    accent: SKILL_ACCENTS[index % SKILL_ACCENTS.length],
-  }));
+  const { data, Page, Header: headerData, Hero: heroData, ProjectList: projectListData, ProjectCard: projectCardData, ContactForm: contactFormData, Footer: footerData, Testimonials: testimonialsData, LookingFor: lookingForData, AvailableCTA: availableCTAData, Capabilities: capabilitiesData } = messages;
 
   const workExperience = data.workExperience;
   const education = data.education;
@@ -144,67 +138,66 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
           viewport={{ once: true, amount: 0.1 }}
         >
           <div className="container mx-auto px-4">
-            <h2 className="text-center mb-12">{Page.projects.title}</h2>
+            <h2 className="text-center mb-3">{Page.projects.title}</h2>
+            {Page.projects.subtitle && (
+              <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">{Page.projects.subtitle}</p>
+            )}
             <ProjectList projects={projects} projectListData={projectListData} projectCardData={projectCardData} />
           </div>
         </motion.section>
 
-        {/* Technical Skills */}
-        <motion.section
-          id="skills"
-          className="py-10 md:py-16 bg-card"
-          variants={sectionVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-        >
-          <div className="container mx-auto px-4">
-            <h2 className="text-center mb-12">{Page.skills.title}</h2>
-            <motion.div
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
-              variants={listVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.1 }}
-            >
-              {skillsWithIcons.map((skillCategory: any, index: number) => (
-                <motion.div key={index} variants={itemVariants}>
-                  <SkillCard {...skillCategory} />
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </motion.section>
-
-        {/* Soft Skills */}
-        <motion.section
-          id="soft-skills"
-          className="py-10 md:py-16"
-          variants={sectionVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-        >
-          <div className="container mx-auto px-4">
-            <h2 className="text-center mb-12">{Page.softSkills.title}</h2>
-            <div className="max-w-3xl mx-auto">
-              <motion.ul
-                className="space-y-4"
+        {/* Engineering Capabilities — four capability blocks (the detailed
+            technology catalogue lives on the dedicated /skills page). */}
+        {capabilitiesData?.blocks?.length > 0 && (
+          <motion.section
+            id="skills"
+            className="py-10 md:py-16 bg-card"
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+          >
+            <div className="container mx-auto px-4">
+              <h2 className="text-center mb-3">{capabilitiesData.title}</h2>
+              {capabilitiesData.subtitle && (
+                <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">{capabilitiesData.subtitle}</p>
+              )}
+              <motion.div
+                className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto"
                 variants={listVariants}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
+                viewport={{ once: true, amount: 0.1 }}
               >
-                {softSkills.map((skill: string, index: number) => (
-                  <motion.li key={index} className="flex items-start text-left" variants={itemVariants}>
-                    <CheckCircle className={`${ICON_VARIANTS.feature} mr-4 mt-1 flex-shrink-0`} />
-                    <span className="text-body-lg text-muted-foreground leading-loose">{skill}</span>
-                  </motion.li>
-                ))}
-              </motion.ul>
+                {capabilitiesData.blocks.map((block: any, index: number) => {
+                  const BlockIcon = iconMap[block.icon] || Code;
+                  return (
+                    <motion.div
+                      key={index}
+                      variants={itemVariants}
+                      className="rounded-xl border border-border/50 bg-background p-6 text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                    >
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="p-2 bg-primary/10 rounded-lg">
+                          <BlockIcon className="w-5 h-5 text-primary" aria-hidden />
+                        </div>
+                        <h3 className="text-xl font-headline font-semibold">{block.title}</h3>
+                      </div>
+                      <p className="text-muted-foreground leading-relaxed mb-4">{block.description}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {block.tech.map((tech: string, i: number) => (
+                          <Badge key={i} variant="secondary" className="bg-secondary/50 px-2.5 py-0.5 text-xs font-medium">
+                            {tech}
+                          </Badge>
+                        ))}
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </motion.div>
             </div>
-          </div>
-        </motion.section>
+          </motion.section>
+        )}
 
         {/* Experience */}
         <motion.section

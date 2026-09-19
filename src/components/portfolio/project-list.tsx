@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ProjectCard } from "./project-card";
-import { ProjectListSkeleton } from "./project-skeleton";
 
 type Project = {
   title: string;
@@ -22,6 +22,9 @@ interface ProjectListProps {
   projectListData: any;
   projectCardData: any;
 }
+
+// Number of cards shown before the visitor clicks "See more".
+const INITIAL_VISIBLE = 4;
 
 const listVariants = {
   visible: {
@@ -44,83 +47,58 @@ const itemVariants = {
 };
 
 export function ProjectList({ projects, projectListData, projectCardData }: ProjectListProps) {
-  const [visibleCount, setVisibleCount] = useState(2);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const [showAll, setShowAll] = useState(false);
+  const hasMore = projects.length > INITIAL_VISIBLE;
+  const remaining = projects.length - INITIAL_VISIBLE;
 
-  useEffect(() => {
-    // Simulate initial loading
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 800);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  const showMoreProjects = () => {
-    setIsLoadingMore(true);
-    
-    // Simulate loading delay for better UX
-    setTimeout(() => {
-      setVisibleCount(projects.length);
-      setIsLoadingMore(false);
-    }, 600);
-  };
-
-  if (isLoading) {
-    return <ProjectListSkeleton count={2} />;
-  }
-
+  // Every project is always rendered into the DOM (so all case studies stay in
+  // the server HTML and remain crawlable); the extras beyond INITIAL_VISIBLE are
+  // only visually hidden until "See more" is clicked — we never drop them from
+  // the markup the way the old skeleton + Load-More version did.
   return (
     <>
-      <motion.div 
-        key={visibleCount}
+      <motion.div
         className="grid grid-cols-1 md:grid-cols-2 gap-8"
         variants={listVariants}
         initial="hidden"
-        animate="visible"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.05 }}
       >
-        {projects.slice(0, visibleCount).map((project, index) => (
-          <motion.div key={project.title} variants={itemVariants}>
-            <ProjectCard {...project} projectCardData={projectCardData} accentIndex={index} />
-          </motion.div>
-        ))}
-        
-        {/* Show skeleton for loading more projects */}
-        {isLoadingMore && visibleCount < projects.length && (
-          [...Array(Math.min(projects.length - visibleCount, 2))].map((_, index) => (
-            <motion.div key={`skeleton-${index}`} variants={itemVariants}>
-              <div className="bg-card rounded-xl border border-border p-6 animate-pulse">
-                <div className="h-7 bg-muted rounded-md w-3/4 mb-4" />
-                <div className="space-y-2 mb-4">
-                  <div className="h-4 bg-muted rounded w-full" />
-                  <div className="h-4 bg-muted rounded w-4/5" />
-                </div>
-                <div className="flex gap-2 mb-4">
-                  {[...Array(3)].map((_, i) => (
-                    <div key={i} className="h-6 bg-muted rounded-full w-16" />
-                  ))}
-                </div>
-              </div>
+        {projects.map((project, index) => {
+          const isHidden = !showAll && index >= INITIAL_VISIBLE;
+          return (
+            <motion.div
+              key={project.title}
+              variants={itemVariants}
+              className={isHidden ? "hidden" : undefined}
+              aria-hidden={isHidden}
+            >
+              <ProjectCard {...project} projectCardData={projectCardData} accentIndex={index} />
             </motion.div>
-          ))
-        )}
+          );
+        })}
       </motion.div>
-      
-      {visibleCount < projects.length && (
+
+      {hasMore && (
         <div className="text-center mt-12">
-          <Button 
-            onClick={showMoreProjects} 
+          <Button
             size="lg"
-            disabled={isLoadingMore}
+            variant="outline"
+            onClick={() => setShowAll((v) => !v)}
+            aria-expanded={showAll}
+            className="border-2 border-primary/40 text-primary hover:bg-primary/5 hover:border-primary font-semibold px-8 rounded-xl transition-all duration-300 hover:-translate-y-0.5"
           >
-            {isLoadingMore ? (
+            {showAll ? (
               <>
-                <div className="animate-spin h-4 w-4 border-2 border-current border-t-transparent rounded-full mr-2" />
-                Loading...
+                {projectListData?.seeLess ?? "See less"}
+                <ChevronUp className="ml-2 h-4 w-4" />
               </>
             ) : (
-              projectListData.loadMore
+              <>
+                {(projectListData?.seeMore ?? "See more projects")}
+                <span className="ml-1 opacity-70">({remaining})</span>
+                <ChevronDown className="ml-2 h-4 w-4" />
+              </>
             )}
           </Button>
         </div>

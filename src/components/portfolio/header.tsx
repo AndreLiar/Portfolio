@@ -62,7 +62,6 @@ export function Header({ headerData, name }: { headerData: any, name: string }) 
   const navLinks = [
     { href: "#projects", label: headerData.projects },
     { href: "#skills", label: headerData.skills },
-    { href: "#soft-skills", label: headerData.softSkills },
     { href: "#experience", label: headerData.experience },
     { href: `/${pathname.split('/')[1]}/resume`, label: "Resume", external: true },
     { href: "#contact", label: headerData.contact },

@@ -19,6 +19,18 @@ interface ProjectDetailsModalProps {
 export function ProjectDetailsModal({ project, isOpen, onClose }: ProjectDetailsModalProps) {
     if (!project) return null;
 
+    // Only show a tab when it actually has content — otherwise a card with a
+    // trimmed field set (e.g. no scope/testPlan) renders an empty "Process" tab.
+    const hasTechnical = !!(project.architecture?.length || project.repoBlueprint || project.atsKeywords?.length);
+    const hasProcess = !!(project.scope?.length || project.testPlan?.length);
+    const hasProof = !!project.screenshots?.length;
+    const tabCount = 2 + [hasTechnical, hasProcess, hasProof].filter(Boolean).length;
+    const gridColsClass =
+        tabCount >= 5 ? 'grid-cols-3 sm:grid-cols-5'
+        : tabCount === 4 ? 'grid-cols-2 sm:grid-cols-4'
+        : tabCount === 3 ? 'grid-cols-3'
+        : 'grid-cols-2';
+
     return (
         <Dialog open={isOpen} onOpenChange={onClose}>
             <DialogContent className="w-full max-w-4xl h-[90vh] flex flex-col p-0 gap-0 bg-background/95 backdrop-blur-xl border-border/50">
@@ -42,12 +54,12 @@ export function ProjectDetailsModal({ project, isOpen, onClose }: ProjectDetails
 
                 <div className="flex-1 overflow-y-auto overflow-x-hidden p-4 sm:p-6 min-w-0">
                     <Tabs defaultValue="overview" className="w-full">
-                        <TabsList className={`grid w-full mb-8 h-auto gap-1 ${project.screenshots?.length ? 'grid-cols-3 sm:grid-cols-5' : 'grid-cols-2 sm:grid-cols-4'}`}>
+                        <TabsList className={`grid w-full mb-8 h-auto gap-1 ${gridColsClass}`}>
                             <TabsTrigger value="overview">Overview</TabsTrigger>
-                            <TabsTrigger value="technical">Technical</TabsTrigger>
-                            <TabsTrigger value="process">Process</TabsTrigger>
+                            {hasTechnical && <TabsTrigger value="technical">Technical</TabsTrigger>}
+                            {hasProcess && <TabsTrigger value="process">Process</TabsTrigger>}
                             <TabsTrigger value="impact">Impact</TabsTrigger>
-                            {project.screenshots?.length > 0 && (
+                            {hasProof && (
                                 <TabsTrigger value="proof">Live Proof</TabsTrigger>
                             )}
                         </TabsList>

@@ -350,8 +350,11 @@ html.dark .admin-layout {
       touch-action: manipulation;
     }
     
-    /* Better link touch targets */
-    a:not(.skip-to-main) {
+    /* Better link touch targets — for inline text links only. Button-styled
+       links (shadcn Buttons render <a class="inline-flex …">) already have large
+       tap targets; the negative-margin trick here otherwise pulls stacked CTA
+       buttons together and makes them overlap, so exclude them. */
+    a:not(.skip-to-main):not(.inline-flex) {
       min-height: 48px;
       display: inline-flex;
       align-items: center;

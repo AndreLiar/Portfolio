@@ -100,14 +100,14 @@ export function Hero({ heroData, lang = "en" }: { heroData: any; lang?: string }
         </motion.div>
 
         {/* CTA Buttons */}
-        <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-12">
-          <Button size="lg" asChild className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-10 py-6 text-lg shadow-lg hover:shadow-primary/25 hover:-translate-y-1 transition-all duration-300 rounded-xl">
+        <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-12 w-full max-w-md sm:max-w-none mx-auto">
+          <Button size="lg" asChild className="w-full sm:w-auto h-auto bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-10 py-4 text-lg shadow-lg hover:shadow-primary/25 hover:-translate-y-1 transition-all duration-300 rounded-xl">
             <a href="#projects">
               {heroData.buttons.viewProjects}
             </a>
           </Button>
 
-          <Button size="lg" variant="outline" asChild className="border-2 border-primary/50 text-primary hover:bg-primary/5 hover:border-primary font-semibold px-10 py-6 text-lg transition-all duration-300 rounded-xl hover:-translate-y-1">
+          <Button size="lg" variant="outline" asChild className="w-full sm:w-auto h-auto border-2 border-primary/50 text-primary hover:bg-primary/5 hover:border-primary font-semibold px-10 py-4 text-lg transition-all duration-300 rounded-xl hover:-translate-y-1">
             <a href="#contact">
               {heroData.contactMe}
             </a>
