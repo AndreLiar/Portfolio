@@ -740,6 +740,7 @@
         "impact": "54+ workloads across 15 IS domains · ERPNext: 845 PCG 2025 accounts, TSCA 9/13/33%, Factur-X Minimum PoC (5 assertions pass) · every app behind Authentik SSO + MFA.",
         "features": [
           "ERPNext configured for a French insurer: 845-account PCG 2025 chart, TSCA insurance-tax templates, Factur-X e-invoicing PoC; HR as the source of truth.",
+          "Third-party app integration at scale: every off-the-shelf Helm app (ERPNext, Authentik, Vault, Matrix, Jitsi, Stalwart…) taken from chart to a GitOps-delivered, SSO-gated, secrets-managed (ESO/Vault), TLS-terminated, backed-up service — extended with custom code where it counts (ERPNext DSN/SEPA payroll, Open WebUI French BM25, OnlyOffice CA).",
           "Digital workplace (M365-equivalent): Stalwart mail + Amazon SES, Matrix/Element chat, Jitsi video, Nextcloud + OnlyOffice files, Docuseal e-signature.",
           "Enterprise identity: Authentik OIDC SSO + TOTP for all 54+ services; department personas; browser-first BYOD access over Tailscale / Cloudflare.",
           "Automation & workflow: n8n and Temporal orchestrate business processes across the IS domains.",
@@ -761,7 +762,8 @@
         "differentiators": [
           "A complete, self-hosted M365 alternative for a regulated insurer — not a single app, a whole IS.",
           "Real domain modeling: French PCG 2025, TSCA, Factur-X, ACPR/DORA — insurance-specific, not generic SaaS.",
-          "Identity as the perimeter: SSO + MFA + BYOD / zero-trust access to every business service."
+          "Identity as the perimeter: SSO + MFA + BYOD / zero-trust access to every business service.",
+          "Integration engineering, not just install: ~95 ArgoCD apps under one uniform SSO / secrets / TLS / backup pattern, with real custom code in their own repos (minicloud-erpnext, -open-webui, -onlyoffice, -backstage, -plane)."
         ],
         "link": "https://andrelair-platform.github.io/minicloud-platform-docs/",
         "repoUrl": "https://github.com/andrelair-platform/minicloud-gitops",
@@ -1339,10 +1341,11 @@
       {
         "icon": "GitBranch",
         "title": "DevOps & GitOps",
-        "description": "Automated, git-driven delivery — everything declared in Git, continuously promoted and reconciled.",
+        "description": "Automated, git-driven delivery — everything declared in Git, continuously promoted and reconciled; off-the-shelf Helm apps taken to governed, SSO'd, backed-up services.",
         "tech": [
           "ArgoCD",
           "Kargo",
+          "Helm",
           "GitHub Actions",
           "Argo Rollouts",
           "Terraform / OpenTofu",
