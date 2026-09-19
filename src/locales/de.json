@@ -1302,11 +1302,14 @@
     "blocks": [
       {
         "icon": "Server",
-        "title": "Platform Engineering",
-        "description": "Die Kubernetes-Grundlage bauen und betreiben, auf der Anwendungen laufen — von Bare-Metal bis Netzwerk und Storage.",
+        "title": "Platform & Cloud Engineering",
+        "description": "Hybride Plattformen bauen und betreiben — von Bare-Metal-Kubernetes bis zur Public Cloud mit AWS und Microsoft Azure, inklusive Netzwerk, Storage und Infrastructure as Code.",
         "tech": [
           "Kubernetes",
           "k3s",
+          "AWS",
+          "Microsoft Azure",
+          "Public & Hybrid Cloud",
           "Helm",
           "Kustomize",
           "Docker",

@@ -15,6 +15,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+type NavLink = {
+  href: string;
+  label: string;
+  external?: boolean;
+  newTab?: boolean;
+};
 
 export function Header({ headerData, name }: { headerData: any, name: string }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -59,7 +65,7 @@ export function Header({ headerData, name }: { headerData: any, name: string }) 
     { code: 'de', name: 'Deutsch' },
   ];
 
-  const navLinks = [
+  const navLinks: NavLink[] = [
     { href: "#projects", label: headerData.projects },
     { href: "#skills", label: headerData.skills },
     { href: "#experience", label: headerData.experience },

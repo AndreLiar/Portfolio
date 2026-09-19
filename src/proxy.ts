@@ -1,22 +1,21 @@
-import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
 
-const locales = ['en', 'fr', 'de'];
-const defaultLocale = 'en';
+import { defaultLocale, locales } from '@/i18n-config';
 
-export async function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl
+export function proxy(request: NextRequest) {
+  const { pathname } = request.nextUrl;
 
   const pathnameHasLocale = locales.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
-  )
+  );
 
   if (!pathnameHasLocale) {
-    request.nextUrl.pathname = `/${defaultLocale}${pathname}`
-    return NextResponse.redirect(request.nextUrl)
+    request.nextUrl.pathname = `/${defaultLocale}${pathname}`;
+    return NextResponse.redirect(request.nextUrl);
   }
 
-  return NextResponse.next()
+  return NextResponse.next();
 }
 
 export const config = {
@@ -26,4 +25,4 @@ export const config = {
   matcher: [
     '/((?!_next/static|_next/image|favicon.ico|manifest.webmanifest|robots.txt|sitemap.xml|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|txt|xml|webmanifest)$).*)',
   ],
-}
+};

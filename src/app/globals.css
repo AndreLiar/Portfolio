@@ -155,6 +155,10 @@ html.dark .admin-layout {
   }
 
   :root {
+    /* Network-independent font stacks. Keep the variables consumed by Tailwind
+       while allowing system/serif fallbacks when these fonts are not installed. */
+    --font-inter: "Inter";
+    --font-playfair: "Playfair Display";
     /* Premium Light Theme */
     --background: 0 0% 98%; /* Slightly off-white for warmth */
     --foreground: 240 10% 3.9%;

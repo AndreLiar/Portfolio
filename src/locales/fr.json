@@ -1252,11 +1252,14 @@
     "blocks": [
       {
         "icon": "Server",
-        "title": "Platform Engineering",
-        "description": "Construire et exploiter la fondation Kubernetes sur laquelle tournent les applications — du bare-metal au réseau et au stockage.",
+        "title": "Ingénierie Plateforme & Cloud",
+        "description": "Construire et exploiter des plateformes hybrides — du bare-metal Kubernetes au cloud public AWS et Microsoft Azure, avec réseau, stockage et infrastructure as code.",
         "tech": [
           "Kubernetes",
           "k3s",
+          "AWS",
+          "Microsoft Azure",
+          "Public & Hybrid Cloud",
           "Helm",
           "Kustomize",
           "Docker",
