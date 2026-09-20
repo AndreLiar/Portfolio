@@ -1286,11 +1286,17 @@
           "PostgreSQL",
           "Événementiel (NATS / Kafka)",
           "REST API",
+          "GraphQL",
+          "gRPC",
           "SOAP",
           "React",
           "Next.js",
           "Tailwind CSS",
-          "Tests"
+          "Docker",
+          "Kubernetes",
+          "Pytest",
+          "xUnit",
+          "Playwright"
         ]
       }
     ]

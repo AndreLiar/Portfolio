@@ -1359,11 +1359,17 @@
           "PostgreSQL",
           "Event-Driven (NATS / Kafka)",
           "REST API",
+          "GraphQL",
+          "gRPC",
           "SOAP",
           "React",
           "Next.js",
           "Tailwind CSS",
-          "Testing"
+          "Docker",
+          "Kubernetes",
+          "Pytest",
+          "xUnit",
+          "Playwright"
         ]
       }
     ]
