@@ -1285,9 +1285,12 @@
           "ASP.NET Core",
           "PostgreSQL",
           "Événementiel (NATS / Kafka)",
+          "REST API",
+          "SOAP",
           "React",
           "Next.js",
-          "Tailwind CSS"
+          "Tailwind CSS",
+          "Tests"
         ]
       }
     ]
