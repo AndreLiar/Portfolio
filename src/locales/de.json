@@ -1325,7 +1325,7 @@
       {
         "icon": "Code",
         "title": "Software, Integration & Architektur",
-        "description": "Backend-Services, APIs und Integrationen rund um Geschäftssysteme entwerfen.",
+        "description": "Backend-Services, APIs und Integrationen rund um Geschäftssysteme entwerfen — mit typisierten React/Next.js-Frontends, wenn ein Produkt eine UI benötigt.",
         "tech": [
           "Python",
           "TypeScript",
@@ -1334,7 +1334,10 @@
           "NestJS",
           "ASP.NET Core",
           "PostgreSQL",
-          "Event-Driven (NATS / Kafka)"
+          "Event-Driven (NATS / Kafka)",
+          "React",
+          "Next.js",
+          "Tailwind CSS"
         ]
       }
     ]

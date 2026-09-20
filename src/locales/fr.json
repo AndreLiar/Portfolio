@@ -1275,7 +1275,7 @@
       {
         "icon": "Code",
         "title": "Logiciel, Intégration & Architecture",
-        "description": "Concevoir des services backend, des API et des intégrations autour des systèmes métier.",
+        "description": "Concevoir des services backend, des API et des intégrations autour des systèmes métier — avec des frontends React/Next.js typés lorsqu’un produit nécessite une interface.",
         "tech": [
           "Python",
           "TypeScript",
@@ -1284,7 +1284,10 @@
           "NestJS",
           "ASP.NET Core",
           "PostgreSQL",
-          "Événementiel (NATS / Kafka)"
+          "Événementiel (NATS / Kafka)",
+          "React",
+          "Next.js",
+          "Tailwind CSS"
         ]
       }
     ]
