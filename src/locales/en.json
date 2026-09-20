@@ -1099,64 +1099,6 @@
             "src": "/screenshots/rag-ingest-api-overview.png"
           }
         ]
-      },
-      {
-        "title": "Claims-Invoice Automation — HDI Global",
-        "oneLinePitch": "A Python automation that took a manual claims-invoice batch process to ~70% faster, with automated QC dashboards for the Finance team.",
-        "purpose": "A production automation I built during my work-study at HDI Global (industrial & commercial insurance): it replaced a manual, error-prone claims-invoice batch workflow with a Python pipeline and added automated quality-control reports and dashboards for the Finance team.",
-        "role": "Automation Engineer (work-study)",
-        "impact": "~70% faster claims-invoice cycle · recurring manual QC checks eliminated · improved data quality for the Finance team.",
-        "features": [
-          "Python pipeline that ingests, validates and processes claims-invoice batches — replacing manual handling and cutting cycle time ~70%.",
-          "Automated quality-control reports and dashboards that removed recurring manual checks for the Finance team.",
-          "Data-quality rules that catch inconsistencies early, before they reach downstream finance systems."
-        ],
-        "stack": [
-          "Python",
-          "pandas",
-          "SQL",
-          "ETL / batch jobs",
-          "Excel / CSV",
-          "Automated dashboards"
-        ],
-        "whyItMatters": "A concrete, measurable production outcome inside a regulated insurer — not a lab exercise: a manual finance workflow used by real teams, automated end-to-end with a metric to show for it (~70% faster). The full HDI role — enterprise apps, ITSM, IAM, cloud — is in Experience below.",
-        "differentiators": [
-          "Measurable business outcome (~70% faster invoice cycle), owned end-to-end.",
-          "Removed recurring manual QC work for the Finance team — not a one-off script.",
-          "Built against real enterprise data in a regulated insurance environment."
-        ],
-        "interviewTalkingPoints": [
-          "How I profiled the manual claims-invoice workflow and where the ~70% saving actually came from.",
-          "The data-quality rules I added and how they prevented downstream finance errors."
-        ],
-        "atsKeywords": [
-          "Business Process Automation",
-          "Python",
-          "pandas",
-          "ETL",
-          "Data Quality",
-          "Reporting",
-          "Dashboards",
-          "Claims",
-          "Insurance",
-          "Finance"
-        ],
-        "scope": [
-          "Profiled the manual claims-invoice batch workflow to find the bottlenecks and QC touchpoints.",
-          "Built a Python pipeline to ingest, validate and process invoice batches, with data-quality rules.",
-          "Automated the recurring QC reports and dashboards the Finance team ran by hand.",
-          "Rolled it into the team's routine, cutting the cycle time by ~70%."
-        ],
-        "architecture": [
-          "Python ingests the claims-invoice batches (Excel/CSV), validates them and applies data-quality rules.",
-          "Results feed automated QC reports and dashboards for the Finance team.",
-          "Runs as a scheduled batch job, replacing the manual handling."
-        ],
-        "testPlan": [
-          "Validated automated output against the manual process on real invoice batches before cut-over.",
-          "Data-quality rules catch inconsistencies early, preventing downstream finance errors.",
-          "Automated QC reports cross-check results the Finance team previously verified by hand."
-        ]
       }
     ],
     "workExperience": [

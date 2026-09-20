@@ -1076,64 +1076,6 @@
             "src": "/screenshots/rag-ingest-api-overview.png"
           }
         ]
-      },
-      {
-        "title": "Schaden-Rechnungsautomatisierung — HDI Global",
-        "oneLinePitch": "Eine Python-Automatisierung, die einen manuellen Schaden-Rechnungsprozess ~70% schneller machte — mit automatisierten QC-Dashboards für das Finance-Team.",
-        "purpose": "Eine produktive Automatisierung, die ich während meines dualen Studiums bei HDI Global (Industrie- und Gewerbeversicherung) gebaut habe: sie ersetzte einen manuellen, fehleranfälligen Schaden-Rechnungs-Batch-Workflow durch eine Python-Pipeline und ergänzte automatisierte Qualitätskontroll-Berichte und Dashboards für das Finance-Team.",
-        "role": "Automation Engineer (duales Studium)",
-        "impact": "Schaden-Rechnungszyklus ~70% schneller · wiederkehrende manuelle QC-Prüfungen eliminiert · bessere Datenqualität für Finance.",
-        "features": [
-          "Python-Pipeline, die Schaden-Rechnungs-Batches einliest, validiert und verarbeitet — ersetzt manuelle Bearbeitung und senkt die Zykluszeit um ~70%.",
-          "Automatisierte Qualitätskontroll-Berichte und Dashboards, die wiederkehrende manuelle Prüfungen für das Finance-Team beseitigt haben.",
-          "Datenqualitätsregeln, die Inkonsistenzen früh erkennen, bevor sie nachgelagerte Finanzsysteme erreichen."
-        ],
-        "stack": [
-          "Python",
-          "pandas",
-          "SQL",
-          "ETL / Batch-Jobs",
-          "Excel / CSV",
-          "Automatisierte Dashboards"
-        ],
-        "whyItMatters": "Ein konkretes, messbares Produktionsergebnis bei einem regulierten Versicherer — keine Laborübung: ein manueller Finanz-Workflow, den echte Teams nutzen, end-to-end automatisiert, mit einer Kennzahl als Beleg (~70% schneller). Die vollständige HDI-Rolle — Unternehmensanwendungen, ITSM, IAM, Cloud — steht unten in der Erfahrung.",
-        "differentiators": [
-          "Messbares Geschäftsergebnis (~70% schnellerer Rechnungszyklus), end-to-end verantwortet.",
-          "Beseitigte wiederkehrende manuelle QC-Arbeit für Finance — kein Einmal-Skript.",
-          "Auf echten Unternehmensdaten in einer regulierten Versicherungsumgebung gebaut."
-        ],
-        "interviewTalkingPoints": [
-          "Wie ich den manuellen Schaden-Rechnungsworkflow analysiert habe und woher die ~70% Ersparnis wirklich kommen.",
-          "Die Datenqualitätsregeln, die ich hinzugefügt habe, und wie sie nachgelagerte Finanzfehler verhindert haben."
-        ],
-        "atsKeywords": [
-          "Geschäftsprozessautomatisierung",
-          "Python",
-          "pandas",
-          "ETL",
-          "Datenqualität",
-          "Reporting",
-          "Dashboards",
-          "Schaden",
-          "Versicherung",
-          "Finance"
-        ],
-        "scope": [
-          "Analyse des manuellen Schaden-Rechnungs-Batch-Workflows, um Engpässe und QC-Berührungspunkte zu finden.",
-          "Aufbau einer Python-Pipeline zum Einlesen, Validieren und Verarbeiten der Rechnungs-Batches, mit Datenqualitätsregeln.",
-          "Automatisierung der wiederkehrenden QC-Berichte und Dashboards, die das Finance-Team manuell erstellte.",
-          "Einführung in die Team-Routine, mit ~70% kürzerer Zykluszeit."
-        ],
-        "architecture": [
-          "Python liest die Schaden-Rechnungs-Batches (Excel/CSV) ein, validiert sie und wendet Datenqualitätsregeln an.",
-          "Die Ergebnisse speisen automatisierte QC-Berichte und Dashboards für das Finance-Team.",
-          "Läuft als geplanter Batch-Job und ersetzt die manuelle Bearbeitung."
-        ],
-        "testPlan": [
-          "Automatisierte Ausgabe vor der Umstellung gegen den manuellen Prozess auf echten Rechnungs-Batches validiert.",
-          "Datenqualitätsregeln erkennen Inkonsistenzen früh und verhindern nachgelagerte Finanzfehler.",
-          "Automatisierte QC-Berichte gleichen die Ergebnisse ab, die das Finance-Team zuvor manuell prüfte."
-        ]
       }
     ],
     "workExperience": [

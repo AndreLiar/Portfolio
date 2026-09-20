@@ -1026,64 +1026,6 @@
             "src": "/screenshots/rag-ingest-api-overview.png"
           }
         ]
-      },
-      {
-        "title": "Automatisation des factures de sinistres — HDI Global",
-        "oneLinePitch": "Une automatisation Python qui a rendu un traitement manuel des factures de sinistres ~70% plus rapide, avec des tableaux de bord de contrôle qualité automatisés pour la Finance.",
-        "purpose": "Une automatisation en production construite pendant mon alternance chez HDI Global (assurance industrielle et commerciale) : elle a remplacé un traitement manuel et source d'erreurs des factures de sinistres par un pipeline Python, et a ajouté des rapports et tableaux de bord de contrôle qualité automatisés pour l'équipe Finance.",
-        "role": "Ingénieur Automatisation (alternance)",
-        "impact": "Cycle des factures de sinistres ~70% plus rapide · contrôles manuels récurrents supprimés · meilleure qualité des données pour la Finance.",
-        "features": [
-          "Pipeline Python qui ingère, valide et traite les lots de factures de sinistres — en remplaçant le traitement manuel et en réduisant le temps de cycle de ~70%.",
-          "Rapports et tableaux de bord de contrôle qualité automatisés qui ont supprimé des vérifications manuelles récurrentes pour l'équipe Finance.",
-          "Règles de qualité des données qui détectent les incohérences en amont, avant les systèmes financiers aval."
-        ],
-        "stack": [
-          "Python",
-          "pandas",
-          "SQL",
-          "ETL / traitements par lots",
-          "Excel / CSV",
-          "Tableaux de bord automatisés"
-        ],
-        "whyItMatters": "Un résultat de production concret et mesurable chez un assureur réglementé — pas un exercice de labo : un workflow financier manuel utilisé par de vraies équipes, automatisé de bout en bout avec une métrique à l'appui (~70% plus rapide). Le rôle complet chez HDI — applications d'entreprise, ITSM, IAM, cloud — figure dans l'Expérience ci-dessous.",
-        "differentiators": [
-          "Résultat métier mesurable (~70% plus rapide sur le cycle des factures), maîtrisé de bout en bout.",
-          "Suppression du travail de contrôle qualité manuel récurrent pour la Finance — pas un script ponctuel.",
-          "Construit sur de vraies données d'entreprise dans un environnement d'assurance réglementé."
-        ],
-        "interviewTalkingPoints": [
-          "Comment j'ai analysé le workflow manuel des factures de sinistres et d'où vient réellement le gain de ~70%.",
-          "Les règles de qualité des données que j'ai ajoutées et comment elles ont évité des erreurs financières en aval."
-        ],
-        "atsKeywords": [
-          "Automatisation des processus métier",
-          "Python",
-          "pandas",
-          "ETL",
-          "Qualité des données",
-          "Reporting",
-          "Tableaux de bord",
-          "Sinistres",
-          "Assurance",
-          "Finance"
-        ],
-        "scope": [
-          "Analyse du workflow manuel des factures de sinistres pour identifier les goulets et les points de contrôle qualité.",
-          "Construction d'un pipeline Python pour ingérer, valider et traiter les lots de factures, avec des règles de qualité des données.",
-          "Automatisation des rapports et tableaux de bord de contrôle qualité que la Finance faisait à la main.",
-          "Intégration dans la routine de l'équipe, réduisant le temps de cycle de ~70%."
-        ],
-        "architecture": [
-          "Python ingère les lots de factures de sinistres (Excel/CSV), les valide et applique des règles de qualité des données.",
-          "Les résultats alimentent des rapports et tableaux de bord de contrôle qualité automatisés pour la Finance.",
-          "Exécution en job batch planifié, remplaçant le traitement manuel."
-        ],
-        "testPlan": [
-          "Sortie automatisée validée contre le processus manuel sur de vrais lots de factures avant la bascule.",
-          "Les règles de qualité des données détectent les incohérences tôt, évitant des erreurs financières en aval.",
-          "Les rapports QC automatisés recoupent les résultats que la Finance vérifiait auparavant à la main."
-        ]
       }
     ],
     "workExperience": [
