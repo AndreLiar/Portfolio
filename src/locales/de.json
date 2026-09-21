@@ -1351,7 +1351,9 @@
           "Tailwind CSS",
           "Pytest",
           "xUnit",
-          "Playwright"
+          "Playwright",
+          "Postman",
+          "Git"
         ]
       }
     ]
