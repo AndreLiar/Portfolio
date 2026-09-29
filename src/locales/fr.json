@@ -719,7 +719,8 @@
           "Test des requêtes du dashboard Grafana : SQL exécuté depuis Grafana Explore sur LiteLLM_SpendLogs — nombre de lignes conforme au volume de requêtes attendu ; rawQuery:true confirmé nécessaire pour le plugin PostgreSQL de Grafana.",
           "Audit des traces Langfuse : contrôle ponctuel de 10 requêtes LiteLLM — chacune vérifiée comme une trace Langfuse avec attribution correcte du coût, nom du modèle et tag de département.",
           "Intégration de régression : LiteLLM /health, tracing Langfuse actif, datasource Grafana joignable et routage des clés de département tous inclus dans la suite de régression automatisée à 62 contrôles (contrôles #17–#26 — 62 PASS / 0 FAIL)."
-        ]
+        ],
+        "oneLinePitch": "Une passerelle LLM d'entreprise auto-hébergée — 8 fournisseurs (cloud + local) derrière un seul endpoint compatible OpenAI, avec chaîne de fallback à 3 étages, redaction PII/DLP, cache de prompts, dashboards de coûts et traçabilité LLMOps complète."
       },
       {
         "title": "Pipeline RAG d'entreprise",

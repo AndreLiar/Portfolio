@@ -792,7 +792,8 @@
             "command": "https://langfuse.devandre.sbs",
             "url": "https://langfuse.devandre.sbs"
           }
-        ]
+        ],
+        "oneLinePitch": "A self-hosted enterprise LLM gateway — 8 providers (cloud + local) behind one OpenAI-compatible endpoint, with a 3-stage fallback chain, PII/DLP redaction, prompt caching, cost dashboards and full LLMOps tracing."
       },
       {
         "title": "Enterprise RAG Pipeline",
