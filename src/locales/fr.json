@@ -1,7 +1,7 @@
 {
   "Metadata": {
-    "title": "Andre Kanmegne | Ingénieur IA & Plateforme",
-    "description": "Andre Kanmegne — Ingénieur IA & Plateforme. Je conçois, construis et exploite des systèmes d'entreprise : une plateforme Kubernetes d'assurance en production, une infrastructure IA/LLM et de l'automatisation métier."
+    "title": "Andre Kanmegne | Ingénieur AI Platform & Full-Stack",
+    "description": "Andre Kanmegne — Ingénieur AI Platform & Full-Stack. Je conçois des produits augmentés par l'IA de bout en bout et j'opère la plateforme cloud-native qui les fait tourner : un produit de conformité DORA en production et une plateforme Kubernetes d'assurance."
   },
   "Header": {
     "projects": "Réalisations",
@@ -19,11 +19,11 @@
     "github": "GitHub",
     "linkedin": "LinkedIn",
     "name": "Andre Kanmegne",
-    "title": "Software Engineer —",
-    "titleHighlight": "AI & Platform Engineering",
+    "title": "Ingénieur AI Platform &",
+    "titleHighlight": "Full-Stack",
     "location": "Paris, France",
-    "description1": "Je conçois, construis et exploite des systèmes d'entreprise — je transforme des besoins complexes de plateforme, d'IA et métier en logiciels fiables en production.",
-    "description2": "Mon projet phare : une plateforme Kubernetes en production simulant tout le système d'information d'un assureur B2B — infrastructure, applications métier et couche IA. Découvrez les études de cas ci-dessous.",
+    "description1": "Je conçois des produits augmentés par l'IA de bout en bout — et j'opère la plateforme cloud-native qui les fait tourner. Du besoin métier au logiciel sécurisé et observable en production.",
+    "description2": "Mon produit phare est Retrieva — une plateforme de conformité DORA en production (Next.js · RAG · PostgreSQL) — déployée sur une plateforme Kubernetes qui simule le SI complet d'un assureur B2B. Découvrez les études de cas ci-dessous.",
     "whatIBuildTitle": "Expertise & Réalisations :",
     "tagline": "Architecte par état d'esprit, ingénieur par métier — J'allie sécurité, automatisation et intelligence artificielle.",
     "skills": {
@@ -49,7 +49,7 @@
       }
     },
     "metrics": {
-      "years": "Années d'expérience",
+      "years": "Années à développer",
       "projects": "Projets livrés",
       "domains": "Domaines d'expertise"
     },
@@ -129,15 +129,15 @@
     "title": "Ce que je recherche",
     "subtitle": "Je suis ouvert aux opportunités où je peux :",
     "items": [
-      "Concevoir et opérer des plateformes Kubernetes et des infrastructures IA en production",
-      "Construire des systèmes IA gouvernés — pipelines RAG, agent factories LLM, LLMOps",
-      "Aligner la technologie sur les enjeux métier (conformité ACPR/DORA, SI assurance)",
-      "Travailler en Platform Engineering, SRE, Architecture de Solutions ou AI/Platform Engineering"
+      "Concevoir des produits augmentés par l'IA de bout en bout — du besoin métier à la production",
+      "Concevoir et opérer des plateformes cloud-native et des infrastructures IA — RAG, agents, LLMOps",
+      "Aligner la technologie sur les enjeux métier — conformité (DORA / ACPR), automatisation, ROI mesurable",
+      "Travailler comme Ingénieur AI Platform, Full-Stack ou Platform Engineer"
     ]
   },
   "AvailableCTA": {
     "title": "Disponible à partir de septembre 2027",
-    "subtitle": "Recherche premier CDI en Platform Engineering, AI Engineering ou Architecture de Solutions. DSI assurance/finance, cabinets de conseil cloud, ou scale-ups construisant leur plateforme interne.",
+    "subtitle": "Recherche premier CDI pour concevoir des produits augmentés par l'IA sur des plateformes cloud-native. DSI assurance/finance, cabinets de conseil cloud, ou scale-ups construisant leur plateforme interne.",
     "cta": "Discutons"
   },
   "ContactForm": {
@@ -531,6 +531,86 @@
     ],
     "projects": [
       {
+        "title": "Retrieva — Plateforme de conformité DORA",
+        "oneLinePitch": "Une plateforme de conformité DORA en production pour les entités financières — évaluations du risque ICT tiers, questionnaires fournisseurs notés par LLM, copilote IA et export en un clic du Registre d'information EBA.",
+        "purpose": "Mon produit de certification RNCP39583 (un produit distinct qui tourne sur la plateforme, séparé du SI assurance) : Retrieva automatise la conformité DORA (UE 2022/2554) au risque ICT tiers pour les entités financières — analyse d'écart de la documentation fournisseur, questionnaires notés par LLM, copilote de conformité, alertes de surveillance 24h et export du Registre d'information (article 28(3) EBA).",
+        "role": "Ingénieur Full-Stack / IA & Product Owner. Conception et développement du SaaS multi-tenant de bout en bout — backend Express, frontend Next.js, pipeline RAG + évaluation, et livraison GitOps/Kargo sur la plateforme.",
+        "impact": "4 phases de livraison en production · export en un clic du Registre d'information EBA (RT.01.01→RT.04.01) · RBAC multi-tenant · analyse d'écart DORA par article (couvert / partiel / manquant).",
+        "features": [
+          "Analyse d'écart DORA : upload de documents fournisseur (PDF/DOCX/XLSX) → chunking sémantique → Qdrant → un LLM classe la couverture par article DORA (couvert / partiel / manquant).",
+          "Copilote de conformité IA : RAG à classification d'intention sur votre documentation + les articles DORA, avec reranking, compression de contexte et validation des réponses.",
+          "Questionnaires fournisseurs auto-générés et notés par LLM ; alertes de surveillance BullMQ 24h (expiration de certification, renouvellement de contrat, revues annuelles en retard).",
+          "Export en un clic du Registre d'information EBA — un classeur XLSX de 4 feuilles (article 28(3) DORA, RT.01.01 → RT.04.01).",
+          "SaaS multi-tenant : isolation des workspaces, JWT + refresh tokens, RBAC (owner/admin/member/viewer) et garde-fous sur les sorties LLM."
+        ],
+        "stack": [
+          "Next.js 16 / React 19",
+          "Express 5 / Node 20",
+          "LangChain",
+          "Passerelle LiteLLM",
+          "Qdrant",
+          "PostgreSQL",
+          "Redis / BullMQ",
+          "Socket.io",
+          "Kargo (2 images)",
+          "Docker / Kubernetes"
+        ],
+        "whyItMatters": "DORA est une vraie douleur de marché non résolue : lors du dry-run ESA 2024, seules ~6,5% des entités financières ont passé les 116 contrôles du Registre d'information — les tableurs ne peuvent pas contenir le graphe entité→contrat→fonction→sous-traitant. Retrieva modélise ce graphe et automatise l'évaluation + l'export. C'est mon livrable de certification RNCP39583 et un vrai produit.",
+        "differentiators": [
+          "Un vrai produit réglementaire (DORA / UE 2022/2554) conforme à la spécification du Registre d'information EBA — pas une démo.",
+          "RAG à classification d'intention avec reranking, compression de contexte et validation des réponses — du LLMOps, pas un chatbot naïf.",
+          "Tourne sur ma propre plateforme : livré en GitOps et promu dev→prod par Kargo (git-warehouse, 2 images), avec sa propre collection Qdrant + datastore PostgreSQL."
+        ],
+        "link": "https://retrieva.online",
+        "repoUrl": "https://github.com/andrelair-platform/retrieva",
+        "atsKeywords": [
+          "DORA",
+          "Conformité réglementaire",
+          "RegTech",
+          "Risque tiers",
+          "Risque ICT",
+          "Registre d'information",
+          "EBA",
+          "RAG",
+          "LangChain",
+          "LiteLLM",
+          "Qdrant",
+          "SaaS multi-tenant",
+          "Next.js",
+          "Express"
+        ],
+        "liveEndpoints": [
+          {
+            "label": "Retrieva — application en ligne",
+            "command": "https://retrieva.online",
+            "url": "https://retrieva.online"
+          },
+          {
+            "label": "Retrieva — docs produit & architecture",
+            "command": "https://andrelair-platform.github.io/retrieva/",
+            "url": "https://andrelair-platform.github.io/retrieva/"
+          }
+        ],
+        "scope": [
+          "4 phases en production : copilote DORA → évaluation de docs fournisseurs → questionnaires → monitoring + export du Registre.",
+          "SaaS multi-tenant avec isolation des workspaces + RBAC (owner/admin/member/viewer).",
+          "RAG : classification d'intention → récupération → reranking → compression de contexte → génération → validation des réponses.",
+          "Worker d'écart DORA : parsing (PDF/DOCX/XLSX) → chunking sémantique → Qdrant → classification de couverture par article."
+        ],
+        "architecture": [
+          "Frontend Next.js 16 + API Express 5 ; LangChain orchestre les chaînes RAG + évaluation.",
+          "Passerelle LiteLLM devant les modèles ; Qdrant stocke les vecteurs ; PostgreSQL est le datastore principal (RTV-49).",
+          "Redis + BullMQ exécutent les workers ; un job répétable 24h émet les alertes de monitoring DORA.",
+          "Livré en GitOps, promu dev→prod par Kargo (git-Warehouse, 2 images) avec sa propre collection Qdrant."
+        ],
+        "testPlan": [
+          "Analyse d'écart DORA validée par article (couvert / partiel / manquant) sur la documentation ICT fournisseur.",
+          "L'export du Registre d'information produit un classeur conforme (article 28(3) EBA, RT.01.01→RT.04.01).",
+          "Isolation multi-tenant + RBAC appliqués au niveau workspace et base ; garde-fous sur les sorties LLM.",
+          "Images env-agnostiques identiques dev↔prod ; le git-Warehouse Kargo indexe le Freight sur le commit."
+        ]
+      },
+      {
         "title": "Cluster Kubernetes — k3s bare-metal",
         "oneLinePitch": "Un cluster Kubernetes bare-metal de 6 nœuds construit de zéro — provisioning MAAS, k3s, réseau eBPF Cilium, stockage Longhorn et mises à jour sans interruption.",
         "purpose": "La fondation de calcul de la plateforme : un cluster k3s auto-hébergé de 6 nœuds sur des ThinkPad recyclés et un MacBook Pro, provisionné en infrastructure-as-code et durci selon les benchmarks CIS. C'est la couche d'infrastructure sur laquelle tout le reste s'exécute.",
@@ -601,7 +681,7 @@
           },
           {
             "title": "fast-skunk — Nœud Worker k3s (ThinkPad T590)",
-            "caption": "Détail machine MAAS pour fast-skunk (10.0.0.4) : Lenovo ThinkPad T590, 8 cœurs, 15,9 Go RAM, 512 Go NVMe. Exécute les workloads IA/ML (LiteLLM, Ollama, services RAG) et les services de plateforme.",
+            "caption": "Détail machine MAAS pour fast-skunk (10.0.0.4) : Lenovo ThinkPad T590, 8 cœurs, 15,9 Go RAM, 512 Go NVMe. Exécute les workloads IA/ML (LiteLLM, services RAG) et les services de plateforme.",
             "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/fast-skunk-detail.png",
             "link": "http://100.88.123.8:5240/MAAS"
           },
@@ -707,178 +787,6 @@
           "Les changements prod exigent une revue CODEOWNERS + une signature GPG vérifiée avant l'auto-sync.",
           "Kargo ne promeut que du Freight vérifié en dev ; les AnalysisRuns de Rollouts gardent le canary sur métriques live.",
           "selfHeal + prune d'ArgoCD maintiennent le cluster aligné sur Git ; la dérive est corrigée automatiquement."
-        ]
-      },
-      {
-        "title": "SI Assurance d'entreprise — Digital Workplace",
-        "oneLinePitch": "Le système d'information simulé d'un assureur commercial tournant sur la plateforme — ERP & finance, un digital workplace complet, et une gouvernance alignée DORA/ACPR.",
-        "purpose": "La couche métier : une alternative auto-hébergée à M365 / Google Workspace pour un assureur B2B français (« ktayl solution ») — ERP & finance, un digital workplace complet (mail, chat, visio, fichiers, signature) et des outils de conformité, le tout sur la plateforme Kubernetes + GitOps et protégé par SSO.",
-        "role": "Architecte Solutions & Concepteur SI. Modélisation du SI de l'assureur sur 15 domaines métier, configuration d'ERPNext pour le plan comptable assurance français, et assemblage de la suite digital workplace protégée par SSO.",
-        "impact": "54+ workloads sur 15 domaines SI · ERPNext : 845 comptes PCG 2025, TSCA 9/13/33%, PoC Factur-X Minimum (5 assertions OK) · chaque app derrière Authentik SSO + MFA.",
-        "features": [
-          "ERPNext configuré pour un assureur français : plan comptable PCG 2025 à 845 comptes, modèles de taxe TSCA, PoC de facturation Factur-X ; les RH comme source de vérité.",
-          "Intégration d'applications tierces à grande échelle : chaque application Helm sur étagère (ERPNext, Authentik, Vault, Matrix, Jitsi, Stalwart…) passée du chart à un service livré en GitOps, protégé par SSO, avec secrets gérés (ESO/Vault), TLS et sauvegarde — étendue par du code sur mesure là où c'est utile (paie DSN/SEPA ERPNext, BM25 français d'Open WebUI, CA OnlyOffice).",
-          "Digital workplace (équivalent M365) : mail Stalwart + Amazon SES, chat Matrix/Element, visio Jitsi, fichiers Nextcloud + OnlyOffice, signature Docuseal.",
-          "Identité d'entreprise : SSO OIDC Authentik + TOTP pour les 54+ services ; personas par département ; accès BYOD browser-first via Tailscale / Cloudflare.",
-          "Automatisation & workflow : n8n et Temporal orchestrent les processus métier à travers les domaines du SI.",
-          "Conformité by design : gouvernance alignée ACPR/DORA, network policies default-deny, et garde-fous PII/DLP sur la couche IA."
-        ],
-        "stack": [
-          "ERPNext / Frappe",
-          "Authentik (OIDC/SSO)",
-          "Stalwart Mail + SES",
-          "Matrix / Element",
-          "Jitsi Meet",
-          "Nextcloud / OnlyOffice",
-          "Docuseal",
-          "n8n",
-          "Temporal",
-          "PostgreSQL / MariaDB"
-        ],
-        "whyItMatters": "Cela transforme un home-lab en système d'information d'une vraie entreprise : pas seulement « j'ai fait tourner Kubernetes », mais « j'ai conçu et exploité l'épine dorsale numérique d'un assureur réglementé » — ERP, finance, digital workplace complet, identité et conformité, le tout auto-hébergé.",
-        "differentiators": [
-          "Une alternative M365 complète et auto-hébergée pour un assureur réglementé — pas une seule app, tout un SI.",
-          "Une vraie modélisation métier : PCG 2025, TSCA, Factur-X, ACPR/DORA — spécifique à l'assurance, pas du SaaS générique.",
-          "L'identité comme périmètre : SSO + MFA + accès BYOD / zero-trust à chaque service métier.",
-          "De l'ingénierie d'intégration, pas juste de l'installation : ~95 applications ArgoCD sous un même schéma SSO / secrets / TLS / sauvegarde, avec du vrai code sur mesure dans leurs propres dépôts (minicloud-erpnext, -open-webui, -onlyoffice, -backstage, -plane)."
-        ],
-        "link": "https://andrelair-platform.github.io/minicloud-platform-docs/",
-        "repoUrl": "https://github.com/andrelair-platform/minicloud-gitops",
-        "atsKeywords": [
-          "Assurance",
-          "Architecture d'entreprise",
-          "ERPNext",
-          "Frappe",
-          "Digital Workplace",
-          "Alternative M365",
-          "IAM",
-          "SSO",
-          "Authentik",
-          "DORA",
-          "ACPR",
-          "Conformité",
-          "Automatisation métier",
-          "ITSM"
-        ],
-        "liveEndpoints": [
-          {
-            "label": "Homer — tableau de bord plateforme avec tous les liens de services",
-            "command": "https://homer.devandre.sbs",
-            "url": "https://homer.devandre.sbs"
-          },
-          {
-            "label": "ArgoCD — état de réconciliation GitOps de toutes les applications",
-            "command": "https://argocd.devandre.sbs",
-            "url": "https://argocd.devandre.sbs"
-          },
-          {
-            "label": "Grafana — tableaux de bord d'observabilité de la plateforme",
-            "command": "https://grafana.devandre.sbs",
-            "url": "https://grafana.devandre.sbs"
-          },
-          {
-            "label": "Docs Plateforme — runbooks de phases Docusaurus",
-            "command": "https://andrelair-platform.github.io/minicloud-platform-docs/",
-            "url": "https://andrelair-platform.github.io/minicloud-platform-docs/"
-          }
-        ],
-        "scope": [
-          "15 domaines SI modélisés : police, sinistres, souscription, ERP/finance, RH, conformité, GED, communication, IA workplace.",
-          "ERPNext pour un assureur français : plan comptable PCG 2025 (845 comptes), modèles TSCA, PoC Factur-X Minimum.",
-          "Digital workplace : mail Stalwart + SES, Matrix/Element, Jitsi, Nextcloud + OnlyOffice, signature Docuseal.",
-          "Identité : SSO OIDC Authentik + TOTP sur les 54+ services ; n8n + Temporal automatisent les processus inter-domaines."
-        ],
-        "architecture": [
-          "ERPNext/Frappe sur MariaDB est la source de vérité ERP + RH (paie DSN/SEPA personnalisée).",
-          "Authentik OIDC protège chaque application métier derrière Tailscale / Cloudflare Tunnel.",
-          "Le mail Stalwart relaie l'outbound via Amazon SES ; l'inbound via SES→S3→SQS→bridge.",
-          "Chaque service dans son namespace avec NetworkPolicies default-deny ; PII/DLP (Presidio) sur la couche IA."
-        ],
-        "testPlan": [
-          "Config ERPNext validée : 845 comptes PCG, TSCA 9/13/33%, Factur-X Minimum (5 assertions OK).",
-          "Smoke SSO : les services publics redirigent vers Authentik, acceptent le TOTP et renvoient une session authentifiée.",
-          "Mail vérifié de bout en bout : outbound via SES (SPF/DKIM/DMARC alignés) + livraison inbound.",
-          "Paie ERPNext personnalisée (DSN + SEPA) testée unitairement (108 tests, ~76% de couverture)."
-        ]
-      },
-      {
-        "title": "Retrieva — Plateforme de conformité DORA",
-        "oneLinePitch": "Une plateforme de conformité DORA en production pour les entités financières — évaluations du risque ICT tiers, questionnaires fournisseurs notés par LLM, copilote IA et export en un clic du Registre d'information EBA.",
-        "purpose": "Mon produit de certification RNCP39583 (un produit distinct qui tourne sur la plateforme, séparé du SI assurance) : Retrieva automatise la conformité DORA (UE 2022/2554) au risque ICT tiers pour les entités financières — analyse d'écart de la documentation fournisseur, questionnaires notés par LLM, copilote de conformité, alertes de surveillance 24h et export du Registre d'information (article 28(3) EBA).",
-        "role": "Ingénieur Full-Stack / IA & Product Owner. Conception et développement du SaaS multi-tenant de bout en bout — backend Express, frontend Next.js, pipeline RAG + évaluation, et livraison GitOps/Kargo sur la plateforme.",
-        "impact": "4 phases de livraison en production · export en un clic du Registre d'information EBA (RT.01.01→RT.04.01) · RBAC multi-tenant · analyse d'écart DORA par article (couvert / partiel / manquant).",
-        "features": [
-          "Analyse d'écart DORA : upload de documents fournisseur (PDF/DOCX/XLSX) → chunking sémantique → Qdrant → un LLM classe la couverture par article DORA (couvert / partiel / manquant).",
-          "Copilote de conformité IA : RAG à classification d'intention sur votre documentation + les articles DORA, avec reranking, compression de contexte et validation des réponses.",
-          "Questionnaires fournisseurs auto-générés et notés par LLM ; alertes de surveillance BullMQ 24h (expiration de certification, renouvellement de contrat, revues annuelles en retard).",
-          "Export en un clic du Registre d'information EBA — un classeur XLSX de 4 feuilles (article 28(3) DORA, RT.01.01 → RT.04.01).",
-          "SaaS multi-tenant : isolation des workspaces, JWT + refresh tokens, RBAC (owner/admin/member/viewer) et garde-fous sur les sorties LLM."
-        ],
-        "stack": [
-          "Next.js 16 / React 19",
-          "Express 5 / Node 20",
-          "LangChain",
-          "Passerelle LiteLLM",
-          "Qdrant",
-          "PostgreSQL",
-          "Redis / BullMQ",
-          "Socket.io",
-          "Kargo (2 images)",
-          "Docker / Kubernetes"
-        ],
-        "whyItMatters": "DORA est une vraie douleur de marché non résolue : lors du dry-run ESA 2024, seules ~6,5% des entités financières ont passé les 116 contrôles du Registre d'information — les tableurs ne peuvent pas contenir le graphe entité→contrat→fonction→sous-traitant. Retrieva modélise ce graphe et automatise l'évaluation + l'export. C'est mon livrable de certification RNCP39583 et un vrai produit.",
-        "differentiators": [
-          "Un vrai produit réglementaire (DORA / UE 2022/2554) conforme à la spécification du Registre d'information EBA — pas une démo.",
-          "RAG à classification d'intention avec reranking, compression de contexte et validation des réponses — du LLMOps, pas un chatbot naïf.",
-          "Tourne sur ma propre plateforme : livré en GitOps et promu dev→prod par Kargo (git-warehouse, 2 images), avec sa propre collection Qdrant + datastore PostgreSQL."
-        ],
-        "link": "https://retrieva.online",
-        "repoUrl": "https://github.com/andrelair-platform/retrieva",
-        "atsKeywords": [
-          "DORA",
-          "Conformité réglementaire",
-          "RegTech",
-          "Risque tiers",
-          "Risque ICT",
-          "Registre d'information",
-          "EBA",
-          "RAG",
-          "LangChain",
-          "LiteLLM",
-          "Qdrant",
-          "SaaS multi-tenant",
-          "Next.js",
-          "Express"
-        ],
-        "liveEndpoints": [
-          {
-            "label": "Retrieva — application en ligne",
-            "command": "https://retrieva.online",
-            "url": "https://retrieva.online"
-          },
-          {
-            "label": "Retrieva — docs produit & architecture",
-            "command": "https://andrelair-platform.github.io/retrieva/",
-            "url": "https://andrelair-platform.github.io/retrieva/"
-          }
-        ],
-        "scope": [
-          "4 phases en production : copilote DORA → évaluation de docs fournisseurs → questionnaires → monitoring + export du Registre.",
-          "SaaS multi-tenant avec isolation des workspaces + RBAC (owner/admin/member/viewer).",
-          "RAG : classification d'intention → récupération → reranking → compression de contexte → génération → validation des réponses.",
-          "Worker d'écart DORA : parsing (PDF/DOCX/XLSX) → chunking sémantique → Qdrant → classification de couverture par article."
-        ],
-        "architecture": [
-          "Frontend Next.js 16 + API Express 5 ; LangChain orchestre les chaînes RAG + évaluation.",
-          "Passerelle LiteLLM devant les modèles ; Qdrant stocke les vecteurs ; PostgreSQL est le datastore principal (RTV-49).",
-          "Redis + BullMQ exécutent les workers ; un job répétable 24h émet les alertes de monitoring DORA.",
-          "Livré en GitOps, promu dev→prod par Kargo (git-Warehouse, 2 images) avec sa propre collection Qdrant."
-        ],
-        "testPlan": [
-          "Analyse d'écart DORA validée par article (couvert / partiel / manquant) sur la documentation ICT fournisseur.",
-          "L'export du Registre d'information produit un classeur conforme (article 28(3) EBA, RT.01.01→RT.04.01).",
-          "Isolation multi-tenant + RBAC appliqués au niveau workspace et base ; garde-fous sur les sorties LLM.",
-          "Images env-agnostiques identiques dev↔prod ; le git-Warehouse Kargo indexe le Freight sur le commit."
         ]
       },
       {
@@ -1026,6 +934,98 @@
             "src": "/screenshots/rag-ingest-api-overview.png"
           }
         ]
+      },
+      {
+        "title": "SI Assurance d'entreprise — Digital Workplace",
+        "oneLinePitch": "Le système d'information simulé d'un assureur commercial tournant sur la plateforme — ERP & finance, un digital workplace complet, et une gouvernance alignée DORA/ACPR.",
+        "purpose": "La couche métier : une alternative auto-hébergée à M365 / Google Workspace pour un assureur B2B français (« ktayl solution ») — ERP & finance, un digital workplace complet (mail, chat, visio, fichiers, signature) et des outils de conformité, le tout sur la plateforme Kubernetes + GitOps et protégé par SSO.",
+        "role": "Architecte Solutions & Concepteur SI. Modélisation du SI de l'assureur sur 15 domaines métier, configuration d'ERPNext pour le plan comptable assurance français, et assemblage de la suite digital workplace protégée par SSO.",
+        "impact": "54+ workloads sur 15 domaines SI · ERPNext : 845 comptes PCG 2025, TSCA 9/13/33%, PoC Factur-X Minimum (5 assertions OK) · chaque app derrière Authentik SSO + MFA.",
+        "features": [
+          "ERPNext configuré pour un assureur français : plan comptable PCG 2025 à 845 comptes, modèles de taxe TSCA, PoC de facturation Factur-X ; les RH comme source de vérité.",
+          "Intégration d'applications tierces à grande échelle : chaque application Helm sur étagère (ERPNext, Authentik, Vault, Matrix, Jitsi, Stalwart…) passée du chart à un service livré en GitOps, protégé par SSO, avec secrets gérés (ESO/Vault), TLS et sauvegarde — étendue par du code sur mesure là où c'est utile (paie DSN/SEPA ERPNext, BM25 français d'Open WebUI, CA OnlyOffice).",
+          "Digital workplace (équivalent M365) : mail Stalwart + Amazon SES, chat Matrix/Element, visio Jitsi, fichiers Nextcloud + OnlyOffice, signature Docuseal.",
+          "Identité d'entreprise : SSO OIDC Authentik + TOTP pour les 54+ services ; personas par département ; accès BYOD browser-first via Tailscale / Cloudflare.",
+          "Automatisation & workflow : n8n et Temporal orchestrent les processus métier à travers les domaines du SI.",
+          "Conformité by design : gouvernance alignée ACPR/DORA, network policies default-deny, et garde-fous PII/DLP sur la couche IA."
+        ],
+        "stack": [
+          "ERPNext / Frappe",
+          "Authentik (OIDC/SSO)",
+          "Stalwart Mail + SES",
+          "Matrix / Element",
+          "Jitsi Meet",
+          "Nextcloud / OnlyOffice",
+          "Docuseal",
+          "n8n",
+          "Temporal",
+          "PostgreSQL / MariaDB"
+        ],
+        "whyItMatters": "Cela transforme un home-lab en système d'information d'une vraie entreprise : pas seulement « j'ai fait tourner Kubernetes », mais « j'ai conçu et exploité l'épine dorsale numérique d'un assureur réglementé » — ERP, finance, digital workplace complet, identité et conformité, le tout auto-hébergé.",
+        "differentiators": [
+          "Une alternative M365 complète et auto-hébergée pour un assureur réglementé — pas une seule app, tout un SI.",
+          "Une vraie modélisation métier : PCG 2025, TSCA, Factur-X, ACPR/DORA — spécifique à l'assurance, pas du SaaS générique.",
+          "L'identité comme périmètre : SSO + MFA + accès BYOD / zero-trust à chaque service métier.",
+          "De l'ingénierie d'intégration, pas juste de l'installation : ~95 applications ArgoCD sous un même schéma SSO / secrets / TLS / sauvegarde, avec du vrai code sur mesure dans leurs propres dépôts (minicloud-erpnext, -open-webui, -onlyoffice, -backstage, -plane)."
+        ],
+        "link": "https://andrelair-platform.github.io/minicloud-platform-docs/",
+        "repoUrl": "https://github.com/andrelair-platform/minicloud-gitops",
+        "atsKeywords": [
+          "Assurance",
+          "Architecture d'entreprise",
+          "ERPNext",
+          "Frappe",
+          "Digital Workplace",
+          "Alternative M365",
+          "IAM",
+          "SSO",
+          "Authentik",
+          "DORA",
+          "ACPR",
+          "Conformité",
+          "Automatisation métier",
+          "ITSM"
+        ],
+        "liveEndpoints": [
+          {
+            "label": "Homer — tableau de bord plateforme avec tous les liens de services",
+            "command": "https://homer.devandre.sbs",
+            "url": "https://homer.devandre.sbs"
+          },
+          {
+            "label": "ArgoCD — état de réconciliation GitOps de toutes les applications",
+            "command": "https://argocd.devandre.sbs",
+            "url": "https://argocd.devandre.sbs"
+          },
+          {
+            "label": "Grafana — tableaux de bord d'observabilité de la plateforme",
+            "command": "https://grafana.devandre.sbs",
+            "url": "https://grafana.devandre.sbs"
+          },
+          {
+            "label": "Docs Plateforme — runbooks de phases Docusaurus",
+            "command": "https://andrelair-platform.github.io/minicloud-platform-docs/",
+            "url": "https://andrelair-platform.github.io/minicloud-platform-docs/"
+          }
+        ],
+        "scope": [
+          "15 domaines SI modélisés : police, sinistres, souscription, ERP/finance, RH, conformité, GED, communication, IA workplace.",
+          "ERPNext pour un assureur français : plan comptable PCG 2025 (845 comptes), modèles TSCA, PoC Factur-X Minimum.",
+          "Digital workplace : mail Stalwart + SES, Matrix/Element, Jitsi, Nextcloud + OnlyOffice, signature Docuseal.",
+          "Identité : SSO OIDC Authentik + TOTP sur les 54+ services ; n8n + Temporal automatisent les processus inter-domaines."
+        ],
+        "architecture": [
+          "ERPNext/Frappe sur MariaDB est la source de vérité ERP + RH (paie DSN/SEPA personnalisée).",
+          "Authentik OIDC protège chaque application métier derrière Tailscale / Cloudflare Tunnel.",
+          "Le mail Stalwart relaie l'outbound via Amazon SES ; l'inbound via SES→S3→SQS→bridge.",
+          "Chaque service dans son namespace avec NetworkPolicies default-deny ; PII/DLP (Presidio) sur la couche IA."
+        ],
+        "testPlan": [
+          "Config ERPNext validée : 845 comptes PCG, TSCA 9/13/33%, Factur-X Minimum (5 assertions OK).",
+          "Smoke SSO : les services publics redirigent vers Authentik, acceptent le TOTP et renvoient une session authentifiée.",
+          "Mail vérifié de bout en bout : outbound via SES (SPF/DKIM/DMARC alignés) + livraison inbound.",
+          "Paie ERPNext personnalisée (DSN + SEPA) testée unitairement (108 tests, ~76% de couverture)."
+        ]
       }
     ],
     "workExperience": [
@@ -1091,6 +1091,23 @@
     "nextPage": "Suivant"
   },
   "blogPosts": [
+    {
+      "slug": "engineering-harness-for-ai-agents",
+      "title": "Le harnais d'ingénierie : transformer un agent IA en collègue fiable sur un vrai système d'information",
+      "description": "Tout le monde parle de modèles plus intelligents. Presque personne ne parle du harnais — les règles, la mémoire, les garde-fous et les boucles de vérification autour du modèle qui décident s'il livre un travail fiable ou de la camelote plausible. Le harnais en cinq parties que j'ai construit pour qu'un agent IA puisse opérer sur un système d'information en production sans casser la prod.",
+      "date": "2026-09-29",
+      "tags": [
+        "ai-agents",
+        "agentic-ai",
+        "engineering-harness",
+        "context-engineering",
+        "guardrails",
+        "gitops",
+        "reliability"
+      ],
+      "readTime": 11,
+      "url": "https://andrelair-platform.github.io/minicloud-platform-docs/blog/engineering-harness-for-ai-agents"
+    },
     {
       "slug": "llm-model-lifecycle-quantization",
       "title": "Un modèle sort de l'entraînement à 28 Go. Tu le télécharges à 4.7 Go. Qui a fait la compression ?",
@@ -1229,10 +1246,12 @@
       {
         "icon": "BrainCircuit",
         "title": "Ingénierie IA & LLMOps",
-        "description": "Faire passer les systèmes LLM du prototype à des applications observables et gouvernées.",
+        "description": "Faire passer les systèmes LLM du prototype à des applications observables et gouvernées — et construire le harnais d'ingénierie (contexte, mémoire, garde-fous, vérification) qui rend les agents IA assez fiables pour opérer sur un système d'information en production.",
         "tech": [
           "RAG",
           "Agents",
+          "Agentic Harness",
+          "Guardrails",
           "LangChain",
           "LangGraph",
           "LiteLLM",
