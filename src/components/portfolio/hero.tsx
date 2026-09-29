@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { InteractiveBackground } from "./interactive-background";
@@ -42,6 +43,20 @@ export function Hero({ heroData, lang = "en" }: { heroData: any; lang?: string }
     >
       <InteractiveBackground />
       <div className="relative z-10 container mx-auto px-4 text-center">
+        {/* Portrait — static (not motion) + priority so it never delays LCP */}
+        <div className="flex justify-center mb-8">
+          <div className="relative h-32 w-32 md:h-40 md:w-40 rounded-full overflow-hidden ring-4 ring-primary/20 shadow-xl shadow-primary/10">
+            <Image
+              src="/images/andre-kanmegne.jpg"
+              alt={heroData.name}
+              fill
+              priority
+              sizes="160px"
+              className="object-cover object-top"
+            />
+          </div>
+        </div>
+
         {/* Name — LCP element. Rendered as a plain (non-motion) <h1> so it paints
             at first paint (SSR/FCP) instead of waiting for Framer Motion to
             hydrate and settle its entrance animation. Animating this element
