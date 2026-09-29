@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://devandre.sbs'
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.devandre.sbs'
   const currentDate = new Date()
 
   const languages = ['en', 'fr', 'de']

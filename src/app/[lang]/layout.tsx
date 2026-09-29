@@ -5,7 +5,7 @@ import { getDictionary } from '@/lib/dictionaries';
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
   const dictionary = await getDictionary(lang);
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://devandre.sbs';
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.devandre.sbs';
 
   return {
     metadataBase: new URL(baseUrl),
@@ -85,7 +85,7 @@ export default async function LangLayout({
   // attribute the content, skills and social profiles to Andre on devandre.sbs.
   const { lang } = await params;
   const dict = await getDictionary(lang);
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://devandre.sbs';
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.devandre.sbs';
 
   const jsonLd = {
     '@context': 'https://schema.org',
