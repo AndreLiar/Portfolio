@@ -27,7 +27,7 @@ import type { LucideIcon } from 'lucide-react';
 import { Header } from '@/components/portfolio/header';
 import { Hero } from '@/components/portfolio/hero';
 import { TimelineItem } from '@/components/portfolio/timeline-item';
-import { Contact } from '@/components/portfolio/contact';
+import { BookCall } from '@/components/portfolio/book-call';
 import { Footer } from '@/components/portfolio/footer';
 import { Badge } from '@/components/ui/badge';
 import { ScrollToTop } from '@/components/portfolio/scroll-to-top';
@@ -105,7 +105,7 @@ const itemVariants = {
 };
 
 export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTags = {} }: MainContentProps) {
-  const { data, Page, Header: headerData, Hero: heroData, ProjectList: projectListData, ProjectCard: projectCardData, ContactForm: contactFormData, Footer: footerData, Testimonials: testimonialsData, LookingFor: lookingForData, AvailableCTA: availableCTAData, Capabilities: capabilitiesData } = messages;
+  const { data, Page, Header: headerData, Hero: heroData, ProjectList: projectListData, ProjectCard: projectCardData, Footer: footerData, Testimonials: testimonialsData, LookingFor: lookingForData, AvailableCTA: availableCTAData, Capabilities: capabilitiesData } = messages;
 
   const workExperience = data.workExperience;
   const education = data.education;
@@ -358,7 +358,7 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
               <h2 className="mb-2">{Page.contact.title}</h2>
               <p className="text-muted-foreground max-w-xl mx-auto leading-loose">{Page.contact.subtitle}</p>
             </div>
-            <Contact contactFormData={contactFormData} contactEmail={data.contact?.email} />
+            <BookCall contactEmail={data.contact?.email} />
           </div>
         </motion.section>
       </main>
