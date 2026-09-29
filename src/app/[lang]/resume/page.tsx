@@ -5,7 +5,7 @@ import { Metadata } from 'next';
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
     const { lang } = await params;
     const dictionary = await getDictionary(lang);
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://andre-portfolio.vercel.app';
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://devandre.sbs';
     const title = `${dictionary.data.fullName ?? dictionary.data.name} - Resume`;
     const description = `Professional resume of ${dictionary.data.fullName ?? dictionary.data.name} — ${dictionary.data.title}. Experience, skills, projects, and education.`;
 

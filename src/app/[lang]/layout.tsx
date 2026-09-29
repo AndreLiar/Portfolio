@@ -5,9 +5,10 @@ import { getDictionary } from '@/lib/dictionaries';
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
   const dictionary = await getDictionary(lang);
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://andre-portfolio.vercel.app';
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://devandre.sbs';
 
   return {
+    metadataBase: new URL(baseUrl),
     title: dictionary.Metadata.title,
     description: dictionary.Metadata.description,
     keywords: [
@@ -57,8 +58,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     },
     twitter: {
       card: 'summary_large_image',
-      site: '@YourTwitterHandle', // Update with actual handle
-      creator: '@YourTwitterHandle', // Update with actual handle
       title: dictionary.Metadata.title,
       description: dictionary.Metadata.description,
       images: [`${baseUrl}/images/og-image.jpg`],
@@ -71,19 +70,58 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
         'de': `${baseUrl}/de`,
       },
     },
-    other: {
-      'google-site-verification': 'your-google-site-verification-code', // Add actual verification code
-    },
   }
 }
 
-export default function LangLayout({
-  children
+export default async function LangLayout({
+  children,
+  params,
 }: {
   children: React.ReactNode;
+  params: Promise<{ lang: string }>;
 }) {
-  // This layout no longer defines the root HTML structure.
-  // It only provides the dynamic metadata and renders the page content.
-  // The RootLayout in src/app/layout.tsx handles the <html>, <body>, fonts, and Toaster.
-  return <>{children}</>;
+  // RootLayout (src/app/layout.tsx) owns <html>/<body>/fonts/Toaster.
+  // Here we inject Schema.org JSON-LD (Person + WebSite) so search engines
+  // attribute the content, skills and social profiles to Andre on devandre.sbs.
+  const { lang } = await params;
+  const dict = await getDictionary(lang);
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://devandre.sbs';
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Person',
+        name: dict.data.fullName,
+        url: baseUrl,
+        jobTitle: dict.data.title,
+        sameAs: [dict.data?.contact?.github, dict.data?.contact?.linkedin].filter(Boolean),
+        knowsAbout: [
+          'Software Engineering',
+          'AI Engineering',
+          'LLMOps',
+          'Retrieval-Augmented Generation',
+          'Kubernetes',
+          'GitOps',
+          'Platform Engineering',
+          'Cloud',
+        ],
+      },
+      {
+        '@type': 'WebSite',
+        name: dict.Metadata?.title ?? dict.data.fullName,
+        url: baseUrl,
+      },
+    ],
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      {children}
+    </>
+  );
 }

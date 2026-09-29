@@ -6,7 +6,7 @@ import { ServerStructuredData } from '@/components/seo/server-structured-data';
 export default async function Home({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
   const dictionary = await getDictionary(lang);
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://andre-portfolio.vercel.app';
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://devandre.sbs';
 
   return (
     <>
