@@ -18,15 +18,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Send, Loader2 } from "lucide-react";
 
-// Web3Forms access key — safe to expose (it only routes submissions to the
-// registered inbox, it is not a secret). Override via NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY
-// in Vercel env if you ever rotate it; the baked-in default keeps it working.
-const WEB3FORMS_ACCESS_KEY =
-  process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "a2113f54-1a53-4e74-b316-42c4d6beb6e2";
-
 export function ContactForm({ contactFormData, contactEmail }: { contactFormData: any; contactEmail?: string }) {
   const t = contactFormData;
-  const fallbackEmail = contactEmail || "kanmegnea@gmail.com";
+  const fallbackEmail = contactEmail || "kanmegneandre@gmail.com";
 
   const formSchema = z.object({
     name: z.string().min(2, "Name must be at least 2 characters."),
@@ -48,46 +42,25 @@ export function ContactForm({ contactFormData, contactEmail }: { contactFormData
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    // No key configured yet → keep the (corrected) mailto behaviour so the
-    // button is never a dead click.
-    if (!WEB3FORMS_ACCESS_KEY) {
-      const subject = encodeURIComponent(`Portfolio contact from ${values.name}`);
-      const body = encodeURIComponent(
-        `Name: ${values.name}\nEmail: ${values.email}\n\nMessage:\n${values.message}`
-      );
-      window.location.href = `mailto:${fallbackEmail}?subject=${subject}&body=${body}`;
-      return;
-    }
-
     setSubmitting(true);
     try {
-      // Web3Forms' documented React path is multipart FormData (their JSON
-      // endpoint can 400 on some field combinations). No Content-Type header —
-      // the browser sets the multipart boundary itself.
-      const fd = new FormData();
-      fd.append("access_key", WEB3FORMS_ACCESS_KEY);
-      fd.append("subject", `Portfolio contact from ${values.name}`);
-      fd.append("from_name", values.name);
-      fd.append("name", values.name);
-      fd.append("email", values.email);
-      fd.append("message", values.message);
-      // honeypot — bots that tick this hidden box get rejected by Web3Forms
-      fd.append("botcheck", honeypotRef.current?.checked ? "true" : "");
-
-      const res = await fetch("https://api.web3forms.com/submit", {
+      // Same-origin API route → Resend (server-side; key never reaches the client).
+      const res = await fetch("/api/contact", {
         method: "POST",
-        headers: { Accept: "application/json" },
-        body: fd,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...values,
+          botcheck: honeypotRef.current?.checked ? "true" : "",
+        }),
       });
-      const data = await res.json();
-      if (data.success) {
+      const data = await res.json().catch(() => ({ success: false }));
+      if (res.ok && data.success) {
         toast({
           title: t.toast.successTitle,
           description: t.toast.successDescription,
         });
         form.reset();
       } else {
-        console.error("Web3Forms error:", data);
         throw new Error(data?.message || "send failed");
       }
     } catch (err) {
