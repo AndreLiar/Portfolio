@@ -61,37 +61,44 @@ export function ContactForm({ contactFormData, contactEmail }: { contactFormData
 
     setSubmitting(true);
     try {
+      // Web3Forms' documented React path is multipart FormData (their JSON
+      // endpoint can 400 on some field combinations). No Content-Type header —
+      // the browser sets the multipart boundary itself.
+      const fd = new FormData();
+      fd.append("access_key", WEB3FORMS_ACCESS_KEY);
+      fd.append("subject", `Portfolio contact from ${values.name}`);
+      fd.append("from_name", values.name);
+      fd.append("name", values.name);
+      fd.append("email", values.email);
+      fd.append("message", values.message);
+      // honeypot — bots that tick this hidden box get rejected by Web3Forms
+      fd.append("botcheck", honeypotRef.current?.checked ? "true" : "");
+
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          access_key: WEB3FORMS_ACCESS_KEY,
-          subject: `Portfolio contact from ${values.name}`,
-          from_name: values.name,
-          name: values.name,
-          email: values.email,
-          message: values.message,
-          // honeypot — bots that tick this hidden box get rejected by Web3Forms
-          botcheck: honeypotRef.current?.checked ? "true" : "",
-        }),
+        headers: { Accept: "application/json" },
+        body: fd,
       });
       const data = await res.json();
-      if (res.ok && data.success) {
+      if (data.success) {
         toast({
           title: t.toast.successTitle,
           description: t.toast.successDescription,
         });
         form.reset();
       } else {
+        console.error("Web3Forms error:", data);
         throw new Error(data?.message || "send failed");
       }
-    } catch {
+    } catch (err) {
       toast({
         variant: "destructive",
         title: t.toast?.errorTitle ?? "Message not sent",
         description:
-          t.toast?.errorDescription ??
-          `Something went wrong — please email me directly at ${fallbackEmail}.`,
+          err instanceof Error && err.message
+            ? err.message
+            : t.toast?.errorDescription ??
+              `Something went wrong — please email me directly at ${fallbackEmail}.`,
       });
     } finally {
       setSubmitting(false);
