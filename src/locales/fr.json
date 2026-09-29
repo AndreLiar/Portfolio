@@ -611,182 +611,59 @@
         ]
       },
       {
-        "title": "Cluster Kubernetes — k3s bare-metal",
-        "oneLinePitch": "Un cluster Kubernetes bare-metal de 6 nœuds construit de zéro — provisioning MAAS, k3s, réseau eBPF Cilium, stockage Longhorn et mises à jour sans interruption.",
-        "purpose": "La fondation de calcul de la plateforme : un cluster k3s auto-hébergé de 6 nœuds sur des ThinkPad recyclés et un MacBook Pro, provisionné en infrastructure-as-code et durci selon les benchmarks CIS. C'est la couche d'infrastructure sur laquelle tout le reste s'exécute.",
-        "role": "Ingénieur Plateforme / Infrastructure. Provisioning bare-metal avec MAAS + OpenTofu, bootstrap k3s avec Ansible (durcissement CIS du kubelet) ; responsable du réseau, du stockage et du cycle de vie du cluster.",
-        "impact": "6/6 nœuds Ready · k3s mis à jour v1.33→v1.36 sans interruption (aucun SSH manuel) · kube-bench k3s-CIS-1.7 16/16 PASS sur tous les workers.",
+        "title": "ktayl Policy Service — PAS assurance (Go)",
+        "oneLinePitch": "Un microservice d'administration des contrats en production, écrit en Go — le cycle de vie complet du contrat d'assurance (création → activation → suspension → résiliation), avec garanties, suivi de prime, une API REST versionnée et publication d'événements.",
+        "purpose": "Le système de référence des contrats d'assurance du SI ktayl-solution. Il détient le cycle de vie du contrat et l'expose via une API REST gouvernée que les autres domaines (souscription, facturation) appellent pour émettre et activer de vrais contrats.",
+        "role": "Développeur Back-end / Software Engineer. J'ai conçu le modèle de domaine, le service Go, le schéma et les migrations PostgreSQL, le contrat OpenAPI, l'auth machine-to-machine et le déploiement GitOps.",
+        "impact": "En production : un contrat réel (UW-369188ABE405, 400 €) émis de bout en bout via un appel machine-to-machine inter-services · cycle complet création→soumission→activation · ré-émission idempotente.",
         "features": [
-          "Provisioning bare-metal en code : MAAS enrôle et commissionne les nœuds ThinkPad ; OpenTofu gère le cycle de vie des machines ; Ansible bootstrappe k3s.",
-          "CNI eBPF Cilium + observabilité réseau Hubble (migration depuis flannel) ; MetalLB fournit des IP de load-balancer sur bare-metal.",
-          "Stockage bloc distribué Longhorn sur les nœuds, avec sauvegardes Velero quotidiennes vers MinIO sur le contrôleur ; NFS pour les volumes partagés.",
-          "Kubelet durci CIS, chiffrement des secrets au repos (AES-CBC-256), journaux d'audit k3s, UFW default-deny + durcissement SSH sur chaque nœud.",
-          "Cycle de vie sans interruption : system-upgrade-controller déploie les mises à jour k3s sur tous les nœuds via des Plans — cordon uniquement (compatible Longhorn), sans SSH manuel."
+          "Cycle de vie complet du contrat (création → activation → suspension → résiliation) avec garanties et suivi de prime, sur PostgreSQL avec migrations SQL.",
+          "API REST versionnée (OpenAPI) consommée en machine-to-machine : le domaine souscription obtient un jeton client-credentials Authentik `policy:write` et crée/soumet/active les contrats dans le service live.",
+          "Publication d'événements sur NATS (contrat lié/activé) pour que les domaines aval réagissent sans couplage."
         ],
         "stack": [
-          "k3s (Kubernetes)",
-          "MAAS",
-          "OpenTofu",
-          "Ansible",
-          "Cilium eBPF",
-          "Hubble",
-          "MetalLB",
-          "Longhorn",
-          "Velero + MinIO",
-          "Tailscale",
-          "kube-bench (CIS)"
+          "Go 1.25",
+          "PostgreSQL (CNPG)",
+          "NATS",
+          "Authentik (OIDC client-credentials)",
+          "OpenAPI",
+          "Docker",
+          "ArgoCD/Kargo (GitOps)"
         ],
-        "whyItMatters": "La plupart des démos Kubernetes tournent sur du cloud managé avec une carte bancaire. Ce cluster est construit depuis le bare-metal — provisioning, réseau, stockage, durcissement et mises à jour de version, le tout conçu et exploité par un seul ingénieur, comme une équipe plateforme exploite une infrastructure on-prem.",
+        "whyItMatters": "C'est la preuve « un Software Engineer construit un vrai service métier et le tient en production » : un microservice de domaine avec un contrat versionné, une auth service-à-service sécurisée, des événements, des migrations et une pyramide de tests complète — pas une démo CRUD.",
         "differentiators": [
-          "Infrastructure-as-code depuis le bare-metal : MAAS + OpenTofu + Ansible, pas une console cloud en click-ops.",
-          "Mises à jour k3s sans interruption via les Plans de system-upgrade-controller (cordon uniquement, compatible finalizers Longhorn).",
-          "Conforme au benchmark CIS (kube-bench 16/16), chiffrement au repos et pare-feu au niveau hôte."
+          "Émission inter-services réellement prouvée en prod (souscription → policy-service via client-credentials M2M), pas un appel mocké.",
+          "Contract-first : OpenAPI + tests de contrat ont attrapé des bugs de format (RFC3339) avant le merge.",
+          "Pyramide de tests complète (unitaire → intégration sur vrai Postgres → contrat → smoke) + supply chain (Trivy/Cosign/SBOM), promu dev→prod par Kargo."
         ],
-        "link": "https://andrelair-platform.github.io/minicloud-platform-docs/",
-        "repoUrl": "https://github.com/andrelair-platform/minicloud-ansible",
+        "link": "https://andrelair-platform.github.io/ktayl-policy-service/",
+        "repoUrl": "https://github.com/andrelair-platform/ktayl-policy-service",
         "atsKeywords": [
+          "Go",
+          "Golang",
+          "Microservice",
+          "REST API",
+          "OpenAPI",
+          "PostgreSQL",
+          "Event-Driven",
+          "NATS",
+          "OAuth2",
+          "Client Credentials",
+          "Insurance",
           "Kubernetes",
-          "k3s",
-          "Bare-metal",
-          "MAAS",
-          "OpenTofu",
-          "Terraform",
-          "Ansible",
-          "Cilium",
-          "eBPF",
-          "Longhorn",
-          "MetalLB",
-          "Durcissement CIS",
-          "Infrastructure as Code",
-          "Platform Engineering"
-        ],
-        "screenshots": [
-          {
-            "title": "MAAS — Provisionnement Bare-Metal des Nœuds",
-            "caption": "Interface MAAS montrant les nœuds ThinkPad du cluster enrollés, commissionnés et déployés avec Ubuntu 24.04 LTS via PXE boot. Chaque machine est gérée en infrastructure-as-code via OpenTofu. Capture de l'installation initiale à 3 nœuds — cluster étendu ensuite à 5 nœuds (star-kitten + swift-mac).",
-            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/maas-machines-overview.png",
-            "link": "http://100.88.123.8:5240/MAAS"
-          },
-          {
-            "title": "Grafana — Tableaux de Bord Cluster Kubernetes",
-            "caption": "Liste des tableaux de bord Grafana sur grafana.devandre.sbs — Kubernetes All-in-one Cluster Monitoring, Compute Resources par Namespace/Pod/Workload, CoreDNS, Alertmanager et cert-manager. Tous pré-provisionnés via le chart Helm kube-prometheus-stack.",
-            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/screenshot-grafana.png",
-            "link": "https://grafana.devandre.sbs/dashboards"
-          },
-          {
-            "title": "set-hog — Plan de Contrôle k3s (ThinkPad T71)",
-            "caption": "Détail machine MAAS pour set-hog (10.0.0.2) : Lenovo ThinkPad T71 Gen 1, 4 cœurs @ 1,8 GHz, 15,9 Go RAM, 512 Go NVMe. Exécute le plan de contrôle k3s — serveur API, scheduleur, controller-manager et etcd.",
-            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/set-hog-detail.png",
-            "link": "http://100.88.123.8:5240/MAAS"
-          },
-          {
-            "title": "fast-skunk — Nœud Worker k3s (ThinkPad T590)",
-            "caption": "Détail machine MAAS pour fast-skunk (10.0.0.4) : Lenovo ThinkPad T590, 8 cœurs, 15,9 Go RAM, 512 Go NVMe. Exécute les workloads IA/ML (LiteLLM, services RAG) et les services de plateforme.",
-            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/fast-skunk-detail.png",
-            "link": "http://100.88.123.8:5240/MAAS"
-          },
-          {
-            "title": "fast-heron — Nœud Worker k3s (ThinkPad T590)",
-            "caption": "Détail machine MAAS pour fast-heron (10.0.0.7) : Lenovo ThinkPad T590, 8 cœurs, 15,9 Go RAM, 512 Go NVMe. Nœud worker k3s exécutant la stack d'observabilité (Prometheus, Grafana, Loki) et les services de collaboration.",
-            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/fast-heron-detail.png",
-            "link": "http://100.88.123.8:5240/MAAS"
-          }
-        ],
-        "scope": [
-          "Fondation bare-metal : MAAS enrôle et commissionne les nœuds ThinkPad + MacBook ; OpenTofu gère le cycle de vie des machines en IaC.",
-          "Bootstrap k3s via Ansible avec durcissement CIS du kubelet (config.yaml par nœud) ; mesh Tailscale sur tous les nœuds.",
-          "Réseau : migration du CNI de flannel vers Cilium eBPF + Hubble ; MetalLB pour les IP de load-balancer bare-metal.",
-          "Stockage : bloc distribué Longhorn sur les nœuds porteurs de répliques + NFS ; sauvegardes Velero quotidiennes vers MinIO sur le contrôleur.",
-          "Cycle de vie : les Plans de system-upgrade-controller déploient k3s v1.33→v1.36 sans interruption (cordon uniquement, compatible finalizers Longhorn)."
-        ],
-        "architecture": [
-          "MAAS + OpenTofu → provisioning bare-metal ; nœuds enrôlés dans MAAS, cycle de vie géré en infrastructure-as-code.",
-          "Ansible → bootstrap k3s + durcissement CIS du kubelet, validé avec kube-bench (k3s-CIS-1.7).",
-          "CNI eBPF Cilium + observabilité Hubble ; MetalLB annonce l'IP LB 10.0.0.200 sur le LAN.",
-          "Longhorn réplique les volumes sur les nœuds de stockage (fast-heron / loving-gannet / swift-mac) ; Velero → MinIO sur le contrôleur.",
-          "Control plane sur set-hog (Kine/SQLite) + 5 workers ; Tailscale fournit le mesh sécurisé et l'accès distant."
-        ],
-        "testPlan": [
-          "kube-bench k3s-CIS-1.7 : 16/16 PASS sur tous les workers (config kubelet déployée via le playbook Ansible CIS).",
-          "Mise à jour sans interruption validée : system-upgrade-controller a déployé k3s v1.33→v1.36 sans SSH manuel ni interruption des workloads.",
-          "Sauvegarde/restauration : planning Velero quotidien actif ; restauration testée sur un namespace hors production.",
-          "Tests de résilience : réattachement/salvage des volumes Longhorn validé ; les redémarrages de nœud récupèrent proprement."
-        ]
-      },
-      {
-        "title": "Plateforme GitOps — ArgoCD + Kargo",
-        "oneLinePitch": "Une plateforme de livraison continue GitOps — ArgoCD app-of-apps comme source unique de vérité, promotion multi-étapes Kargo et une chaîne d'approvisionnement complète.",
-        "purpose": "La couche de livraison : chaque ressource du cluster est déclarée dans Git et réconciliée par ArgoCD (app-of-apps). Kargo promeut un artefact immuable dev→prod derrière un contrôle CODEOWNERS, et ArgoCD le déploie — aucun kubectl manuel en production.",
-        "role": "Ingénieur Plateforme / Release. Conception de l'architecture du dépôt GitOps (app-of-apps, wrapper charts Helm, overlays 2 environnements), du pipeline prod protégé par CODEOWNERS, et de la promotion Kargo + contrôles de chaîne d'approvisionnement.",
-        "impact": "~95 applications ArgoCD réconciliées depuis Git · aucun kubectl manuel en prod · 6 services custom promus dev→prod via Kargo derrière un contrôle CODEOWNERS.",
-        "features": [
-          "ArgoCD app-of-apps : minicloud-gitops est la source unique de vérité (apps/ Applications, helm-values/ overrides, services/ manifests) ; AppProject avec sourceRepos verrouillés.",
-          "Standard à deux environnements (dev + prod) avec auto-sync contrôlé par Git ; la prod n'avance que via une PR revue par CODEOWNERS et signée GPG.",
-          "Promotion multi-étapes Kargo : la CI build et prouve une image immuable, Kargo ouvre la PR de promotion dev→prod, ArgoCD la déploie — la CI ne touche jamais le cluster.",
-          "Helm golden path : chaque service est un wrapper chart dépendant d'une library chart partagée — un seul rendu Helm, une seule source ArgoCD.",
-          "Chaîne d'approvisionnement sur chaque image custom : Trivy CRITICAL exit-1, signature keyless Cosign (GitHub OIDC → Sigstore Fulcio), SBOM CycloneDX syft en OCI referrers, commits de bump signés GPG."
-        ],
-        "stack": [
-          "ArgoCD (app-of-apps)",
-          "Kargo",
-          "Helm",
-          "Kustomize",
-          "GitHub Actions",
-          "Cosign",
-          "syft (SBOM)",
-          "Trivy",
-          "OPA Gatekeeper",
-          "AppProject RBAC"
-        ],
-        "whyItMatters": "Le GitOps est facile à démontrer et difficile à exploiter. Cette plateforme applique la vraie discipline : un dépôt source verrouillé, un chemin de prod validé par un humain, des artefacts immuables promus par Kargo, et une chaîne d'approvisionnement qui fait échouer le build sur une CVE CRITICAL ou une signature manquante.",
-        "differentiators": [
-          "Kargo promeut un artefact immuable à travers les étapes — la CI prouve, Kargo promeut, ArgoCD déploie (pas de CI qui pilote les déploiements en sync-over-async).",
-          "La prod est contrôlée par Git (CODEOWNERS + signatures GPG), pas un humain qui clique sur Sync ; selfHeal + prune gardent le cluster aligné sur Git.",
-          "Chaîne d'approvisionnement de bout en bout : Trivy + Cosign keyless + SBOM syft en OCI referrers sur chaque image custom."
-        ],
-        "link": "https://andrelair-platform.github.io/minicloud-platform-docs/",
-        "repoUrl": "https://github.com/andrelair-platform/minicloud-gitops",
-        "atsKeywords": [
           "GitOps",
-          "ArgoCD",
-          "Kargo",
-          "Livraison continue",
-          "Helm",
-          "Kustomize",
-          "CI/CD",
-          "GitHub Actions",
-          "Cosign",
-          "SBOM",
-          "Sécurité chaîne d'approvisionnement",
-          "Trivy",
-          "RBAC",
-          "Déploiement progressif"
-        ],
-        "screenshots": [
-          {
-            "title": "ArgoCD — Toutes les Applications de la Plateforme",
-            "caption": "Tuiles ArgoCD montrant la plateforme complète : Authentik, Backstage, Vault, Grafana, Harbor, Longhorn, Plane CE et tous les workloads IA/ML — tous Synced et Healthy. Le panneau de statut de santé (gauche) affiche toutes les apps saines sur le cluster.",
-            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/screenshot-argocd.png",
-            "link": "https://argocd.devandre.sbs"
-          }
-        ],
-        "scope": [
-          "Architecture du dépôt : app-of-apps — apps/ Applications, helm-values/ overrides, services/ manifests ; AppProject avec sourceRepos verrouillés.",
-          "Deux environnements (dev + prod) avec auto-sync contrôlé par Git ; prod protégée par CODEOWNERS + PR signées GPG.",
-          "Kargo promeut une image immuable dev→prod : la CI prouve l'artefact, Kargo ouvre la PR, ArgoCD déploie.",
-          "Helm golden path : les services sont des wrapper charts fins sur une library chart partagée (un rendu Helm, une source ArgoCD)."
+          "Contract Testing"
         ],
         "architecture": [
-          "ArgoCD app-of-apps réconcilie ~95 Applications depuis Git (root app recurse:true).",
-          "Par service : Kargo Project + Warehouse + Stages dev/prod ; la PR de promotion est fusionnée en squash signé.",
-          "La CI pousse les images vers Harbor (dev) + ghcr.io (prod, taguées SHA) avec Cosign + SBOM syft.",
-          "Argo Rollouts canary/BlueGreen avec AnalysisTemplates Prometheus comme frein d'exécution."
+          "Microservice Go, PostgreSQL (CNPG) avec migrations SQL ; domaine autonome (contrats, garanties, prime).",
+          "API REST versionnée (OpenAPI) ; auth machine-to-machine via Authentik client-credentials (scope `policy:write`, vérifié par JWKS).",
+          "Publie les événements de cycle de vie sur NATS ; les consommateurs (analytics, domaines aval) s'y abonnent.",
+          "Construit/signé en CI (Trivy + Cosign + SBOM), promu dev→prod par Kargo derrière une barrière CODEOWNERS."
         ],
         "testPlan": [
-          "Chaque image prod : Trivy CRITICAL exit-1, signature Cosign + SBOM syft vérifiés en OCI referrers.",
-          "Les changements prod exigent une revue CODEOWNERS + une signature GPG vérifiée avant l'auto-sync.",
-          "Kargo ne promeut que du Freight vérifié en dev ; les AnalysisRuns de Rollouts gardent le canary sur métriques live.",
-          "selfHeal + prune d'ArgoCD maintiennent le cluster aligné sur Git ; la dérive est corrigée automatiquement."
+          "Unitaire (logique de domaine) + intégration sur un vrai PostgreSQL (garde-fou base jetable).",
+          "Tests de contrat vs l'OpenAPI pour que les consommateurs ne dérivent pas (a attrapé le bug de date RFC3339 avant merge).",
+          "Smoke live sur le service déployé avant la promotion prod."
         ]
       },
       {
@@ -933,6 +810,236 @@
             "caption": "Onglet API de Backstage affichant la spec OpenAPI 3.1 de rag-ingest-api. Endpoints : GET /health (sonde de vivacité), GET /ready (sonde de disponibilité), POST /ingest (ingestion de document dans pgvector). Service interne au cluster : rag-ingest.ai.svc.cluster.local:8001.",
             "src": "/screenshots/rag-ingest-api-overview.png"
           }
+        ]
+      },
+      {
+        "title": "Data Platform — dbt + Metabase (Medallion)",
+        "oneLinePitch": "Une plateforme analytique fine de bout en bout — des sources métier live ingérées dans une medallion (raw → staging → marts) avec dbt, un produit de données gouverné, et une BI Metabase auto-provisionnée.",
+        "purpose": "Transformer les systèmes opérationnels du SI ktayl-solution en analytics décisionnelles : ingérer les bases sources live, les modéliser avec dbt, et exposer un produit de données curé dans Metabase — une vraie tranche verticale, pas un framework de connecteurs générique.",
+        "role": "Data / Analytics Engineer. J'ai construit l'ingestion, les modèles dbt medallion, le produit de données `policy_portfolio`, et le provisionneur Metabase idempotent ; déploiement câblé via GitOps.",
+        "impact": "Deux sources live (contrats + souscription) ingérées dans une medallion · un produit de données `policy_portfolio` joignant les contrats à la prime tarifée faisant autorité · GWP promu d'un proxy de 12 k€ à 400 € faisant autorité sur un contrat réellement lié.",
+        "features": [
+          "Ingestion des bases sources live vers `raw` (COPY full-refresh), puis une medallion dbt (staging → marts) avec des modèles testés.",
+          "Produit de données `policy_portfolio` : joint contrats + souscription par policy_number, calcule le GWP (prime tarifée faisant autorité, à défaut un proxy annualisé) et le TIV.",
+          "Provisionneur Metabase (Python) idempotent et sans secret qui crée la source de données analytics + les cartes + le dashboard."
+        ],
+        "stack": [
+          "dbt",
+          "PostgreSQL (CNPG)",
+          "Python",
+          "SQL",
+          "Metabase",
+          "CloudNativePG",
+          "ArgoCD (CronJobs/ESO/netpols)"
+        ],
+        "whyItMatters": "Ça montre que je peux amener des données opérationnelles brutes jusqu'à un produit BI gouverné — modélisation, tests, lineage et déploiement — en suivant une discipline de tranche fine (une source réelle → medallion juste suffisante → un produit) plutôt que du sur-engineering.",
+        "differentiators": [
+          "Tranche verticale fine par conception (une source live → medallion → un produit → BI), pas un cluster OLAP spéculatif.",
+          "Produit de données cross-domaine : promeut le GWP à la prime de souscription faisant autorité quand elle existe.",
+          "Séparation code/déploiement : dbt+ingest+provisionneur dans leur propre repo ; minicloud-gitops les clone et les exécute (CronJobs/ESO/netpols)."
+        ],
+        "link": "https://andrelair-platform.github.io/minicloud-platform-docs/",
+        "repoUrl": "https://github.com/andrelair-platform/ktayl-data-platform",
+        "atsKeywords": [
+          "Data Engineering",
+          "dbt",
+          "Analytics Engineering",
+          "Medallion Architecture",
+          "ETL",
+          "ELT",
+          "PostgreSQL",
+          "Metabase",
+          "BI",
+          "Data Modeling",
+          "SQL",
+          "Python",
+          "CloudNativePG",
+          "Data Product"
+        ],
+        "architecture": [
+          "Scripts d'ingestion : COPY des bases sources live (contrats, souscription) vers `raw` analytics.",
+          "Medallion dbt : staging → marts ; le mart `policy_portfolio` comme produit de données.",
+          "Postgres analytics CNPG ; rôles RO + network policies ; secrets via Vault→ESO.",
+          "Metabase auto-provisionné par un job Python idempotent ; CronJobs orchestrés depuis minicloud-gitops."
+        ]
+      },
+      {
+        "title": "Plateforme GitOps — ArgoCD + Kargo",
+        "oneLinePitch": "Une plateforme de livraison continue GitOps — ArgoCD app-of-apps comme source unique de vérité, promotion multi-étapes Kargo et une chaîne d'approvisionnement complète.",
+        "purpose": "La couche de livraison : chaque ressource du cluster est déclarée dans Git et réconciliée par ArgoCD (app-of-apps). Kargo promeut un artefact immuable dev→prod derrière un contrôle CODEOWNERS, et ArgoCD le déploie — aucun kubectl manuel en production.",
+        "role": "Ingénieur Plateforme / Release. Conception de l'architecture du dépôt GitOps (app-of-apps, wrapper charts Helm, overlays 2 environnements), du pipeline prod protégé par CODEOWNERS, et de la promotion Kargo + contrôles de chaîne d'approvisionnement.",
+        "impact": "~95 applications ArgoCD réconciliées depuis Git · aucun kubectl manuel en prod · 6 services custom promus dev→prod via Kargo derrière un contrôle CODEOWNERS.",
+        "features": [
+          "ArgoCD app-of-apps : minicloud-gitops est la source unique de vérité (apps/ Applications, helm-values/ overrides, services/ manifests) ; AppProject avec sourceRepos verrouillés.",
+          "Standard à deux environnements (dev + prod) avec auto-sync contrôlé par Git ; la prod n'avance que via une PR revue par CODEOWNERS et signée GPG.",
+          "Promotion multi-étapes Kargo : la CI build et prouve une image immuable, Kargo ouvre la PR de promotion dev→prod, ArgoCD la déploie — la CI ne touche jamais le cluster.",
+          "Helm golden path : chaque service est un wrapper chart dépendant d'une library chart partagée — un seul rendu Helm, une seule source ArgoCD.",
+          "Chaîne d'approvisionnement sur chaque image custom : Trivy CRITICAL exit-1, signature keyless Cosign (GitHub OIDC → Sigstore Fulcio), SBOM CycloneDX syft en OCI referrers, commits de bump signés GPG."
+        ],
+        "stack": [
+          "ArgoCD (app-of-apps)",
+          "Kargo",
+          "Helm",
+          "Kustomize",
+          "GitHub Actions",
+          "Cosign",
+          "syft (SBOM)",
+          "Trivy",
+          "OPA Gatekeeper",
+          "AppProject RBAC"
+        ],
+        "whyItMatters": "Le GitOps est facile à démontrer et difficile à exploiter. Cette plateforme applique la vraie discipline : un dépôt source verrouillé, un chemin de prod validé par un humain, des artefacts immuables promus par Kargo, et une chaîne d'approvisionnement qui fait échouer le build sur une CVE CRITICAL ou une signature manquante.",
+        "differentiators": [
+          "Kargo promeut un artefact immuable à travers les étapes — la CI prouve, Kargo promeut, ArgoCD déploie (pas de CI qui pilote les déploiements en sync-over-async).",
+          "La prod est contrôlée par Git (CODEOWNERS + signatures GPG), pas un humain qui clique sur Sync ; selfHeal + prune gardent le cluster aligné sur Git.",
+          "Chaîne d'approvisionnement de bout en bout : Trivy + Cosign keyless + SBOM syft en OCI referrers sur chaque image custom."
+        ],
+        "link": "https://andrelair-platform.github.io/minicloud-platform-docs/",
+        "repoUrl": "https://github.com/andrelair-platform/minicloud-gitops",
+        "atsKeywords": [
+          "GitOps",
+          "ArgoCD",
+          "Kargo",
+          "Livraison continue",
+          "Helm",
+          "Kustomize",
+          "CI/CD",
+          "GitHub Actions",
+          "Cosign",
+          "SBOM",
+          "Sécurité chaîne d'approvisionnement",
+          "Trivy",
+          "RBAC",
+          "Déploiement progressif"
+        ],
+        "screenshots": [
+          {
+            "title": "ArgoCD — Toutes les Applications de la Plateforme",
+            "caption": "Tuiles ArgoCD montrant la plateforme complète : Authentik, Backstage, Vault, Grafana, Harbor, Longhorn, Plane CE et tous les workloads IA/ML — tous Synced et Healthy. Le panneau de statut de santé (gauche) affiche toutes les apps saines sur le cluster.",
+            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/screenshot-argocd.png",
+            "link": "https://argocd.devandre.sbs"
+          }
+        ],
+        "scope": [
+          "Architecture du dépôt : app-of-apps — apps/ Applications, helm-values/ overrides, services/ manifests ; AppProject avec sourceRepos verrouillés.",
+          "Deux environnements (dev + prod) avec auto-sync contrôlé par Git ; prod protégée par CODEOWNERS + PR signées GPG.",
+          "Kargo promeut une image immuable dev→prod : la CI prouve l'artefact, Kargo ouvre la PR, ArgoCD déploie.",
+          "Helm golden path : les services sont des wrapper charts fins sur une library chart partagée (un rendu Helm, une source ArgoCD)."
+        ],
+        "architecture": [
+          "ArgoCD app-of-apps réconcilie ~95 Applications depuis Git (root app recurse:true).",
+          "Par service : Kargo Project + Warehouse + Stages dev/prod ; la PR de promotion est fusionnée en squash signé.",
+          "La CI pousse les images vers Harbor (dev) + ghcr.io (prod, taguées SHA) avec Cosign + SBOM syft.",
+          "Argo Rollouts canary/BlueGreen avec AnalysisTemplates Prometheus comme frein d'exécution."
+        ],
+        "testPlan": [
+          "Chaque image prod : Trivy CRITICAL exit-1, signature Cosign + SBOM syft vérifiés en OCI referrers.",
+          "Les changements prod exigent une revue CODEOWNERS + une signature GPG vérifiée avant l'auto-sync.",
+          "Kargo ne promeut que du Freight vérifié en dev ; les AnalysisRuns de Rollouts gardent le canary sur métriques live.",
+          "selfHeal + prune d'ArgoCD maintiennent le cluster aligné sur Git ; la dérive est corrigée automatiquement."
+        ]
+      },
+      {
+        "title": "Cluster Kubernetes — k3s bare-metal",
+        "oneLinePitch": "Un cluster Kubernetes bare-metal de 6 nœuds construit de zéro — provisioning MAAS, k3s, réseau eBPF Cilium, stockage Longhorn et mises à jour sans interruption.",
+        "purpose": "La fondation de calcul de la plateforme : un cluster k3s auto-hébergé de 6 nœuds sur des ThinkPad recyclés et un MacBook Pro, provisionné en infrastructure-as-code et durci selon les benchmarks CIS. C'est la couche d'infrastructure sur laquelle tout le reste s'exécute.",
+        "role": "Ingénieur Plateforme / Infrastructure. Provisioning bare-metal avec MAAS + OpenTofu, bootstrap k3s avec Ansible (durcissement CIS du kubelet) ; responsable du réseau, du stockage et du cycle de vie du cluster.",
+        "impact": "6/6 nœuds Ready · k3s mis à jour v1.33→v1.36 sans interruption (aucun SSH manuel) · kube-bench k3s-CIS-1.7 16/16 PASS sur tous les workers.",
+        "features": [
+          "Provisioning bare-metal en code : MAAS enrôle et commissionne les nœuds ThinkPad ; OpenTofu gère le cycle de vie des machines ; Ansible bootstrappe k3s.",
+          "CNI eBPF Cilium + observabilité réseau Hubble (migration depuis flannel) ; MetalLB fournit des IP de load-balancer sur bare-metal.",
+          "Stockage bloc distribué Longhorn sur les nœuds, avec sauvegardes Velero quotidiennes vers MinIO sur le contrôleur ; NFS pour les volumes partagés.",
+          "Kubelet durci CIS, chiffrement des secrets au repos (AES-CBC-256), journaux d'audit k3s, UFW default-deny + durcissement SSH sur chaque nœud.",
+          "Cycle de vie sans interruption : system-upgrade-controller déploie les mises à jour k3s sur tous les nœuds via des Plans — cordon uniquement (compatible Longhorn), sans SSH manuel."
+        ],
+        "stack": [
+          "k3s (Kubernetes)",
+          "MAAS",
+          "OpenTofu",
+          "Ansible",
+          "Cilium eBPF",
+          "Hubble",
+          "MetalLB",
+          "Longhorn",
+          "Velero + MinIO",
+          "Tailscale",
+          "kube-bench (CIS)"
+        ],
+        "whyItMatters": "La plupart des démos Kubernetes tournent sur du cloud managé avec une carte bancaire. Ce cluster est construit depuis le bare-metal — provisioning, réseau, stockage, durcissement et mises à jour de version, le tout conçu et exploité par un seul ingénieur, comme une équipe plateforme exploite une infrastructure on-prem.",
+        "differentiators": [
+          "Infrastructure-as-code depuis le bare-metal : MAAS + OpenTofu + Ansible, pas une console cloud en click-ops.",
+          "Mises à jour k3s sans interruption via les Plans de system-upgrade-controller (cordon uniquement, compatible finalizers Longhorn).",
+          "Conforme au benchmark CIS (kube-bench 16/16), chiffrement au repos et pare-feu au niveau hôte."
+        ],
+        "link": "https://andrelair-platform.github.io/minicloud-platform-docs/",
+        "repoUrl": "https://github.com/andrelair-platform/minicloud-ansible",
+        "atsKeywords": [
+          "Kubernetes",
+          "k3s",
+          "Bare-metal",
+          "MAAS",
+          "OpenTofu",
+          "Terraform",
+          "Ansible",
+          "Cilium",
+          "eBPF",
+          "Longhorn",
+          "MetalLB",
+          "Durcissement CIS",
+          "Infrastructure as Code",
+          "Platform Engineering"
+        ],
+        "screenshots": [
+          {
+            "title": "MAAS — Provisionnement Bare-Metal des Nœuds",
+            "caption": "Interface MAAS montrant les nœuds ThinkPad du cluster enrollés, commissionnés et déployés avec Ubuntu 24.04 LTS via PXE boot. Chaque machine est gérée en infrastructure-as-code via OpenTofu. Capture de l'installation initiale à 3 nœuds — cluster étendu ensuite à 5 nœuds (star-kitten + swift-mac).",
+            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/maas-machines-overview.png",
+            "link": "http://100.88.123.8:5240/MAAS"
+          },
+          {
+            "title": "Grafana — Tableaux de Bord Cluster Kubernetes",
+            "caption": "Liste des tableaux de bord Grafana sur grafana.devandre.sbs — Kubernetes All-in-one Cluster Monitoring, Compute Resources par Namespace/Pod/Workload, CoreDNS, Alertmanager et cert-manager. Tous pré-provisionnés via le chart Helm kube-prometheus-stack.",
+            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/screenshot-grafana.png",
+            "link": "https://grafana.devandre.sbs/dashboards"
+          },
+          {
+            "title": "set-hog — Plan de Contrôle k3s (ThinkPad T71)",
+            "caption": "Détail machine MAAS pour set-hog (10.0.0.2) : Lenovo ThinkPad T71 Gen 1, 4 cœurs @ 1,8 GHz, 15,9 Go RAM, 512 Go NVMe. Exécute le plan de contrôle k3s — serveur API, scheduleur, controller-manager et etcd.",
+            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/set-hog-detail.png",
+            "link": "http://100.88.123.8:5240/MAAS"
+          },
+          {
+            "title": "fast-skunk — Nœud Worker k3s (ThinkPad T590)",
+            "caption": "Détail machine MAAS pour fast-skunk (10.0.0.4) : Lenovo ThinkPad T590, 8 cœurs, 15,9 Go RAM, 512 Go NVMe. Exécute les workloads IA/ML (LiteLLM, services RAG) et les services de plateforme.",
+            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/fast-skunk-detail.png",
+            "link": "http://100.88.123.8:5240/MAAS"
+          },
+          {
+            "title": "fast-heron — Nœud Worker k3s (ThinkPad T590)",
+            "caption": "Détail machine MAAS pour fast-heron (10.0.0.7) : Lenovo ThinkPad T590, 8 cœurs, 15,9 Go RAM, 512 Go NVMe. Nœud worker k3s exécutant la stack d'observabilité (Prometheus, Grafana, Loki) et les services de collaboration.",
+            "src": "https://raw.githubusercontent.com/andrelair-platform/minicloud-platform-docs/main/static/img/fast-heron-detail.png",
+            "link": "http://100.88.123.8:5240/MAAS"
+          }
+        ],
+        "scope": [
+          "Fondation bare-metal : MAAS enrôle et commissionne les nœuds ThinkPad + MacBook ; OpenTofu gère le cycle de vie des machines en IaC.",
+          "Bootstrap k3s via Ansible avec durcissement CIS du kubelet (config.yaml par nœud) ; mesh Tailscale sur tous les nœuds.",
+          "Réseau : migration du CNI de flannel vers Cilium eBPF + Hubble ; MetalLB pour les IP de load-balancer bare-metal.",
+          "Stockage : bloc distribué Longhorn sur les nœuds porteurs de répliques + NFS ; sauvegardes Velero quotidiennes vers MinIO sur le contrôleur.",
+          "Cycle de vie : les Plans de system-upgrade-controller déploient k3s v1.33→v1.36 sans interruption (cordon uniquement, compatible finalizers Longhorn)."
+        ],
+        "architecture": [
+          "MAAS + OpenTofu → provisioning bare-metal ; nœuds enrôlés dans MAAS, cycle de vie géré en infrastructure-as-code.",
+          "Ansible → bootstrap k3s + durcissement CIS du kubelet, validé avec kube-bench (k3s-CIS-1.7).",
+          "CNI eBPF Cilium + observabilité Hubble ; MetalLB annonce l'IP LB 10.0.0.200 sur le LAN.",
+          "Longhorn réplique les volumes sur les nœuds de stockage (fast-heron / loving-gannet / swift-mac) ; Velero → MinIO sur le contrôleur.",
+          "Control plane sur set-hog (Kine/SQLite) + 5 workers ; Tailscale fournit le mesh sécurisé et l'accès distant."
+        ],
+        "testPlan": [
+          "kube-bench k3s-CIS-1.7 : 16/16 PASS sur tous les workers (config kubelet déployée via le playbook Ansible CIS).",
+          "Mise à jour sans interruption validée : system-upgrade-controller a déployé k3s v1.33→v1.36 sans SSH manuel ni interruption des workloads.",
+          "Sauvegarde/restauration : planning Velero quotidien actif ; restauration testée sur un namespace hors production.",
+          "Tests de résilience : réattachement/salvage des volumes Longhorn validé ; les redémarrages de nœud récupèrent proprement."
         ]
       },
       {
