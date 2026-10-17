@@ -532,7 +532,7 @@
     "projects": [
       {
         "title": "Retrieva — DORA-Compliance-Plattform",
-        "oneLinePitch": "Eine produktive DORA-Compliance-Plattform für Finanzunternehmen — Drittparteien-ICT-Risikobewertungen, LLM-bewertete Lieferanten-Fragebögen, ein KI-Copilot und Ein-Klick-Export des EBA-Informationsregisters.",
+        "oneLinePitch": "Die meisten Finanzunternehmen sind durch den DORA-Probelauf 2024 gefallen. Retrieva macht aus der Drittparteien-ICT-Risiko-Compliance statt Tabellen-Chaos echte Nachweise — aus Lieferantendokumenten werden eine LLM-bewertete Gap-Analyse und ein Ein-Klick-Export des EBA-Informationsregisters.",
         "purpose": "Mein RNCP39583-Zertifizierungsprodukt (ein eigenständiges Produkt, das auf der Plattform läuft, getrennt vom Versicherungs-IS): Retrieva automatisiert die DORA-Compliance (EU 2022/2554) für Drittparteien-ICT-Risiko bei Finanzunternehmen — Gap-Analyse der Lieferantendokumentation, LLM-bewertete Fragebögen, ein Compliance-Copilot, 24-Stunden-Monitoring-Alerts und Export des EBA-Informationsregisters (Artikel 28(3)).",
         "role": "Full-Stack-/AI-Engineer & Product Owner. Entwurf und Umsetzung des mandantenfähigen SaaS end-to-end — Express-Backend, Next.js-Frontend, die RAG-+-Assessment-Pipeline und die GitOps-/Kargo-Delivery auf der Plattform.",
         "impact": "4 Delivery-Phasen in Produktion · Ein-Klick-Export des EBA-Informationsregisters (RT.01.01→RT.04.01) · mandantenfähiges RBAC · DORA-Gap-Analyse pro Artikel (abgedeckt / teilweise / fehlend).",
@@ -612,7 +612,7 @@
       },
       {
         "title": "ktayl Policy Service — Versicherungs-PAS (Go)",
-        "oneLinePitch": "Ein Produktions-Microservice zur Vertragsverwaltung in Go — der komplette Lebenszyklus des Versicherungsvertrags (Anlage → Aktivierung → Aussetzung → Kündigung), mit Deckungen, Prämien-Tracking, einer versionierten REST-API und Event-Publishing.",
+        "oneLinePitch": "Der transaktionale Kern eines Versicherers, richtig gebaut — ein Policen-Verwaltungs-Service in Go, der den kompletten Vertragslebenszyklus end-to-end abwickelt, belegt durch eine echte Police, die live über einen service-übergreifenden Machine-to-Machine-Aufruf gebunden wurde.",
         "purpose": "Das führende System für Versicherungsverträge im ktayl-solution-IS. Es besitzt den Vertragslebenszyklus und stellt ihn als governte REST-API bereit, die andere Domänen (Underwriting, Billing) aufrufen, um echte Verträge auszustellen und zu aktivieren.",
         "role": "Backend- / Software Engineer. Ich habe das Domänenmodell, den Go-Service, das PostgreSQL-Schema und die Migrationen, den OpenAPI-Vertrag, die Machine-to-Machine-Auth und das GitOps-Deployment entworfen.",
         "impact": "In Produktion: ein echter Vertrag (UW-369188ABE405, 400 €) end-to-end über einen serviceübergreifenden Machine-to-Machine-Aufruf ausgestellt · vollständiger Zyklus Anlage→Einreichung→Aktivierung · idempotente Neuausstellung.",
@@ -670,7 +670,7 @@
         "title": "Enterprise KI-Gateway",
         "purpose": "Multi-Provider-LLM-Routing- und Enterprise-Governance-Plattform auf LiteLLM-Basis unter Kubernetes. Vereinheitlichung von 8 Cloud- und lokalen Providern (Groq, OpenAI, Gemini, DeepSeek, Mistral, Anthropic Claude, HuggingFace featherless-ai via router.huggingface.co und lokales Ollama) hinter einem einzigen API-Endpoint mit intelligentem Fallback-Routing (Ollama→Groq→DeepSeek), Presidio PII/DLP-Bereinigung, 3-stufiger Abteilungsschlüssel-Governance mit abteilungsspezifischen Budget-Caps und Modell-Allowlists, Circuit-Breaker-Schutz, Valkey-Prompt-Cache und vollständigem Langfuse-LLMOps-Tracing. Kostentransparenz über ein Grafana-Dashboard mit SQL-Abfragen auf LiteLLMs PostgreSQL-Nutzungstabellen. Beinhaltet Langfuse v3.201.1 mit ClickHouse-Analytics-Backend, Authentik OIDC und einer NVIDIA NIM-Tier (nemotron-70b, llama-8b, deepseek-r1).",
         "role": "KI-Plattformingenieur. Entwurf der 8-Provider-Routing-Topologie und der 3-stufigen Fallback-Kette, Implementierung von Presidio PII/DLP als Pre-Call-LiteLLM-Guardrail mit finanzspezifischer Entity-Allow-List (DATE_TIME und LOCATION ausgeschlossen, um Jahre und Länderbezeichnungen nicht zu maskieren), Aufbau des 3-stufigen Abteilungsschlüssel-Governance-Modells mit Budget-Caps und Modell-Allowlists, Konfiguration des Circuit Breakers (cooldown_time=60s, allowed_fails=3), Deployment von Langfuse v3.201.1 mit ClickHouse+Valkey und Authentik OIDC-Integration sowie Erstellung des Grafana-Kostendashboards mit SQL-Abfragen auf LiteLLMs PostgreSQL-Nutzungstabellen.",
-        "impact": "8 LLM-Provider hinter einem Endpoint vereint — Cloud oder lokal, transparent. deepseek-r1:7b cloud-first reduziert die Inferenzlatenz von 40+s (lokale CPU) auf 5-8s (DeepSeek Cloud API). Automatisches Failover: Anwendungen überleben Provider-Ausfälle ohne Codeänderungen. Abteilungs-Budget-Caps erzwingen FinOps-Grenzen auf API-Ebene. Jede Anfrage in Langfuse mit Kosten, Latenz und Modell-Metadaten für vollständiges Audit protokolliert.",
+        "impact": "Anwendungen überstehen einen Provider-Ausfall ohne Codeänderung (3-stufige Fallback-Kette) · Cloud-first-Routing senkt die deepseek-r1-Inferenz von 40+s (lokale CPU) auf 5-8s · Abteilungs-Budget-Caps erzwingen FinOps-Grenzen auf API-Ebene · jede Anfrage wird PII-anonymisiert (Presidio) und in Langfuse mit Kosten, Latenz und Modell-Metadaten protokolliert.",
         "features": [
           "8-Provider-Routing: Groq, OpenAI, Gemini, DeepSeek, Mistral, Anthropic Claude, HuggingFace featherless-ai, Ollama — einzelner LiteLLM-Endpoint",
           "Intelligente Fallback-Kette: Ollama → Groq → DeepSeek — automatisches Failover bei Provider-Ausfall",
@@ -770,13 +770,13 @@
             "url": "https://langfuse.devandre.sbs"
           }
         ],
-        "oneLinePitch": "Ein selbst-gehostetes Enterprise-LLM-Gateway — 8 Provider (Cloud + lokal) hinter einem OpenAI-kompatiblen Endpoint, mit 3-stufiger Fallback-Kette, PII/DLP-Redaction, Prompt-Caching, Kosten-Dashboards und vollständigem LLMOps-Tracing."
+        "oneLinePitch": "Ein einziger OpenAI-kompatibler Endpoint vor 8 LLM-Providern — damit Anwendungen Provider-Ausfälle ohne Codeänderung überstehen, PII das Haus nie verlässt und jeder ausgegebene Euro gedeckelt und nachverfolgt wird."
       },
       {
         "title": "Enterprise RAG Pipeline",
         "purpose": "Aufbau einer vollständigen mehrsprachigen RAG-Pipeline für die Suche in französischen Versicherungsdokumenten über drei benutzerdefinierte Repos. minicloud-markitdown-proxy (FastAPI): leitet Dokumente nach Typ weiter — PDF/Bilder zu Docling OCR, Office/HTML zu MarkItDown im Pod — mit Docling-kompatibler API-Oberfläche. minicloud-rag-ingest (FastAPI): vollständige Ingestion-Pipeline in einem HTTP-Endpoint — Konvertierung → strukturiertes Heading-Chunking (französisches Versicherungs-Regex) → bge-m3 1024-dim Embedding → pgvector HNSW INSERT. minicloud-postgresql-noavx512: benutzerdefiniertes PostgreSQL-Image mit pgvector's vector.so neu gebaut ohne -mavx512f/bw/vl/dq — behebt SIGILL-Absturz auf i7-8565U/i7-10510U CPUs durch AVX-512 EVEX-Instruktionen in pgvector 0.8.4. Hybrid-Such-Schicht: BM25 mit französischem Snowball-Stemmer + NLTK-Stoppwörter via Init-Container in rank_bm25/utils.py gepatcht. Cross-Encoder-Re-Ranking (ms-marco-MiniLM-L-6-v2) filtert auf Top-3.",
         "role": "Systems Engineer & ML Engineer. Diagnose der SIGILL-Grundursache (pgvector 0.8.4 HNSW-Code emittiert AVX-512 EVEX-Instruktionen, nicht unterstützt von i7-8565U/i7-10510U), Neukompilierung von vector.so ohne AVX-512 und Paketierung als benutzerdefiniertes Harbor-Image. Entwurf der Zwei-Microservice-Ingestion-Architektur, Entwicklung des französischen BM25-Preprocessors (NLTK-Snowball-Stemmer + Versicherungs-Stoppwörter via Init-Container subPath-Mount in rank_bm25/utils.py gepatcht) und Integration von Docling als PDF/OCR-Backend. Beide Microservices mit Dockerfile, GitHub Actions CI und cosign Keyless-Signierung ausgeliefert.",
-        "impact": "Alle HNSW-Index-Operationen auf CPUs ohne AVX-512 entsperrt — null SIGILL-Abstürze nach dem Fix. Gemessene Pipeline-Latenzen: HNSW-Vektorscan 0,31ms, BM25-GIN-FTS 2,71ms, INSERT + HNSW-Update 6,8ms/Zeile, bge-m3-Embedding 393ms. Französisches Stemming verifiziert: sinistres/sinistre → sinistr ✅, réassurance/réassurer → réassur ✅. Vollständig im Cluster end-to-end: PDF-Upload → Docling OCR → strukturierte Chunks → 1024-dim Vektoren → pgvector HNSW + BM25 Hybrid → Cross-Encoder Top-3. Keine externen API-Aufrufe.",
+        "impact": "Vollständig im Cluster, null externe API-Aufrufe — PDF → Docling OCR → strukturierte Chunks → 1024-dim Vektoren → pgvector HNSW + BM25 Hybrid → Cross-Encoder Top-3 · entsperrt durch Neubau von pgvector ohne AVX-512 (seither null SIGILL-Abstürze) · HNSW-Vektorscan im Sub-Millisekunden-Bereich; französisches Stemming verifiziert (sinistres → sinistr).",
         "features": [
           "minicloud-markitdown-proxy: PDF/Bilder → Docling OCR, Office/HTML → MarkItDown im Pod (Docling-kompatible API)",
           "minicloud-rag-ingest: einzelner HTTP-Endpoint — konvertieren → chunken → bge-m3 embedding → pgvector HNSW INSERT",
@@ -802,7 +802,7 @@
         ],
         "link": "https://andrelair-platform.github.io/minicloud-platform-docs/",
         "repoUrl": "https://github.com/andrelair-platform/minicloud-rag-ingest",
-        "oneLinePitch": "A three-repo multilingual RAG pipeline — French insurance document ingestion from PDF upload to pgvector HNSW in one HTTP call, with a custom PostgreSQL image to fix an AVX-512 SIGILL crash on cluster CPUs.",
+        "oneLinePitch": "Vollständig souveränes Verständnis französischer Versicherungsdokumente — vom PDF zu durchsuchbaren Vektoren in einem einzigen Aufruf, ohne dass je Daten den Cluster verlassen. Trotz eines SIGILL-Absturzes auf CPU-Ebene ausgeliefert, indem PostgreSQLs Vektor-Engine aus dem Quellcode neu gebaut wurde.",
         "whyItMatters": "Off-the-shelf RAG tooling splits documents by character count and has no awareness of legal structure. French insurance contracts are organised around articles, clauses, and annexes — a chunk that straddles two articles loses the legal context of both. This pipeline splits at heading boundaries, tags every chunk with doc_type/section/article metadata, and stores it in a vector+BM25 hybrid index so retrieval is both semantically accurate and keyword-precise. The whole pipeline runs in-cluster with no external API calls during ingestion — a hard requirement for handling confidential insurance documents.",
         "differentiators": [
           "Structure-aware chunking — splits on French insurance heading patterns (Article, Chapitre, Titre, Annexe, Garantie) before falling back to paragraph boundaries; character-count splitters would cut across article boundaries",
@@ -865,7 +865,7 @@
       },
       {
         "title": "Data Platform — dbt + Metabase (Medallion)",
-        "oneLinePitch": "Eine schlanke End-to-End-Analytics-Plattform — Live-Fachquellen in eine Medallion (raw → staging → marts) mit dbt ingestiert, ein governtes Datenprodukt und selbst-provisioniertes Metabase-BI.",
+        "oneLinePitch": "Von Rohdaten zu einer belastbaren Kennzahl in einer governten Pipeline — eine dbt-Medallion, die zwei Live-Quellsysteme in eine autoritative Gross-Written-Premium-Zahl verwandelt, ausgeliefert in selbst-provisioniertem BI.",
         "purpose": "Die operativen Systeme des ktayl-solution-IS in entscheidungsreife Analytics verwandeln: Live-Quelldatenbanken ingestieren, mit dbt modellieren und ein kuratiertes Datenprodukt in Metabase bereitstellen — eine echte vertikale Scheibe, kein generisches Konnektor-Framework.",
         "role": "Data / Analytics Engineer. Ich habe die Ingestion, die dbt-Medallion-Modelle, das Datenprodukt `policy_portfolio` und den idempotenten Metabase-Provisioner gebaut; Deployment via GitOps verdrahtet.",
         "impact": "Zwei Live-Quellen (Verträge + Underwriting) in eine Medallion ingestiert · ein Datenprodukt `policy_portfolio`, das Verträge mit der maßgeblichen tarifierten Prämie verknüpft · GWP von einem 12k€-Proxy auf 400 € maßgeblich bei einem real gebundenen Vertrag angehoben.",
@@ -916,7 +916,7 @@
       },
       {
         "title": "GitOps-Plattform — ArgoCD + Kargo",
-        "oneLinePitch": "Eine GitOps-Continuous-Delivery-Plattform — ArgoCD app-of-apps als Single Source of Truth, mehrstufige Kargo-Promotion und ein vollständiges Supply-Chain-Gate.",
+        "oneLinePitch": "Jede Änderung an ~95 Services wird gleich ausgeliefert — ein reviewter Git-Commit, nie ein Mensch am Cluster. ArgoCD gleicht ab, Kargo promotet dev→prod hinter einem CODEOWNERS-Gate, und die Supply-Chain ist end-to-end signiert.",
         "purpose": "Die Delivery-Schicht: jede Cluster-Ressource wird in Git deklariert und von ArgoCD (app-of-apps) rekonziliert. Kargo promotet ein unveränderliches Artefakt dev→prod hinter einem CODEOWNERS-Gate, und ArgoCD deployt es — kein manuelles kubectl in Produktion.",
         "role": "Platform-/Release-Engineer. Entwurf der GitOps-Repo-Architektur (app-of-apps, Helm-Wrapper-Charts, 2-Umgebungs-Overlays), der CODEOWNERS-gegateten Prod-Pipeline und der Kargo-Promotion + Supply-Chain-Kontrollen.",
         "impact": "~95 ArgoCD-Applications aus Git rekonziliert · kein manuelles kubectl in Prod · 6 Custom-Services dev→prod über Kargo hinter einem CODEOWNERS-Gate promotet.",
@@ -1094,21 +1094,18 @@
         ]
       },
       {
-        "title": "Versicherungs-IS — Digital Workplace",
-        "oneLinePitch": "Das simulierte Informationssystem eines Gewerbeversicherers auf der Plattform — ERP & Finance, ein vollständiger Digital Workplace und DORA/ACPR-orientierte Governance.",
-        "purpose": "Die Fachschicht: eine selbst gehostete M365-/Google-Workspace-Alternative für einen B2B-Versicherer in Frankreich („ktayl solution“) — ERP & Finance, ein vollständiger Digital Workplace (Mail, Chat, Video, Dateien, E-Signatur) und Compliance-Tools, alles auf der Kubernetes-+-GitOps-Plattform und per SSO abgesichert.",
-        "role": "Solutions Architect & IS-Designer. Modellierung des Versicherungs-IS über 15 Fachdomänen, ERPNext-Konfiguration für den französischen Versicherungs-Kontenrahmen und Aufbau der SSO-gegateten Digital-Workplace-Suite.",
-        "impact": "54+ Workloads über 15 IS-Domänen · ERPNext: 845 PCG-2025-Konten, TSCA 9/13/33%, Factur-X-Minimum-PoC (5 Assertions OK) · jede App hinter Authentik SSO + MFA.",
+        "title": "Digital Workplace — selbst gehostete M365-Alternative",
+        "oneLinePitch": "Eine selbst gehostete Alternative zu Microsoft 365 für einen simulierten B2B-Versicherer — Mail, Chat, Video, Dateien, Office-Bearbeitung im Browser und E-Signatur, jede App hinter einem einzigen SSO und browser-first auf jedem Gerät erreichbar.",
+        "purpose": "Die Kollaborationsschicht des ktayl-solution-IS: ein vollständiger selbst gehosteter Digital Workplace (Mail, Chat, Video, Dateien, E-Signatur) als Ersatz für Microsoft 365 / Google Workspace, aus Open-Source-Apps auf der Kubernetes- + GitOps-Plattform zusammengestellt und hinter Authentik SSO + MFA vereint.",
+        "role": "Solutions Architect & Plattform-Integrator. Die Workplace-Suite aus erstklassigen Open-Source-Apps zusammengestellt, jede hinter Authentik SSO verdrahtet und die Mail-Zustellung über Amazon SES gehärtet.",
+        "impact": "Ein vollständiger M365-äquivalenter Workplace in Betrieb — Mail, Chat, Video, Dateien + Office, E-Signatur — jede App hinter Authentik SSO + TOTP · ausgehende Mail SPF/DKIM/DMARC-aligned über Amazon SES, eingehend über eine SES→S3→SQS-Bridge · browser-first BYOD-Zugriff, keine verwalteten Endgeräte.",
         "features": [
-          "ERPNext für einen französischen Versicherer konfiguriert: PCG-2025-Kontenrahmen mit 845 Konten, TSCA-Steuervorlagen, Factur-X-E-Invoicing-PoC; HR als Source of Truth.",
-          "Integration von Drittanbieter-Apps im großen Maßstab: jede Standard-Helm-App (ERPNext, Authentik, Vault, Matrix, Jitsi, Stalwart…) vom Chart zu einem GitOps-ausgelieferten, SSO-gegateten, Secrets-verwalteten (ESO/Vault), TLS-terminierten, gesicherten Service gebracht — mit eigenem Code erweitert, wo es zählt (ERPNext-DSN/SEPA-Payroll, Open-WebUI-French-BM25, OnlyOffice-CA).",
-          "Digital Workplace (M365-Äquivalent): Stalwart-Mail + Amazon SES, Matrix/Element-Chat, Jitsi-Video, Nextcloud + OnlyOffice-Dateien, Docuseal-E-Signatur.",
-          "Enterprise-Identität: Authentik-OIDC-SSO + TOTP für alle 54+ Services; Abteilungs-Personas; browser-first BYOD-Zugriff über Tailscale / Cloudflare.",
-          "Automatisierung & Workflow: n8n und Temporal orchestrieren Geschäftsprozesse über die IS-Domänen.",
-          "Compliance by Design: ACPR/DORA-orientierte Governance, default-deny-Network-Policies und PII/DLP-Guardrails auf der KI-Schicht."
+          "Mail: Stalwart (JMAP/IMAP/SMTP) leitet ausgehend über Amazon SES mit abgestimmtem SPF/DKIM/DMARC weiter; eingehend über eine SES→S3→SQS→Bridge-Pipeline.",
+          "Kollaborations-Suite: Matrix/Element-Chat, Jitsi-Video, Nextcloud + OnlyOffice für Dateien und Office im Browser, Docuseal-E-Signatur — jede GitOps-ausgeliefert, TLS-terminiert und gesichert.",
+          "Identität als Perimeter: Authentik OIDC SSO + TOTP vor jeder App; browser-first BYOD-/Zero-Trust-Zugriff über Tailscale + Cloudflare Tunnel, keine verwalteten Endgeräte.",
+          "App-übergreifende Automatisierung: n8n und Temporal orchestrieren die Workplace-Prozesse."
         ],
         "stack": [
-          "ERPNext / Frappe",
           "Authentik (OIDC/SSO)",
           "Stalwart Mail + SES",
           "Matrix / Element",
@@ -1117,33 +1114,33 @@
           "Docuseal",
           "n8n",
           "Temporal",
-          "PostgreSQL / MariaDB"
+          "cert-manager / TLS",
+          "Kubernetes / GitOps"
         ],
-        "whyItMatters": "Es macht aus einem Home-Lab das Informationssystem eines echten Unternehmens: nicht nur „ich habe Kubernetes betrieben“, sondern „ich habe das digitale Rückgrat eines regulierten Versicherers entworfen und betrieben“ — ERP, Finance, vollständiger Digital Workplace, Identität und Compliance, alles selbst gehostet.",
+        "whyItMatters": "Die meisten 'selbst gehosteten' Demos hören bei einer App auf. Dies ist ein kohärenter, per SSO vereinter Workplace, den ein Unternehmen tatsächlich betreiben könnte — die Open-Source-Antwort auf 'Kann man Microsoft 365 ersetzen, ohne die Pro-Platz-Rechnung und ohne dass die Daten das Haus verlassen?'",
         "differentiators": [
-          "Eine vollständige, selbst gehostete M365-Alternative für einen regulierten Versicherer — keine einzelne App, ein ganzes IS.",
-          "Echte Fachmodellierung: PCG 2025, TSCA, Factur-X, ACPR/DORA — versicherungsspezifisch, kein generisches SaaS.",
-          "Identität als Perimeter: SSO + MFA + BYOD-/Zero-Trust-Zugriff auf jeden Fachservice.",
-          "Integration-Engineering, nicht nur Installation: ~95 ArgoCD-Apps unter einem einheitlichen SSO-/Secrets-/TLS-/Backup-Muster, mit echtem eigenem Code in eigenen Repos (minicloud-erpnext, -open-webui, -onlyoffice, -backstage, -plane)."
+          "Ein kohärenter, per SSO vereinter Workplace, kein Haufen einzelner Apps.",
+          "Identität ist der Perimeter — SSO + MFA + Browser-BYOD zu jedem Dienst, ohne Endgeräteverwaltung.",
+          "Produktionsreife Mail: über SES relayed mit abgestimmtem SPF/DKIM/DMARC, kein Spielzeug-SMTP."
+        ],
+        "atsKeywords": [
+          "Digital Workplace",
+          "M365 Alternative",
+          "Authentik",
+          "SSO",
+          "IAM",
+          "Stalwart",
+          "Matrix",
+          "Jitsi",
+          "Nextcloud",
+          "OnlyOffice",
+          "Amazon SES",
+          "Zero Trust",
+          "BYOD",
+          "Self-Hosted"
         ],
         "link": "https://andrelair-platform.github.io/minicloud-platform-docs/",
         "repoUrl": "https://github.com/andrelair-platform/minicloud-gitops",
-        "atsKeywords": [
-          "Versicherung",
-          "Unternehmensarchitektur",
-          "ERPNext",
-          "Frappe",
-          "Digital Workplace",
-          "M365-Alternative",
-          "IAM",
-          "SSO",
-          "Authentik",
-          "DORA",
-          "ACPR",
-          "Compliance",
-          "Geschäftsautomatisierung",
-          "ITSM"
-        ],
         "liveEndpoints": [
           {
             "label": "Homer — Plattform-Dashboard mit allen Service-Links",
@@ -1165,25 +1162,53 @@
             "command": "https://andrelair-platform.github.io/minicloud-platform-docs/",
             "url": "https://andrelair-platform.github.io/minicloud-platform-docs/"
           }
-        ],
-        "scope": [
-          "15 IS-Domänen modelliert: Police, Schaden, Underwriting, ERP/Finance, HR, Compliance, DMS, Kommunikation, Workplace-KI.",
-          "ERPNext für einen französischen Versicherer: PCG-2025-Kontenrahmen (845 Konten), TSCA-Steuervorlagen, Factur-X-Minimum-PoC.",
-          "Digital Workplace: Stalwart-Mail + SES, Matrix/Element, Jitsi, Nextcloud + OnlyOffice, Docuseal-E-Signatur.",
-          "Identität: Authentik-OIDC-SSO + TOTP über alle 54+ Services; n8n + Temporal automatisieren domänenübergreifende Prozesse."
-        ],
-        "architecture": [
-          "ERPNext/Frappe auf MariaDB ist die ERP- + HR-Source-of-Truth (custom DSN/SEPA-Payroll).",
-          "Authentik OIDC schützt jede Fachanwendung hinter Tailscale / Cloudflare Tunnel.",
-          "Stalwart-Mail leitet Outbound via Amazon SES weiter; Inbound via SES→S3→SQS→Bridge.",
-          "Jeder Service in eigenem Namespace mit default-deny-NetworkPolicies; PII/DLP (Presidio) auf der KI-Schicht."
-        ],
-        "testPlan": [
-          "ERPNext-Konfiguration validiert: 845 PCG-Konten, TSCA 9/13/33%, Factur-X Minimum (5 Assertions OK).",
-          "SSO-Smoke: öffentliche Services leiten zu Authentik um, akzeptieren TOTP und liefern eine authentifizierte Session.",
-          "Mail end-to-end verifiziert: Outbound via SES (SPF/DKIM/DMARC ausgerichtet) + Inbound-Zustellung.",
-          "Custom-ERPNext-Payroll (DSN + SEPA) unit-getestet (108 Tests, ~76% Coverage)."
         ]
+      },
+      {
+        "title": "ERPNext — HR & Finance für einen französischen Versicherer",
+        "oneLinePitch": "ERPNext als HR- und Finanz-Rückgrat eines simulierten französischen Versicherers konfiguriert — der 845-Konten-PCG-2025-Kontenplan, die Versicherungssteuer (TSCA), ein Factur-X-E-Invoicing-PoC und eine getestete, maßgeschneiderte DSN/SEPA-Lohnabrechnungs-Erweiterung.",
+        "purpose": "Das ERP + HR-System of Record des ktayl-solution-IS: ERPNext/Frappe auf MariaDB, für die französische Versicherungsbuchhaltung konfiguriert und dort mit eigenem Code erweitert, wo das Standardprodukt aufhört.",
+        "role": "Solutions Architect & Backend-Engineer. ERPNext für den französischen Versicherungs-Kontenplan und die Steuer konfiguriert und die maßgeschneiderte Lohnabrechnungs-Erweiterung (DSN + SEPA) samt Testsuite entwickelt.",
+        "impact": "845-Konten-PCG-2025-Kontenplan + TSCA-Versicherungssteuer-Vorlagen (9/13/33%) konfiguriert · Factur-X-Minimum-E-Invoicing-PoC (5 Assertions bestehen) · maßgeschneiderte DSN- + SEPA-Lohnabrechnungs-Erweiterung unit-getestet (108 Tests, ~76% Abdeckung) · HR als IS-Source-of-Truth, hinter Authentik SSO.",
+        "features": [
+          "Französische Versicherungsbuchhaltung: der 845-Konten-PCG-2025-Kontenplan + TSCA-Steuervorlagen (9/13/33%) in ERPNext/Frappe auf MariaDB konfiguriert.",
+          "Factur-X-E-Invoicing-PoC (Minimum-Profil) — CII-XML-Erzeugung durch 5 Assertions validiert.",
+          "Maßgeschneiderte Lohnabrechnungs-Erweiterung: französische DSN-Meldung + SEPA-Überweisungserzeugung, unit-getestet (108 Tests, ~76% Abdeckung).",
+          "HR ist die IS-Source-of-Truth; GitOps-ausgeliefert, SSO-geschützt (Authentik), Secrets über ESO/Vault, gesichert."
+        ],
+        "stack": [
+          "ERPNext / Frappe",
+          "MariaDB",
+          "Python",
+          "Authentik (OIDC/SSO)",
+          "Factur-X",
+          "ESO / Vault",
+          "Kubernetes / GitOps"
+        ],
+        "whyItMatters": "Es zeigt, dass ich ein großes Standard-ERP nehmen und es wirklich an einen regulierten französischen Versicherer anpassen kann — Kontenplan, Versicherungssteuer, E-Invoicing und Lohnabrechnung — statt es nur zu installieren und für fertig zu erklären.",
+        "differentiators": [
+          "Echte französische Versicherungs-Konfiguration: PCG 2025, TSCA, Factur-X — keine generische Demo-Firma.",
+          "Mit getestetem Eigencode erweitert (DSN- + SEPA-Lohnabrechnung), nicht nur Konfiguration.",
+          "Auf Plattform-Art ausgeliefert: GitOps, SSO, Vault-verwaltete Secrets, Backups."
+        ],
+        "atsKeywords": [
+          "ERPNext",
+          "Frappe",
+          "ERP",
+          "HR",
+          "Finance",
+          "PCG 2025",
+          "TSCA",
+          "Factur-X",
+          "Payroll",
+          "DSN",
+          "SEPA",
+          "MariaDB",
+          "Insurance",
+          "Accounting"
+        ],
+        "link": "https://andrelair-platform.github.io/minicloud-platform-docs/",
+        "repoUrl": "https://github.com/andrelair-platform/minicloud-erpnext"
       }
     ],
     "workExperience": [
