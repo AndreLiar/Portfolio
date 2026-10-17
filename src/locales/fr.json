@@ -941,15 +941,15 @@
         ]
       },
       {
-        "title": "Cluster Kubernetes — k3s bare-metal",
-        "oneLinePitch": "Un cluster Kubernetes bare-metal de 6 nœuds construit de zéro — provisioning MAAS, k3s, réseau eBPF Cilium, stockage Longhorn et mises à jour sans interruption.",
+        "title": "Cloud privé auto-hébergé — Kubernetes bare-metal",
+        "oneLinePitch": "Six ordinateurs portables recyclés transformés en un cloud privé résilient et entièrement automatisé — la couche d'infrastructure que la plupart des ingénieurs se contentent de louer. Construite du matériel jusqu'à Kubernetes en infrastructure-as-code, et exploitée avec une discipline de production.",
         "purpose": "La fondation de calcul de la plateforme : un cluster k3s auto-hébergé de 6 nœuds sur des ThinkPad recyclés et un MacBook Pro, provisionné en infrastructure-as-code et durci selon les benchmarks CIS. C'est la couche d'infrastructure sur laquelle tout le reste s'exécute.",
         "role": "Ingénieur Plateforme / Infrastructure. Provisioning bare-metal avec MAAS + OpenTofu, bootstrap k3s avec Ansible (durcissement CIS du kubelet) ; responsable du réseau, du stockage et du cycle de vie du cluster.",
-        "impact": "6/6 nœuds Ready · k3s mis à jour v1.33→v1.36 sans interruption (aucun SSH manuel) · kube-bench k3s-CIS-1.7 16/16 PASS sur tous les workers.",
+        "impact": "Mise à jour Kubernetes sur 3 versions mineures (v1.33→v1.36) sans aucune interruption, entièrement automatisée — zéro SSH manuel, zéro coupure · Durci CIS : kube-bench k3s-CIS-1.7 16/16 PASS sur chaque worker · socle de 60+ charges de travail ; rétabli après de vraies pannes de stockage multi-nœuds sans aucune perte de données.",
         "features": [
-          "Provisioning bare-metal en code : MAAS enrôle et commissionne les nœuds ThinkPad ; OpenTofu gère le cycle de vie des machines ; Ansible bootstrappe k3s.",
-          "CNI eBPF Cilium + observabilité réseau Hubble (migration depuis flannel) ; MetalLB fournit des IP de load-balancer sur bare-metal.",
-          "Stockage bloc distribué Longhorn sur les nœuds, avec sauvegardes Velero quotidiennes vers MinIO sur le contrôleur ; NFS pour les volumes partagés.",
+          "Cycle de vie entièrement en code : MAAS commissionne le matériel ThinkPad → OpenTofu gère l'état des machines → Ansible bootstrappe k3s — un nœud est reproductible depuis le bare-metal, pas une bête de concours configurée à la main.",
+          "Cilium eBPF choisi plutôt que flannel pour des network policies default-deny basées sur l'identité + l'observabilité des flux Hubble sur tout le parc ; MetalLB fournit des IP LoadBalancer sur bare-metal.",
+          "Stockage bloc répliqué Longhorn + sauvegardes Velero/CNPG vers un MinIO hors cluster — bascule au niveau base de données + restauration à un instant T sur des disques grand public, là où le stockage est précisément ce qui lâche.",
           "Kubelet durci CIS, chiffrement des secrets au repos (AES-CBC-256), journaux d'audit k3s, UFW default-deny + durcissement SSH sur chaque nœud.",
           "Cycle de vie sans interruption : system-upgrade-controller déploie les mises à jour k3s sur tous les nœuds via des Plans — cordon uniquement (compatible Longhorn), sans SSH manuel."
         ],

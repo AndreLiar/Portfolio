@@ -1014,15 +1014,15 @@
         ]
       },
       {
-        "title": "Kubernetes Cluster — Bare-Metal k3s",
-        "oneLinePitch": "A 6-node bare-metal Kubernetes cluster built from scratch — MAAS provisioning, k3s, Cilium eBPF networking, Longhorn storage, and zero-downtime lifecycle.",
+        "title": "Self-Hosted Private Cloud — Bare-Metal Kubernetes",
+        "oneLinePitch": "Six repurposed laptops turned into a resilient, fully-automated private cloud — the infrastructure layer most engineers only rent. Built hardware-to-Kubernetes as code and operated with production discipline.",
         "purpose": "The compute foundation of the platform: a self-hosted 6-node k3s cluster running on repurposed ThinkPad laptops plus a MacBook Pro, provisioned as infrastructure-as-code and hardened to CIS benchmarks. This is the infrastructure layer everything else runs on.",
         "role": "Platform / Infrastructure Engineer. Provisioned bare metal with MAAS + OpenTofu, bootstrapped k3s with Ansible (CIS kubelet hardening), and own the cluster's networking, storage and lifecycle.",
-        "impact": "6/6 nodes Ready · k3s upgraded v1.33→v1.36 with zero downtime (no manual SSH) · kube-bench k3s-CIS-1.7 16/16 PASS on all workers.",
+        "impact": "Zero-downtime Kubernetes upgrade across 3 minor versions (v1.33→v1.36), fully automated — no manual SSH, no workload outage · CIS-hardened: kube-bench k3s-CIS-1.7 16/16 PASS on every worker · foundation for 60+ workloads; recovered from real multi-node storage failures with no data loss.",
         "features": [
-          "Bare-metal provisioning as code: MAAS enrolls & commissions the ThinkPad nodes; OpenTofu manages machine lifecycle; Ansible bootstraps k3s.",
-          "Cilium eBPF CNI + Hubble network observability (migrated off flannel); MetalLB provides load-balancer IPs on bare metal.",
-          "Longhorn distributed block storage across nodes with daily Velero backups to on-controller MinIO; NFS for shared volumes.",
+          "Everything-as-code lifecycle: MAAS commissions the ThinkPad hardware → OpenTofu owns machine state → Ansible bootstraps k3s — a node is reproducible from bare metal, not a hand-configured pet.",
+          "Cilium eBPF chosen over flannel for identity-aware, default-deny network policy + Hubble flow observability across the fleet; MetalLB serves LoadBalancer IPs on bare metal.",
+          "Longhorn replicated block storage + Velero/CNPG backups to off-cluster MinIO — DB-layer failover + point-in-time recovery on commodity disks, where storage is the thing that actually fails.",
           "CIS-hardened kubelet, AES-CBC-256 secrets encryption at rest, k3s audit logging, UFW default-deny + SSH hardening on every node.",
           "Zero-downtime lifecycle: system-upgrade-controller rolls k3s upgrades across all nodes via Plans — cordon-only (Longhorn-safe), no manual SSH."
         ],

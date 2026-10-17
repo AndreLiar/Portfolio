@@ -991,15 +991,15 @@
         ]
       },
       {
-        "title": "Kubernetes-Cluster — Bare-Metal k3s",
-        "oneLinePitch": "Ein 6-Knoten-Bare-Metal-Kubernetes-Cluster von Grund auf gebaut — MAAS-Provisionierung, k3s, Cilium-eBPF-Netzwerk, Longhorn-Storage und unterbrechungsfreie Upgrades.",
+        "title": "Selbst gehostete Private Cloud — Bare-Metal-Kubernetes",
+        "oneLinePitch": "Sechs wiederverwendete Laptops verwandelt in eine resiliente, vollständig automatisierte Private Cloud — die Infrastrukturschicht, die die meisten Ingenieure nur mieten. Vom Blech bis Kubernetes als Infrastructure-as-Code gebaut und mit Produktionsdisziplin betrieben.",
         "purpose": "Die Compute-Grundlage der Plattform: ein selbst gehosteter 6-Knoten-k3s-Cluster auf wiederverwendeten ThinkPad-Laptops plus einem MacBook Pro, als Infrastructure-as-Code provisioniert und nach CIS-Benchmarks gehärtet. Das ist die Infrastrukturschicht, auf der alles andere läuft.",
         "role": "Platform-/Infrastructure-Engineer. Bare-Metal-Provisionierung mit MAAS + OpenTofu, k3s-Bootstrap mit Ansible (CIS-Kubelet-Härtung); verantwortlich für Netzwerk, Storage und Cluster-Lebenszyklus.",
-        "impact": "6/6 Knoten Ready · k3s v1.33→v1.36 ohne Ausfallzeit aktualisiert (kein manuelles SSH) · kube-bench k3s-CIS-1.7 16/16 PASS auf allen Workern.",
+        "impact": "Kubernetes-Upgrade über 3 Minor-Versionen (v1.33→v1.36) ohne jede Ausfallzeit, vollständig automatisiert — kein manuelles SSH, kein Workload-Ausfall · CIS-gehärtet: kube-bench k3s-CIS-1.7 16/16 PASS auf jedem Worker · Fundament für 60+ Workloads; nach echten Multi-Node-Storage-Ausfällen ohne jeden Datenverlust wiederhergestellt.",
         "features": [
-          "Bare-Metal-Provisionierung als Code: MAAS erfasst & kommissioniert die ThinkPad-Knoten; OpenTofu verwaltet den Maschinen-Lebenszyklus; Ansible bootstrappt k3s.",
-          "Cilium-eBPF-CNI + Hubble-Netzwerkobservability (Migration von flannel); MetalLB liefert Load-Balancer-IPs auf Bare-Metal.",
-          "Verteilter Longhorn-Block-Storage über die Knoten, mit täglichen Velero-Backups nach MinIO auf dem Controller; NFS für geteilte Volumes.",
+          "Lebenszyklus vollständig als Code: MAAS kommissioniert die ThinkPad-Hardware → OpenTofu verwaltet den Maschinenzustand → Ansible bootstrappt k3s — ein Knoten ist vom Blech reproduzierbar, kein von Hand konfiguriertes Lieblingsstück.",
+          "Cilium eBPF bewusst statt flannel gewählt — für identitätsbasierte Default-Deny-Network-Policies + Hubble-Flow-Observability über die gesamte Flotte; MetalLB liefert LoadBalancer-IPs auf Bare-Metal.",
+          "Replizierter Longhorn-Block-Storage + Velero/CNPG-Backups in ein clusterexternes MinIO — Failover auf Datenbankebene + Point-in-Time-Recovery auf Consumer-Datenträgern, wo der Storage genau das ist, was tatsächlich ausfällt.",
           "CIS-gehärtetes Kubelet, Secrets-Verschlüsselung at rest (AES-CBC-256), k3s-Audit-Logging, UFW default-deny + SSH-Härtung auf jedem Knoten.",
           "Unterbrechungsfreier Lebenszyklus: system-upgrade-controller rollt k3s-Upgrades über alle Knoten via Plans aus — nur Cordon (Longhorn-sicher), kein manuelles SSH."
         ],
