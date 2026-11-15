@@ -21,6 +21,10 @@ import {
   GitBranch,
   ShieldCheck,
   Activity,
+  Calendar,
+  Building2,
+  Rocket,
+  UserRound,
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
@@ -106,7 +110,9 @@ const itemVariants = {
 };
 
 export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTags = {} }: MainContentProps) {
-  const { data, Page, Header: headerData, Hero: heroData, ProjectList: projectListData, ProjectCard: projectCardData, Footer: footerData, Testimonials: testimonialsData, LookingFor: lookingForData, AvailableCTA: availableCTAData, Capabilities: capabilitiesData } = messages;
+  const { data, Page, Header: headerData, Hero: heroData, ProjectList: projectListData, ProjectCard: projectCardData, Footer: footerData, Testimonials: testimonialsData, LookingFor: lookingForData, AvailableCTA: availableCTAData, WorkTogether: workTogetherData, Capabilities: capabilitiesData } = messages;
+
+  const audienceIcons = [Building2, Rocket, UserRound];
 
   const workExperience = data.workExperience;
   const education = data.education;
@@ -197,6 +203,50 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
                   );
                 })}
               </motion.div>
+            </div>
+          </motion.section>
+        )}
+
+        {/* Work together — audience-aware CTA (enterprise / startup / individual) */}
+        {workTogetherData && (
+          <motion.section
+            id="work-together"
+            className="py-10 md:py-16"
+            variants={sectionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            <div className="container mx-auto px-4">
+              <div className="mx-auto max-w-4xl rounded-3xl border border-border bg-muted px-6 py-12 text-center shadow-e1 md:px-12 md:py-14">
+                {Array.isArray(workTogetherData.audiences) && (
+                  <div className="mb-6 flex flex-wrap items-center justify-center gap-2.5">
+                    {workTogetherData.audiences.map((audience: string, i: number) => {
+                      const AudienceIcon = audienceIcons[i] ?? Building2;
+                      return (
+                        <span
+                          key={audience}
+                          className="inline-flex items-center gap-2 rounded-pill border border-border bg-card px-4 py-1.5 text-sm font-medium text-foreground shadow-e1"
+                        >
+                          <AudienceIcon className="h-4 w-4 text-primary" aria-hidden />
+                          {audience}
+                        </span>
+                      );
+                    })}
+                  </div>
+                )}
+                <h2 className="mb-4">{workTogetherData.title}</h2>
+                <p className="mx-auto mb-8 max-w-2xl text-muted-foreground leading-relaxed">
+                  {workTogetherData.subtitle}
+                </p>
+                <a
+                  href="#contact"
+                  className="inline-flex h-12 items-center justify-center gap-2 rounded-pill bg-primary px-8 text-base font-medium text-primary-foreground shadow-e1 transition-all hover:shadow-e2 active:scale-[0.98]"
+                >
+                  <Calendar className="h-4 w-4" aria-hidden />
+                  {workTogetherData.cta}
+                </a>
+              </div>
             </div>
           </motion.section>
         )}
@@ -375,9 +425,10 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
             </p>
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 bg-primary-foreground text-primary font-semibold px-8 py-3 rounded-xl hover:bg-primary-foreground/90 transition-all duration-300 hover:-translate-y-0.5 shadow-lg"
+              className="inline-flex items-center gap-2 bg-primary-foreground text-primary font-semibold px-8 py-3 rounded-pill hover:bg-primary-foreground/90 transition-all duration-300 hover:-translate-y-0.5 active:scale-[0.98] shadow-lg"
             >
-              {availableCTAData.cta} →
+              <Calendar className="h-4 w-4" aria-hidden />
+              {availableCTAData.cta}
             </a>
           </div>
         </section>

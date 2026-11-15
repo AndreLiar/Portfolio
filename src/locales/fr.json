@@ -15,7 +15,7 @@
     }
   },
   "Hero": {
-    "contactMe": "Contactez-moi",
+    "contactMe": "Réserver un appel",
     "github": "GitHub",
     "linkedin": "LinkedIn",
     "name": "André Kanmegne",
@@ -89,7 +89,7 @@
     },
     "contact": {
       "title": "Contactez-moi",
-      "subtitle": "Vous avez un projet en tête, ou vous voulez simplement dire bonjour ? N'hésitez pas à me contacter."
+      "subtitle": "Entreprises, startups ou particuliers — si vous avez un projet en tête, réservez un appel de 20 minutes ou écrivez-moi."
     }
   },
   "ProjectList": {
@@ -138,7 +138,17 @@
   "AvailableCTA": {
     "title": "Disponible à partir d'octobre 2027",
     "subtitle": "Recherche un CDI comme Software Engineer pour construire de l'IA et de l'automatisation d'entreprise fiables — du code applicatif à la production. DSI assurance/finance, cabinets de conseil cloud, ou scale-ups construisant leur plateforme interne.",
-    "cta": "Discutons"
+    "cta": "Réserver un appel"
+  },
+  "WorkTogether": {
+    "title": "Travaillons ensemble",
+    "subtitle": "Que vous soyez une entreprise qui modernise sa plateforme, une startup qui lance son premier produit IA, ou un porteur de projet indépendant — si vous avez besoin d'ingénierie IA, cloud-native ou full-stack, parlons-en.",
+    "audiences": [
+      "Entreprises",
+      "Startups",
+      "Particuliers"
+    ],
+    "cta": "Réserver un appel"
   },
   "ContactForm": {
     "name": "Nom",
