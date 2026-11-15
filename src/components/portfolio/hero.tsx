@@ -85,7 +85,7 @@ export function Hero({ heroData, lang = "en" }: { heroData: any; lang?: string }
               ].map((metric) => (
                 <div
                   key={metric.label}
-                  className="rounded-2xl border border-border bg-card px-4 py-5 text-center shadow-e1 lg:text-left"
+                  className="rounded-2xl border border-border bg-card px-4 py-5 text-center shadow-e1 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-e2 lg:text-left"
                 >
                   <p className="text-3xl font-semibold leading-none text-primary">
                     {metric.value}
@@ -105,7 +105,7 @@ export function Hero({ heroData, lang = "en" }: { heroData: any; lang?: string }
               <Button
                 size="lg"
                 asChild
-                className="h-12 w-full rounded-pill bg-primary px-8 text-base font-medium text-primary-foreground shadow-e1 transition-shadow hover:bg-primary hover:shadow-e2 sm:w-auto"
+                className="h-12 w-full rounded-pill bg-primary px-8 text-base font-medium text-primary-foreground shadow-e1 transition-all hover:bg-primary hover:shadow-e2 active:scale-[0.98] sm:w-auto"
               >
                 <a href="#projects">{heroData.buttons.viewProjects}</a>
               </Button>
@@ -113,7 +113,7 @@ export function Hero({ heroData, lang = "en" }: { heroData: any; lang?: string }
                 size="lg"
                 variant="ghost"
                 asChild
-                className="h-12 w-full rounded-pill border border-border bg-card px-8 text-base font-medium text-primary transition-colors hover:bg-accent hover:text-accent-foreground sm:w-auto"
+                className="h-12 w-full rounded-pill border border-border bg-card px-8 text-base font-medium text-primary transition-all hover:bg-accent hover:text-accent-foreground active:scale-[0.98] sm:w-auto"
               >
                 <a href="#contact">{heroData.contactMe}</a>
               </Button>
@@ -126,14 +126,18 @@ export function Hero({ heroData, lang = "en" }: { heroData: any; lang?: string }
           </div>
 
           {/* RIGHT — the FULL portrait (40%), framed in the one Google 4-colour
-              signature. Container aspect matches the image (640×959 ≈ 2:3) so
-              object-cover fills it with zero cropping — the whole photo shows. */}
-          <div className="order-1 flex justify-center lg:order-2 lg:justify-end">
+              signature (now a slowly-flowing living gradient). Container aspect
+              matches the image (640×959 ≈ 2:3) so object-cover fills it with zero
+              cropping — the whole photo shows. */}
+          <motion.div
+            className="order-1 flex justify-center lg:order-2 lg:justify-end"
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.2, 0, 0, 1] }}
+          >
             <div
-              className="w-full max-w-[17rem] shadow-e2 sm:max-w-xs lg:max-w-md"
+              className="animated-gradient-frame w-full max-w-[17rem] shadow-e2 sm:max-w-xs lg:max-w-md"
               style={{
-                background:
-                  "linear-gradient(140deg, #4285F4, #EA4335, #FBBC04, #34A853)",
                 borderRadius: "1.75rem",
                 padding: "5px",
               }}
@@ -152,7 +156,7 @@ export function Hero({ heroData, lang = "en" }: { heroData: any; lang?: string }
                 />
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </motion.section>

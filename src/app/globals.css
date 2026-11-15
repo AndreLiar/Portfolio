@@ -539,6 +539,20 @@ html.dark .admin-layout {
   }
 }
 
+/* Living Google 4-colour gradient frame — the one signature motion of the page.
+   Auto-pauses under prefers-reduced-motion (the global rule above forces
+   animation-duration to ~0 → it settles on a static gradient). */
+@keyframes gradient-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.animated-gradient-frame {
+  background: linear-gradient(130deg, #4285f4, #9b72f2, #ea4335, #fbbc04, #34a853, #4285f4);
+  background-size: 300% 300%;
+  animation: gradient-flow 9s ease infinite;
+}
+
 /* Print styles for skills / resume pages */
 @media print {
   .sticky {
