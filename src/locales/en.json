@@ -15,7 +15,7 @@
     }
   },
   "Hero": {
-    "contactMe": "Contact Me",
+    "contactMe": "Book a Call",
     "github": "GitHub",
     "linkedin": "LinkedIn",
     "name": "André Kanmegne",
@@ -89,7 +89,7 @@
     },
     "contact": {
       "title": "Get In Touch",
-      "subtitle": "Have a project in mind, or just want to say hi? Feel free to reach out."
+      "subtitle": "Enterprises, startups, or individuals — if you have a project in mind, book a 20-minute call or drop me a line."
     }
   },
   "ProjectList": {
@@ -138,7 +138,17 @@
   "AvailableCTA": {
     "title": "Available from October 2027",
     "subtitle": "Seeking a CDI as a Software Engineer building reliable enterprise AI & automation — from application code to production. Insurance / financial-services DSI, cloud consultancies, or scale-ups building internal platforms.",
-    "cta": "Let's talk"
+    "cta": "Book a call"
+  },
+  "WorkTogether": {
+    "title": "Let's work together",
+    "subtitle": "Whether you're an enterprise modernising its platform, a startup shipping its first AI product, or an individual with an idea to build — if you need AI, cloud-native, or full-stack engineering, let's talk.",
+    "audiences": [
+      "Enterprises",
+      "Startups",
+      "Individuals"
+    ],
+    "cta": "Book a call"
   },
   "ContactForm": {
     "name": "Name",
