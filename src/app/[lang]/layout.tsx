@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       'AI Integration',
       'Web Development',
       'Portfolio',
-      'Andre Kanmegne'
+      'André Kanmegne'
     ],
     authors: [{ name: dictionary.data.fullName }],
     creator: dictionary.data.fullName,
@@ -82,7 +82,7 @@ export default async function LangLayout({
 }) {
   // RootLayout (src/app/layout.tsx) owns <html>/<body>/fonts/Toaster.
   // Here we inject Schema.org JSON-LD (Person + WebSite) so search engines
-  // attribute the content, skills and social profiles to Andre on devandre.sbs.
+  // attribute the content, skills and social profiles to André on devandre.sbs.
   const { lang } = await params;
   const dict = await getDictionary(lang);
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.devandre.sbs';
