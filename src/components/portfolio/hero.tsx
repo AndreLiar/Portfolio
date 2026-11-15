@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import Image from "next/image";
 import { MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -28,7 +28,7 @@ const itemVariants = {
 
 export function Hero({ heroData, lang = "en" }: { heroData: any; lang?: string }) {
   return (
-    <motion.section
+    <m.section
       id="hero"
       className="relative overflow-hidden bg-background flex items-center min-h-[88vh] py-20 md:py-24"
       variants={containerVariants}
@@ -61,12 +61,12 @@ export function Hero({ heroData, lang = "en" }: { heroData: any; lang?: string }
             </h2>
 
             {/* Location — Material chip */}
-            <motion.div variants={itemVariants} className="mb-6 flex justify-center lg:justify-start">
+            <m.div variants={itemVariants} className="mb-6 flex justify-center lg:justify-start">
               <span className="inline-flex items-center gap-2 rounded-pill border border-border bg-card px-4 py-1.5 text-sm font-medium text-muted-foreground shadow-e1">
                 <MapPin className="h-4 w-4 text-primary" />
                 {heroData.location}
               </span>
-            </motion.div>
+            </m.div>
 
             {/* Description — static (LCP-adjacent, paints at FCP). */}
             <p className="mx-auto mb-10 max-w-xl text-lg leading-relaxed text-foreground md:text-xl lg:mx-0">
@@ -74,7 +74,7 @@ export function Hero({ heroData, lang = "en" }: { heroData: any; lang?: string }
             </p>
 
             {/* Metrics — Material cards (elevated, blue figures) */}
-            <motion.div
+            <m.div
               variants={itemVariants}
               className="mx-auto mb-10 grid max-w-md grid-cols-3 gap-3 lg:mx-0 sm:gap-4"
             >
@@ -95,10 +95,10 @@ export function Hero({ heroData, lang = "en" }: { heroData: any; lang?: string }
                   </p>
                 </div>
               ))}
-            </motion.div>
+            </m.div>
 
             {/* CTAs — Material pill buttons */}
-            <motion.div
+            <m.div
               variants={itemVariants}
               className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4 lg:justify-start"
             >
@@ -117,19 +117,19 @@ export function Hero({ heroData, lang = "en" }: { heroData: any; lang?: string }
               >
                 <a href="#contact">{heroData.contactMe}</a>
               </Button>
-            </motion.div>
+            </m.div>
 
             {/* Tagline */}
-            <motion.div variants={itemVariants} className="mt-8">
+            <m.div variants={itemVariants} className="mt-8">
               <p className="text-sm text-muted-foreground md:text-base">{heroData.tagline}</p>
-            </motion.div>
+            </m.div>
           </div>
 
           {/* RIGHT — the FULL portrait (40%), framed in the one Google 4-colour
               signature (now a slowly-flowing living gradient). Container aspect
               matches the image (640×959 ≈ 2:3) so object-cover fills it with zero
               cropping — the whole photo shows. */}
-          <motion.div
+          <m.div
             className="order-1 flex justify-center lg:order-2 lg:justify-end"
             initial={{ scale: 0.98 }}
             animate={{ scale: 1 }}
@@ -156,9 +156,9 @@ export function Hero({ heroData, lang = "en" }: { heroData: any; lang?: string }
                 />
               </div>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </div>
-    </motion.section>
+    </m.section>
   );
 }

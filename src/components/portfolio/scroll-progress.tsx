@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useSpring } from "framer-motion";
+import { m, useScroll, useSpring } from "framer-motion";
 
 /**
  * A thin Google-blue reading-progress bar pinned to the very top of the page.
@@ -16,7 +16,7 @@ export function ScrollProgress() {
   });
 
   return (
-    <motion.div
+    <m.div
       aria-hidden
       style={{ scaleX }}
       className="fixed left-0 top-0 z-[60] h-0.5 w-full origin-left bg-primary"

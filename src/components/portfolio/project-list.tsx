@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ProjectCard } from "./project-card";
@@ -57,7 +57,7 @@ export function ProjectList({ projects, projectListData, projectCardData }: Proj
   // the markup the way the old skeleton + Load-More version did.
   return (
     <>
-      <motion.div
+      <m.div
         className="grid grid-cols-1 md:grid-cols-2 gap-8"
         variants={listVariants}
         initial="hidden"
@@ -67,17 +67,17 @@ export function ProjectList({ projects, projectListData, projectCardData }: Proj
         {projects.map((project, index) => {
           const isHidden = !showAll && index >= INITIAL_VISIBLE;
           return (
-            <motion.div
+            <m.div
               key={project.title}
               variants={itemVariants}
               className={isHidden ? "hidden" : undefined}
               aria-hidden={isHidden}
             >
               <ProjectCard {...project} projectCardData={projectCardData} accentIndex={index} />
-            </motion.div>
+            </m.div>
           );
         })}
-      </motion.div>
+      </m.div>
 
       {hasMore && (
         <div className="text-center mt-12">
