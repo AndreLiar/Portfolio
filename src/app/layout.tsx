@@ -20,8 +20,8 @@ const roboto = Roboto({
 
 // Static metadata for the root. Dynamic metadata will be added by child layouts.
 export const metadata: Metadata = {
-  title: "Andre Kanmegne Portfolio",
-  description: "Portfolio of Andre Kanmegne, Software Engineer — AI & Platform Engineering.",
+  title: "André Kanmegne Portfolio",
+  description: "Portfolio of André Kanmegne, Software Engineer — AI & Platform Engineering.",
 };
 
 export const viewport: Viewport = {

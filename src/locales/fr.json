@@ -1,7 +1,7 @@
 {
   "Metadata": {
-    "title": "Andre Kanmegne | Ingénieur AI Platform & Full-Stack",
-    "description": "Andre Kanmegne — Ingénieur AI Platform & Full-Stack. Je conçois des produits augmentés par l'IA de bout en bout et j'opère la plateforme cloud-native qui les fait tourner : un produit de conformité DORA en production et une plateforme Kubernetes d'assurance."
+    "title": "André Kanmegne | Ingénieur AI Platform & Full-Stack",
+    "description": "André Kanmegne — Ingénieur AI Platform & Full-Stack. Je conçois des produits augmentés par l'IA de bout en bout et j'opère la plateforme cloud-native qui les fait tourner : un produit de conformité DORA en production et une plateforme Kubernetes d'assurance."
   },
   "Header": {
     "projects": "Réalisations",
@@ -18,7 +18,7 @@
     "contactMe": "Contactez-moi",
     "github": "GitHub",
     "linkedin": "LinkedIn",
-    "name": "Andre Kanmegne",
+    "name": "André Kanmegne",
     "title": "Ingénieur AI Platform &",
     "titleHighlight": "Full-Stack",
     "location": "Paris, France",
@@ -158,8 +158,8 @@
     }
   },
   "data": {
-    "name": "Andre",
-    "fullName": "Andre Kanmegne",
+    "name": "André",
+    "fullName": "André Kanmegne",
     "title": "Software Engineer · AI & Platform Engineering — LLM · RAG · Kubernetes · GitOps · Automation",
     "location": "Paris, France",
     "contact": {
