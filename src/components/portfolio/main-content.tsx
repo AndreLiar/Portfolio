@@ -31,6 +31,7 @@ import { BookCall } from '@/components/portfolio/book-call';
 import { Footer } from '@/components/portfolio/footer';
 import { Badge } from '@/components/ui/badge';
 import { ScrollToTop } from '@/components/portfolio/scroll-to-top';
+import { ScrollProgress } from '@/components/portfolio/scroll-progress';
 import { ICON_VARIANTS } from '@/lib/icon-constants';
 
 const ProjectList = dynamic(() => import('@/components/portfolio/project-list').then((m) => ({ default: m.ProjectList })), {
@@ -119,6 +120,7 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
   // server-rendered and LCP waited ~2.9s for hydration — tanking Performance.
   return (
     <div className="flex flex-col min-h-screen bg-background">
+      <ScrollProgress />
       {/* Skip to main content link for accessibility */}
       <a href="#main-content" className="skip-to-main" tabIndex={0}>
         Skip to main content
@@ -175,7 +177,7 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
                     <motion.div
                       key={index}
                       variants={itemVariants}
-                      className="rounded-xl border border-border/50 bg-background p-6 text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                      className="rounded-2xl border border-border bg-background p-6 text-left shadow-e1 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-e2"
                     >
                       <div className="flex items-center gap-3 mb-3">
                         <div className="p-2 bg-primary/10 rounded-lg">
