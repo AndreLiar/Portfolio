@@ -18,7 +18,7 @@ export default {
     extend: {
       fontFamily: {
         body: ['var(--font-inter)', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
-        headline: ['var(--font-playfair)', 'Georgia', 'Times New Roman', 'serif'],
+        headline: ['var(--font-playfair)', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
       },
       fontSize: {
         'xs': ['0.75rem', { lineHeight: '1.5', letterSpacing: '0.025em' }],
@@ -101,6 +101,17 @@ export default {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
+        xl: 'calc(var(--radius) + 8px)',
+        '2xl': 'calc(var(--radius) + 16px)',
+        pill: '9999px',
+      },
+      // Google Material elevation (tinted shadow — grey-800 rgba(60,64,67,…)),
+      // NOT the flat rgba(0,0,0,.1) default. Used for cards, the app bar on scroll,
+      // and raised buttons.
+      boxShadow: {
+        e1: '0 1px 2px 0 rgba(60,64,67,0.30), 0 1px 3px 1px rgba(60,64,67,0.15)',
+        e2: '0 1px 2px 0 rgba(60,64,67,0.30), 0 2px 6px 2px rgba(60,64,67,0.15)',
+        e3: '0 4px 8px 3px rgba(60,64,67,0.15), 0 1px 3px 0 rgba(60,64,67,0.30)',
       },
       'accordion-down': 'accordion-down 0.2s ease-out',
       'accordion-up': 'accordion-up 0.2s ease-out',

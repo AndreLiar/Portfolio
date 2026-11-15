@@ -1,7 +1,22 @@
 
 import type { Metadata, Viewport } from 'next';
+import { Figtree, Roboto } from 'next/font/google';
 import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
+
+// Google-style type pairing: Figtree (display — the closest free stand-in for
+// Product Sans/Google Sans) + Roboto (body/UI — Google's own typeface).
+const figtree = Figtree({
+  subsets: ['latin'],
+  variable: '--font-figtree',
+  display: 'swap',
+});
+const roboto = Roboto({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '700'],
+  variable: '--font-roboto',
+  display: 'swap',
+});
 
 // Static metadata for the root. Dynamic metadata will be added by child layouts.
 export const metadata: Metadata = {
@@ -29,7 +44,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className="dark"
+      className={`${figtree.variable} ${roboto.variable}`}
       suppressHydrationWarning
     >
       <head>

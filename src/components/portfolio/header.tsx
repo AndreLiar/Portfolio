@@ -100,9 +100,9 @@ export function Header({ headerData, name }: { headerData: any, name: string }) 
 
   return (
     <header
-      className={`fixed top-0 z-50 w-full border-b transition-all duration-300 ${activeSection
-        ? "bg-background/80 backdrop-blur-md border-border/50 shadow-sm"
-        : "bg-background/60 backdrop-blur-sm border-transparent"
+      className={`fixed top-0 z-50 w-full transition-all duration-200 ${activeSection
+        ? "border-b border-border bg-background/95 shadow-e1 backdrop-blur"
+        : "border-b border-transparent bg-background"
         }`}
     >
       <div className="container mx-auto px-4 flex h-16 max-w-screen-2xl items-center justify-between">
