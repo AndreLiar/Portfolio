@@ -131,9 +131,9 @@ export function Hero({ heroData, lang = "en" }: { heroData: any; lang?: string }
               cropping — the whole photo shows. */}
           <motion.div
             className="order-1 flex justify-center lg:order-2 lg:justify-end"
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: [0.2, 0, 0, 1] }}
+            initial={{ scale: 0.98 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.5, ease: [0.2, 0, 0, 1] }}
           >
             <div
               className="animated-gradient-frame w-full max-w-[17rem] shadow-e2 sm:max-w-xs lg:max-w-md"

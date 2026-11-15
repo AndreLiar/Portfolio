@@ -26,6 +26,7 @@ const nextConfig: NextConfig = {
       '@radix-ui/react-accordion',
       '@radix-ui/react-tabs',
       'lucide-react',
+      'framer-motion',
     ],
   },
   async headers() {
