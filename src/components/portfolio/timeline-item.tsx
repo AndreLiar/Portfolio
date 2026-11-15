@@ -1,5 +1,4 @@
 import { Briefcase, Calendar, type LucideIcon } from "lucide-react";
-import { m } from "framer-motion";
 
 interface TimelineItemProps {
   date: string;
@@ -31,9 +30,8 @@ export function TimelineItem({
       </div>
 
       {/* Content Card */}
-      <m.div
-        className="ml-2 sm:ml-4 p-4 sm:p-6 rounded-2xl bg-card border border-border shadow-e1 hover:shadow-e2 transition-shadow duration-200"
-        whileHover={{ x: 5 }}
+      <div
+        className="ml-2 sm:ml-4 p-4 sm:p-6 rounded-2xl bg-card border border-border shadow-e1 transition-all duration-200 hover:shadow-e2 hover:translate-x-1"
       >
         <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
           <h4 className="text-xl font-bold font-headline text-foreground group-hover:text-primary transition-colors">
@@ -48,7 +46,7 @@ export function TimelineItem({
         <div className="text-primary/80 font-medium mb-3 flex items-center text-sm" dangerouslySetInnerHTML={{ __html: subtitle }} />
 
         <div className="text-muted-foreground text-sm leading-relaxed prose prose-sm dark:prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: description }} />
-      </m.div>
+      </div>
     </div>
   );
 }
