@@ -2,7 +2,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import { m, LazyMotion, domAnimation } from 'framer-motion';
+import { LazyMotion, domAnimation } from 'framer-motion';
 import {
   Briefcase,
   GraduationCap,
@@ -81,34 +81,6 @@ const iconMap: { [key: string]: LucideIcon } = {
   Activity,
 };
 
-const sectionVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: 'easeOut' },
-  },
-};
-
-const listVariants = {
-  visible: {
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-    },
-  },
-};
-
 export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTags = {} }: MainContentProps) {
   const { data, Page, Header: headerData, Hero: heroData, ProjectList: projectListData, ProjectCard: projectCardData, Footer: footerData, Testimonials: testimonialsData, LookingFor: lookingForData, AvailableCTA: availableCTAData, WorkTogether: workTogetherData, Capabilities: capabilitiesData } = messages;
 
@@ -120,10 +92,10 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
   const languages = data.languages;
   const interests = data.interests;
 
-  // The page renders its real content immediately (server-side) so the hero
-  // heading is the Largest Contentful Paint at first paint. The previous
-  // client-only <PageLoader> splash + opacity:0 fade meant nothing was
-  // server-rendered and LCP waited ~2.9s for hydration — tanking Performance.
+  // Body sections are static (no scroll-reveal) — the whileInView animations were
+  // removed so the body no longer hydrates dozens of framer-motion controllers +
+  // IntersectionObservers (lowers Total Blocking Time). framer-motion is kept only
+  // for the hero entrance + the scroll widgets, under the LazyMotion below.
   return (
     <LazyMotion features={domAnimation}>
     <div className="flex flex-col min-h-screen bg-background">
@@ -138,14 +110,7 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
         <Hero heroData={heroData} />
 
         {/* Projects */}
-        <m.section
-          id="projects"
-          className="py-10 md:py-16"
-          variants={sectionVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-        >
+        <section id="projects" className="py-10 md:py-16">
           <div className="container mx-auto px-4">
             <h2 className="text-center mb-3">{Page.projects.title}</h2>
             {Page.projects.subtitle && (
@@ -153,37 +118,23 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
             )}
             <ProjectList projects={projects} projectListData={projectListData} projectCardData={projectCardData} />
           </div>
-        </m.section>
+        </section>
 
         {/* Engineering Capabilities — four capability blocks (the detailed
             technology catalogue lives on the dedicated /skills page). */}
         {capabilitiesData?.blocks?.length > 0 && (
-          <m.section
-            id="skills"
-            className="py-10 md:py-16 bg-card"
-            variants={sectionVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-          >
+          <section id="skills" className="py-10 md:py-16 bg-card">
             <div className="container mx-auto px-4">
               <h2 className="text-center mb-3">{capabilitiesData.title}</h2>
               {capabilitiesData.subtitle && (
                 <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">{capabilitiesData.subtitle}</p>
               )}
-              <m.div
-                className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto"
-                variants={listVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.1 }}
-              >
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
                 {capabilitiesData.blocks.map((block: any, index: number) => {
                   const BlockIcon = iconMap[block.icon] || Code;
                   return (
-                    <m.div
+                    <div
                       key={index}
-                      variants={itemVariants}
                       className="rounded-2xl border border-border bg-background p-6 text-left shadow-e1 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-e2"
                     >
                       <div className="flex items-center gap-3 mb-3">
@@ -200,24 +151,17 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
                           </Badge>
                         ))}
                       </div>
-                    </m.div>
+                    </div>
                   );
                 })}
-              </m.div>
+              </div>
             </div>
-          </m.section>
+          </section>
         )}
 
         {/* Work together — audience-aware CTA (enterprise / startup / individual) */}
         {workTogetherData && (
-          <m.section
-            id="work-together"
-            className="py-10 md:py-16"
-            variants={sectionVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
+          <section id="work-together" className="py-10 md:py-16">
             <div className="container mx-auto px-4">
               <div className="mx-auto max-w-4xl rounded-3xl border border-border bg-muted px-6 py-12 text-center shadow-e1 md:px-12 md:py-14">
                 {Array.isArray(workTogetherData.audiences) && (
@@ -249,55 +193,37 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
                 </a>
               </div>
             </div>
-          </m.section>
+          </section>
         )}
 
         {/* Experience */}
-        <m.section
-          id="experience"
-          className="py-10 md:py-16 bg-card"
-          variants={sectionVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-        >
+        <section id="experience" className="py-10 md:py-16 bg-card">
           <div className="container mx-auto px-4">
             <h2 className="text-center mb-12">{Page.journey.title}</h2>
             <div className="relative max-w-2xl mx-auto">
               <h3 className="text-center my-8 flex items-center justify-center gap-2">
                 <Briefcase className={ICON_VARIANTS.sectionHeader} /> {Page.journey.workExperienceTitle}
               </h3>
-              <m.div variants={listVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+              <div>
                 {workExperience.map((item: any, index: number) => (
-                  <m.div key={index} variants={itemVariants}>
-                    <TimelineItem {...item} isLast={index === workExperience.length - 1} />
-                  </m.div>
+                  <TimelineItem key={index} {...item} isLast={index === workExperience.length - 1} />
                 ))}
-              </m.div>
+              </div>
 
               <h3 className="text-2xl font-headline font-semibold text-center mt-16 mb-8 flex items-center justify-center gap-2">
                 <GraduationCap className={ICON_VARIANTS.sectionHeader} /> {Page.journey.educationTitle}
               </h3>
-              <m.div variants={listVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+              <div>
                 {education.map((item: any, index: number) => (
-                  <m.div key={index} variants={itemVariants}>
-                    <TimelineItem {...item} icon={GraduationCap} isLast={index === education.length - 1} />
-                  </m.div>
+                  <TimelineItem key={index} {...item} icon={GraduationCap} isLast={index === education.length - 1} />
                 ))}
-              </m.div>
+              </div>
             </div>
           </div>
-        </m.section>
+        </section>
 
         {/* Extras */}
-        <m.section
-          id="extras"
-          className="py-10 md:py-16"
-          variants={sectionVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-        >
+        <section id="extras" className="py-10 md:py-16">
           <div className="container mx-auto px-4 text-center">
             <div className="grid md:grid-cols-2 gap-8">
               <div>
@@ -324,53 +250,33 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
               </div>
             </div>
           </div>
-        </m.section>
+        </section>
 
         {/* Testimonials */}
         {testimonialsData?.items?.length > 0 && (
-          <m.section
-            id="testimonials"
-            className="py-10 md:py-16 bg-card"
-            variants={sectionVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-          >
+          <section id="testimonials" className="py-10 md:py-16 bg-card">
             <div className="container mx-auto px-4">
               <h2 className="text-center mb-12 flex items-center justify-center gap-2">
                 <Quote className={ICON_VARIANTS.sectionHeader} aria-hidden />
                 {testimonialsData.title}
               </h2>
-              <m.div
-                className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto"
-                variants={listVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-              >
+              <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                 {testimonialsData.items.map((t: any, i: number) => (
-                  <m.blockquote key={i} className="rounded-xl border border-border bg-background p-6 text-left" variants={itemVariants}>
+                  <blockquote key={i} className="rounded-xl border border-border bg-background p-6 text-left">
                     <p className="text-muted-foreground italic mb-4">&ldquo;{t.quote}&rdquo;</p>
                     <footer className="text-sm font-medium text-foreground">
                       — {t.author}{t.role ? `, ${t.role}` : ''}
                     </footer>
-                  </m.blockquote>
+                  </blockquote>
                 ))}
-              </m.div>
+              </div>
             </div>
-          </m.section>
+          </section>
         )}
 
         {/* What I'm looking for */}
         {lookingForData?.items?.length > 0 && (
-          <m.section
-            id="looking-for"
-            className="py-10 md:py-16"
-            variants={sectionVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-          >
+          <section id="looking-for" className="py-10 md:py-16">
             <div className="container mx-auto px-4">
               <h2 className="text-center mb-6 flex items-center justify-center gap-2">
                 <Target className={ICON_VARIANTS.sectionHeader} aria-hidden />
@@ -379,33 +285,20 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
               {lookingForData.subtitle && (
                 <p className="text-center text-muted-foreground mb-8 max-w-xl mx-auto">{lookingForData.subtitle}</p>
               )}
-              <m.ul
-                className="max-w-2xl mx-auto space-y-3"
-                variants={listVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-              >
+              <ul className="max-w-2xl mx-auto space-y-3">
                 {lookingForData.items.map((item: string, i: number) => (
-                  <m.li key={i} className="flex items-start gap-3" variants={itemVariants}>
+                  <li key={i} className="flex items-start gap-3">
                     <CheckCircle className={`${ICON_VARIANTS.feature} mt-0.5 flex-shrink-0 text-primary`} aria-hidden />
                     <span className="text-muted-foreground">{item}</span>
-                  </m.li>
+                  </li>
                 ))}
-              </m.ul>
+              </ul>
             </div>
-          </m.section>
+          </section>
         )}
 
         {/* Contact */}
-        <m.section
-          id="contact"
-          className="py-10 md:py-16 bg-subtle-gradient"
-          variants={sectionVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-        >
+        <section id="contact" className="py-10 md:py-16 bg-subtle-gradient">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="mb-2">{Page.contact.title}</h2>
@@ -413,7 +306,7 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
             </div>
             <BookCall contactEmail={data.contact?.email} />
           </div>
-        </m.section>
+        </section>
       </main>
 
       {/* Available for opportunities banner */}

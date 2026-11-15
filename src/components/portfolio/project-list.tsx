@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { m } from "framer-motion";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ProjectCard } from "./project-card";
@@ -26,26 +25,6 @@ interface ProjectListProps {
 // Number of cards shown before the visitor clicks "See more".
 const INITIAL_VISIBLE = 4;
 
-const listVariants = {
-  visible: {
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-  hidden: {},
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-    },
-  },
-};
-
 export function ProjectList({ projects, projectListData, projectCardData }: ProjectListProps) {
   const [showAll, setShowAll] = useState(false);
   const hasMore = projects.length > INITIAL_VISIBLE;
@@ -57,27 +36,20 @@ export function ProjectList({ projects, projectListData, projectCardData }: Proj
   // the markup the way the old skeleton + Load-More version did.
   return (
     <>
-      <m.div
-        className="grid grid-cols-1 md:grid-cols-2 gap-8"
-        variants={listVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.05 }}
-      >
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {projects.map((project, index) => {
           const isHidden = !showAll && index >= INITIAL_VISIBLE;
           return (
-            <m.div
+            <div
               key={project.title}
-              variants={itemVariants}
               className={isHidden ? "hidden" : undefined}
               aria-hidden={isHidden}
             >
               <ProjectCard {...project} projectCardData={projectCardData} accentIndex={index} />
-            </m.div>
+            </div>
           );
         })}
-      </m.div>
+      </div>
 
       {hasMore && (
         <div className="text-center mt-12">

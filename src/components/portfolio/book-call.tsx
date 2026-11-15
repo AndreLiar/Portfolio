@@ -1,7 +1,19 @@
 "use client";
 
-import Cal, { getCalApi } from "@calcom/embed-react";
+import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
+
+// Code-split the Cal.com embed into its own chunk (ssr:false) so its ~440KB of
+// JS is NOT in the initial page bundle — it's fetched only when <Cal> first
+// renders (which, with the IntersectionObserver gate below, is on scroll).
+const Cal = dynamic(() => import("@calcom/embed-react"), {
+  ssr: false,
+  loading: () => (
+    <div className="flex min-h-[640px] items-center justify-center text-sm text-muted-foreground">
+      Loading calendar…
+    </div>
+  ),
+});
 
 // Public Cal.com booking link. If you rename your Cal.com username or event,
 // update this one constant. The event's Location should be set to Google Meet
@@ -37,6 +49,7 @@ export function BookCall({ contactEmail }: { contactEmail?: string }) {
   useEffect(() => {
     if (!inView) return;
     (async () => {
+      const { getCalApi } = await import("@calcom/embed-react");
       const cal = await getCalApi({ namespace: CAL_NAMESPACE });
       cal("ui", {
         theme: "auto",
