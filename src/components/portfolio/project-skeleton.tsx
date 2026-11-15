@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 const shimmerVariants = {
   initial: {
@@ -18,7 +18,7 @@ const shimmerVariants = {
 
 export function ProjectCardSkeleton() {
   return (
-    <motion.div
+    <m.div
       variants={shimmerVariants}
       initial="initial"
       animate="animate"
@@ -78,7 +78,7 @@ export function ProjectCardSkeleton() {
         <div className="h-10 bg-muted rounded-md w-24" />
         <div className="h-10 bg-muted rounded-md w-20" />
       </div>
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -103,17 +103,17 @@ export function ProjectListSkeleton({ count = 2 }: { count?: number }) {
   };
 
   return (
-    <motion.div
+    <m.div
       className="grid grid-cols-1 md:grid-cols-2 gap-8"
       variants={staggerVariants}
       initial="hidden"
       animate="visible"
     >
       {[...Array(count)].map((_, index) => (
-        <motion.div key={index} variants={itemVariants}>
+        <m.div key={index} variants={itemVariants}>
           <ProjectCardSkeleton />
-        </motion.div>
+        </m.div>
       ))}
-    </motion.div>
+    </m.div>
   );
 }

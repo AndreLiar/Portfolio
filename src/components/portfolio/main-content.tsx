@@ -2,7 +2,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import { motion } from 'framer-motion';
+import { m, LazyMotion, domAnimation } from 'framer-motion';
 import {
   Briefcase,
   GraduationCap,
@@ -125,6 +125,7 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
   // client-only <PageLoader> splash + opacity:0 fade meant nothing was
   // server-rendered and LCP waited ~2.9s for hydration — tanking Performance.
   return (
+    <LazyMotion features={domAnimation}>
     <div className="flex flex-col min-h-screen bg-background">
       <ScrollProgress />
       {/* Skip to main content link for accessibility */}
@@ -137,7 +138,7 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
         <Hero heroData={heroData} />
 
         {/* Projects */}
-        <motion.section
+        <m.section
           id="projects"
           className="py-10 md:py-16"
           variants={sectionVariants}
@@ -152,12 +153,12 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
             )}
             <ProjectList projects={projects} projectListData={projectListData} projectCardData={projectCardData} />
           </div>
-        </motion.section>
+        </m.section>
 
         {/* Engineering Capabilities — four capability blocks (the detailed
             technology catalogue lives on the dedicated /skills page). */}
         {capabilitiesData?.blocks?.length > 0 && (
-          <motion.section
+          <m.section
             id="skills"
             className="py-10 md:py-16 bg-card"
             variants={sectionVariants}
@@ -170,7 +171,7 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
               {capabilitiesData.subtitle && (
                 <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">{capabilitiesData.subtitle}</p>
               )}
-              <motion.div
+              <m.div
                 className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto"
                 variants={listVariants}
                 initial="hidden"
@@ -180,7 +181,7 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
                 {capabilitiesData.blocks.map((block: any, index: number) => {
                   const BlockIcon = iconMap[block.icon] || Code;
                   return (
-                    <motion.div
+                    <m.div
                       key={index}
                       variants={itemVariants}
                       className="rounded-2xl border border-border bg-background p-6 text-left shadow-e1 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-e2"
@@ -199,17 +200,17 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
                           </Badge>
                         ))}
                       </div>
-                    </motion.div>
+                    </m.div>
                   );
                 })}
-              </motion.div>
+              </m.div>
             </div>
-          </motion.section>
+          </m.section>
         )}
 
         {/* Work together — audience-aware CTA (enterprise / startup / individual) */}
         {workTogetherData && (
-          <motion.section
+          <m.section
             id="work-together"
             className="py-10 md:py-16"
             variants={sectionVariants}
@@ -248,11 +249,11 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
                 </a>
               </div>
             </div>
-          </motion.section>
+          </m.section>
         )}
 
         {/* Experience */}
-        <motion.section
+        <m.section
           id="experience"
           className="py-10 md:py-16 bg-card"
           variants={sectionVariants}
@@ -266,30 +267,30 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
               <h3 className="text-center my-8 flex items-center justify-center gap-2">
                 <Briefcase className={ICON_VARIANTS.sectionHeader} /> {Page.journey.workExperienceTitle}
               </h3>
-              <motion.div variants={listVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+              <m.div variants={listVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                 {workExperience.map((item: any, index: number) => (
-                  <motion.div key={index} variants={itemVariants}>
+                  <m.div key={index} variants={itemVariants}>
                     <TimelineItem {...item} isLast={index === workExperience.length - 1} />
-                  </motion.div>
+                  </m.div>
                 ))}
-              </motion.div>
+              </m.div>
 
               <h3 className="text-2xl font-headline font-semibold text-center mt-16 mb-8 flex items-center justify-center gap-2">
                 <GraduationCap className={ICON_VARIANTS.sectionHeader} /> {Page.journey.educationTitle}
               </h3>
-              <motion.div variants={listVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+              <m.div variants={listVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                 {education.map((item: any, index: number) => (
-                  <motion.div key={index} variants={itemVariants}>
+                  <m.div key={index} variants={itemVariants}>
                     <TimelineItem {...item} icon={GraduationCap} isLast={index === education.length - 1} />
-                  </motion.div>
+                  </m.div>
                 ))}
-              </motion.div>
+              </m.div>
             </div>
           </div>
-        </motion.section>
+        </m.section>
 
         {/* Extras */}
-        <motion.section
+        <m.section
           id="extras"
           className="py-10 md:py-16"
           variants={sectionVariants}
@@ -323,11 +324,11 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
               </div>
             </div>
           </div>
-        </motion.section>
+        </m.section>
 
         {/* Testimonials */}
         {testimonialsData?.items?.length > 0 && (
-          <motion.section
+          <m.section
             id="testimonials"
             className="py-10 md:py-16 bg-card"
             variants={sectionVariants}
@@ -340,7 +341,7 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
                 <Quote className={ICON_VARIANTS.sectionHeader} aria-hidden />
                 {testimonialsData.title}
               </h2>
-              <motion.div
+              <m.div
                 className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto"
                 variants={listVariants}
                 initial="hidden"
@@ -348,21 +349,21 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
                 viewport={{ once: true }}
               >
                 {testimonialsData.items.map((t: any, i: number) => (
-                  <motion.blockquote key={i} className="rounded-xl border border-border bg-background p-6 text-left" variants={itemVariants}>
+                  <m.blockquote key={i} className="rounded-xl border border-border bg-background p-6 text-left" variants={itemVariants}>
                     <p className="text-muted-foreground italic mb-4">&ldquo;{t.quote}&rdquo;</p>
                     <footer className="text-sm font-medium text-foreground">
                       — {t.author}{t.role ? `, ${t.role}` : ''}
                     </footer>
-                  </motion.blockquote>
+                  </m.blockquote>
                 ))}
-              </motion.div>
+              </m.div>
             </div>
-          </motion.section>
+          </m.section>
         )}
 
         {/* What I'm looking for */}
         {lookingForData?.items?.length > 0 && (
-          <motion.section
+          <m.section
             id="looking-for"
             className="py-10 md:py-16"
             variants={sectionVariants}
@@ -378,7 +379,7 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
               {lookingForData.subtitle && (
                 <p className="text-center text-muted-foreground mb-8 max-w-xl mx-auto">{lookingForData.subtitle}</p>
               )}
-              <motion.ul
+              <m.ul
                 className="max-w-2xl mx-auto space-y-3"
                 variants={listVariants}
                 initial="hidden"
@@ -386,18 +387,18 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
                 viewport={{ once: true }}
               >
                 {lookingForData.items.map((item: string, i: number) => (
-                  <motion.li key={i} className="flex items-start gap-3" variants={itemVariants}>
+                  <m.li key={i} className="flex items-start gap-3" variants={itemVariants}>
                     <CheckCircle className={`${ICON_VARIANTS.feature} mt-0.5 flex-shrink-0 text-primary`} aria-hidden />
                     <span className="text-muted-foreground">{item}</span>
-                  </motion.li>
+                  </m.li>
                 ))}
-              </motion.ul>
+              </m.ul>
             </div>
-          </motion.section>
+          </m.section>
         )}
 
         {/* Contact */}
-        <motion.section
+        <m.section
           id="contact"
           className="py-10 md:py-16 bg-subtle-gradient"
           variants={sectionVariants}
@@ -412,7 +413,7 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
             </div>
             <BookCall contactEmail={data.contact?.email} />
           </div>
-        </motion.section>
+        </m.section>
       </main>
 
       {/* Available for opportunities banner */}
@@ -437,5 +438,6 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
       <Footer footerData={footerData} data={data} />
       <ScrollToTop />
     </div>
+    </LazyMotion>
   );
 }

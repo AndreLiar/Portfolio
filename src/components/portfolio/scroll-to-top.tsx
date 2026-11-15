@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ICON_VARIANTS } from "@/lib/icon-constants";
@@ -58,7 +58,7 @@ export function ScrollToTop() {
   return (
     <AnimatePresence>
       {isVisible && (
-        <motion.div
+        <m.div
           initial={{ opacity: 0, scale: 0.8, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.8, y: 20 }}
@@ -78,7 +78,7 @@ export function ScrollToTop() {
           >
             <ArrowUp className={ICON_VARIANTS.button} aria-hidden="true" />
           </Button>
-        </motion.div>
+        </m.div>
       )}
     </AnimatePresence>
   );
