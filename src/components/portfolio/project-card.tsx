@@ -14,8 +14,6 @@ import { Button } from "@/components/ui/button";
 import { Github, PlayCircle, BookOpen } from "lucide-react";
 import { ProjectDetailsModal } from "./project-details-modal";
 
-const PROJECT_ACCENTS = ["#3b82f6", "#10b981", "#f59e0b", "#8b5cf6", "#f43f5e", "#0ea5e9"];
-
 interface ProjectCardProps {
   title: string;
   purpose: string;
@@ -51,10 +49,8 @@ export function ProjectCard({
   link,
   repoUrl,
   projectCardData: t,
-  accentIndex = 0,
   ...details
 }: ProjectCardProps) {
-  const accent = PROJECT_ACCENTS[accentIndex % PROJECT_ACCENTS.length];
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const fullProjectData = {
@@ -78,50 +74,45 @@ export function ProjectCard({
 
   return (
     <>
-      <Card className="flex flex-col h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl border-border/50 bg-card/50 backdrop-blur-sm group overflow-hidden relative">
-        {/* Color accent stripe */}
-        <div className="h-1.5 w-full flex-shrink-0" style={{ backgroundColor: accent }} />
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ background: `linear-gradient(135deg, ${accent}12 0%, transparent 55%)` }} />
-
-        <CardHeader className="relative z-10 pb-3">
-          {/* Role eyebrow */}
+      <Card className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-e1 transition-shadow duration-200 hover:shadow-e2">
+        <CardHeader className="pb-3">
+          {/* Role — Material chip, sentence case, single blue accent */}
           <span
-            className="inline-flex items-center self-start max-w-full truncate rounded-full px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider mb-3"
-            style={{ backgroundColor: `${accent}1a`, color: accent }}
+            className="mb-3 inline-flex max-w-full items-center self-start truncate rounded-pill bg-accent px-3 py-1 text-xs font-medium text-accent-foreground"
             title={roleLabel}
           >
             {roleLabel}
           </span>
-          <div className="flex justify-between items-start gap-4">
-            <CardTitle className="font-headline text-2xl font-bold leading-tight group-hover:text-primary transition-colors duration-300">{title}</CardTitle>
+          <div className="flex items-start justify-between gap-4">
+            <CardTitle className="font-headline text-2xl font-semibold leading-tight transition-colors duration-200 group-hover:text-primary">{title}</CardTitle>
             {link && (
               <a
                 href={link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors p-1 flex-shrink-0"
+                className="flex-shrink-0 p-1 text-muted-foreground transition-colors hover:text-primary"
                 aria-label="View Live Project"
               >
-                <PlayCircle className="w-5 h-5" />
+                <PlayCircle className="h-5 w-5" />
               </a>
             )}
           </div>
-          <CardDescription className="text-[15px] mt-2 line-clamp-3 leading-relaxed">{tagline}</CardDescription>
+          <CardDescription className="mt-2 line-clamp-3 text-[15px] leading-relaxed">{tagline}</CardDescription>
         </CardHeader>
 
-        <CardContent className="flex-grow space-y-5 relative z-10 pt-1">
-          {/* Impact — the single most important line, visually elevated */}
-          <div className="rounded-lg border p-3" style={{ borderColor: `${accent}33`, backgroundColor: `${accent}0d` }}>
-            <h4 className="font-semibold mb-1 text-[11px] uppercase tracking-wider" style={{ color: accent }}>{t.impact}</h4>
-            <p className="text-sm font-medium text-foreground leading-relaxed">{impact}</p>
+        <CardContent className="flex-grow space-y-5 pt-1">
+          {/* Impact — the single most important line, elevated with a blue tint */}
+          <div className="rounded-xl border border-primary/15 bg-accent p-3">
+            <h4 className="mb-1 text-xs font-semibold text-primary">{t.impact}</h4>
+            <p className="text-sm font-medium leading-relaxed text-foreground">{impact}</p>
           </div>
 
           <div>
-            <h4 className="font-semibold mb-2 text-[11px] uppercase tracking-wider text-muted-foreground">{t.features}</h4>
+            <h4 className="mb-2 text-xs font-semibold text-muted-foreground">{t.features}</h4>
             <ul className="space-y-1.5">
               {features.slice(0, 3).map((feature, index) => (
-                <li key={index} className="text-sm text-muted-foreground flex items-start gap-2.5">
-                  <span className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style={{ backgroundColor: accent }} />
+                <li key={index} className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                  <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
                   <span className="leading-relaxed">{feature}</span>
                 </li>
               ))}
@@ -129,19 +120,19 @@ export function ProjectCard({
           </div>
 
           <div>
-            <h4 className="font-semibold mb-2.5 text-[11px] uppercase tracking-wider text-muted-foreground">{t.stack}</h4>
+            <h4 className="mb-2.5 text-xs font-semibold text-muted-foreground">{t.stack}</h4>
             <div className="flex flex-wrap gap-1.5">
               {visibleStack.map((tech, index) => (
                 <Badge
                   key={index}
                   variant="secondary"
-                  className="bg-secondary/50 hover:bg-secondary hover:text-secondary-foreground transition-colors px-2.5 py-0.5 text-xs font-medium border border-transparent hover:border-border"
+                  className="rounded-pill bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
                 >
                   {tech}
                 </Badge>
               ))}
               {extraStack > 0 && (
-                <Badge variant="outline" className="px-2.5 py-0.5 text-xs font-medium text-muted-foreground border-border/60">
+                <Badge variant="outline" className="rounded-pill border-border px-2.5 py-0.5 text-xs font-medium text-muted-foreground">
                   +{extraStack}
                 </Badge>
               )}
@@ -149,11 +140,10 @@ export function ProjectCard({
           </div>
         </CardContent>
 
-        <CardFooter className="flex flex-col gap-3 pt-5 border-t border-border/50 mt-auto relative z-10 bg-muted/10">
+        <CardFooter className="mt-auto flex flex-col gap-3 border-t border-border bg-muted/40 pt-5">
           <Button
             onClick={() => setIsModalOpen(true)}
-            className="w-full text-white shadow-sm hover:opacity-90 transition-opacity"
-            style={{ backgroundColor: accent }}
+            className="w-full rounded-pill bg-primary text-primary-foreground shadow-e1 transition-shadow hover:bg-primary hover:shadow-e2"
           >
             <BookOpen className="mr-2 h-4 w-4" />
             View Case Study
@@ -162,7 +152,7 @@ export function ProjectCard({
           {(link || repoUrl) && (
             <div className="flex w-full gap-3">
               {link && (
-                <Button asChild variant="default" className="flex-1 bg-card hover:bg-accent text-foreground border border-border/50 shadow-sm">
+                <Button asChild variant="ghost" className="flex-1 rounded-pill border border-border bg-card text-foreground hover:bg-accent hover:text-accent-foreground">
                   <a href={link} target="_blank" rel="noopener noreferrer">
                     <PlayCircle className="mr-2 h-4 w-4" />
                     {t.liveDemo}
@@ -170,7 +160,7 @@ export function ProjectCard({
                 </Button>
               )}
               {repoUrl && (
-                <Button variant="outline" asChild className="flex-1 border-border/50 hover:bg-accent hover:text-accent-foreground">
+                <Button variant="outline" asChild className="flex-1 rounded-pill border-border hover:bg-accent hover:text-accent-foreground">
                   <a href={repoUrl} target="_blank" rel="noopener noreferrer">
                     <Github className="mr-2 h-4 w-4" />
                     {t.github}

@@ -32,7 +32,7 @@ export function TimelineItem({
 
       {/* Content Card */}
       <motion.div
-        className="ml-2 sm:ml-4 p-4 sm:p-6 rounded-2xl bg-card/50 border border-border/50 hover:border-primary/20 hover:bg-card/80 hover:shadow-lg transition-all duration-300 backdrop-blur-sm"
+        className="ml-2 sm:ml-4 p-4 sm:p-6 rounded-2xl bg-card border border-border shadow-e1 hover:shadow-e2 transition-shadow duration-200"
         whileHover={{ x: 5 }}
       >
         <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">

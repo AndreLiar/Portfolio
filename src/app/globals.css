@@ -109,9 +109,16 @@ html.dark .admin-layout {
 
 @layer base {
   /* Ensure full width layout */
-  html, body {
+  /* overflow-x only on <html> (via clip, which does NOT create a scroll
+     container) — putting it on <body> made the body the scroller and broke
+     window.scrollTo (the scroll-to-top button) + hid the footer. */
+  html {
     width: 100%;
-    overflow-x: hidden;
+    overflow-x: clip;
+    background-color: white;
+  }
+  body {
+    width: 100%;
     background-color: white;
   }
 
@@ -155,54 +162,53 @@ html.dark .admin-layout {
   }
 
   :root {
-    /* Network-independent font stacks. Keep the variables consumed by Tailwind
-       while allowing system/serif fallbacks when these fonts are not installed. */
-    --font-inter: "Inter";
-    --font-playfair: "Playfair Display";
-    /* Premium Light Theme */
-    --background: 0 0% 98%; /* Slightly off-white for warmth */
-    --foreground: 240 10% 3.9%;
+    /* Google-style type stacks — self-hosted via next/font (Figtree + Roboto). */
+    --font-inter: var(--font-roboto, "Roboto");
+    --font-playfair: var(--font-figtree, "Figtree");
+    /* Material 3 / Google light surfaces */
+    --background: 0 0% 100%;            /* #FFFFFF */
+    --foreground: 225 6% 13%;           /* #202124 Google grey-900 */
     --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
+    --card-foreground: 225 6% 13%;
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 220 15% 15%; /* Deep charcoal/navy for primary actions */
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 5% 96%;
-    --secondary-foreground: 240 6% 10%;
-    --muted: 240 5% 96%;
-    --muted-foreground: 240 4% 46%;
-    --accent: 220 15% 15%; /* Matching primary for consistency */
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 6% 90%;
-    --input: 240 6% 90%;
-    --ring: 240 10% 3.9%;
-    --radius: 0.75rem; /* Slightly more rounded for modern feel */
+    --popover-foreground: 225 6% 13%;
+    --primary: 214 82% 51%;             /* #1A73E8 Google Blue */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 17% 95%;           /* #F1F3F4 grey-100 */
+    --secondary-foreground: 225 6% 13%;
+    --muted: 210 20% 98%;               /* #F8F9FA grey-50 */
+    --muted-foreground: 218 5% 39%;     /* #5F6368 grey-700 */
+    --accent: 214 100% 96%;             /* #E8F0FE blue hover tint */
+    --accent-foreground: 214 82% 45%;
+    --destructive: 4 82% 56%;           /* #EA4335 Google red */
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 7% 87%;               /* #DADCE0 grey-300 */
+    --input: 220 7% 87%;
+    --ring: 214 82% 51%;
+    --radius: 1rem;                     /* 16px — Material card radius */
   }
 
   .dark {
-    /* Premium Dark Theme */
-    --background: 224 20% 8%;
-    --foreground: 210 20% 98%;
-    --card: 224 20% 10%;
-    --card-foreground: 210 20% 98%;
-    --popover: 224 20% 10%;
-    --popover-foreground: 210 20% 98%;
-    --primary: 217 91% 60%; /* Brand blue #3b82f6 — consistent identity in dark mode */
-    --primary-foreground: 0 0% 100%;
-    --secondary: 224 15% 16%;
-    --secondary-foreground: 210 20% 98%;
-    --muted: 224 15% 16%;
-    --muted-foreground: 215 15% 65%;
-    --accent: 217 91% 60%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 20% 98%;
-    --border: 224 15% 16%;
-    --input: 224 15% 16%;
-    --ring: 217 91% 60%;
+    /* Material 3 dark surfaces */
+    --background: 225 6% 13%;           /* #202124 */
+    --foreground: 210 11% 92%;          /* #E8EAED grey-200 */
+    --card: 220 5% 16%;                 /* elevated surface */
+    --card-foreground: 210 11% 92%;
+    --popover: 220 5% 16%;
+    --popover-foreground: 210 11% 92%;
+    --primary: 217 89% 76%;             /* #8AB4F8 Google dark-mode blue */
+    --primary-foreground: 225 6% 13%;
+    --secondary: 220 4% 20%;            /* #303134 */
+    --secondary-foreground: 210 11% 92%;
+    --muted: 220 4% 20%;
+    --muted-foreground: 218 6% 62%;     /* #9AA0A6 grey-500 */
+    --accent: 217 30% 24%;
+    --accent-foreground: 217 89% 85%;
+    --destructive: 4 70% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 216 5% 25%;               /* #3C4043 grey-800 */
+    --input: 216 5% 25%;
+    --ring: 217 89% 76%;
   }
 }
 

@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { InteractiveBackground } from "./interactive-background";
 
 // The section stays painted (opacity 1) on first render — it only orchestrates
 // the stagger for its children. Fading the whole section would hide the LCP
@@ -13,22 +12,17 @@ const containerVariants = {
   hidden: { opacity: 1 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.2,
-    },
+    transition: { staggerChildren: 0.08, delayChildren: 0.15 },
   },
 };
 
+// Material "emphasized" entrance — short travel, standard-decelerate easing.
 const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
+  hidden: { y: 12, opacity: 0 },
   visible: {
     y: 0,
     opacity: 1,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut",
-    },
+    transition: { duration: 0.5, ease: [0.2, 0, 0, 1] },
   },
 };
 
@@ -36,105 +30,130 @@ export function Hero({ heroData, lang = "en" }: { heroData: any; lang?: string }
   return (
     <motion.section
       id="hero"
-      className="relative py-20 md:py-28 overflow-hidden bg-background flex flex-col justify-center min-h-[70vh]"
+      className="relative overflow-hidden bg-background flex items-center min-h-[88vh] py-20 md:py-24"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
-      <InteractiveBackground />
-      <div className="relative z-10 container mx-auto px-4 text-center">
-        {/* Portrait — static (not motion) + priority so it never delays LCP */}
-        <div className="flex justify-center mb-8">
-          <div className="relative h-32 w-32 md:h-40 md:w-40 rounded-full overflow-hidden ring-4 ring-primary/20 shadow-xl shadow-primary/10">
-            <Image
-              src="/images/andre-kanmegne.jpg"
-              alt={heroData.name}
-              fill
-              priority
-              sizes="160px"
-              className="object-cover object-top"
-            />
-          </div>
-        </div>
+      {/* Clean Google-style canvas: white with one soft, low-contrast blue glow. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-muted to-background"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute right-0 top-1/4 -z-10 h-80 w-80 rounded-full bg-primary/10 blur-3xl"
+      />
 
-        {/* Name — LCP element. Rendered as a plain (non-motion) <h1> so it paints
-            at first paint (SSR/FCP) instead of waiting for Framer Motion to
-            hydrate and settle its entrance animation. Animating this element
-            pushed LCP to ~4.5s (2.9s render delay); static, LCP ≈ FCP. */}
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-6 tracking-tight">
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
-            {heroData.name}
-          </span>
-        </h1>
+      <div className="relative z-10 container mx-auto px-4">
+        <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          {/* LEFT — text (60%) */}
+          <div className="order-2 text-center lg:order-1 lg:text-left">
+            {/* Name — LCP element. Plain <h1> (no motion) so it paints at FCP. */}
+            <h1 className="mb-4 font-headline text-5xl font-semibold tracking-tight text-foreground md:text-6xl lg:text-7xl">
+              {heroData.name}
+            </h1>
 
-        {/* Title — static (large above-the-fold text; paints at FCP, not after
-            Framer Motion hydration) */}
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-muted-foreground mb-8 leading-relaxed">
-          {heroData.title}{" "}
-          <span className="text-primary relative inline-block">
-            {heroData.titleHighlight}
-            <span className="absolute bottom-1 left-0 w-full h-3 bg-primary/10 -z-10 transform -rotate-1" />
-          </span>
-        </h2>
+            {/* Role — the one blue accent on the highlighted phrase. */}
+            <h2 className="mb-6 text-2xl font-normal leading-snug text-muted-foreground md:text-3xl">
+              {heroData.title}{" "}
+              <span className="font-medium text-primary">{heroData.titleHighlight}</span>
+            </h2>
 
-        {/* Location */}
-        <motion.div variants={itemVariants} className="flex justify-center items-center gap-2 text-muted-foreground mb-10">
-          <div className="p-2 bg-primary/10 rounded-lg">
-            <MapPin className="w-4 h-4 text-primary" />
-          </div>
-          <span className="text-base font-medium">{heroData.location}</span>
-        </motion.div>
+            {/* Location — Material chip */}
+            <motion.div variants={itemVariants} className="mb-6 flex justify-center lg:justify-start">
+              <span className="inline-flex items-center gap-2 rounded-pill border border-border bg-card px-4 py-1.5 text-sm font-medium text-muted-foreground shadow-e1">
+                <MapPin className="h-4 w-4 text-primary" />
+                {heroData.location}
+              </span>
+            </motion.div>
 
-        {/* Main Description — static. This paragraph is the Largest Contentful
-            Paint element; animating it (opacity 0→1 via Framer Motion) delayed
-            LCP until after hydration. Rendered plainly so it paints at FCP. */}
-        <div className="max-w-2xl mx-auto mb-12">
-          <p className="text-lg md:text-xl text-foreground leading-relaxed mb-4 font-light">
-            {heroData.description1}
-          </p>
-          <p className="text-base text-muted-foreground leading-relaxed max-w-xl mx-auto">
-            {heroData.description2}
-          </p>
-        </div>
+            {/* Description — static (LCP-adjacent, paints at FCP). */}
+            <p className="mx-auto mb-10 max-w-xl text-lg leading-relaxed text-foreground md:text-xl lg:mx-0">
+              {heroData.description1}
+            </p>
 
-        {/* Metrics band */}
-        <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-stretch justify-center max-w-lg mx-auto mb-10 rounded-xl border border-border/50 bg-card/40 backdrop-blur-sm overflow-hidden">
-          {[
-            { value: "4+", label: heroData.metrics?.years ?? "Years building" },
-            { value: "10+", label: heroData.metrics?.projects ?? "Projects shipped" },
-            { value: "6", label: heroData.metrics?.domains ?? "Engineering domains" },
-          ].map((metric, i) => (
-            <div
-              key={i}
-              className={`flex-1 text-center py-5 px-6 ${i < 2 ? "sm:border-r border-b sm:border-b-0 border-border/40" : ""}`}
+            {/* Metrics — Material cards (elevated, blue figures) */}
+            <motion.div
+              variants={itemVariants}
+              className="mx-auto mb-10 grid max-w-md grid-cols-3 gap-3 lg:mx-0 sm:gap-4"
             >
-              <p className="text-3xl font-extrabold text-primary leading-none">{metric.value}</p>
-              <p className="text-xs text-muted-foreground mt-1.5 font-medium uppercase tracking-wide">{metric.label}</p>
+              {[
+                { value: "3", label: heroData.metrics?.years ?? "Years of experience" },
+                { value: "10+", label: heroData.metrics?.projects ?? "Projects shipped" },
+                { value: "6", label: heroData.metrics?.domains ?? "Engineering domains" },
+              ].map((metric) => (
+                <div
+                  key={metric.label}
+                  className="rounded-2xl border border-border bg-card px-4 py-5 text-center shadow-e1 lg:text-left"
+                >
+                  <p className="text-3xl font-semibold leading-none text-primary">
+                    {metric.value}
+                  </p>
+                  <p className="mt-2 text-xs font-medium leading-tight text-muted-foreground">
+                    {metric.label}
+                  </p>
+                </div>
+              ))}
+            </motion.div>
+
+            {/* CTAs — Material pill buttons */}
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4 lg:justify-start"
+            >
+              <Button
+                size="lg"
+                asChild
+                className="h-12 w-full rounded-pill bg-primary px-8 text-base font-medium text-primary-foreground shadow-e1 transition-shadow hover:bg-primary hover:shadow-e2 sm:w-auto"
+              >
+                <a href="#projects">{heroData.buttons.viewProjects}</a>
+              </Button>
+              <Button
+                size="lg"
+                variant="ghost"
+                asChild
+                className="h-12 w-full rounded-pill border border-border bg-card px-8 text-base font-medium text-primary transition-colors hover:bg-accent hover:text-accent-foreground sm:w-auto"
+              >
+                <a href="#contact">{heroData.contactMe}</a>
+              </Button>
+            </motion.div>
+
+            {/* Tagline */}
+            <motion.div variants={itemVariants} className="mt-8">
+              <p className="text-sm text-muted-foreground md:text-base">{heroData.tagline}</p>
+            </motion.div>
+          </div>
+
+          {/* RIGHT — the FULL portrait (40%), framed in the one Google 4-colour
+              signature. Container aspect matches the image (640×959 ≈ 2:3) so
+              object-cover fills it with zero cropping — the whole photo shows. */}
+          <div className="order-1 flex justify-center lg:order-2 lg:justify-end">
+            <div
+              className="w-full max-w-[17rem] shadow-e2 sm:max-w-xs lg:max-w-md"
+              style={{
+                background:
+                  "linear-gradient(140deg, #4285F4, #EA4335, #FBBC04, #34A853)",
+                borderRadius: "1.75rem",
+                padding: "5px",
+              }}
+            >
+              <div
+                className="relative w-full overflow-hidden bg-background"
+                style={{ aspectRatio: "640 / 959", borderRadius: "1.5rem" }}
+              >
+                <Image
+                  src="/images/andre-kanmegne.jpg"
+                  alt={heroData.name}
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 24rem, (min-width: 640px) 20rem, 16rem"
+                  className="object-cover"
+                />
+              </div>
             </div>
-          ))}
-        </motion.div>
-
-        {/* CTA Buttons */}
-        <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-12 w-full max-w-md sm:max-w-none mx-auto">
-          <Button size="lg" asChild className="w-full sm:w-auto h-auto bg-primary hover:bg-primary/90 text-primary-foreground font-bold px-10 py-4 text-lg shadow-lg hover:shadow-primary/25 hover:-translate-y-1 transition-all duration-300 rounded-xl">
-            <a href="#projects">
-              {heroData.buttons.viewProjects}
-            </a>
-          </Button>
-
-          <Button size="lg" variant="outline" asChild className="w-full sm:w-auto h-auto border-2 border-primary/50 text-primary hover:bg-primary/5 hover:border-primary font-semibold px-10 py-4 text-lg transition-all duration-300 rounded-xl hover:-translate-y-1">
-            <a href="#contact">
-              {heroData.contactMe}
-            </a>
-          </Button>
-        </motion.div>
-
-        {/* Tagline */}
-        <motion.div variants={itemVariants} className="opacity-60">
-          <p className="text-base md:text-lg text-muted-foreground font-medium italic font-headline">
-            &ldquo;{heroData.tagline}&rdquo;
-          </p>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </motion.section>
   );
