@@ -231,7 +231,10 @@
           "Qdrant",
           "Langfuse",
           "Evals",
-          "EU AI Act"
+          "EU AI Act",
+          "Prompt Engineering",
+          "Embeddings",
+          "Cost / Latency"
         ]
       },
       {
@@ -463,7 +466,9 @@
               "MCP (Model Context Protocol)",
               "RAG",
               "Guardrails",
-              "Agentic Harness"
+              "Agentic Harness",
+              "Semantic Kernel",
+              "AutoGen"
             ]
           },
           {
@@ -477,7 +482,12 @@
               "LiteLLM",
               "vLLM",
               "Qdrant (Vector DB)",
-              "Langfuse (LLM Observability)"
+              "Langfuse (LLM Observability)",
+              "Amazon Bedrock",
+              "Mistral",
+              "Prompt Engineering",
+              "Embeddings",
+              "Cost / Latency Optimization"
             ]
           },
           {
@@ -486,7 +496,8 @@
               "PyTorch",
               "MLflow",
               "Fine-tuning (PEFT/LoRA)",
-              "Ollama"
+              "Ollama",
+              "RLHF"
             ]
           }
         ]
@@ -1593,6 +1604,8 @@
           "Agents",
           "Agentic Harness",
           "MCP",
+          "Prompt Engineering",
+          "Embeddings",
           "Guardrails",
           "LangChain",
           "LangGraph",
@@ -1601,6 +1614,7 @@
           "Qdrant",
           "Langfuse",
           "Evals",
+          "Cost / Latency",
           "AI Governance",
           "EU AI Act"
         ]
