@@ -181,26 +181,31 @@
     "summary": "Software Engineer — Full-Stack, Cloud/DevOps und AI Engineering — ich entwerfe und betreibe produktionsreife Systeme, die sicher, beobachtbar, KI-nativ und compliance-ready sind. Autor der Minicloud-Plattform: ein 90-Phasen-Enterprise-Kubernetes-Projekt, das das vollständige IS eines B2B-Versicherungsunternehmens simuliert — 54+ aktive Workloads, Zero-Trust OPA Gatekeeper, vollständige KI-Governance (LiteLLM + vLLM + Qdrant RAG + Langfuse + minicloud-crew-agent), ERPNext PCG 2025 + TSCA + Factur-X und eine minicloud agent factory architecture. Derzeit IT-Automation-Engineer-Auszubildender bei HDI Global SE France.",
     "resumeSkills": [
       {
-        "title": "Cloud & DevOps",
+        "title": "Cloud, DevOps & Plattform",
         "skills": [
+          "AWS",
           "Microsoft Azure",
-          "Docker",
           "Kubernetes",
+          "Docker",
+          "Helm",
           "Terraform (IaC)",
-          "CI/CD (GitHub Actions, GitLab CI)",
-          "ArgoCD (GitOps)"
+          "ArgoCD / Kargo (GitOps)",
+          "CI/CD (GitHub Actions)",
+          "Git"
         ]
       },
       {
         "title": "Backend & Architektur",
         "skills": [
-          "Node.js",
+          "Java (Spring Boot)",
           "Python",
+          "TypeScript (Node.js)",
           "C# (.NET Core)",
           "Go",
-          "Microservices",
-          "Event-Driven (Kafka)",
-          "REST/GraphQL"
+          "Microservices / Modularer Monolith",
+          "SOA",
+          "Event-Driven (Kafka/NATS)",
+          "REST / GraphQL / gRPC / SOAP"
         ]
       },
       {
@@ -215,14 +220,40 @@
         ]
       },
       {
-        "title": "Datenbanken & Observability",
+        "title": "AI Engineering & LLMOps",
         "skills": [
-          "PostgreSQL",
-          "MongoDB",
-          "Redis",
-          "Prometheus",
-          "Grafana",
-          "ELK Stack"
+          "RAG",
+          "Agents",
+          "MCP",
+          "LangChain / LangGraph",
+          "LiteLLM / vLLM",
+          "Qdrant",
+          "Langfuse",
+          "Evals",
+          "EU AI Act"
+        ]
+      },
+      {
+        "title": "Security, IAM & Compliance",
+        "skills": [
+          "OAuth2 / OIDC",
+          "Vault",
+          "OPA / Gatekeeper",
+          "API-Sicherheit (OWASP)",
+          "Cosign / SBOM / Trivy",
+          "Zero-Trust",
+          "DORA / DSGVO"
+        ]
+      },
+      {
+        "title": "Daten, Observability & Delivery",
+        "skills": [
+          "PostgreSQL / MongoDB / Redis",
+          "Prometheus / Grafana / Loki",
+          "OpenTelemetry",
+          "Agile (Scrum/Kanban)",
+          "Waterfall",
+          "V-Model (Cycle en V)"
         ]
       }
     ],
@@ -240,7 +271,8 @@
               "JavaScript",
               "C#",
               "Go",
-              "SQL"
+              "SQL",
+              "Java"
             ]
           },
           {
@@ -251,7 +283,9 @@
               "Express",
               "NestJS",
               "Django",
-              "FastAPI"
+              "FastAPI",
+              "Spring Boot",
+              "Spring Modulith"
             ]
           },
           {
@@ -287,7 +321,10 @@
               "Verteilte Systeme",
               "Event-Driven Architecture",
               "System Design",
-              "Serverless"
+              "Serverless",
+              "SOA (Service-Oriented)",
+              "Modular Monolith",
+              "Domain-Driven Design"
             ]
           },
           {
@@ -296,7 +333,8 @@
               "REST",
               "GraphQL",
               "WebSockets",
-              "gRPC"
+              "gRPC",
+              "SOAP"
             ]
           },
           {
@@ -385,7 +423,10 @@
               "Jenkins",
               "SonarQube",
               "ArgoCD",
-              "GitOps"
+              "GitOps",
+              "Git",
+              "Kargo",
+              "Backstage (IDP)"
             ]
           },
           {
@@ -418,7 +459,10 @@
               "LangChain",
               "LangGraph",
               "CrewAI",
-              "MCP (Model Context Protocol)"
+              "MCP (Model Context Protocol)",
+              "RAG",
+              "Guardrails",
+              "Agentic Harness"
             ]
           },
           {
@@ -428,7 +472,11 @@
               "Hugging Face",
               "OpenAI API",
               "Anthropic (Claude)",
-              "Gemini API"
+              "Gemini API",
+              "LiteLLM",
+              "vLLM",
+              "Qdrant (Vector DB)",
+              "Langfuse (LLM Observability)"
             ]
           },
           {
@@ -519,7 +567,8 @@
               "DSGVO & EU AI Act Compliance",
               "Rückverfolgbarkeit & Auditierbarkeit",
               "KI-Ethik & Sicherheit",
-              "DORA"
+              "DORA",
+              "EU AI Act"
             ]
           },
           {
@@ -531,9 +580,49 @@
             ]
           },
           {
-            "name": "Engineering-Methoden",
+            "name": "Anwendungs- & API-Sicherheit",
             "items": [
-              "Agile / Scrum / SAFe"
+              "API Security",
+              "OWASP API Security Top 10",
+              "OWASP Top 10",
+              "SAST / DAST",
+              "Threat Modeling",
+              "Supply-Chain Security (Cosign / SBOM / Trivy)",
+              "Secrets Management (Vault)"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Projektmanagement & Delivery-Methoden",
+        "Icon": "Workflow",
+        "description": "Wie ich Delivery plane und steuere — agil im Alltag, prädiktiv wenn ein fixer Scope es erfordert.",
+        "subcategories": [
+          {
+            "name": "Agile & Lean",
+            "items": [
+              "Scrum",
+              "Kanban",
+              "SAFe",
+              "Sprint Planning",
+              "Retrospectives"
+            ]
+          },
+          {
+            "name": "Prädiktiv / planbasiert",
+            "items": [
+              "Waterfall",
+              "V-Model (Cycle en V)"
+            ]
+          },
+          {
+            "name": "Projektmanagement",
+            "items": [
+              "Project Management",
+              "Requirements / CdCF",
+              "RACI",
+              "Estimation",
+              "Risk Management"
             ]
           }
         ]
@@ -1407,10 +1496,13 @@
         "title": "Backend Engineering",
         "description": "Geschäftslogik, APIs, Datenmodelle, Integrationen und verteilte Systeme — der serverseitige Kern, der ein Produkt wirklich funktionieren lässt.",
         "tech": [
+          "Java",
           "Python",
           "TypeScript",
           "Go",
           "C#",
+          "Spring Boot",
+          "Spring Modulith",
           "FastAPI",
           "NestJS",
           "ASP.NET Core",
@@ -1466,6 +1558,7 @@
           "Cilium eBPF",
           "Longhorn",
           "MetalLB",
+          "Backstage",
           "Git",
           "CI/CD"
         ]
@@ -1477,6 +1570,7 @@
         "tech": [
           "Microservices",
           "Modular Monolith",
+          "SOA",
           "Event-Driven",
           "Domain-Driven Design",
           "C4 Diagrams",
@@ -1514,6 +1608,9 @@
           "Trivy",
           "IAM · OAuth / OIDC",
           "Authentik",
+          "API Security",
+          "OWASP API Security Top 10",
+          "OWASP Top 10",
           "NetworkPolicy",
           "Zero-Trust",
           "DORA · GDPR"
@@ -1544,6 +1641,7 @@
           "RAG",
           "Agents",
           "Agentic Harness",
+          "MCP",
           "Guardrails",
           "LangChain",
           "LangGraph",
@@ -1552,7 +1650,8 @@
           "Qdrant",
           "Langfuse",
           "Evals",
-          "MCP"
+          "AI Governance",
+          "EU AI Act"
         ]
       }
     ]
