@@ -11,7 +11,8 @@
     "contact": "Contact",
     "language": "Langue",
     "nav": {
-      "blog": "Blog"
+      "blog": "Blog",
+      "techStack": "Stack technique"
     }
   },
   "Hero": {
@@ -1604,6 +1605,7 @@
           "EU AI Act"
         ]
       }
-    ]
+    ],
+    "cta": "Voir la stack complète"
   }
 }

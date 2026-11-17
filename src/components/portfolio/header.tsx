@@ -68,6 +68,7 @@ export function Header({ headerData, name }: { headerData: any, name: string }) 
   const navLinks: NavLink[] = [
     { href: "#projects", label: headerData.projects },
     { href: "#skills", label: headerData.skills },
+    { href: `/${pathname.split('/')[1]}/skills`, label: headerData.nav?.techStack ?? "Tech Stack", external: true },
     { href: "#experience", label: headerData.experience },
     { href: `/${pathname.split('/')[1]}/resume`, label: "Resume", external: true },
     { href: "#contact", label: headerData.contact },
@@ -115,7 +116,7 @@ export function Header({ headerData, name }: { headerData: any, name: string }) 
         <div className="flex items-center gap-4">
           <nav className="hidden md:flex items-center gap-1 text-body-sm font-medium" role="navigation" aria-label="Main navigation">
             {navLinks.map((link) => {
-              const isActive = link.external ? pathname.includes('/resume') : !link.newTab && activeSection === link.href.substring(1);
+              const isActive = link.external ? pathname.includes(`/${link.href.split('/').slice(2).join('/')}`) : !link.newTab && activeSection === link.href.substring(1);
               const Component = link.external ? Link : 'a';
 
               return (
@@ -162,7 +163,7 @@ export function Header({ headerData, name }: { headerData: any, name: string }) 
                 </div>
                 <nav className="flex flex-col gap-2 font-medium" role="navigation" aria-label="Mobile main navigation">
                   {navLinks.map((link) => {
-                    const isActive = link.external ? pathname.includes('/resume') : !link.newTab && activeSection === link.href.substring(1);
+                    const isActive = link.external ? pathname.includes(`/${link.href.split('/').slice(2).join('/')}`) : !link.newTab && activeSection === link.href.substring(1);
                     const Component = link.external ? Link : 'a';
 
                     return (
