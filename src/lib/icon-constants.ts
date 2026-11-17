@@ -12,6 +12,7 @@ import {
   BotMessageSquare,
   Type,
   Users,
+  Workflow,
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
@@ -23,6 +24,7 @@ const iconMap: Record<string, LucideIcon> = {
   BotMessageSquare,
   Type,
   Users,
+  Workflow,
 };
 
 export function getIconComponent(name: string): LucideIcon {
