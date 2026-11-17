@@ -2,6 +2,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
+import Link from 'next/link';
 import { LazyMotion, domAnimation } from 'framer-motion';
 import {
   Briefcase,
@@ -24,6 +25,7 @@ import {
   Layout,
   Network,
   FlaskConical,
+  ArrowRight,
   Calendar,
   Building2,
   Rocket,
@@ -126,8 +128,9 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
           </div>
         </section>
 
-        {/* Engineering Capabilities — four capability blocks (the detailed
-            technology catalogue lives on the dedicated /skills page). */}
+        {/* Engineering Capabilities — the discipline cards (curated summary).
+            The exhaustive technology catalogue lives on the dedicated /skills
+            page, reached via the "View full tech stack" link below. */}
         {capabilitiesData?.blocks?.length > 0 && (
           <section id="skills" className="py-10 md:py-16 bg-card">
             <div className="container mx-auto px-4">
@@ -160,6 +163,15 @@ export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTag
                     </div>
                   );
                 })}
+              </div>
+              <div className="mt-10 text-center">
+                <Link
+                  href={`/${lang}/skills`}
+                  className="inline-flex h-11 items-center justify-center gap-2 rounded-pill border border-border bg-background px-6 text-sm font-medium text-primary shadow-e1 transition-all hover:bg-accent hover:text-accent-foreground active:scale-[0.98]"
+                >
+                  {capabilitiesData.cta ?? 'View full tech stack'}
+                  <ArrowRight className="h-4 w-4" aria-hidden />
+                </Link>
               </div>
             </div>
           </section>
