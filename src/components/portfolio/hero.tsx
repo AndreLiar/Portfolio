@@ -81,7 +81,7 @@ export function Hero({ heroData, lang = "en" }: { heroData: any; lang?: string }
               {[
                 { value: "3", label: heroData.metrics?.years ?? "Years of experience" },
                 { value: "10+", label: heroData.metrics?.projects ?? "Projects shipped" },
-                { value: "6", label: heroData.metrics?.domains ?? "Engineering domains" },
+                { value: "8", label: heroData.metrics?.domains ?? "Engineering domains" },
               ].map((metric) => (
                 <div
                   key={metric.label}

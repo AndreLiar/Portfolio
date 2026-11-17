@@ -1,7 +1,7 @@
 {
   "Metadata": {
-    "title": "André Kanmegne | Ingénieur AI Platform & Full-Stack",
-    "description": "André Kanmegne — Ingénieur AI Platform & Full-Stack. Je conçois des produits augmentés par l'IA de bout en bout et j'opère la plateforme cloud-native qui les fait tourner : un produit de conformité DORA en production et une plateforme Kubernetes d'assurance."
+    "title": "André Kanmegne | Software Engineer — Full-Stack, Cloud & AI",
+    "description": "André Kanmegne — Software Engineer — full-stack, cloud/DevOps et AI engineering. Je conçois des produits augmentés par l'IA de bout en bout et j'opère la plateforme cloud-native qui les fait tourner : un produit de conformité DORA en production et une plateforme Kubernetes d'assurance."
   },
   "Header": {
     "projects": "Réalisations",
@@ -19,8 +19,8 @@
     "github": "GitHub",
     "linkedin": "LinkedIn",
     "name": "André Kanmegne",
-    "title": "Ingénieur AI Platform &",
-    "titleHighlight": "Full-Stack",
+    "title": "Software Engineer —",
+    "titleHighlight": "Full-Stack · Cloud & DevOps · AI",
     "location": "Paris, France",
     "description1": "Je conçois des produits augmentés par l'IA de bout en bout — et j'opère la plateforme cloud-native qui les fait tourner. Du besoin métier au logiciel sécurisé et observable en production.",
     "description2": "Mon produit phare est Retrieva — une plateforme de conformité DORA en production (Next.js · RAG · PostgreSQL) — déployée sur une plateforme Kubernetes qui simule le SI complet d'un assureur B2B. Découvrez les études de cas ci-dessous.",
@@ -132,7 +132,7 @@
       "Concevoir des produits augmentés par l'IA de bout en bout — du besoin métier à la production",
       "Concevoir et opérer des plateformes cloud-native et des infrastructures IA — RAG, agents, LLMOps",
       "Aligner la technologie sur les enjeux métier — conformité (DORA / ACPR), automatisation, ROI mesurable",
-      "Travailler comme Ingénieur AI Platform, Full-Stack ou Platform Engineer"
+      "Travailler comme Software Engineer — full-stack, cloud/DevOps et AI engineering"
     ]
   },
   "AvailableCTA": {
@@ -178,7 +178,7 @@
       "github": "https://github.com/AndreLiar",
       "linkedin": "https://www.linkedin.com/in/andre-kanmegne-dev"
     },
-    "summary": "Software Engineer (AI & Platform Engineering), Bac+5 RNCP Niveau 7 — je conçois et opère des systèmes de production sécurisés, observables, natifs IA et conformes aux exigences réglementaires. Auteur de la plateforme minicloud : un projet Kubernetes 90 phases simulant le SI complet d'un assureur B2B — 54+ workloads actifs, zero-trust OPA Gatekeeper, gouvernance IA complète (LiteLLM + vLLM + Qdrant RAG + Langfuse + minicloud-crew-agent), ERPNext PCG 2025 + TSCA + Factur-X, et une architecture agent factory inspirée de ToyotaGPT. Actuellement Ingénieur IT Automation en alternance chez HDI Global SE France.",
+    "summary": "Software Engineer — full-stack, cloud/DevOps et AI engineering — je conçois et opère des systèmes de production sécurisés, observables, natifs IA et conformes aux exigences réglementaires. Auteur de la plateforme minicloud : un projet Kubernetes 90 phases simulant le SI complet d'un assureur B2B — 54+ workloads actifs, zero-trust OPA Gatekeeper, gouvernance IA complète (LiteLLM + vLLM + Qdrant RAG + Langfuse + minicloud-crew-agent), ERPNext PCG 2025 + TSCA + Factur-X, et une architecture agent factory inspirée de ToyotaGPT. Actuellement Ingénieur IT Automation en alternance chez HDI Global SE France.",
     "resumeSkills": [
       {
         "title": "Cloud & DevOps",
@@ -1350,99 +1350,17 @@
   ],
   "Capabilities": {
     "title": "Compétences d'ingénierie",
-    "subtitle": "Six domaines que je couvre — la preuve, ce sont les projets ci-dessus, pas cette liste.",
+    "subtitle": "Le Software Engineering ≠ coder. J'interviens de bout en bout sur l'ensemble du métier — du backend et de l'architecture à la plateforme, la fiabilité, la sécurité, les tests et l'IA. La preuve, ce sont les projets ci-dessus, pas cette liste.",
     "blocks": [
       {
         "icon": "Server",
-        "title": "Ingénierie Plateforme & Cloud",
-        "description": "Construire et exploiter des plateformes hybrides — du bare-metal Kubernetes au cloud public AWS et Microsoft Azure, avec réseau, stockage et infrastructure as code.",
-        "tech": [
-          "Kubernetes",
-          "k3s",
-          "AWS",
-          "Microsoft Azure",
-          "Public & Hybrid Cloud",
-          "Helm",
-          "Kustomize",
-          "Docker",
-          "Cilium eBPF",
-          "Longhorn",
-          "MetalLB"
-        ]
-      },
-      {
-        "icon": "GitBranch",
-        "title": "DevOps & GitOps",
-        "description": "Livraison automatisée pilotée par Git — tout déclaré dans Git, promu et réconcilié en continu ; les applications Helm sur étagère transformées en services gouvernés, SSO et sauvegardés.",
-        "tech": [
-          "ArgoCD",
-          "Kargo",
-          "Helm",
-          "GitHub Actions",
-          "Argo Rollouts",
-          "Terraform / OpenTofu",
-          "Ansible",
-          "MAAS",
-          "CI/CD"
-        ]
-      },
-      {
-        "icon": "BrainCircuit",
-        "title": "Ingénierie IA & LLMOps",
-        "description": "Faire passer les systèmes LLM du prototype à des applications observables et gouvernées — et construire le harnais d'ingénierie (contexte, mémoire, garde-fous, vérification) qui rend les agents IA assez fiables pour opérer sur un système d'information en production.",
-        "tech": [
-          "RAG",
-          "Agents",
-          "Agentic Harness",
-          "Guardrails",
-          "LangChain",
-          "LangGraph",
-          "LiteLLM",
-          "vLLM",
-          "Qdrant",
-          "Langfuse"
-        ]
-      },
-      {
-        "icon": "Activity",
-        "title": "Observabilité & SRE",
-        "description": "Savoir ce que fait la production — métriques, logs, traces, alertes, SLI et SLO.",
-        "tech": [
-          "Prometheus",
-          "Grafana",
-          "Loki",
-          "Tempo",
-          "OpenTelemetry",
-          "Alertmanager",
-          "SLI",
-          "SLO",
-          "Chaos Mesh"
-        ]
-      },
-      {
-        "icon": "ShieldCheck",
-        "title": "Sécurité, IAM & Conformité",
-        "description": "Zero-trust, intégrité de la chaîne d'approvisionnement et contrôles d'environnement réglementé par défaut.",
-        "tech": [
-          "Vault",
-          "OPA / Gatekeeper",
-          "Falco",
-          "Cosign / SBOM",
-          "Trivy",
-          "IAM · OAuth / OIDC",
-          "NetworkPolicy",
-          "DORA · RGPD"
-        ]
-      },
-      {
-        "icon": "Code",
-        "title": "Logiciel, Intégration & Architecture",
-        "description": "Concevoir des services backend, des API et des intégrations autour des systèmes métier — avec des frontends React/Next.js typés lorsqu’un produit nécessite une interface.",
+        "title": "Backend Engineering",
+        "description": "Logique métier, API, modèles de données, intégrations et systèmes distribués — le cœur serveur qui fait réellement fonctionner le produit.",
         "tech": [
           "Python",
           "TypeScript",
-          "C#",
           "Go",
+          "C#",
           "FastAPI",
           "NestJS",
           "ASP.NET Core",
@@ -1453,19 +1371,138 @@
           "MySQL",
           "MongoDB",
           "Redis",
-          "Événementiel (NATS / Kafka)",
+          "Event-Driven (NATS / Kafka)",
           "REST API",
           "GraphQL",
           "gRPC",
-          "SOAP",
+          "SOAP"
+        ]
+      },
+      {
+        "icon": "Layout",
+        "title": "Frontend Engineering",
+        "description": "Interfaces et expérience utilisateur — des applications React/Next.js typées, accessibles et rapides, bien connectées au backend.",
+        "tech": [
           "React",
           "Next.js",
+          "TypeScript",
           "Tailwind CSS",
+          "Radix UI",
+          "Server Components / SSR",
+          "Web Performance",
+          "RGAA · a11y"
+        ]
+      },
+      {
+        "icon": "Cloud",
+        "title": "DevOps / Platform & Cloud Engineering",
+        "description": "Construire et opérer des plateformes hybrides — du Kubernetes bare-metal à AWS et Microsoft Azure — avec une livraison pilotée par Git (GitOps), l'infrastructure-as-code, le réseau et le stockage.",
+        "tech": [
+          "Kubernetes",
+          "k3s",
+          "AWS",
+          "Microsoft Azure",
+          "Public & Hybrid Cloud",
+          "Docker",
+          "Helm",
+          "Kustomize",
+          "ArgoCD",
+          "Kargo",
+          "Argo Rollouts",
+          "GitHub Actions",
+          "Terraform / OpenTofu",
+          "Ansible",
+          "MAAS",
+          "Cilium eBPF",
+          "Longhorn",
+          "MetalLB",
+          "Git",
+          "CI/CD"
+        ]
+      },
+      {
+        "icon": "Network",
+        "title": "Software Architecture",
+        "description": "Structure des systèmes, choix technologiques, interactions, scalabilité et les compromis derrière — le pourquoi, documenté.",
+        "tech": [
+          "Microservices",
+          "Modular Monolith",
+          "Event-Driven",
+          "Domain-Driven Design",
+          "C4 Diagrams",
+          "ADRs",
+          "API-First",
+          "HA / DR",
+          "12-Factor"
+        ]
+      },
+      {
+        "icon": "Activity",
+        "title": "Observability & SRE",
+        "description": "Savoir ce que fait la production et la garder fiable — métriques, logs, traces, alertes, SLIs/SLOs et chaos engineering.",
+        "tech": [
+          "Prometheus",
+          "Grafana",
+          "Loki",
+          "Tempo",
+          "OpenTelemetry",
+          "Alertmanager",
+          "SLIs",
+          "SLOs",
+          "Chaos Mesh"
+        ]
+      },
+      {
+        "icon": "ShieldCheck",
+        "title": "Security, IAM & Compliance",
+        "description": "La sécurité par défaut — zero-trust, IAM, secrets, intégrité de la chaîne d'approvisionnement, sécurité des API et conformité en environnement régulé.",
+        "tech": [
+          "Vault",
+          "OPA / Gatekeeper",
+          "Falco",
+          "Cosign / SBOM",
+          "Trivy",
+          "IAM · OAuth / OIDC",
+          "Authentik",
+          "NetworkPolicy",
+          "Zero-Trust",
+          "DORA · GDPR"
+        ]
+      },
+      {
+        "icon": "FlaskConical",
+        "title": "QA / Test Engineering",
+        "description": "Valider les systèmes avec une vraie pyramide de tests — unitaires, intégration, contrat, E2E et performance — pas seulement un build vert.",
+        "tech": [
           "Pytest",
           "xUnit",
+          "Vitest",
           "Playwright",
+          "Testcontainers",
+          "Schemathesis",
+          "k6",
           "Postman",
-          "Git"
+          "Contract Testing",
+          "Coverage Gates"
+        ]
+      },
+      {
+        "icon": "BrainCircuit",
+        "title": "AI Engineering & LLMOps",
+        "description": "Amener les LLM au-delà des prototypes vers des applications observables et gouvernées — RAG, agents, orchestration, évaluation et le harness (contexte, mémoire, garde-fous, vérification) qui les rend fiables.",
+        "tech": [
+          "RAG",
+          "Agents",
+          "Agentic Harness",
+          "Guardrails",
+          "LangChain",
+          "LangGraph",
+          "LiteLLM",
+          "vLLM",
+          "Qdrant",
+          "Langfuse",
+          "Evals",
+          "MCP"
         ]
       }
     ]

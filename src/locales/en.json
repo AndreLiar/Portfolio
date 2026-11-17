@@ -1,7 +1,7 @@
 {
   "Metadata": {
-    "title": "André Kanmegne | AI Platform & Full-Stack Engineer",
-    "description": "André Kanmegne — AI Platform & Full-Stack Engineer. I build AI-powered products end-to-end and operate the cloud-native platform they run on: a live DORA-compliance product and a production Kubernetes insurance platform."
+    "title": "André Kanmegne | Software Engineer — Full-Stack, Cloud & AI",
+    "description": "André Kanmegne — Software Engineer across full-stack, cloud/DevOps and AI engineering. I build AI-powered products end-to-end and operate the cloud-native platform they run on: a live DORA-compliance product and a production Kubernetes insurance platform."
   },
   "Header": {
     "projects": "Work",
@@ -19,8 +19,8 @@
     "github": "GitHub",
     "linkedin": "LinkedIn",
     "name": "André Kanmegne",
-    "title": "AI Platform &",
-    "titleHighlight": "Full-Stack Engineer",
+    "title": "Software Engineer —",
+    "titleHighlight": "Full-Stack · Cloud & DevOps · AI",
     "location": "Paris, France",
     "description1": "I build AI-powered products end-to-end — and operate the cloud-native platform they run on. From a business requirement to secure, observable software in production.",
     "description2": "My flagship product is Retrieva — a live DORA-compliance platform (Next.js · RAG · PostgreSQL) — running on a production Kubernetes platform that simulates a full B2B insurance IS. Explore the case studies below.",
@@ -132,7 +132,7 @@
       "Build AI-powered products end-to-end — from product requirements to production",
       "Design and operate cloud-native platforms and AI infrastructure — RAG, agents, LLMOps",
       "Align technology to business outcomes — compliance (DORA / ACPR), automation, measurable ROI",
-      "Work as an AI Platform, Full-Stack, or Platform Engineer"
+      "Work as a Software Engineer across full-stack, cloud/DevOps and AI engineering"
     ]
   },
   "AvailableCTA": {
@@ -178,7 +178,7 @@
       "github": "https://github.com/AndreLiar",
       "linkedin": "https://www.linkedin.com/in/andre-kanmegne-dev"
     },
-    "summary": "AI Platform & Full-Stack Engineer, Bac+5 RNCP Level 7 — designing and operating production systems that are secure, observable, AI-native, and compliance-ready. Author of the minicloud platform: a 90-phase enterprise Kubernetes project simulating the complete IS of a B2B insurance company — 54+ active workloads, OPA Gatekeeper zero-trust, full AI governance stack (LiteLLM + vLLM + Qdrant RAG + Langfuse + minicloud-crew-agent), ERPNext with French PCG 2025 + TSCA + Factur-X, and a ToyotaGPT-inspired agent factory architecture. Currently an IT Automation Engineer Apprentice at HDI Global SE France, applying the same engineering rigour to real enterprise workflows.",
+    "summary": "Software Engineer across full-stack, cloud/DevOps and AI engineering — designing and operating production systems that are secure, observable, AI-native, and compliance-ready. Author of the minicloud platform: a 90-phase enterprise Kubernetes project simulating the complete IS of a B2B insurance company — 54+ active workloads, OPA Gatekeeper zero-trust, full AI governance stack (LiteLLM + vLLM + Qdrant RAG + Langfuse + minicloud-crew-agent), ERPNext with French PCG 2025 + TSCA + Factur-X, and a ToyotaGPT-inspired agent factory architecture. Currently an IT Automation Engineer Apprentice at HDI Global SE France, applying the same engineering rigour to real enterprise workflows.",
     "resumeSkills": [
       {
         "title": "Cloud & DevOps",
@@ -1423,63 +1423,96 @@
   ],
   "Capabilities": {
     "title": "Engineering Capabilities",
-    "subtitle": "Six domains I work across — the projects above are the proof, not this list.",
+    "subtitle": "Software Engineering ≠ coding. I work end-to-end across the full discipline — from backend and architecture to platform, reliability, security, testing and AI. The projects above are the proof, not this list.",
     "blocks": [
       {
         "icon": "Server",
-        "title": "Platform & Cloud Engineering",
-        "description": "Building and operating hybrid platforms — from bare-metal Kubernetes to AWS and Microsoft Azure public cloud, with networking, storage, and infrastructure as code.",
+        "title": "Backend Engineering",
+        "description": "Business logic, APIs, data models, integrations and distributed systems — the server-side core that makes a product actually work.",
+        "tech": [
+          "Python",
+          "TypeScript",
+          "Go",
+          "C#",
+          "FastAPI",
+          "NestJS",
+          "ASP.NET Core",
+          "Node.js",
+          "Express",
+          "PostgreSQL",
+          "Oracle DB",
+          "MySQL",
+          "MongoDB",
+          "Redis",
+          "Event-Driven (NATS / Kafka)",
+          "REST API",
+          "GraphQL",
+          "gRPC",
+          "SOAP"
+        ]
+      },
+      {
+        "icon": "Layout",
+        "title": "Frontend Engineering",
+        "description": "User interfaces and experience — typed, accessible React/Next.js apps that stay fast and talk cleanly to the backend.",
+        "tech": [
+          "React",
+          "Next.js",
+          "TypeScript",
+          "Tailwind CSS",
+          "Radix UI",
+          "Server Components / SSR",
+          "Web Performance",
+          "RGAA · a11y"
+        ]
+      },
+      {
+        "icon": "Cloud",
+        "title": "DevOps / Platform & Cloud Engineering",
+        "description": "Building and operating hybrid platforms — from bare-metal Kubernetes to AWS and Microsoft Azure — with git-driven delivery (GitOps), infrastructure-as-code, networking and storage.",
         "tech": [
           "Kubernetes",
           "k3s",
           "AWS",
           "Microsoft Azure",
           "Public & Hybrid Cloud",
+          "Docker",
           "Helm",
           "Kustomize",
-          "Docker",
-          "Cilium eBPF",
-          "Longhorn",
-          "MetalLB"
-        ]
-      },
-      {
-        "icon": "GitBranch",
-        "title": "DevOps & GitOps",
-        "description": "Automated, git-driven delivery — everything declared in Git, continuously promoted and reconciled; off-the-shelf Helm apps taken to governed, SSO'd, backed-up services.",
-        "tech": [
           "ArgoCD",
           "Kargo",
-          "Helm",
-          "GitHub Actions",
           "Argo Rollouts",
+          "GitHub Actions",
           "Terraform / OpenTofu",
           "Ansible",
           "MAAS",
+          "Cilium eBPF",
+          "Longhorn",
+          "MetalLB",
+          "Git",
           "CI/CD"
         ]
       },
       {
-        "icon": "BrainCircuit",
-        "title": "AI Engineering & LLMOps",
-        "description": "Taking LLM systems beyond prototypes into observable, governed applications — and building the engineering harness (context, memory, guardrails, verification) that makes AI agents reliable enough to operate on a live information system.",
+        "icon": "Network",
+        "title": "Software Architecture",
+        "description": "System structure, technology choices, interactions, scalability and the trade-offs behind them — the why, documented.",
         "tech": [
-          "RAG",
-          "Agents",
-          "Agentic Harness",
-          "Guardrails",
-          "LangChain",
-          "LangGraph",
-          "LiteLLM",
-          "vLLM",
-          "Qdrant",
-          "Langfuse"
+          "Microservices",
+          "Modular Monolith",
+          "Event-Driven",
+          "Domain-Driven Design",
+          "C4 Diagrams",
+          "ADRs",
+          "API-First",
+          "HA / DR",
+          "12-Factor"
         ]
       },
       {
         "icon": "Activity",
         "title": "Observability & SRE",
-        "description": "Knowing what production is doing — metrics, logs, traces, alerts, SLIs and SLOs.",
+        "description": "Knowing what production is doing and keeping it reliable — metrics, logs, traces, alerts, SLIs/SLOs and chaos engineering.",
         "tech": [
           "Prometheus",
           "Grafana",
@@ -1495,7 +1528,7 @@
       {
         "icon": "ShieldCheck",
         "title": "Security, IAM & Compliance",
-        "description": "Zero-trust, supply-chain integrity and regulated-environment controls by default.",
+        "description": "Security by default — zero-trust, IAM, secrets, supply-chain integrity, API security and regulated-environment compliance.",
         "tech": [
           "Vault",
           "OPA / Gatekeeper",
@@ -1503,42 +1536,46 @@
           "Cosign / SBOM",
           "Trivy",
           "IAM · OAuth / OIDC",
+          "Authentik",
           "NetworkPolicy",
+          "Zero-Trust",
           "DORA · GDPR"
         ]
       },
       {
-        "icon": "Code",
-        "title": "Software, Integration & Architecture",
-        "description": "Designing backend services, APIs and integrations around business systems — with typed React/Next.js frontends when a product needs a UI.",
+        "icon": "FlaskConical",
+        "title": "QA / Test Engineering",
+        "description": "Validating systems with a real test pyramid — unit, integration, contract, E2E and performance — not just a green build.",
         "tech": [
-          "Python",
-          "TypeScript",
-          "C#",
-          "Go",
-          "FastAPI",
-          "NestJS",
-          "ASP.NET Core",
-          "Node.js",
-          "Express",
-          "PostgreSQL",
-          "Oracle DB",
-          "MySQL",
-          "MongoDB",
-          "Redis",
-          "Event-Driven (NATS / Kafka)",
-          "REST API",
-          "GraphQL",
-          "gRPC",
-          "SOAP",
-          "React",
-          "Next.js",
-          "Tailwind CSS",
           "Pytest",
           "xUnit",
+          "Vitest",
           "Playwright",
+          "Testcontainers",
+          "Schemathesis",
+          "k6",
           "Postman",
-          "Git"
+          "Contract Testing",
+          "Coverage Gates"
+        ]
+      },
+      {
+        "icon": "BrainCircuit",
+        "title": "AI Engineering & LLMOps",
+        "description": "Taking LLMs beyond prototypes into observable, governed applications — RAG, agents, orchestration, evaluation and the harness (context, memory, guardrails, verification) that makes them reliable.",
+        "tech": [
+          "RAG",
+          "Agents",
+          "Agentic Harness",
+          "Guardrails",
+          "LangChain",
+          "LangGraph",
+          "LiteLLM",
+          "vLLM",
+          "Qdrant",
+          "Langfuse",
+          "Evals",
+          "MCP"
         ]
       }
     ]

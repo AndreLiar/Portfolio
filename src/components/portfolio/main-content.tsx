@@ -21,6 +21,9 @@ import {
   GitBranch,
   ShieldCheck,
   Activity,
+  Layout,
+  Network,
+  FlaskConical,
   Calendar,
   Building2,
   Rocket,
@@ -79,6 +82,9 @@ const iconMap: { [key: string]: LucideIcon } = {
   GitBranch,
   ShieldCheck,
   Activity,
+  Layout,
+  Network,
+  FlaskConical,
 };
 
 export function MainContent({ messages, lang = 'en', blogPosts = [], blogPostTags = {} }: MainContentProps) {

@@ -15,12 +15,25 @@ export default function manifest(): MetadataRoute.Manifest {
     dir: "ltr",
     // Only reference assets that actually exist in /public. Pointing at missing
     // PNG icons caused a 404 that Lighthouse logs as a console error (Best
-    // Practices → errors-in-console).
+    // Practices → errors-in-console). All icons are generated from the portrait
+    // (public/images/andre-kanmegne.jpg).
     icons: [
       {
         src: "/favicon.ico",
         sizes: "16x16 32x32 48x48",
         type: "image/x-icon"
+      },
+      {
+        src: "/icon-192.png",
+        sizes: "192x192",
+        type: "image/png",
+        purpose: "any"
+      },
+      {
+        src: "/icon-512.png",
+        sizes: "512x512",
+        type: "image/png",
+        purpose: "any"
       }
     ],
     related_applications: [],
